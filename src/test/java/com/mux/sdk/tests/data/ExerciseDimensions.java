@@ -14,23 +14,22 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class ExerciseDimensions {
-    @Test
-    public void test() throws ApiException {
-        DimensionsApi dim = new DimensionsApi(TestHelper.buildApiClient());
+    DimensionsApi dim = new DimensionsApi(TestHelper.buildApiClient());
 
-        // =========================== list-dimensions
+    @Test
+    public void listDimensions() throws ApiException {
         ListDimensionsResponse listDimensionsResponse = dim.listDimensions();
         assertNotNull(listDimensionsResponse);
         assertNotNull(listDimensionsResponse.getData());
         assertNotNull(listDimensionsResponse.getData().getBasic());
         assertNotNull(listDimensionsResponse.getData().getAdvanced());
-        System.out.println("list-dimensions OK");
+    }
 
-        // =========================== list-dimension-values
+    @Test
+    public void listDimensionValues() throws ApiException {
         ListDimensionValuesResponse listDimensionValues = dim.listDimensionValues("browser", 50, 0, Lists.newArrayList(), Lists.newArrayList("7:days"));
 
         assertNotNull(listDimensionValues);
         assertNotNull(listDimensionValues.getData());
-        System.out.println("list-dimension-values OK");
     }
 }

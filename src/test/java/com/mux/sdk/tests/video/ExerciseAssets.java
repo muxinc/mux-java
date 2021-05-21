@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 
 public class ExerciseAssets {
     @Test
-    public void test() throws ApiException {
+    public void integrationTest() throws ApiException {
         ApiClient client = TestHelper.buildApiClient();
         AssetsApi assets = new AssetsApi(client);
         PlaybackIdApi playbackIds = new PlaybackIdApi(client);

@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class CreateLiveStream {
     @Test
-    public void test() throws ApiException {
+    public void createLiveStream() throws ApiException {
         final LiveStreamsApi api = new LiveStreamsApi(TestHelper.buildApiClient());
 
         final CreateAssetRequest assetRequest = new CreateAssetRequest();
