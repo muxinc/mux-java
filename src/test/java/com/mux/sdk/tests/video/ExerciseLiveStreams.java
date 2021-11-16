@@ -37,7 +37,7 @@ public class ExerciseLiveStreams {
         System.out.println("list-live-streams OK ✅");
 
         LiveStreamResponse streamGet = liveStreamsApi.getLiveStream(streamId);
-        assertEquals(streamId, streamGet.getData().getId());
+        assertEquals(streamId, streamGet.getData().getPlaybackIds().get(0).getId());
         System.out.println("get-live-stream OK ✅");
 
         GetAssetOrLiveStreamIdResponse getLiveResp = playbackIdApi.getAssetOrLivestreamId(streamId);

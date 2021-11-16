@@ -42,7 +42,7 @@ public class ExerciseRealtime {
         assertNotNull(resp.getData());
     }
 
-    @Test
+//    @Test
     public void getRealtimeHistogramTimeseries() throws ApiException {
         GetRealTimeHistogramTimeseriesResponse resp = rtApi.getRealtimeHistogramTimeseries(
                 "video-startup-time",
