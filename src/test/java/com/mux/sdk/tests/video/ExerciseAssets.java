@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 
 public class ExerciseAssets {
     @Test
-    public void integrationTest() throws ApiException {
+    public void integrationTest() throws ApiException, InterruptedException {
         ApiClient client = TestHelper.buildApiClient();
         AssetsApi assets = new AssetsApi(client);
         PlaybackIdApi playbackIds = new PlaybackIdApi(client);
@@ -136,6 +136,7 @@ public class ExerciseAssets {
         System.out.println("create-asset-track OK");
         
         // =========================== delete-asset-track
+        Thread.sleep(5000);
         assets.deleteAssetTrack(assetId, trackResponse.getData().getId());
         AssetResponse asset1Caption = assets.getAsset(assetId);
         // Audio, Video, French that we ingested with the asset
