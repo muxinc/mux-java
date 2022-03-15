@@ -9,11 +9,11 @@ Method | HTTP request | Description
 
 <a name="getAssetOrLivestreamId"></a>
 # **getAssetOrLivestreamId**
-> GetAssetOrLiveStreamIdResponse getAssetOrLivestreamId(PLAYBACK_ID)
+> GetAssetOrLiveStreamIdResponse getAssetOrLivestreamId(PLAYBACK_ID).execute();
 
 Retrieve an Asset or Live Stream ID
 
-Retrieves the Identifier of the Asset or Live Stream associated with the Playback ID. 
+Retrieves the Identifier of the Asset or Live Stream associated with the Playback ID.
 
 ### Example
 ```java
@@ -38,7 +38,8 @@ public class Example {
     PlaybackIdApi apiInstance = new PlaybackIdApi(defaultClient);
     String PLAYBACK_ID = "PLAYBACK_ID_example"; // String | The live stream's playback ID.
     try {
-      GetAssetOrLiveStreamIdResponse result = apiInstance.getAssetOrLivestreamId(PLAYBACK_ID);
+      GetAssetOrLiveStreamIdResponse result = apiInstance.getAssetOrLivestreamId(PLAYBACK_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlaybackIdApi#getAssetOrLivestreamId");

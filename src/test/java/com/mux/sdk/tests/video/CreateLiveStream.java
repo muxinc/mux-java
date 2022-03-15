@@ -2,13 +2,9 @@ package com.mux.sdk.tests.video;
 
 import java.util.ArrayList;
 
-import com.mux.ApiException;
-import com.mux.sdk.LiveStreamsApi;
-import com.mux.sdk.TestHelper;
-import com.mux.sdk.models.CreateAssetRequest;
-import com.mux.sdk.models.CreateLiveStreamRequest;
-import com.mux.sdk.models.LiveStreamResponse;
-import com.mux.sdk.models.PlaybackPolicy;
+import com.mux.*;
+import com.mux.sdk.*;
+import com.mux.sdk.models.*;
 
 import org.junit.Test;
 
@@ -26,6 +22,6 @@ public class CreateLiveStream {
         streamRequest.setNewAssetSettings(assetRequest);
         streamRequest.setPlaybackPolicy(playbackPolicies);
 
-        final LiveStreamResponse stream = api.createLiveStream(streamRequest);
+        final LiveStreamResponse stream = api.createLiveStream(streamRequest).execute();
     }
 }

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **negativeImpact** | **Long** |  |  [optional]
 **metricValue** | **Double** |  |  [optional]
 **displayValue** | **String** |  |  [optional]
-**concurentViewers** | **Long** |  |  [optional]
+**concurrentViewers** | **Long** |  |  [optional]
 
 
 

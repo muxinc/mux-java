@@ -1,7 +1,7 @@
 package com.mux.sdk.tests.data;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiException;
+import com.mux.*;
 import com.mux.sdk.*;
 import com.mux.sdk.models.*;
 import org.junit.Test;
@@ -16,7 +16,7 @@ public class ExerciseFilters {
 
     @Test
     public void listFilters() throws ApiException {
-        ListFiltersResponse resp = filters.listFilters();
+        ListFiltersResponse resp = filters.listFilters().execute();
         assertNotNull(resp.getData().getBasic());
         assertNotNull(resp.getData().getAdvanced());
 
@@ -24,7 +24,12 @@ public class ExerciseFilters {
 
     @Test
     public void listFilterValues() throws ApiException {
-        ListFilterValuesResponse resp2 = filters.listFilterValues("browser", 50, 0, Lists.newArrayList(), Lists.newArrayList("7:days"));
+        ListFilterValuesResponse resp2 =
+                filters.listFilterValues("browser")
+                        .limit(50)
+                        .page(0)
+                        .timeframe(Lists.newArrayList("7:days"))
+                        .execute();
         assertNotNull(resp2.getData());
     }
 }

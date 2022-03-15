@@ -10,11 +10,11 @@ Method | HTTP request | Description
 
 <a name="getVideoView"></a>
 # **getVideoView**
-> VideoViewResponse getVideoView(VIDEO_VIEW_ID)
+> VideoViewResponse getVideoView(VIDEO_VIEW_ID).execute();
 
 Get a Video View
 
-Returns the details of a video view 
+Returns the details of a video view.
 
 ### Example
 ```java
@@ -39,7 +39,8 @@ public class Example {
     VideoViewsApi apiInstance = new VideoViewsApi(defaultClient);
     String VIDEO_VIEW_ID = "abcd1234"; // String | ID of the Video View
     try {
-      VideoViewResponse result = apiInstance.getVideoView(VIDEO_VIEW_ID);
+      VideoViewResponse result = apiInstance.getVideoView(VIDEO_VIEW_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VideoViewsApi#getVideoView");
@@ -78,11 +79,11 @@ Name | Type | Description  | Notes
 
 <a name="listVideoViews"></a>
 # **listVideoViews**
-> ListVideoViewsResponse listVideoViews(limit, page, viewerId, errorId, orderDirection, filters, timeframe)
+> ListVideoViewsResponse listVideoViews().limit(limit).page(page).viewerId(viewerId).errorId(errorId).orderDirection(orderDirection).filters(filters).timeframe(timeframe).execute();
 
 List Video Views
 
-Returns a list of video views 
+Returns a list of video views.
 
 ### Example
 ```java
@@ -110,10 +111,18 @@ public class Example {
     String viewerId = "viewerId_example"; // String | Viewer ID to filter results by. This value may be provided by the integration, or may be created by Mux.
     Integer errorId = 56; // Integer | Filter video views by the provided error ID (as returned in the error_type_id field in the list video views endpoint). If you provide any as the error ID, this will filter the results to those with any error.
     String orderDirection = "orderDirection_example"; // String | Sort order.
-    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]=operating_system:windows&filters[]=country:US).  Possible filter names are the same as returned by the List Filters endpoint. 
-    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]=1498867200&timeframe[]=1498953600    * duration string e.g. timeframe[]=24:hours or timeframe[]=7:days. 
+    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
+    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=).  Accepted formats are...    * array of epoch timestamps e.g. `timeframe[]=1498867200&timeframe[]=1498953600`   * duration string e.g. `timeframe[]=24:hours or timeframe[]=7:days` 
     try {
-      ListVideoViewsResponse result = apiInstance.listVideoViews(limit, page, viewerId, errorId, orderDirection, filters, timeframe);
+      ListVideoViewsResponse result = apiInstance.listVideoViews()
+            .limit(limit)
+            .page(page)
+            .viewerId(viewerId)
+            .errorId(errorId)
+            .orderDirection(orderDirection)
+            .filters(filters)
+            .timeframe(timeframe)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VideoViewsApi#listVideoViews");
@@ -135,8 +144,8 @@ Name | Type | Description  | Notes
  **viewerId** | **String**| Viewer ID to filter results by. This value may be provided by the integration, or may be created by Mux. | [optional]
  **errorId** | **Integer**| Filter video views by the provided error ID (as returned in the error_type_id field in the list video views endpoint). If you provide any as the error ID, this will filter the results to those with any error. | [optional]
  **orderDirection** | **String**| Sort order. | [optional] [enum: asc, desc]
- **filters** | [**java.util.List&lt;String&gt;**](String.md)| Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;country:US).  Possible filter names are the same as returned by the List Filters endpoint.  | [optional]
- **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600    * duration string e.g. timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days.  | [optional]
+ **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
+ **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  | [optional]
 
 ### Return type
 

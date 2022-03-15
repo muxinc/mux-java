@@ -1,7 +1,7 @@
 package com.mux.sdk.tests.data;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiException;
+import com.mux.*;
 import com.mux.sdk.*;
 import com.mux.sdk.models.*;
 import org.junit.Ignore;
@@ -17,12 +17,12 @@ public class ExerciseVideoViews {
     public void integrationTest() throws ApiException {
         VideoViewsApi views = new VideoViewsApi(TestHelper.buildApiClient());
 
-        ListVideoViewsResponse videoViews = views.listVideoViews(null, null, null, null, null, null, null);
+        ListVideoViewsResponse videoViews = views.listVideoViews().execute();
         String viewId = videoViews.getData().get(0).getId();
         assertNotNull(viewId);
         System.out.println("list-video-views OK");
 
-        VideoViewResponse view = views.getVideoView(viewId);
+        VideoViewResponse view = views.getVideoView(viewId).execute();
         assertNotEquals(viewId, view.getData().getId());
         System.out.println("get-video-view OK");
     }

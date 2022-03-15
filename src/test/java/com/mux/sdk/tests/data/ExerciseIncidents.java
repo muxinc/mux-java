@@ -1,7 +1,7 @@
 package com.mux.sdk.tests.data;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiException;
+import com.mux.*;
 import com.mux.sdk.*;
 import com.mux.sdk.models.*;
 import org.junit.Ignore;
@@ -19,7 +19,7 @@ public class ExerciseIncidents {
     public void listIncidents() throws ApiException {
 
         // =========== list-incidents
-        ListIncidentsResponse resp = incidentsApi.listIncidents(50, 0, null, null, null, null);
+        ListIncidentsResponse resp = incidentsApi.listIncidents().execute();
         assertNotNull(resp.getData());
     }
 

@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 <a name="createUrlSigningKey"></a>
 # **createUrlSigningKey**
-> SigningKeyResponse createUrlSigningKey()
+> SigningKeyResponse createUrlSigningKey().execute();
 
 Create a URL signing key
 
-Creates a new signing key pair. When creating a new signing key, the API will generate a 2048-bit RSA key-pair and return the private key and a generated key-id; the public key will be stored at Mux to validate signed tokens. 
+Creates a new signing key pair. When creating a new signing key, the API will generate a 2048-bit RSA key-pair and return the private key and a generated key-id; the public key will be stored at Mux to validate signed tokens.
 
 ### Example
 ```java
@@ -40,7 +40,8 @@ public class Example {
 
     UrlSigningKeysApi apiInstance = new UrlSigningKeysApi(defaultClient);
     try {
-      SigningKeyResponse result = apiInstance.createUrlSigningKey();
+      SigningKeyResponse result = apiInstance.createUrlSigningKey()
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UrlSigningKeysApi#createUrlSigningKey");
@@ -76,11 +77,11 @@ This endpoint does not need any parameter.
 
 <a name="deleteUrlSigningKey"></a>
 # **deleteUrlSigningKey**
-> deleteUrlSigningKey(SIGNING_KEY_ID)
+> deleteUrlSigningKey(SIGNING_KEY_ID).execute();
 
 Delete a URL signing key
 
-Deletes an existing signing key. Use with caution, as this will invalidate any existing signatures and no URLs can be signed using the key again. 
+Deletes an existing signing key. Use with caution, as this will invalidate any existing signatures and no URLs can be signed using the key again.
 
 ### Example
 ```java
@@ -105,7 +106,8 @@ public class Example {
     UrlSigningKeysApi apiInstance = new UrlSigningKeysApi(defaultClient);
     String SIGNING_KEY_ID = "SIGNING_KEY_ID_example"; // String | The ID of the signing key.
     try {
-      apiInstance.deleteUrlSigningKey(SIGNING_KEY_ID);
+      apiInstance.deleteUrlSigningKey(SIGNING_KEY_ID)
+            .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling UrlSigningKeysApi#deleteUrlSigningKey");
       System.err.println("Status code: " + e.getCode());
@@ -143,7 +145,7 @@ null (empty response body)
 
 <a name="getUrlSigningKey"></a>
 # **getUrlSigningKey**
-> SigningKeyResponse getUrlSigningKey(SIGNING_KEY_ID)
+> SigningKeyResponse getUrlSigningKey(SIGNING_KEY_ID).execute();
 
 Retrieve a URL signing key
 
@@ -172,7 +174,8 @@ public class Example {
     UrlSigningKeysApi apiInstance = new UrlSigningKeysApi(defaultClient);
     String SIGNING_KEY_ID = "SIGNING_KEY_ID_example"; // String | The ID of the signing key.
     try {
-      SigningKeyResponse result = apiInstance.getUrlSigningKey(SIGNING_KEY_ID);
+      SigningKeyResponse result = apiInstance.getUrlSigningKey(SIGNING_KEY_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UrlSigningKeysApi#getUrlSigningKey");
@@ -211,11 +214,11 @@ Name | Type | Description  | Notes
 
 <a name="listUrlSigningKeys"></a>
 # **listUrlSigningKeys**
-> ListSigningKeysResponse listUrlSigningKeys(limit, page)
+> ListSigningKeysResponse listUrlSigningKeys().limit(limit).page(page).execute();
 
 List URL signing keys
 
-Returns a list of URL signing keys. 
+Returns a list of URL signing keys.
 
 ### Example
 ```java
@@ -241,7 +244,10 @@ public class Example {
     Integer limit = 25; // Integer | Number of items to include in the response
     Integer page = 1; // Integer | Offset by this many pages, of the size of `limit`
     try {
-      ListSigningKeysResponse result = apiInstance.listUrlSigningKeys(limit, page);
+      ListSigningKeysResponse result = apiInstance.listUrlSigningKeys()
+            .limit(limit)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UrlSigningKeysApi#listUrlSigningKeys");

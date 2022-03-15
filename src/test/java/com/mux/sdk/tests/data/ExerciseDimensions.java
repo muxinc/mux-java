@@ -1,11 +1,9 @@
 package com.mux.sdk.tests.data;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiException;
-import com.mux.sdk.DimensionsApi;
-import com.mux.sdk.TestHelper;
-import com.mux.sdk.models.ListDimensionValuesResponse;
-import com.mux.sdk.models.ListDimensionsResponse;
+import com.mux.*;
+import com.mux.sdk.*;
+import com.mux.sdk.models.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -18,7 +16,7 @@ public class ExerciseDimensions {
 
     @Test
     public void listDimensions() throws ApiException {
-        ListDimensionsResponse listDimensionsResponse = dim.listDimensions();
+        ListDimensionsResponse listDimensionsResponse = dim.listDimensions().execute();
         assertNotNull(listDimensionsResponse);
         assertNotNull(listDimensionsResponse.getData());
         assertNotNull(listDimensionsResponse.getData().getBasic());
@@ -27,7 +25,12 @@ public class ExerciseDimensions {
 
     @Test
     public void listDimensionValues() throws ApiException {
-        ListDimensionValuesResponse listDimensionValues = dim.listDimensionValues("browser", 50, 0, Lists.newArrayList(), Lists.newArrayList("7:days"));
+        ListDimensionValuesResponse listDimensionValues =
+            dim.listDimensionValues("browser")
+                    .limit(50)
+                    .page(0)
+                    .timeframe(Lists.newArrayList("7:days"))
+                    .execute();
 
         assertNotNull(listDimensionValues);
         assertNotNull(listDimensionValues.getData());

@@ -13,12 +13,12 @@ Name | Type | Description | Notes
 **maxHeight** | **Long** | The maximum height in pixels available for the track. Only set for the &#x60;video&#x60; type track. |  [optional]
 **maxFrameRate** | **Double** | The maximum frame rate available for the track. Only set for the &#x60;video&#x60; type track. This field may return &#x60;-1&#x60; if the frame rate of the input cannot be reliably determined. |  [optional]
 **maxChannels** | **Long** | The maximum number of audio channels the track supports. Only set for the &#x60;audio&#x60; type track. |  [optional]
-**maxChannelLayout** | [**MaxChannelLayoutEnum**](#MaxChannelLayoutEnum) | Only set for the &#x60;audio&#x60; type track. |  [optional]
+**maxChannelLayout** | **String** | Only set for the &#x60;audio&#x60; type track. |  [optional]
 **textType** | [**TextTypeEnum**](#TextTypeEnum) | This parameter is set only for the &#x60;text&#x60; type track. |  [optional]
 **languageCode** | **String** | The language code value represents [BCP 47](https://tools.ietf.org/html/bcp47) specification compliant value. For example, &#x60;en&#x60; for English or &#x60;en-US&#x60; for the US version of English. This parameter is set for &#x60;text&#x60; type and &#x60;subtitles&#x60; text type track. |  [optional]
 **name** | **String** | The name of the track containing a human-readable description. The hls manifest will associate a subtitle text track with this value. For example, the value is \&quot;English\&quot; for subtitles text track for the &#x60;language_code&#x60; value of &#x60;en-US&#x60;. This parameter is set for the &#x60;text&#x60; type and &#x60;subtitles&#x60; text type track. |  [optional]
 **closedCaptions** | **Boolean** | Indicates the track provides Subtitles for the Deaf or Hard-of-hearing (SDH). This parameter is set for the &#x60;text&#x60; type and &#x60;subtitles&#x60; text type track. |  [optional]
-**passthrough** | **String** | Arbitrary metadata set for the track either when creating the asset or track. This parameter is set for &#x60;text&#x60; type and &#x60;subtitles&#x60; text type track. Max 255 characters. |  [optional]
+**passthrough** | **String** | Arbitrary user-supplied metadata set for the track either when creating the asset or track. This parameter is set for &#x60;text&#x60; type and &#x60;subtitles&#x60; text type track. Max 255 characters. |  [optional]
 
 
 
@@ -29,17 +29,6 @@ Name | Value
 VIDEO | &quot;video&quot;
 AUDIO | &quot;audio&quot;
 TEXT | &quot;text&quot;
-
-
-
-## Enum: MaxChannelLayoutEnum
-
-Name | Value
----- | -----
-MONO | &quot;mono&quot;
-STEREO | &quot;stereo&quot;
-_5_2 | &quot;5.2&quot;
-_7_1 | &quot;7.1&quot;
 
 
 

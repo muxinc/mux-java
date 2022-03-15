@@ -1,0 +1,24 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: temurin
+        java-version: 11
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Build and run tests
+      env:
+        MUX_TOKEN_ID: "${{ secrets.MUX_TOKEN_ID }}"
+        MUX_TOKEN_SECRET: "${{ secrets.MUX_TOKEN_SECRET }}"
+      run: "./gradlew build"
+    - name: Uploading jar
+      uses: actions/upload-artifact@v2
+      with:
+        name: mux_java.jar
+        path: build/libs/mux-sdk-java.jar

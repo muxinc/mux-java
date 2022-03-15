@@ -1,9 +1,9 @@
+// FYI: this is actually gen/templates/libraries/okhttp-gson/build.gradle.mustache
 apply plugin: 'idea'
-apply plugin: 'eclipse'
 apply plugin: 'java'
 
 group = 'com.mux.sdk'
-version = '0.1.0'
+version = '4.0.0-alpha-1'
 
 buildscript {
     repositories {
@@ -22,6 +22,8 @@ repositories {
 sourceSets {
     main.java.srcDirs = ['src/main/java']
 }
+
+
 
 apply plugin: 'java'
 apply plugin: 'maven'

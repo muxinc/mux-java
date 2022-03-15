@@ -30,9 +30,9 @@ git_push.sh
 api/openapi.yaml
 
 # reminder: if we update templates we need to make sure the gradle build settings are updated too
-build.gradle
-settings.gradle
-gradle.properties
+#build.gradle
+#settings.gradle
+#gradle.properties
 
 # we just don't want these.
 build.sbt
@@ -42,3 +42,5 @@ pom.xml
 src/main/AndroidManifest.xml
 
 ApiException.java
+
+src/test/**/*.java

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="cancelDirectUpload"></a>
 # **cancelDirectUpload**
-> UploadResponse cancelDirectUpload(UPLOAD_ID)
+> UploadResponse cancelDirectUpload(UPLOAD_ID).execute();
 
 Cancel a direct upload
 
@@ -41,7 +41,8 @@ public class Example {
     DirectUploadsApi apiInstance = new DirectUploadsApi(defaultClient);
     String UPLOAD_ID = "abcd1234"; // String | ID of the Upload
     try {
-      UploadResponse result = apiInstance.cancelDirectUpload(UPLOAD_ID);
+      UploadResponse result = apiInstance.cancelDirectUpload(UPLOAD_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DirectUploadsApi#cancelDirectUpload");
@@ -81,7 +82,7 @@ Name | Type | Description  | Notes
 
 <a name="createDirectUpload"></a>
 # **createDirectUpload**
-> UploadResponse createDirectUpload(createUploadRequest)
+> UploadResponse createDirectUpload(createUploadRequest).execute();
 
 Create a new direct upload URL
 
@@ -108,7 +109,8 @@ public class Example {
     DirectUploadsApi apiInstance = new DirectUploadsApi(defaultClient);
     CreateUploadRequest createUploadRequest = {"cors_origin":"https://example.com/","new_asset_settings":{"playback_policy":["public"],"mp4_support":"standard"}}; // CreateUploadRequest | 
     try {
-      UploadResponse result = apiInstance.createDirectUpload(createUploadRequest);
+      UploadResponse result = apiInstance.createDirectUpload(createUploadRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DirectUploadsApi#createDirectUpload");
@@ -147,7 +149,7 @@ Name | Type | Description  | Notes
 
 <a name="getDirectUpload"></a>
 # **getDirectUpload**
-> UploadResponse getDirectUpload(UPLOAD_ID)
+> UploadResponse getDirectUpload(UPLOAD_ID).execute();
 
 Retrieve a single direct upload&#39;s info
 
@@ -174,7 +176,8 @@ public class Example {
     DirectUploadsApi apiInstance = new DirectUploadsApi(defaultClient);
     String UPLOAD_ID = "abcd1234"; // String | ID of the Upload
     try {
-      UploadResponse result = apiInstance.getDirectUpload(UPLOAD_ID);
+      UploadResponse result = apiInstance.getDirectUpload(UPLOAD_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DirectUploadsApi#getDirectUpload");
@@ -213,7 +216,7 @@ Name | Type | Description  | Notes
 
 <a name="listDirectUploads"></a>
 # **listDirectUploads**
-> ListUploadsResponse listDirectUploads(limit, page)
+> ListUploadsResponse listDirectUploads().limit(limit).page(page).execute();
 
 List direct uploads
 
@@ -241,7 +244,10 @@ public class Example {
     Integer limit = 25; // Integer | Number of items to include in the response
     Integer page = 1; // Integer | Offset by this many pages, of the size of `limit`
     try {
-      ListUploadsResponse result = apiInstance.listDirectUploads(limit, page);
+      ListUploadsResponse result = apiInstance.listDirectUploads()
+            .limit(limit)
+            .page(page)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DirectUploadsApi#listDirectUploads");

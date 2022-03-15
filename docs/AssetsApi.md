@@ -14,17 +14,18 @@ Method | HTTP request | Description
 [**getAssetInputInfo**](AssetsApi.md#getAssetInputInfo) | **GET** /video/v1/assets/{ASSET_ID}/input-info | Retrieve asset input info
 [**getAssetPlaybackId**](AssetsApi.md#getAssetPlaybackId) | **GET** /video/v1/assets/{ASSET_ID}/playback-ids/{PLAYBACK_ID} | Retrieve a playback ID
 [**listAssets**](AssetsApi.md#listAssets) | **GET** /video/v1/assets | List assets
+[**updateAsset**](AssetsApi.md#updateAsset) | **PATCH** /video/v1/assets/{ASSET_ID} | Update an Asset
 [**updateAssetMasterAccess**](AssetsApi.md#updateAssetMasterAccess) | **PUT** /video/v1/assets/{ASSET_ID}/master-access | Update master access
 [**updateAssetMp4Support**](AssetsApi.md#updateAssetMp4Support) | **PUT** /video/v1/assets/{ASSET_ID}/mp4-support | Update MP4 support
 
 
 <a name="createAsset"></a>
 # **createAsset**
-> AssetResponse createAsset(createAssetRequest)
+> AssetResponse createAsset(createAssetRequest).execute();
 
 Create an asset
 
-Create a new Mux Video asset. 
+Create a new Mux Video asset.
 
 ### Example
 ```java
@@ -49,7 +50,8 @@ public class Example {
     AssetsApi apiInstance = new AssetsApi(defaultClient);
     CreateAssetRequest createAssetRequest = {"input":"https://muxed.s3.amazonaws.com/leds.mp4","playback_policy":["public"]}; // CreateAssetRequest | 
     try {
-      AssetResponse result = apiInstance.createAsset(createAssetRequest);
+      AssetResponse result = apiInstance.createAsset(createAssetRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#createAsset");
@@ -88,7 +90,7 @@ Name | Type | Description  | Notes
 
 <a name="createAssetPlaybackId"></a>
 # **createAssetPlaybackId**
-> CreatePlaybackIDResponse createAssetPlaybackId(ASSET_ID, createPlaybackIDRequest)
+> CreatePlaybackIDResponse createAssetPlaybackId(ASSET_ID, createPlaybackIDRequest).execute();
 
 Create a playback ID
 
@@ -116,7 +118,8 @@ public class Example {
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     CreatePlaybackIDRequest createPlaybackIDRequest = {"policy":"public"}; // CreatePlaybackIDRequest | 
     try {
-      CreatePlaybackIDResponse result = apiInstance.createAssetPlaybackId(ASSET_ID, createPlaybackIDRequest);
+      CreatePlaybackIDResponse result = apiInstance.createAssetPlaybackId(ASSET_ID, createPlaybackIDRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#createAssetPlaybackId");
@@ -156,7 +159,7 @@ Name | Type | Description  | Notes
 
 <a name="createAssetTrack"></a>
 # **createAssetTrack**
-> CreateTrackResponse createAssetTrack(ASSET_ID, createTrackRequest)
+> CreateTrackResponse createAssetTrack(ASSET_ID, createTrackRequest).execute();
 
 Create an asset track
 
@@ -184,7 +187,8 @@ public class Example {
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     CreateTrackRequest createTrackRequest = {"url":"https://example.com/myVideo_en.srt","type":"text","text_type":"subtitles","language_code":"en-US","name":"English","closed_captions":true,"passthrough":"English"}; // CreateTrackRequest | 
     try {
-      CreateTrackResponse result = apiInstance.createAssetTrack(ASSET_ID, createTrackRequest);
+      CreateTrackResponse result = apiInstance.createAssetTrack(ASSET_ID, createTrackRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#createAssetTrack");
@@ -224,11 +228,11 @@ Name | Type | Description  | Notes
 
 <a name="deleteAsset"></a>
 # **deleteAsset**
-> deleteAsset(ASSET_ID)
+> deleteAsset(ASSET_ID).execute();
 
 Delete an asset
 
-Deletes a video asset and all its data 
+Deletes a video asset and all its data.
 
 ### Example
 ```java
@@ -253,7 +257,8 @@ public class Example {
     AssetsApi apiInstance = new AssetsApi(defaultClient);
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     try {
-      apiInstance.deleteAsset(ASSET_ID);
+      apiInstance.deleteAsset(ASSET_ID)
+            .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#deleteAsset");
       System.err.println("Status code: " + e.getCode());
@@ -291,7 +296,7 @@ null (empty response body)
 
 <a name="deleteAssetPlaybackId"></a>
 # **deleteAssetPlaybackId**
-> deleteAssetPlaybackId(ASSET_ID, PLAYBACK_ID)
+> deleteAssetPlaybackId(ASSET_ID, PLAYBACK_ID).execute();
 
 Delete a playback ID
 
@@ -319,7 +324,8 @@ public class Example {
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     String PLAYBACK_ID = "PLAYBACK_ID_example"; // String | The live stream's playback ID.
     try {
-      apiInstance.deleteAssetPlaybackId(ASSET_ID, PLAYBACK_ID);
+      apiInstance.deleteAssetPlaybackId(ASSET_ID, PLAYBACK_ID)
+            .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#deleteAssetPlaybackId");
       System.err.println("Status code: " + e.getCode());
@@ -358,9 +364,11 @@ null (empty response body)
 
 <a name="deleteAssetTrack"></a>
 # **deleteAssetTrack**
-> deleteAssetTrack(ASSET_ID, TRACK_ID)
+> deleteAssetTrack(ASSET_ID, TRACK_ID).execute();
 
 Delete an asset track
+
+Removes a text track from an asset. Audio and video tracks on assets cannot be removed.
 
 ### Example
 ```java
@@ -386,7 +394,8 @@ public class Example {
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     String TRACK_ID = "TRACK_ID_example"; // String | The track ID.
     try {
-      apiInstance.deleteAssetTrack(ASSET_ID, TRACK_ID);
+      apiInstance.deleteAssetTrack(ASSET_ID, TRACK_ID)
+            .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#deleteAssetTrack");
       System.err.println("Status code: " + e.getCode());
@@ -425,7 +434,7 @@ null (empty response body)
 
 <a name="getAsset"></a>
 # **getAsset**
-> AssetResponse getAsset(ASSET_ID)
+> AssetResponse getAsset(ASSET_ID).execute();
 
 Retrieve an asset
 
@@ -454,7 +463,8 @@ public class Example {
     AssetsApi apiInstance = new AssetsApi(defaultClient);
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     try {
-      AssetResponse result = apiInstance.getAsset(ASSET_ID);
+      AssetResponse result = apiInstance.getAsset(ASSET_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#getAsset");
@@ -493,7 +503,7 @@ Name | Type | Description  | Notes
 
 <a name="getAssetInputInfo"></a>
 # **getAssetInputInfo**
-> GetAssetInputInfoResponse getAssetInputInfo(ASSET_ID)
+> GetAssetInputInfoResponse getAssetInputInfo(ASSET_ID).execute();
 
 Retrieve asset input info
 
@@ -522,7 +532,8 @@ public class Example {
     AssetsApi apiInstance = new AssetsApi(defaultClient);
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     try {
-      GetAssetInputInfoResponse result = apiInstance.getAssetInputInfo(ASSET_ID);
+      GetAssetInputInfoResponse result = apiInstance.getAssetInputInfo(ASSET_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#getAssetInputInfo");
@@ -561,7 +572,7 @@ Name | Type | Description  | Notes
 
 <a name="getAssetPlaybackId"></a>
 # **getAssetPlaybackId**
-> GetAssetPlaybackIDResponse getAssetPlaybackId(ASSET_ID, PLAYBACK_ID)
+> GetAssetPlaybackIDResponse getAssetPlaybackId(ASSET_ID, PLAYBACK_ID).execute();
 
 Retrieve a playback ID
 
@@ -589,7 +600,8 @@ public class Example {
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     String PLAYBACK_ID = "PLAYBACK_ID_example"; // String | The live stream's playback ID.
     try {
-      GetAssetPlaybackIDResponse result = apiInstance.getAssetPlaybackId(ASSET_ID, PLAYBACK_ID);
+      GetAssetPlaybackIDResponse result = apiInstance.getAssetPlaybackId(ASSET_ID, PLAYBACK_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#getAssetPlaybackId");
@@ -629,11 +641,11 @@ Name | Type | Description  | Notes
 
 <a name="listAssets"></a>
 # **listAssets**
-> ListAssetsResponse listAssets(limit, page)
+> ListAssetsResponse listAssets().limit(limit).page(page).liveStreamId(liveStreamId).uploadId(uploadId).execute();
 
 List assets
 
-List all Mux assets. 
+List all Mux assets.
 
 ### Example
 ```java
@@ -658,8 +670,15 @@ public class Example {
     AssetsApi apiInstance = new AssetsApi(defaultClient);
     Integer limit = 25; // Integer | Number of items to include in the response
     Integer page = 1; // Integer | Offset by this many pages, of the size of `limit`
+    String liveStreamId = "liveStreamId_example"; // String | Filter response to return all the assets for this live stream only
+    String uploadId = "uploadId_example"; // String | Filter response to return an asset created from this direct upload only
     try {
-      ListAssetsResponse result = apiInstance.listAssets(limit, page);
+      ListAssetsResponse result = apiInstance.listAssets()
+            .limit(limit)
+            .page(page)
+            .liveStreamId(liveStreamId)
+            .uploadId(uploadId)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#listAssets");
@@ -678,6 +697,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **Integer**| Number of items to include in the response | [optional] [default to 25]
  **page** | **Integer**| Offset by this many pages, of the size of &#x60;limit&#x60; | [optional] [default to 1]
+ **liveStreamId** | **String**| Filter response to return all the assets for this live stream only | [optional]
+ **uploadId** | **String**| Filter response to return an asset created from this direct upload only | [optional]
 
 ### Return type
 
@@ -697,9 +718,80 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
+<a name="updateAsset"></a>
+# **updateAsset**
+> AssetResponse updateAsset(ASSET_ID, updateAssetRequest).execute();
+
+Update an Asset
+
+Updates the details of an already-created Asset with the provided Asset ID. This currently supports only the &#x60;passthrough&#x60; field.
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.AssetsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    AssetsApi apiInstance = new AssetsApi(defaultClient);
+    String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
+    UpdateAssetRequest updateAssetRequest = {"passthrough":"Example"}; // UpdateAssetRequest | 
+    try {
+      AssetResponse result = apiInstance.updateAsset(ASSET_ID, updateAssetRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AssetsApi#updateAsset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ASSET_ID** | **String**| The asset ID. |
+ **updateAssetRequest** | [**UpdateAssetRequest**](UpdateAssetRequest.md)|  |
+
+### Return type
+
+[**AssetResponse**](AssetResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="updateAssetMasterAccess"></a>
 # **updateAssetMasterAccess**
-> AssetResponse updateAssetMasterAccess(ASSET_ID, updateAssetMasterAccessRequest)
+> AssetResponse updateAssetMasterAccess(ASSET_ID, updateAssetMasterAccessRequest).execute();
 
 Update master access
 
@@ -729,7 +821,8 @@ public class Example {
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     UpdateAssetMasterAccessRequest updateAssetMasterAccessRequest = {"master_access":"temporary"}; // UpdateAssetMasterAccessRequest | 
     try {
-      AssetResponse result = apiInstance.updateAssetMasterAccess(ASSET_ID, updateAssetMasterAccessRequest);
+      AssetResponse result = apiInstance.updateAssetMasterAccess(ASSET_ID, updateAssetMasterAccessRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#updateAssetMasterAccess");
@@ -769,7 +862,7 @@ Name | Type | Description  | Notes
 
 <a name="updateAssetMp4Support"></a>
 # **updateAssetMp4Support**
-> AssetResponse updateAssetMp4Support(ASSET_ID, updateAssetMP4SupportRequest)
+> AssetResponse updateAssetMp4Support(ASSET_ID, updateAssetMP4SupportRequest).execute();
 
 Update MP4 support
 
@@ -799,7 +892,8 @@ public class Example {
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
     UpdateAssetMP4SupportRequest updateAssetMP4SupportRequest = {"mp4_support":"standard"}; // UpdateAssetMP4SupportRequest | 
     try {
-      AssetResponse result = apiInstance.updateAssetMp4Support(ASSET_ID, updateAssetMP4SupportRequest);
+      AssetResponse result = apiInstance.updateAssetMp4Support(ASSET_ID, updateAssetMP4SupportRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AssetsApi#updateAssetMp4Support");

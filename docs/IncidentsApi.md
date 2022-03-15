@@ -11,11 +11,11 @@ Method | HTTP request | Description
 
 <a name="getIncident"></a>
 # **getIncident**
-> IncidentResponse getIncident(INCIDENT_ID)
+> IncidentResponse getIncident(INCIDENT_ID).execute();
 
 Get an Incident
 
-Returns the details of an incident 
+Returns the details of an incident.
 
 ### Example
 ```java
@@ -40,7 +40,8 @@ public class Example {
     IncidentsApi apiInstance = new IncidentsApi(defaultClient);
     String INCIDENT_ID = "abcd1234"; // String | ID of the Incident
     try {
-      IncidentResponse result = apiInstance.getIncident(INCIDENT_ID);
+      IncidentResponse result = apiInstance.getIncident(INCIDENT_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IncidentsApi#getIncident");
@@ -79,11 +80,11 @@ Name | Type | Description  | Notes
 
 <a name="listIncidents"></a>
 # **listIncidents**
-> ListIncidentsResponse listIncidents(limit, page, orderBy, orderDirection, status, severity)
+> ListIncidentsResponse listIncidents().limit(limit).page(page).orderBy(orderBy).orderDirection(orderDirection).status(status).severity(severity).execute();
 
 List Incidents
 
-Returns a list of incidents 
+Returns a list of incidents.
 
 ### Example
 ```java
@@ -113,7 +114,14 @@ public class Example {
     String status = "status_example"; // String | Status to filter incidents by
     String severity = "severity_example"; // String | Severity to filter incidents by
     try {
-      ListIncidentsResponse result = apiInstance.listIncidents(limit, page, orderBy, orderDirection, status, severity);
+      ListIncidentsResponse result = apiInstance.listIncidents()
+            .limit(limit)
+            .page(page)
+            .orderBy(orderBy)
+            .orderDirection(orderDirection)
+            .status(status)
+            .severity(severity)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IncidentsApi#listIncidents");
@@ -157,11 +165,11 @@ Name | Type | Description  | Notes
 
 <a name="listRelatedIncidents"></a>
 # **listRelatedIncidents**
-> ListRelatedIncidentsResponse listRelatedIncidents(INCIDENT_ID, limit, page, orderBy, orderDirection)
+> ListRelatedIncidentsResponse listRelatedIncidents(INCIDENT_ID).limit(limit).page(page).orderBy(orderBy).orderDirection(orderDirection).execute();
 
 List Related Incidents
 
-Returns all the incidents that seem related to a specific incident 
+Returns all the incidents that seem related to a specific incident.
 
 ### Example
 ```java
@@ -190,7 +198,12 @@ public class Example {
     String orderBy = "orderBy_example"; // String | Value to order the results by
     String orderDirection = "orderDirection_example"; // String | Sort order.
     try {
-      ListRelatedIncidentsResponse result = apiInstance.listRelatedIncidents(INCIDENT_ID, limit, page, orderBy, orderDirection);
+      ListRelatedIncidentsResponse result = apiInstance.listRelatedIncidents(INCIDENT_ID)
+            .limit(limit)
+            .page(page)
+            .orderBy(orderBy)
+            .orderDirection(orderDirection)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IncidentsApi#listRelatedIncidents");

@@ -1,10 +1,9 @@
 package com.mux.sdk.tests.video;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiClient;
-import com.mux.ApiException;
-import com.mux.sdk.AssetsApi;
-import com.mux.sdk.PlaybackIdApi;
+import com.mux.*;
+import com.mux.sdk.*;
+import com.mux.sdk.models.*;
 import com.mux.sdk.TestHelper;
 import com.mux.sdk.models.*;
 import org.junit.Test;
@@ -38,7 +37,7 @@ public class ExerciseAssets {
 
         car.setInput(Lists.newArrayList(inputA, inputB));
 
-        AssetResponse createResponse = assets.createAsset(car);
+        AssetResponse createResponse = assets.createAsset(car).execute();
 
         assertNotNull(createResponse);
 
@@ -47,20 +46,20 @@ public class ExerciseAssets {
 
         System.out.println("create-asset OK ✅");
 
-        ListAssetsResponse assetsListResponse = assets.listAssets(50, 0);
+        ListAssetsResponse assetsListResponse = assets.listAssets().limit(50).page(0).execute();
         assertNotNull(assetsListResponse);
         assertEquals(assetId, assetsListResponse.getData().get(0).getId());
 
         AssetResponse asset = null;
         do {
-            asset = assets.getAsset(assetId);
+            asset = assets.getAsset(assetId).execute();
 
             assertNotNull(asset);
             assertEquals(assetId, asset.getData().getId());
         } while (asset == null || asset.getData().getStatus() != Asset.StatusEnum.READY);
         System.out.println("get-asset OK");
 
-        GetAssetInputInfoResponse assetInputInfo = assets.getAssetInputInfo(assetId);
+        GetAssetInputInfoResponse assetInputInfo = assets.getAssetInputInfo(assetId).execute();
         assertNotNull(assetInputInfo);
         assertNotNull(assetInputInfo.getData());
 
@@ -75,7 +74,7 @@ public class ExerciseAssets {
 
         clipRequest.setInput(Lists.newArrayList(clipInput));
 
-        AssetResponse clipResponse = assets.createAsset(clipRequest);
+        AssetResponse clipResponse = assets.createAsset(clipRequest).execute();
         assertNotNull(clipResponse);
         assertNotNull(clipResponse.getData().getId());
         System.out.println("clipping OK");
@@ -83,25 +82,28 @@ public class ExerciseAssets {
         // =========================== create-asset-playback-id
         CreatePlaybackIDRequest cpbr = new CreatePlaybackIDRequest();
         cpbr.setPolicy(PlaybackPolicy.PUBLIC);
-        CreatePlaybackIDResponse playbackIdResponse = assets.createAssetPlaybackId(assetId, cpbr);
+        CreatePlaybackIDResponse playbackIdResponse =
+                assets.createAssetPlaybackId(assetId, cpbr).execute();
         assertNotNull(playbackIdResponse);
         assertNotNull(playbackIdResponse.getData());
         System.out.println("create-asset-playback-id OK");
 
         // =========================== get-asset-playback-id
-        GetAssetPlaybackIDResponse getPlaybackIdResponse = assets.getAssetPlaybackId(assetId, playbackIdResponse.getData().getId());
+        GetAssetPlaybackIDResponse getPlaybackIdResponse =
+                assets.getAssetPlaybackId(assetId, playbackIdResponse.getData().getId()).execute();
         assertNotNull(getPlaybackIdResponse.getData());
         System.out.println("get-asset-playback-id OK");
 
         // =========================== get-asset-or-livestream-id
-        GetAssetOrLiveStreamIdResponse assetOrLivestreamId = playbackIds.getAssetOrLivestreamId(getPlaybackIdResponse.getData().getId());
+        GetAssetOrLiveStreamIdResponse assetOrLivestreamId =
+                playbackIds.getAssetOrLivestreamId(getPlaybackIdResponse.getData().getId()).execute();
         assertNotNull(assetOrLivestreamId.getData());
         System.out.println("get-asset-or-livestream-id OK");
         
         // =========================== update-asset-mp4-support
         UpdateAssetMP4SupportRequest mp4Request = new UpdateAssetMP4SupportRequest();
         mp4Request.setMp4Support(UpdateAssetMP4SupportRequest.Mp4SupportEnum.STANDARD);
-        AssetResponse mp4Response = assets.updateAssetMp4Support(assetId, mp4Request);
+        AssetResponse mp4Response = assets.updateAssetMp4Support(assetId, mp4Request).execute();
         assertNotNull(mp4Response);
         assertNotNull(mp4Response.getData());
         System.out.println("update-asset-mp4-support OK");
@@ -109,7 +111,7 @@ public class ExerciseAssets {
         // =========================== update-asset-master-access
         UpdateAssetMasterAccessRequest masterRequest = new UpdateAssetMasterAccessRequest();
         masterRequest.setMasterAccess(UpdateAssetMasterAccessRequest.MasterAccessEnum.TEMPORARY);
-        AssetResponse masterResponse = assets.updateAssetMasterAccess(assetId, masterRequest);
+        AssetResponse masterResponse = assets.updateAssetMasterAccess(assetId, masterRequest).execute();
 
         assertNotNull(masterResponse);
         assertNotNull(masterResponse.getData());
@@ -124,35 +126,35 @@ public class ExerciseAssets {
         trackRequest.setName("English");
         trackRequest.setClosedCaptions(false);
 
-        CreateTrackResponse trackResponse = assets.createAssetTrack(assetId, trackRequest);
+        CreateTrackResponse trackResponse = assets.createAssetTrack(assetId, trackRequest).execute();
 
         assertNotNull(trackResponse);
         assertNotNull(trackResponse.getData().getId());
         assertEquals("English", trackResponse.getData().getName());
 
-        AssetResponse asset2Captions = assets.getAsset(assetId);
+        AssetResponse asset2Captions = assets.getAsset(assetId).execute();
         // Audio, Video, French that we ingested with the asset, and the English we added here!
         assertEquals(4, asset2Captions.getData().getTracks().size());
         System.out.println("create-asset-track OK");
         
         // =========================== delete-asset-track
         Thread.sleep(5000);
-        assets.deleteAssetTrack(assetId, trackResponse.getData().getId());
-        AssetResponse asset1Caption = assets.getAsset(assetId);
+        assets.deleteAssetTrack(assetId, trackResponse.getData().getId()).execute();
+        AssetResponse asset1Caption = assets.getAsset(assetId).execute();
         // Audio, Video, French that we ingested with the asset
         assertEquals(3, asset1Caption.getData().getTracks().size());
         System.out.println("delete-asset-track OK");
         
         // =========================== delete-asset-playback-id
-        assets.deleteAssetPlaybackId(assetId, playbackIdResponse.getData().getId());
-        AssetResponse deletedPlaybackIdAsset = assets.getAsset(assetId);
+        assets.deleteAssetPlaybackId(assetId, playbackIdResponse.getData().getId()).execute();
+        AssetResponse deletedPlaybackIdAsset = assets.getAsset(assetId).execute();
         assertNull(deletedPlaybackIdAsset.getData().getPlaybackIds());
         System.out.println("delete-asset-playback-id OK");
         
         // =========================== delete-asset
-        assets.deleteAsset(assetId);
+        assets.deleteAsset(assetId).execute();
         assertThrows(ApiException.class, () -> {
-            assets.getAsset(assetId);
+            assets.getAsset(assetId).execute();
         });
         System.out.println("delete-asset OK");
     }

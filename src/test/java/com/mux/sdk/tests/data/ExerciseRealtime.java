@@ -1,7 +1,7 @@
 package com.mux.sdk.tests.data;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiException;
+import com.mux.*;
 import com.mux.sdk.*;
 import com.mux.sdk.models.*;
 import org.junit.Ignore;
@@ -20,7 +20,7 @@ public class ExerciseRealtime {
 
     @Test
     public void listRealtimeDimensions() throws ApiException {
-        ListRealTimeDimensionsResponse resp = rtApi.listRealtimeDimensions();
+        ListRealTimeDimensionsResponse resp = rtApi.listRealtimeDimensions().execute();
         assertTrue(resp.getData().size() > 0);
         assertNotEquals("", resp.getData().get(0).getName());
         assertNotEquals("", resp.getData().get(0).getDisplayName());
@@ -28,7 +28,7 @@ public class ExerciseRealtime {
 
     @Test
     public void listRealtimeMetrics() throws ApiException {
-        ListRealTimeMetricsResponse resp = rtApi.listRealtimeMetrics();
+        ListRealTimeMetricsResponse resp = rtApi.listRealtimeMetrics().execute();
         assertTrue(resp.getData().size() > 0);
         assertNotEquals("", resp.getData().get(0).getName());
         assertNotEquals("", resp.getData().get(0).getDisplayName());
@@ -36,17 +36,17 @@ public class ExerciseRealtime {
 
     @Test
     public void getRealtimeBreakdown() throws ApiException {
-        GetRealTimeBreakdownResponse resp = rtApi.getRealtimeBreakdown(
-                "current-rebuffering-percentage",
-                "asn", null, null, null, null);
+        GetRealTimeBreakdownResponse resp =
+                rtApi.getRealtimeBreakdown("current-rebuffering-percentage")
+                        .dimension("asn")
+                        .execute();
         assertNotNull(resp.getData());
     }
 
 //    @Test
     public void getRealtimeHistogramTimeseries() throws ApiException {
-        GetRealTimeHistogramTimeseriesResponse resp = rtApi.getRealtimeHistogramTimeseries(
-                "video-startup-time",
-                null);
+        GetRealTimeHistogramTimeseriesResponse resp =
+                rtApi.getRealtimeHistogramTimeseries("video-startup-time").execute();
 
         assertTrue(resp.getMeta().getBuckets().size() > 0);
         assertTrue(resp.getData().size() > 0);
@@ -54,10 +54,8 @@ public class ExerciseRealtime {
 
     @Test
     public void getRealtimeTimeseries() throws ApiException {
-        GetRealTimeTimeseriesResponse resp = rtApi.getRealtimeTimeseries(
-                "current-rebuffering-percentage",
-                null
-        );
+        GetRealTimeTimeseriesResponse resp =
+                rtApi.getRealtimeTimeseries("current-rebuffering-percentage").execute();
 
         assertTrue(resp.getData().size() > 0);
         assertNotEquals("", resp.getData().get(0).getDate());

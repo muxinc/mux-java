@@ -13,11 +13,11 @@ Method | HTTP request | Description
 
 <a name="getRealtimeBreakdown"></a>
 # **getRealtimeBreakdown**
-> GetRealTimeBreakdownResponse getRealtimeBreakdown(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection)
+> GetRealTimeBreakdownResponse getRealtimeBreakdown(REALTIME_METRIC_ID).dimension(dimension).timestamp(timestamp).filters(filters).orderBy(orderBy).orderDirection(orderDirection).execute();
 
 Get Real-Time Breakdown
 
-Gets breakdown information for a specific dimension and metric along with the number of concurrent viewers and negative impact score. 
+Gets breakdown information for a specific dimension and metric along with the number of concurrent viewers and negative impact score.
 
 ### Example
 ```java
@@ -43,11 +43,17 @@ public class Example {
     String REALTIME_METRIC_ID = "current-concurrent-viewers"; // String | ID of the Realtime Metric
     String dimension = "dimension_example"; // String | Dimension the specified value belongs to
     BigDecimal timestamp = new BigDecimal(78); // BigDecimal | Timestamp to limit results by. This value must be provided as a unix timestamp. Defaults to the current unix timestamp.
-    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]=operating_system:windows&filters[]=country:US).  Possible filter names are the same as returned by the List Filters endpoint. 
+    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
     String orderBy = "orderBy_example"; // String | Value to order the results by
     String orderDirection = "orderDirection_example"; // String | Sort order.
     try {
-      GetRealTimeBreakdownResponse result = apiInstance.getRealtimeBreakdown(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection);
+      GetRealTimeBreakdownResponse result = apiInstance.getRealtimeBreakdown(REALTIME_METRIC_ID)
+            .dimension(dimension)
+            .timestamp(timestamp)
+            .filters(filters)
+            .orderBy(orderBy)
+            .orderDirection(orderDirection)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RealTimeApi#getRealtimeBreakdown");
@@ -67,7 +73,7 @@ Name | Type | Description  | Notes
  **REALTIME_METRIC_ID** | **String**| ID of the Realtime Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
  **dimension** | **String**| Dimension the specified value belongs to | [optional] [enum: asn, cdn, country, operating_system, player_name, region, stream_type, sub_property_id, video_series, video_title]
  **timestamp** | **BigDecimal**| Timestamp to limit results by. This value must be provided as a unix timestamp. Defaults to the current unix timestamp. | [optional]
- **filters** | [**java.util.List&lt;String&gt;**](String.md)| Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;country:US).  Possible filter names are the same as returned by the List Filters endpoint.  | [optional]
+ **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
  **orderBy** | **String**| Value to order the results by | [optional] [enum: negative_impact, value, views, field]
  **orderDirection** | **String**| Sort order. | [optional] [enum: asc, desc]
 
@@ -91,11 +97,11 @@ Name | Type | Description  | Notes
 
 <a name="getRealtimeHistogramTimeseries"></a>
 # **getRealtimeHistogramTimeseries**
-> GetRealTimeHistogramTimeseriesResponse getRealtimeHistogramTimeseries(REALTIME_METRIC_ID, filters)
+> GetRealTimeHistogramTimeseriesResponse getRealtimeHistogramTimeseries(REALTIME_HISTOGRAM_METRIC_ID).filters(filters).execute();
 
 Get Real-Time Histogram Timeseries
 
-Gets histogram timeseries information for a specific metric. 
+Gets histogram timeseries information for a specific metric.
 
 ### Example
 ```java
@@ -118,10 +124,12 @@ public class Example {
     accessToken.setPassword("YOUR PASSWORD");
 
     RealTimeApi apiInstance = new RealTimeApi(defaultClient);
-    String REALTIME_METRIC_ID = "current-concurrent-viewers"; // String | ID of the Realtime Metric
-    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]=operating_system:windows&filters[]=country:US).  Possible filter names are the same as returned by the List Filters endpoint. 
+    String REALTIME_HISTOGRAM_METRIC_ID = "video-startup-time"; // String | ID of the Realtime Histogram Metric
+    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
     try {
-      GetRealTimeHistogramTimeseriesResponse result = apiInstance.getRealtimeHistogramTimeseries(REALTIME_METRIC_ID, filters);
+      GetRealTimeHistogramTimeseriesResponse result = apiInstance.getRealtimeHistogramTimeseries(REALTIME_HISTOGRAM_METRIC_ID)
+            .filters(filters)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RealTimeApi#getRealtimeHistogramTimeseries");
@@ -138,8 +146,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **REALTIME_METRIC_ID** | **String**| ID of the Realtime Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
- **filters** | [**java.util.List&lt;String&gt;**](String.md)| Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;country:US).  Possible filter names are the same as returned by the List Filters endpoint.  | [optional]
+ **REALTIME_HISTOGRAM_METRIC_ID** | **String**| ID of the Realtime Histogram Metric | [enum: video-startup-time]
+ **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
 
 ### Return type
 
@@ -161,11 +169,11 @@ Name | Type | Description  | Notes
 
 <a name="getRealtimeTimeseries"></a>
 # **getRealtimeTimeseries**
-> GetRealTimeTimeseriesResponse getRealtimeTimeseries(REALTIME_METRIC_ID, filters)
+> GetRealTimeTimeseriesResponse getRealtimeTimeseries(REALTIME_METRIC_ID).filters(filters).execute();
 
 Get Real-Time Timeseries
 
-Gets Time series information for a specific metric along with the number of concurrent viewers. 
+Gets Time series information for a specific metric along with the number of concurrent viewers.
 
 ### Example
 ```java
@@ -189,9 +197,11 @@ public class Example {
 
     RealTimeApi apiInstance = new RealTimeApi(defaultClient);
     String REALTIME_METRIC_ID = "current-concurrent-viewers"; // String | ID of the Realtime Metric
-    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]=operating_system:windows&filters[]=country:US).  Possible filter names are the same as returned by the List Filters endpoint. 
+    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
     try {
-      GetRealTimeTimeseriesResponse result = apiInstance.getRealtimeTimeseries(REALTIME_METRIC_ID, filters);
+      GetRealTimeTimeseriesResponse result = apiInstance.getRealtimeTimeseries(REALTIME_METRIC_ID)
+            .filters(filters)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RealTimeApi#getRealtimeTimeseries");
@@ -209,7 +219,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **REALTIME_METRIC_ID** | **String**| ID of the Realtime Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
- **filters** | [**java.util.List&lt;String&gt;**](String.md)| Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;country:US).  Possible filter names are the same as returned by the List Filters endpoint.  | [optional]
+ **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
 
 ### Return type
 
@@ -231,11 +241,11 @@ Name | Type | Description  | Notes
 
 <a name="listRealtimeDimensions"></a>
 # **listRealtimeDimensions**
-> ListRealTimeDimensionsResponse listRealtimeDimensions()
+> ListRealTimeDimensionsResponse listRealtimeDimensions().execute();
 
 List Real-Time Dimensions
 
-Lists availiable real-time dimensions 
+Lists available real-time dimensions.
 
 ### Example
 ```java
@@ -259,7 +269,8 @@ public class Example {
 
     RealTimeApi apiInstance = new RealTimeApi(defaultClient);
     try {
-      ListRealTimeDimensionsResponse result = apiInstance.listRealtimeDimensions();
+      ListRealTimeDimensionsResponse result = apiInstance.listRealtimeDimensions()
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RealTimeApi#listRealtimeDimensions");
@@ -295,11 +306,11 @@ This endpoint does not need any parameter.
 
 <a name="listRealtimeMetrics"></a>
 # **listRealtimeMetrics**
-> ListRealTimeMetricsResponse listRealtimeMetrics()
+> ListRealTimeMetricsResponse listRealtimeMetrics().execute();
 
 List Real-Time Metrics
 
-Lists availiable real-time metrics. 
+Lists available real-time metrics.
 
 ### Example
 ```java
@@ -323,7 +334,8 @@ public class Example {
 
     RealTimeApi apiInstance = new RealTimeApi(defaultClient);
     try {
-      ListRealTimeMetricsResponse result = apiInstance.listRealtimeMetrics();
+      ListRealTimeMetricsResponse result = apiInstance.listRealtimeMetrics()
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RealTimeApi#listRealtimeMetrics");

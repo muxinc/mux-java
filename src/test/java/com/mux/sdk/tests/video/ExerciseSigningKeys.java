@@ -1,7 +1,7 @@
 package com.mux.sdk.tests.video;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiException;
+import com.mux.*;
 import com.mux.sdk.*;
 import com.mux.sdk.models.*;
 import org.junit.Ignore;
@@ -16,19 +16,19 @@ public class ExerciseSigningKeys {
     public void test() throws ApiException {
         UrlSigningKeysApi keysApi = new UrlSigningKeysApi(TestHelper.buildApiClient());
 
-        SigningKeyResponse create = keysApi.createUrlSigningKey();
+        SigningKeyResponse create = keysApi.createUrlSigningKey().execute();
         String keyId = create.getData().getId();
 
         assertNotNull(keyId);
         assertNotNull(create.getData().getPrivateKey());
         System.out.println("create-url-signing-key OK ✅");
 
-        ListSigningKeysResponse keys = keysApi.listUrlSigningKeys(null, null);
+        ListSigningKeysResponse keys = keysApi.listUrlSigningKeys().execute();
         assertEquals(keyId, keys.getData().get(0).getId());
         assertNull(keys.getData().get(0).getPrivateKey());
         System.out.println("list-url-signing-keys OK ✅");
 
-        SigningKeyResponse getKey = keysApi.getUrlSigningKey(keyId);
+        SigningKeyResponse getKey = keysApi.getUrlSigningKey(keyId).execute();
         assertNotNull(getKey.getData());
         System.out.println("get-url-signing-key OK ✅");
 

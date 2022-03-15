@@ -1,7 +1,7 @@
 package com.mux.sdk.tests.video;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiException;
+import com.mux.*;
 import com.mux.sdk.*;
 import com.mux.sdk.models.*;
 import org.junit.Ignore;
@@ -17,7 +17,7 @@ public class ExerciseDeliveryUsage {
 
     @Test
     public void listDeliveryUsage() throws ApiException {
-        ListDeliveryUsageResponse resp = usageApi.listDeliveryUsage(null, null, null, null);
+        ListDeliveryUsageResponse resp = usageApi.listDeliveryUsage().execute();
         assertNotNull(resp.getData());
     }
 }

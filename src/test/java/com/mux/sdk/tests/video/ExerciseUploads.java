@@ -1,7 +1,7 @@
 package com.mux.sdk.tests.video;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiException;
+import com.mux.*;
 import com.mux.sdk.*;
 import com.mux.sdk.models.*;
 import org.junit.Ignore;
@@ -24,21 +24,21 @@ public class ExerciseUploads {
         cur.setTimeout(3600);
         cur.setCorsOrigin("*");
 
-        UploadResponse uploadResp = uploadsApi.createDirectUpload(cur);
+        UploadResponse uploadResp = uploadsApi.createDirectUpload(cur).execute();
         String uploadId = uploadResp.getData().getId();
 
         assertNotNull(uploadId);
         System.out.println("create-direct-upload OK ✅");
 
-        ListUploadsResponse list = uploadsApi.listDirectUploads(null, null);
+        ListUploadsResponse list = uploadsApi.listDirectUploads().execute();
         assertEquals(uploadId, list.getData().get(0).getId());
         System.out.println("list-direct-upload OK ✅");
 
-        UploadResponse get = uploadsApi.getDirectUpload(uploadId);
+        UploadResponse get = uploadsApi.getDirectUpload(uploadId).execute();
         assertEquals(uploadId, get.getData().getId());
         System.out.println("get-direct-upload OK ✅");
 
-        UploadResponse canceled = uploadsApi.cancelDirectUpload(uploadId);
+        UploadResponse canceled = uploadsApi.cancelDirectUpload(uploadId).execute();
         assertEquals(uploadId, canceled.getData().getId());
         assertEquals(Upload.StatusEnum.CANCELLED, canceled.getData().getStatus());
         System.out.println("cancel-direct-upload OK ✅");

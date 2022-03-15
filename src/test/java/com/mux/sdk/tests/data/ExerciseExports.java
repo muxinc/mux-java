@@ -1,15 +1,9 @@
 package com.mux.sdk.tests.data;
 
 import com.google.common.collect.Lists;
-import com.mux.ApiException;
-import com.mux.sdk.DimensionsApi;
-import com.mux.sdk.ErrorsApi;
-import com.mux.sdk.ExportsApi;
-import com.mux.sdk.TestHelper;
-import com.mux.sdk.models.ListDimensionValuesResponse;
-import com.mux.sdk.models.ListDimensionsResponse;
-import com.mux.sdk.models.ListErrorsResponse;
-import com.mux.sdk.models.ListExportsResponse;
+import com.mux.*;
+import com.mux.sdk.*;
+import com.mux.sdk.models.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,7 +16,7 @@ public class ExerciseExports {
     public void listExports() throws ApiException {
         ExportsApi exports = new ExportsApi(TestHelper.buildApiClient());
 
-        ListExportsResponse listExportsResponse = exports.listExports();
+        ListExportsResponse listExportsResponse = exports.listExports().execute();
         assertTrue(listExportsResponse.getData().size() > 0);
     }
 }

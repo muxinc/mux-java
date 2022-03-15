@@ -118,6 +118,14 @@ Name | Type | Description | Notes
 **qualityScore** | **String** |  |  [optional]
 **playerSoftwareVersion** | **String** |  |  [optional]
 **playerMuxPluginName** | **String** |  |  [optional]
+**subPropertyId** | **String** |  |  [optional]
+**playerRemotePlayed** | **Boolean** |  |  [optional]
+**viewMaxPlayheadPosition** | **String** |  |  [optional]
+**viewPlayingTime** | **String** |  |  [optional]
+**viewSessionId** | **String** |  |  [optional]
+**viewerConnectionType** | **String** |  |  [optional]
+**viewerDeviceModel** | **String** |  |  [optional]
+**weightedAverageBitrate** | **Long** |  |  [optional]
 
 
 

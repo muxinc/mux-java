@@ -13,15 +13,18 @@ Method | HTTP request | Description
 [**disableLiveStream**](LiveStreamsApi.md#disableLiveStream) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/disable | Disable a live stream
 [**enableLiveStream**](LiveStreamsApi.md#enableLiveStream) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/enable | Enable a live stream
 [**getLiveStream**](LiveStreamsApi.md#getLiveStream) | **GET** /video/v1/live-streams/{LIVE_STREAM_ID} | Retrieve a live stream
+[**getLiveStreamPlaybackId**](LiveStreamsApi.md#getLiveStreamPlaybackId) | **GET** /video/v1/live-streams/{LIVE_STREAM_ID}/playback-ids/{PLAYBACK_ID} | Retrieve a live stream playback ID
 [**getLiveStreamSimulcastTarget**](LiveStreamsApi.md#getLiveStreamSimulcastTarget) | **GET** /video/v1/live-streams/{LIVE_STREAM_ID}/simulcast-targets/{SIMULCAST_TARGET_ID} | Retrieve a Live Stream Simulcast Target
 [**listLiveStreams**](LiveStreamsApi.md#listLiveStreams) | **GET** /video/v1/live-streams | List live streams
 [**resetStreamKey**](LiveStreamsApi.md#resetStreamKey) | **POST** /video/v1/live-streams/{LIVE_STREAM_ID}/reset-stream-key | Reset a live stream’s stream key
 [**signalLiveStreamComplete**](LiveStreamsApi.md#signalLiveStreamComplete) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/complete | Signal a live stream is finished
+[**updateLiveStream**](LiveStreamsApi.md#updateLiveStream) | **PATCH** /video/v1/live-streams/{LIVE_STREAM_ID} | Update a live stream
+[**updateLiveStreamEmbeddedSubtitles**](LiveStreamsApi.md#updateLiveStreamEmbeddedSubtitles) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/embedded-subtitles | Update a live stream&#39;s embedded subtitles
 
 
 <a name="createLiveStream"></a>
 # **createLiveStream**
-> LiveStreamResponse createLiveStream(createLiveStreamRequest)
+> LiveStreamResponse createLiveStream(createLiveStreamRequest).execute();
 
 Create a live stream
 
@@ -48,7 +51,8 @@ public class Example {
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     CreateLiveStreamRequest createLiveStreamRequest = {"playback_policy":"public","new_asset_settings":{"playback_policy":"public"}}; // CreateLiveStreamRequest | 
     try {
-      LiveStreamResponse result = apiInstance.createLiveStream(createLiveStreamRequest);
+      LiveStreamResponse result = apiInstance.createLiveStream(createLiveStreamRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#createLiveStream");
@@ -87,7 +91,7 @@ Name | Type | Description  | Notes
 
 <a name="createLiveStreamPlaybackId"></a>
 # **createLiveStreamPlaybackId**
-> CreatePlaybackIDResponse createLiveStreamPlaybackId(LIVE_STREAM_ID, createPlaybackIDRequest)
+> CreatePlaybackIDResponse createLiveStreamPlaybackId(LIVE_STREAM_ID, createPlaybackIDRequest).execute();
 
 Create a live stream playback ID
 
@@ -115,7 +119,8 @@ public class Example {
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     CreatePlaybackIDRequest createPlaybackIDRequest = {"policy":"signed"}; // CreatePlaybackIDRequest | 
     try {
-      CreatePlaybackIDResponse result = apiInstance.createLiveStreamPlaybackId(LIVE_STREAM_ID, createPlaybackIDRequest);
+      CreatePlaybackIDResponse result = apiInstance.createLiveStreamPlaybackId(LIVE_STREAM_ID, createPlaybackIDRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#createLiveStreamPlaybackId");
@@ -155,7 +160,7 @@ Name | Type | Description  | Notes
 
 <a name="createLiveStreamSimulcastTarget"></a>
 # **createLiveStreamSimulcastTarget**
-> SimulcastTargetResponse createLiveStreamSimulcastTarget(LIVE_STREAM_ID, createSimulcastTargetRequest)
+> SimulcastTargetResponse createLiveStreamSimulcastTarget(LIVE_STREAM_ID, createSimulcastTargetRequest).execute();
 
 Create a live stream simulcast target
 
@@ -185,7 +190,8 @@ public class Example {
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     CreateSimulcastTargetRequest createSimulcastTargetRequest = {"url":"rtmp://live.example.com/app","stream_key":"abcdefgh","passthrough":"Example"}; // CreateSimulcastTargetRequest | 
     try {
-      SimulcastTargetResponse result = apiInstance.createLiveStreamSimulcastTarget(LIVE_STREAM_ID, createSimulcastTargetRequest);
+      SimulcastTargetResponse result = apiInstance.createLiveStreamSimulcastTarget(LIVE_STREAM_ID, createSimulcastTargetRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#createLiveStreamSimulcastTarget");
@@ -225,7 +231,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteLiveStream"></a>
 # **deleteLiveStream**
-> deleteLiveStream(LIVE_STREAM_ID)
+> deleteLiveStream(LIVE_STREAM_ID).execute();
 
 Delete a live stream
 
@@ -252,7 +258,8 @@ public class Example {
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     try {
-      apiInstance.deleteLiveStream(LIVE_STREAM_ID);
+      apiInstance.deleteLiveStream(LIVE_STREAM_ID)
+            .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#deleteLiveStream");
       System.err.println("Status code: " + e.getCode());
@@ -290,7 +297,7 @@ null (empty response body)
 
 <a name="deleteLiveStreamPlaybackId"></a>
 # **deleteLiveStreamPlaybackId**
-> deleteLiveStreamPlaybackId(LIVE_STREAM_ID, PLAYBACK_ID)
+> deleteLiveStreamPlaybackId(LIVE_STREAM_ID, PLAYBACK_ID).execute();
 
 Delete a live stream playback ID
 
@@ -318,7 +325,8 @@ public class Example {
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     String PLAYBACK_ID = "PLAYBACK_ID_example"; // String | The live stream's playback ID.
     try {
-      apiInstance.deleteLiveStreamPlaybackId(LIVE_STREAM_ID, PLAYBACK_ID);
+      apiInstance.deleteLiveStreamPlaybackId(LIVE_STREAM_ID, PLAYBACK_ID)
+            .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#deleteLiveStreamPlaybackId");
       System.err.println("Status code: " + e.getCode());
@@ -357,7 +365,7 @@ null (empty response body)
 
 <a name="deleteLiveStreamSimulcastTarget"></a>
 # **deleteLiveStreamSimulcastTarget**
-> deleteLiveStreamSimulcastTarget(LIVE_STREAM_ID, SIMULCAST_TARGET_ID)
+> deleteLiveStreamSimulcastTarget(LIVE_STREAM_ID, SIMULCAST_TARGET_ID).execute();
 
 Delete a Live Stream Simulcast Target
 
@@ -387,7 +395,8 @@ public class Example {
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     String SIMULCAST_TARGET_ID = "SIMULCAST_TARGET_ID_example"; // String | The ID of the simulcast target.
     try {
-      apiInstance.deleteLiveStreamSimulcastTarget(LIVE_STREAM_ID, SIMULCAST_TARGET_ID);
+      apiInstance.deleteLiveStreamSimulcastTarget(LIVE_STREAM_ID, SIMULCAST_TARGET_ID)
+            .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#deleteLiveStreamSimulcastTarget");
       System.err.println("Status code: " + e.getCode());
@@ -426,7 +435,7 @@ null (empty response body)
 
 <a name="disableLiveStream"></a>
 # **disableLiveStream**
-> DisableLiveStreamResponse disableLiveStream(LIVE_STREAM_ID)
+> DisableLiveStreamResponse disableLiveStream(LIVE_STREAM_ID).execute();
 
 Disable a live stream
 
@@ -455,7 +464,8 @@ public class Example {
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     try {
-      DisableLiveStreamResponse result = apiInstance.disableLiveStream(LIVE_STREAM_ID);
+      DisableLiveStreamResponse result = apiInstance.disableLiveStream(LIVE_STREAM_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#disableLiveStream");
@@ -494,7 +504,7 @@ Name | Type | Description  | Notes
 
 <a name="enableLiveStream"></a>
 # **enableLiveStream**
-> EnableLiveStreamResponse enableLiveStream(LIVE_STREAM_ID)
+> EnableLiveStreamResponse enableLiveStream(LIVE_STREAM_ID).execute();
 
 Enable a live stream
 
@@ -523,7 +533,8 @@ public class Example {
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     try {
-      EnableLiveStreamResponse result = apiInstance.enableLiveStream(LIVE_STREAM_ID);
+      EnableLiveStreamResponse result = apiInstance.enableLiveStream(LIVE_STREAM_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#enableLiveStream");
@@ -562,7 +573,7 @@ Name | Type | Description  | Notes
 
 <a name="getLiveStream"></a>
 # **getLiveStream**
-> LiveStreamResponse getLiveStream(LIVE_STREAM_ID)
+> LiveStreamResponse getLiveStream(LIVE_STREAM_ID).execute();
 
 Retrieve a live stream
 
@@ -591,7 +602,8 @@ public class Example {
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     try {
-      LiveStreamResponse result = apiInstance.getLiveStream(LIVE_STREAM_ID);
+      LiveStreamResponse result = apiInstance.getLiveStream(LIVE_STREAM_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#getLiveStream");
@@ -628,9 +640,78 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
+<a name="getLiveStreamPlaybackId"></a>
+# **getLiveStreamPlaybackId**
+> GetLiveStreamPlaybackIDResponse getLiveStreamPlaybackId(LIVE_STREAM_ID, PLAYBACK_ID).execute();
+
+Retrieve a live stream playback ID
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.LiveStreamsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
+    String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
+    String PLAYBACK_ID = "PLAYBACK_ID_example"; // String | The live stream's playback ID.
+    try {
+      GetLiveStreamPlaybackIDResponse result = apiInstance.getLiveStreamPlaybackId(LIVE_STREAM_ID, PLAYBACK_ID)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#getLiveStreamPlaybackId");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **LIVE_STREAM_ID** | **String**| The live stream ID |
+ **PLAYBACK_ID** | **String**| The live stream&#39;s playback ID. |
+
+### Return type
+
+[**GetLiveStreamPlaybackIDResponse**](GetLiveStreamPlaybackIDResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getLiveStreamSimulcastTarget"></a>
 # **getLiveStreamSimulcastTarget**
-> SimulcastTargetResponse getLiveStreamSimulcastTarget(LIVE_STREAM_ID, SIMULCAST_TARGET_ID)
+> SimulcastTargetResponse getLiveStreamSimulcastTarget(LIVE_STREAM_ID, SIMULCAST_TARGET_ID).execute();
 
 Retrieve a Live Stream Simulcast Target
 
@@ -660,7 +741,8 @@ public class Example {
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     String SIMULCAST_TARGET_ID = "SIMULCAST_TARGET_ID_example"; // String | The ID of the simulcast target.
     try {
-      SimulcastTargetResponse result = apiInstance.getLiveStreamSimulcastTarget(LIVE_STREAM_ID, SIMULCAST_TARGET_ID);
+      SimulcastTargetResponse result = apiInstance.getLiveStreamSimulcastTarget(LIVE_STREAM_ID, SIMULCAST_TARGET_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#getLiveStreamSimulcastTarget");
@@ -700,7 +782,7 @@ Name | Type | Description  | Notes
 
 <a name="listLiveStreams"></a>
 # **listLiveStreams**
-> ListLiveStreamsResponse listLiveStreams(limit, page)
+> ListLiveStreamsResponse listLiveStreams().limit(limit).page(page).streamKey(streamKey).status(status).execute();
 
 List live streams
 
@@ -727,8 +809,15 @@ public class Example {
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     Integer limit = 25; // Integer | Number of items to include in the response
     Integer page = 1; // Integer | Offset by this many pages, of the size of `limit`
+    String streamKey = "streamKey_example"; // String | Filter response to return live stream for this stream key only
+    LiveStreamStatus status = LiveStreamStatus.fromValue("active"); // LiveStreamStatus | Filter response to return live streams with the specified status only
     try {
-      ListLiveStreamsResponse result = apiInstance.listLiveStreams(limit, page);
+      ListLiveStreamsResponse result = apiInstance.listLiveStreams()
+            .limit(limit)
+            .page(page)
+            .streamKey(streamKey)
+            .status(status)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#listLiveStreams");
@@ -747,6 +836,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **Integer**| Number of items to include in the response | [optional] [default to 25]
  **page** | **Integer**| Offset by this many pages, of the size of &#x60;limit&#x60; | [optional] [default to 1]
+ **streamKey** | **String**| Filter response to return live stream for this stream key only | [optional]
+ **status** | [**LiveStreamStatus**](.md)| Filter response to return live streams with the specified status only | [optional] [enum: active, idle, disabled]
 
 ### Return type
 
@@ -768,7 +859,7 @@ Name | Type | Description  | Notes
 
 <a name="resetStreamKey"></a>
 # **resetStreamKey**
-> LiveStreamResponse resetStreamKey(LIVE_STREAM_ID)
+> LiveStreamResponse resetStreamKey(LIVE_STREAM_ID).execute();
 
 Reset a live stream’s stream key
 
@@ -797,7 +888,8 @@ public class Example {
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     try {
-      LiveStreamResponse result = apiInstance.resetStreamKey(LIVE_STREAM_ID);
+      LiveStreamResponse result = apiInstance.resetStreamKey(LIVE_STREAM_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#resetStreamKey");
@@ -832,11 +924,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Created |  -  |
+**201** | OK |  -  |
 
 <a name="signalLiveStreamComplete"></a>
 # **signalLiveStreamComplete**
-> SignalLiveStreamCompleteResponse signalLiveStreamComplete(LIVE_STREAM_ID)
+> SignalLiveStreamCompleteResponse signalLiveStreamComplete(LIVE_STREAM_ID).execute();
 
 Signal a live stream is finished
 
@@ -865,7 +957,8 @@ public class Example {
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
     try {
-      SignalLiveStreamCompleteResponse result = apiInstance.signalLiveStreamComplete(LIVE_STREAM_ID);
+      SignalLiveStreamCompleteResponse result = apiInstance.signalLiveStreamComplete(LIVE_STREAM_ID)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#signalLiveStreamComplete");
@@ -895,6 +988,148 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="updateLiveStream"></a>
+# **updateLiveStream**
+> LiveStreamResponse updateLiveStream(LIVE_STREAM_ID, updateLiveStreamRequest).execute();
+
+Update a live stream
+
+Updates the parameters of a previously-created live stream. This currently supports a subset of variables. Supply the live stream ID and the updated parameters and Mux will return the corresponding live stream information. The information returned will be the same after update as for subsequent get live stream requests.
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.LiveStreamsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
+    String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
+    UpdateLiveStreamRequest updateLiveStreamRequest = {"latency_mode":"standard","reconnect_window":30,"max_continuous_duration":1200}; // UpdateLiveStreamRequest | 
+    try {
+      LiveStreamResponse result = apiInstance.updateLiveStream(LIVE_STREAM_ID, updateLiveStreamRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#updateLiveStream");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **LIVE_STREAM_ID** | **String**| The live stream ID |
+ **updateLiveStreamRequest** | [**UpdateLiveStreamRequest**](UpdateLiveStreamRequest.md)|  |
+
+### Return type
+
+[**LiveStreamResponse**](LiveStreamResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="updateLiveStreamEmbeddedSubtitles"></a>
+# **updateLiveStreamEmbeddedSubtitles**
+> LiveStreamResponse updateLiveStreamEmbeddedSubtitles(LIVE_STREAM_ID, updateLiveStreamEmbeddedSubtitlesRequest).execute();
+
+Update a live stream&#39;s embedded subtitles
+
+Configures a live stream to receive embedded closed captions. The resulting Asset&#39;s subtitle text track will have &#x60;closed_captions: true&#x60; set. 
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.LiveStreamsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
+    String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
+    UpdateLiveStreamEmbeddedSubtitlesRequest updateLiveStreamEmbeddedSubtitlesRequest = {"embedded_subtitles":[{"passthrough":"Example"}]}; // UpdateLiveStreamEmbeddedSubtitlesRequest | 
+    try {
+      LiveStreamResponse result = apiInstance.updateLiveStreamEmbeddedSubtitles(LIVE_STREAM_ID, updateLiveStreamEmbeddedSubtitlesRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#updateLiveStreamEmbeddedSubtitles");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **LIVE_STREAM_ID** | **String**| The live stream ID |
+ **updateLiveStreamEmbeddedSubtitlesRequest** | [**UpdateLiveStreamEmbeddedSubtitlesRequest**](UpdateLiveStreamEmbeddedSubtitlesRequest.md)|  |
+
+### Return type
+
+[**LiveStreamResponse**](LiveStreamResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

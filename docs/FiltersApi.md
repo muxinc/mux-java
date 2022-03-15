@@ -10,11 +10,11 @@ Method | HTTP request | Description
 
 <a name="listFilterValues"></a>
 # **listFilterValues**
-> ListFilterValuesResponse listFilterValues(FILTER_ID, limit, page, filters, timeframe)
+> ListFilterValuesResponse listFilterValues(FILTER_ID).limit(limit).page(page).filters(filters).timeframe(timeframe).execute();
 
 Lists values for a specific filter
 
-Deprecated: The API has been replaced by the list-dimension-values API call.  Lists the values for a filter along with a total count of related views. 
+The API has been replaced by the list-dimension-values API call.  Lists the values for a filter along with a total count of related views. 
 
 ### Example
 ```java
@@ -40,10 +40,15 @@ public class Example {
     String FILTER_ID = "abcd1234"; // String | ID of the Filter
     Integer limit = 25; // Integer | Number of items to include in the response
     Integer page = 1; // Integer | Offset by this many pages, of the size of `limit`
-    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]=operating_system:windows&filters[]=country:US).  Possible filter names are the same as returned by the List Filters endpoint. 
-    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]=1498867200&timeframe[]=1498953600    * duration string e.g. timeframe[]=24:hours or timeframe[]=7:days. 
+    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
+    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=).  Accepted formats are...    * array of epoch timestamps e.g. `timeframe[]=1498867200&timeframe[]=1498953600`   * duration string e.g. `timeframe[]=24:hours or timeframe[]=7:days` 
     try {
-      ListFilterValuesResponse result = apiInstance.listFilterValues(FILTER_ID, limit, page, filters, timeframe);
+      ListFilterValuesResponse result = apiInstance.listFilterValues(FILTER_ID)
+            .limit(limit)
+            .page(page)
+            .filters(filters)
+            .timeframe(timeframe)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FiltersApi#listFilterValues");
@@ -63,8 +68,8 @@ Name | Type | Description  | Notes
  **FILTER_ID** | **String**| ID of the Filter |
  **limit** | **Integer**| Number of items to include in the response | [optional] [default to 25]
  **page** | **Integer**| Offset by this many pages, of the size of &#x60;limit&#x60; | [optional] [default to 1]
- **filters** | [**java.util.List&lt;String&gt;**](String.md)| Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;country:US).  Possible filter names are the same as returned by the List Filters endpoint.  | [optional]
- **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600    * duration string e.g. timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days.  | [optional]
+ **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
+ **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  | [optional]
 
 ### Return type
 
@@ -86,11 +91,11 @@ Name | Type | Description  | Notes
 
 <a name="listFilters"></a>
 # **listFilters**
-> ListFiltersResponse listFilters()
+> ListFiltersResponse listFilters().execute();
 
 List Filters
 
-Deprecated: The API has been replaced by the list-dimensions API call.  Lists all the filters broken out into basic and advanced. 
+The API has been replaced by the list-dimensions API call.  Lists all the filters broken out into basic and advanced. 
 
 ### Example
 ```java
@@ -114,7 +119,8 @@ public class Example {
 
     FiltersApi apiInstance = new FiltersApi(defaultClient);
     try {
-      ListFiltersResponse result = apiInstance.listFilters();
+      ListFiltersResponse result = apiInstance.listFilters()
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FiltersApi#listFilters");

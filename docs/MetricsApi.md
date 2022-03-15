@@ -13,11 +13,11 @@ Method | HTTP request | Description
 
 <a name="getMetricTimeseriesData"></a>
 # **getMetricTimeseriesData**
-> GetMetricTimeseriesDataResponse getMetricTimeseriesData(METRIC_ID, timeframe, filters, measurement, orderDirection, groupBy)
+> GetMetricTimeseriesDataResponse getMetricTimeseriesData(METRIC_ID).timeframe(timeframe).filters(filters).measurement(measurement).orderDirection(orderDirection).groupBy(groupBy).execute();
 
 Get metric timeseries data
 
-Returns timeseries data for a specific metric 
+Returns timeseries data for a specific metric.  Each interval represented in the data array contains an array with the following values:   * the first element is the interval time   * the second element is the calculated metric value    * the third element is the number of views in the interval that have a valid metric value 
 
 ### Example
 ```java
@@ -41,13 +41,19 @@ public class Example {
 
     MetricsApi apiInstance = new MetricsApi(defaultClient);
     String METRIC_ID = "video_startup_time"; // String | ID of the Metric
-    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]=1498867200&timeframe[]=1498953600    * duration string e.g. timeframe[]=24:hours or timeframe[]=7:days. 
-    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]=operating_system:windows&filters[]=country:US).  Possible filter names are the same as returned by the List Filters endpoint. 
-    String measurement = "measurement_example"; // String | Measurement for the provided metric. If omitted, the deafult for the metric will be used.
+    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=).  Accepted formats are...    * array of epoch timestamps e.g. `timeframe[]=1498867200&timeframe[]=1498953600`   * duration string e.g. `timeframe[]=24:hours or timeframe[]=7:days` 
+    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
+    String measurement = "measurement_example"; // String | Measurement for the provided metric. If omitted, the default for the metric will be used.
     String orderDirection = "orderDirection_example"; // String | Sort order.
-    String groupBy = "groupBy_example"; // String | Time granularity to group results by. If this value is omitted, a default granularity is chosen based on the supplied timeframe.
+    String groupBy = "groupBy_example"; // String | Time granularity to group results by. If this value is omitted, a default granularity is chosen based on the timeframe.  For timeframes of 6 hours or less, the default granularity is `ten_minutes`. Between 6 hours and 15 hours inclusive, the default granularity is `hour`. The granularity of timeframes that exceed 15 hours is `day`. This default behaviour is subject to change; it is strongly suggested that you explicitly specify the granularity. 
     try {
-      GetMetricTimeseriesDataResponse result = apiInstance.getMetricTimeseriesData(METRIC_ID, timeframe, filters, measurement, orderDirection, groupBy);
+      GetMetricTimeseriesDataResponse result = apiInstance.getMetricTimeseriesData(METRIC_ID)
+            .timeframe(timeframe)
+            .filters(filters)
+            .measurement(measurement)
+            .orderDirection(orderDirection)
+            .groupBy(groupBy)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetricsApi#getMetricTimeseriesData");
@@ -64,12 +70,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **METRIC_ID** | **String**| ID of the Metric | [enum: aggregate_startup_time, downscale_percentage, exits_before_video_start, max_downscale_percentage, max_upscale_percentage, page_load_time, playback_failure_percentage, playback_failure_score, player_startup_time, rebuffer_count, rebuffer_duration, rebuffer_frequency, rebuffer_percentage, rebuffer_score, requests_for_first_preroll, seek_latency, startup_time_score, upscale_percentage, video_quality_score, video_startup_preroll_load_time, video_startup_preroll_request_time, video_startup_time, viewer_experience_score]
- **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600    * duration string e.g. timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days.  | [optional]
- **filters** | [**java.util.List&lt;String&gt;**](String.md)| Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;country:US).  Possible filter names are the same as returned by the List Filters endpoint.  | [optional]
- **measurement** | **String**| Measurement for the provided metric. If omitted, the deafult for the metric will be used. | [optional] [enum: 95th, median, avg]
+ **METRIC_ID** | **String**| ID of the Metric | [enum: aggregate_startup_time, downscale_percentage, exits_before_video_start, max_downscale_percentage, max_upscale_percentage, page_load_time, playback_failure_percentage, playback_failure_score, player_startup_time, playing_time, rebuffer_count, rebuffer_duration, rebuffer_frequency, rebuffer_percentage, rebuffer_score, requests_for_first_preroll, seek_latency, startup_time_score, unique_viewers, upscale_percentage, video_quality_score, video_startup_preroll_load_time, video_startup_preroll_request_time, video_startup_time, viewer_experience_score, views, weighted_average_bitrate]
+ **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  | [optional]
+ **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
+ **measurement** | **String**| Measurement for the provided metric. If omitted, the default for the metric will be used. | [optional] [enum: 95th, median, avg, count, sum]
  **orderDirection** | **String**| Sort order. | [optional] [enum: asc, desc]
- **groupBy** | **String**| Time granularity to group results by. If this value is omitted, a default granularity is chosen based on the supplied timeframe. | [optional] [enum: hour, day]
+ **groupBy** | **String**| Time granularity to group results by. If this value is omitted, a default granularity is chosen based on the timeframe.  For timeframes of 6 hours or less, the default granularity is &#x60;ten_minutes&#x60;. Between 6 hours and 15 hours inclusive, the default granularity is &#x60;hour&#x60;. The granularity of timeframes that exceed 15 hours is &#x60;day&#x60;. This default behaviour is subject to change; it is strongly suggested that you explicitly specify the granularity.  | [optional] [enum: hour, day]
 
 ### Return type
 
@@ -91,11 +97,11 @@ Name | Type | Description  | Notes
 
 <a name="getOverallValues"></a>
 # **getOverallValues**
-> GetOverallValuesResponse getOverallValues(METRIC_ID, timeframe, filters, measurement)
+> GetOverallValuesResponse getOverallValues(METRIC_ID).timeframe(timeframe).filters(filters).measurement(measurement).execute();
 
 Get Overall values
 
-Returns the overall value for a specific metric, as well as the total view count, watch time, and the Mux Global metric value for the metric. 
+Returns the overall value for a specific metric, as well as the total view count, watch time, and the Mux Global metric value for the metric.
 
 ### Example
 ```java
@@ -119,11 +125,15 @@ public class Example {
 
     MetricsApi apiInstance = new MetricsApi(defaultClient);
     String METRIC_ID = "video_startup_time"; // String | ID of the Metric
-    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]=1498867200&timeframe[]=1498953600    * duration string e.g. timeframe[]=24:hours or timeframe[]=7:days. 
-    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]=operating_system:windows&filters[]=country:US).  Possible filter names are the same as returned by the List Filters endpoint. 
-    String measurement = "measurement_example"; // String | Measurement for the provided metric. If omitted, the deafult for the metric will be used.
+    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=).  Accepted formats are...    * array of epoch timestamps e.g. `timeframe[]=1498867200&timeframe[]=1498953600`   * duration string e.g. `timeframe[]=24:hours or timeframe[]=7:days` 
+    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
+    String measurement = "measurement_example"; // String | Measurement for the provided metric. If omitted, the default for the metric will be used.
     try {
-      GetOverallValuesResponse result = apiInstance.getOverallValues(METRIC_ID, timeframe, filters, measurement);
+      GetOverallValuesResponse result = apiInstance.getOverallValues(METRIC_ID)
+            .timeframe(timeframe)
+            .filters(filters)
+            .measurement(measurement)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetricsApi#getOverallValues");
@@ -140,10 +150,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **METRIC_ID** | **String**| ID of the Metric | [enum: aggregate_startup_time, downscale_percentage, exits_before_video_start, max_downscale_percentage, max_upscale_percentage, page_load_time, playback_failure_percentage, playback_failure_score, player_startup_time, rebuffer_count, rebuffer_duration, rebuffer_frequency, rebuffer_percentage, rebuffer_score, requests_for_first_preroll, seek_latency, startup_time_score, upscale_percentage, video_quality_score, video_startup_preroll_load_time, video_startup_preroll_request_time, video_startup_time, viewer_experience_score]
- **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600    * duration string e.g. timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days.  | [optional]
- **filters** | [**java.util.List&lt;String&gt;**](String.md)| Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;country:US).  Possible filter names are the same as returned by the List Filters endpoint.  | [optional]
- **measurement** | **String**| Measurement for the provided metric. If omitted, the deafult for the metric will be used. | [optional] [enum: 95th, median, avg]
+ **METRIC_ID** | **String**| ID of the Metric | [enum: aggregate_startup_time, downscale_percentage, exits_before_video_start, max_downscale_percentage, max_upscale_percentage, page_load_time, playback_failure_percentage, playback_failure_score, player_startup_time, playing_time, rebuffer_count, rebuffer_duration, rebuffer_frequency, rebuffer_percentage, rebuffer_score, requests_for_first_preroll, seek_latency, startup_time_score, unique_viewers, upscale_percentage, video_quality_score, video_startup_preroll_load_time, video_startup_preroll_request_time, video_startup_time, viewer_experience_score, views, weighted_average_bitrate]
+ **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  | [optional]
+ **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
+ **measurement** | **String**| Measurement for the provided metric. If omitted, the default for the metric will be used. | [optional] [enum: 95th, median, avg, count, sum]
 
 ### Return type
 
@@ -165,11 +175,11 @@ Name | Type | Description  | Notes
 
 <a name="listAllMetricValues"></a>
 # **listAllMetricValues**
-> ListAllMetricValuesResponse listAllMetricValues(timeframe, filters, dimension, value)
+> ListAllMetricValuesResponse listAllMetricValues().timeframe(timeframe).filters(filters).dimension(dimension).value(value).execute();
 
 List all metric values
 
-List all of the values across every breakdown for a specific metric 
+List all of the values across every breakdown for a specific metric.
 
 ### Example
 ```java
@@ -192,12 +202,17 @@ public class Example {
     accessToken.setPassword("YOUR PASSWORD");
 
     MetricsApi apiInstance = new MetricsApi(defaultClient);
-    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]=1498867200&timeframe[]=1498953600    * duration string e.g. timeframe[]=24:hours or timeframe[]=7:days. 
-    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]=operating_system:windows&filters[]=country:US).  Possible filter names are the same as returned by the List Filters endpoint. 
+    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=).  Accepted formats are...    * array of epoch timestamps e.g. `timeframe[]=1498867200&timeframe[]=1498953600`   * duration string e.g. `timeframe[]=24:hours or timeframe[]=7:days` 
+    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
     String dimension = "dimension_example"; // String | Dimension the specified value belongs to
     String value = "value_example"; // String | Value to show all available metrics for
     try {
-      ListAllMetricValuesResponse result = apiInstance.listAllMetricValues(timeframe, filters, dimension, value);
+      ListAllMetricValuesResponse result = apiInstance.listAllMetricValues()
+            .timeframe(timeframe)
+            .filters(filters)
+            .dimension(dimension)
+            .value(value)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetricsApi#listAllMetricValues");
@@ -214,9 +229,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600    * duration string e.g. timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days.  | [optional]
- **filters** | [**java.util.List&lt;String&gt;**](String.md)| Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;country:US).  Possible filter names are the same as returned by the List Filters endpoint.  | [optional]
- **dimension** | **String**| Dimension the specified value belongs to | [optional] [enum: asn, browser, browser_version, cdn, country, experiment_name, operating_system, operating_system_version, player_name, player_software, player_software_version, player_version, preroll_ad_asset_hostname, preroll_ad_tag_hostname, preroll_played, preroll_requested, source_hostname, source_type, stream_type, sub_property_id, video_series, video_title]
+ **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  | [optional]
+ **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
+ **dimension** | **String**| Dimension the specified value belongs to | [optional] [enum: asn, browser, browser_version, cdn, continent_code, country, exit_before_video_start, experiment_name, operating_system, operating_system_version, player_autoplay, player_error_code, player_mux_plugin_name, player_mux_plugin_version, player_name, player_preload, player_remote_played, player_software, player_software_version, player_version, preroll_ad_asset_hostname, preroll_ad_tag_hostname, preroll_played, preroll_requested, region, source_hostname, source_type, stream_type, sub_property_id, video_encoding_variant, video_id, video_series, video_title, view_session_id, viewer_connection_type, viewer_device_category, viewer_device_manufacturer, viewer_device_model, viewer_device_name, viewer_user_id]
  **value** | **String**| Value to show all available metrics for | [optional]
 
 ### Return type
@@ -239,11 +254,11 @@ Name | Type | Description  | Notes
 
 <a name="listBreakdownValues"></a>
 # **listBreakdownValues**
-> ListBreakdownValuesResponse listBreakdownValues(METRIC_ID, groupBy, measurement, filters, limit, page, orderBy, orderDirection, timeframe)
+> ListBreakdownValuesResponse listBreakdownValues(METRIC_ID).groupBy(groupBy).measurement(measurement).filters(filters).limit(limit).page(page).orderBy(orderBy).orderDirection(orderDirection).timeframe(timeframe).execute();
 
 List breakdown values
 
-List the breakdown values for a specific metric 
+List the breakdown values for a specific metric.
 
 ### Example
 ```java
@@ -268,15 +283,24 @@ public class Example {
     MetricsApi apiInstance = new MetricsApi(defaultClient);
     String METRIC_ID = "video_startup_time"; // String | ID of the Metric
     String groupBy = "groupBy_example"; // String | Breakdown value to group the results by
-    String measurement = "measurement_example"; // String | Measurement for the provided metric. If omitted, the deafult for the metric will be used.
-    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]=operating_system:windows&filters[]=country:US).  Possible filter names are the same as returned by the List Filters endpoint. 
+    String measurement = "measurement_example"; // String | Measurement for the provided metric. If omitted, the default for the metric will be used.
+    java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
     Integer limit = 25; // Integer | Number of items to include in the response
     Integer page = 1; // Integer | Offset by this many pages, of the size of `limit`
     String orderBy = "orderBy_example"; // String | Value to order the results by
     String orderDirection = "orderDirection_example"; // String | Sort order.
-    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]=1498867200&timeframe[]=1498953600    * duration string e.g. timeframe[]=24:hours or timeframe[]=7:days. 
+    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=).  Accepted formats are...    * array of epoch timestamps e.g. `timeframe[]=1498867200&timeframe[]=1498953600`   * duration string e.g. `timeframe[]=24:hours or timeframe[]=7:days` 
     try {
-      ListBreakdownValuesResponse result = apiInstance.listBreakdownValues(METRIC_ID, groupBy, measurement, filters, limit, page, orderBy, orderDirection, timeframe);
+      ListBreakdownValuesResponse result = apiInstance.listBreakdownValues(METRIC_ID)
+            .groupBy(groupBy)
+            .measurement(measurement)
+            .filters(filters)
+            .limit(limit)
+            .page(page)
+            .orderBy(orderBy)
+            .orderDirection(orderDirection)
+            .timeframe(timeframe)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetricsApi#listBreakdownValues");
@@ -293,15 +317,15 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **METRIC_ID** | **String**| ID of the Metric | [enum: aggregate_startup_time, downscale_percentage, exits_before_video_start, max_downscale_percentage, max_upscale_percentage, page_load_time, playback_failure_percentage, playback_failure_score, player_startup_time, rebuffer_count, rebuffer_duration, rebuffer_frequency, rebuffer_percentage, rebuffer_score, requests_for_first_preroll, seek_latency, startup_time_score, upscale_percentage, video_quality_score, video_startup_preroll_load_time, video_startup_preroll_request_time, video_startup_time, viewer_experience_score]
- **groupBy** | **String**| Breakdown value to group the results by | [optional] [enum: asn, browser, browser_version, cdn, country, experiment_name, operating_system, operating_system_version, player_name, player_software, player_software_version, player_version, preroll_ad_asset_hostname, preroll_ad_tag_hostname, preroll_played, preroll_requested, source_hostname, source_type, stream_type, sub_property_id, video_series, video_title]
- **measurement** | **String**| Measurement for the provided metric. If omitted, the deafult for the metric will be used. | [optional] [enum: 95th, median, avg]
- **filters** | [**java.util.List&lt;String&gt;**](String.md)| Filter key:value pairs. Must be provided as an array query string parameter (e.g. filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;country:US).  Possible filter names are the same as returned by the List Filters endpoint.  | [optional]
+ **METRIC_ID** | **String**| ID of the Metric | [enum: aggregate_startup_time, downscale_percentage, exits_before_video_start, max_downscale_percentage, max_upscale_percentage, page_load_time, playback_failure_percentage, playback_failure_score, player_startup_time, playing_time, rebuffer_count, rebuffer_duration, rebuffer_frequency, rebuffer_percentage, rebuffer_score, requests_for_first_preroll, seek_latency, startup_time_score, unique_viewers, upscale_percentage, video_quality_score, video_startup_preroll_load_time, video_startup_preroll_request_time, video_startup_time, viewer_experience_score, views, weighted_average_bitrate]
+ **groupBy** | **String**| Breakdown value to group the results by | [optional] [enum: asn, browser, browser_version, cdn, continent_code, country, exit_before_video_start, experiment_name, operating_system, operating_system_version, player_autoplay, player_error_code, player_mux_plugin_name, player_mux_plugin_version, player_name, player_preload, player_remote_played, player_software, player_software_version, player_version, preroll_ad_asset_hostname, preroll_ad_tag_hostname, preroll_played, preroll_requested, region, source_hostname, source_type, stream_type, sub_property_id, video_encoding_variant, video_id, video_series, video_title, view_session_id, viewer_connection_type, viewer_device_category, viewer_device_manufacturer, viewer_device_model, viewer_device_name, viewer_user_id]
+ **measurement** | **String**| Measurement for the provided metric. If omitted, the default for the metric will be used. | [optional] [enum: 95th, median, avg, count, sum]
+ **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
  **limit** | **Integer**| Number of items to include in the response | [optional] [default to 25]
  **page** | **Integer**| Offset by this many pages, of the size of &#x60;limit&#x60; | [optional] [default to 1]
  **orderBy** | **String**| Value to order the results by | [optional] [enum: negative_impact, value, views, field]
  **orderDirection** | **String**| Sort order. | [optional] [enum: asc, desc]
- **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600    * duration string e.g. timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days.  | [optional]
+ **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  | [optional]
 
 ### Return type
 
@@ -323,11 +347,11 @@ Name | Type | Description  | Notes
 
 <a name="listInsights"></a>
 # **listInsights**
-> ListInsightsResponse listInsights(METRIC_ID, measurement, orderDirection, timeframe)
+> ListInsightsResponse listInsights(METRIC_ID).measurement(measurement).orderDirection(orderDirection).timeframe(timeframe).execute();
 
 List Insights
 
-Returns a list of insights for a metric. These are the worst performing values across all breakdowns sorted by how much they negatively impact a specific metric. 
+Returns a list of insights for a metric. These are the worst performing values across all breakdowns sorted by how much they negatively impact a specific metric.
 
 ### Example
 ```java
@@ -351,11 +375,15 @@ public class Example {
 
     MetricsApi apiInstance = new MetricsApi(defaultClient);
     String METRIC_ID = "video_startup_time"; // String | ID of the Metric
-    String measurement = "measurement_example"; // String | Measurement for the provided metric. If omitted, the deafult for the metric will be used.
+    String measurement = "measurement_example"; // String | Measurement for the provided metric. If omitted, the default for the metric will be used.
     String orderDirection = "orderDirection_example"; // String | Sort order.
-    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]=1498867200&timeframe[]=1498953600    * duration string e.g. timeframe[]=24:hours or timeframe[]=7:days. 
+    java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=).  Accepted formats are...    * array of epoch timestamps e.g. `timeframe[]=1498867200&timeframe[]=1498953600`   * duration string e.g. `timeframe[]=24:hours or timeframe[]=7:days` 
     try {
-      ListInsightsResponse result = apiInstance.listInsights(METRIC_ID, measurement, orderDirection, timeframe);
+      ListInsightsResponse result = apiInstance.listInsights(METRIC_ID)
+            .measurement(measurement)
+            .orderDirection(orderDirection)
+            .timeframe(timeframe)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetricsApi#listInsights");
@@ -372,10 +400,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **METRIC_ID** | **String**| ID of the Metric | [enum: aggregate_startup_time, downscale_percentage, exits_before_video_start, max_downscale_percentage, max_upscale_percentage, page_load_time, playback_failure_percentage, playback_failure_score, player_startup_time, rebuffer_count, rebuffer_duration, rebuffer_frequency, rebuffer_percentage, rebuffer_score, requests_for_first_preroll, seek_latency, startup_time_score, upscale_percentage, video_quality_score, video_startup_preroll_load_time, video_startup_preroll_request_time, video_startup_time, viewer_experience_score]
- **measurement** | **String**| Measurement for the provided metric. If omitted, the deafult for the metric will be used. | [optional] [enum: 95th, median, avg]
+ **METRIC_ID** | **String**| ID of the Metric | [enum: aggregate_startup_time, downscale_percentage, exits_before_video_start, max_downscale_percentage, max_upscale_percentage, page_load_time, playback_failure_percentage, playback_failure_score, player_startup_time, playing_time, rebuffer_count, rebuffer_duration, rebuffer_frequency, rebuffer_percentage, rebuffer_score, requests_for_first_preroll, seek_latency, startup_time_score, unique_viewers, upscale_percentage, video_quality_score, video_startup_preroll_load_time, video_startup_preroll_request_time, video_startup_time, viewer_experience_score, views, weighted_average_bitrate]
+ **measurement** | **String**| Measurement for the provided metric. If omitted, the default for the metric will be used. | [optional] [enum: 95th, median, avg, count, sum]
  **orderDirection** | **String**| Sort order. | [optional] [enum: asc, desc]
- **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;). Accepted formats are...   * array of epoch timestamps e.g. timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600    * duration string e.g. timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days.  | [optional]
+ **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  | [optional]
 
 ### Return type
 
