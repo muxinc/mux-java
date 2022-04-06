@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * VideoViewEvent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T13:02:50.965402-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T16:49:42.215909-04:00[America/New_York]")
 public class VideoViewEvent {
   public static final String SERIALIZED_NAME_VIEWER_TIME = "viewer_time";
   @SerializedName(SERIALIZED_NAME_VIEWER_TIME)

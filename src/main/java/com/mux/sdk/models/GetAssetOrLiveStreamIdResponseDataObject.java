@@ -28,7 +28,7 @@ import java.io.IOException;
  * Describes the Asset or LiveStream object associated with the playback ID.
  */
 @ApiModel(description = "Describes the Asset or LiveStream object associated with the playback ID.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T13:02:50.965402-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T16:49:42.215909-04:00[America/New_York]")
 public class GetAssetOrLiveStreamIdResponseDataObject {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

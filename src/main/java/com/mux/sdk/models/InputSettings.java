@@ -29,7 +29,7 @@ import java.io.IOException;
  * An array of objects that each describe an input file to be used to create the asset. As a shortcut, &#x60;input&#x60; can also be a string URL for a file when only one input file is used. See &#x60;input[].url&#x60; for requirements.
  */
 @ApiModel(description = "An array of objects that each describe an input file to be used to create the asset. As a shortcut, `input` can also be a string URL for a file when only one input file is used. See `input[].url` for requirements.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T13:02:50.965402-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T16:49:42.215909-04:00[America/New_York]")
 public class InputSettings {
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -48,7 +48,7 @@ public class InputSettings {
   private Double endTime;
 
   /**
-   * This parameter is required for the &#x60;text&#x60; track type.
+   * This parameter is required for &#x60;text&#x60; type tracks.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -101,7 +101,7 @@ public class InputSettings {
   private TypeEnum type;
 
   /**
-   * Type of text track. This parameter only supports subtitles value. For more information on Subtitles / Closed Captions, [see this blog post](https://mux.com/blog/subtitles-captions-webvtt-hls-and-those-magic-flags/). This parameter is required for &#x60;text&#x60; track type.
+   * Type of text track. This parameter only supports subtitles value. For more information on Subtitles / Closed Captions, [see this blog post](https://mux.com/blog/subtitles-captions-webvtt-hls-and-those-magic-flags/). This parameter is required for &#x60;text&#x60; type tracks.
    */
   @JsonAdapter(TextTypeEnum.Adapter.class)
   public enum TextTypeEnum {
@@ -265,11 +265,11 @@ public class InputSettings {
   }
 
    /**
-   * This parameter is required for the &#x60;text&#x60; track type.
+   * This parameter is required for &#x60;text&#x60; type tracks.
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This parameter is required for the `text` track type.")
+  @ApiModelProperty(value = "This parameter is required for `text` type tracks.")
 
   public TypeEnum getType() {
     return type;
@@ -288,11 +288,11 @@ public class InputSettings {
   }
 
    /**
-   * Type of text track. This parameter only supports subtitles value. For more information on Subtitles / Closed Captions, [see this blog post](https://mux.com/blog/subtitles-captions-webvtt-hls-and-those-magic-flags/). This parameter is required for &#x60;text&#x60; track type.
+   * Type of text track. This parameter only supports subtitles value. For more information on Subtitles / Closed Captions, [see this blog post](https://mux.com/blog/subtitles-captions-webvtt-hls-and-those-magic-flags/). This parameter is required for &#x60;text&#x60; type tracks.
    * @return textType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Type of text track. This parameter only supports subtitles value. For more information on Subtitles / Closed Captions, [see this blog post](https://mux.com/blog/subtitles-captions-webvtt-hls-and-those-magic-flags/). This parameter is required for `text` track type.")
+  @ApiModelProperty(value = "Type of text track. This parameter only supports subtitles value. For more information on Subtitles / Closed Captions, [see this blog post](https://mux.com/blog/subtitles-captions-webvtt-hls-and-those-magic-flags/). This parameter is required for `text` type tracks.")
 
   public TextTypeEnum getTextType() {
     return textType;
@@ -334,11 +334,11 @@ public class InputSettings {
   }
 
    /**
-   * The name of the track containing a human-readable description. This value must be unique across all text type and subtitles &#x60;text&#x60; type tracks. The hls manifest will associate a subtitle text track with this value. For example, the value should be \&quot;English\&quot; for subtitles text track with language_code as en. This optional parameter should be used only for &#x60;text&#x60; type and subtitles &#x60;text&#x60; type track. If this parameter is not included, Mux will auto-populate based on the &#x60;input[].language_code&#x60; value.
+   * The name of the track containing a human-readable description. This value must be unique across all text type and subtitles &#x60;text&#x60; type tracks. The hls manifest will associate a subtitle text track with this value. For example, the value should be \&quot;English\&quot; for subtitles text track with language_code as en. This optional parameter should be used only for &#x60;text&#x60; type and subtitles &#x60;text&#x60; type tracks. If this parameter is not included, Mux will auto-populate based on the &#x60;input[].language_code&#x60; value.
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the track containing a human-readable description. This value must be unique across all text type and subtitles `text` type tracks. The hls manifest will associate a subtitle text track with this value. For example, the value should be \"English\" for subtitles text track with language_code as en. This optional parameter should be used only for `text` type and subtitles `text` type track. If this parameter is not included, Mux will auto-populate based on the `input[].language_code` value.")
+  @ApiModelProperty(value = "The name of the track containing a human-readable description. This value must be unique across all text type and subtitles `text` type tracks. The hls manifest will associate a subtitle text track with this value. For example, the value should be \"English\" for subtitles text track with language_code as en. This optional parameter should be used only for `text` type and subtitles `text` type tracks. If this parameter is not included, Mux will auto-populate based on the `input[].language_code` value.")
 
   public String getName() {
     return name;

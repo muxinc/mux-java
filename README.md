@@ -2,7 +2,7 @@
 
 Mux API
 - API version: v1
-  - Build date: 2022-04-06T13:02:50.965402-04:00[America/New_York]
+  - Build date: 2022-04-06T16:49:42.215909-04:00[America/New_York]
 
 Mux is how developers build online video. This API encompasses both Mux Video and Mux Data functionality to help you build your video-related projects better and faster than ever before.
 

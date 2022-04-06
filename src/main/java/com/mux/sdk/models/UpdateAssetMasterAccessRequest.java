@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * UpdateAssetMasterAccessRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T13:02:50.965402-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T16:49:42.215909-04:00[America/New_York]")
 public class UpdateAssetMasterAccessRequest {
   /**
    * Add or remove access to the master version of the video.

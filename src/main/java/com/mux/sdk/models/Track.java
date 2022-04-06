@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Track
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T13:02:50.965402-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T16:49:42.215909-04:00[America/New_York]")
 public class Track {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -111,7 +111,7 @@ public class Track {
   private String maxChannelLayout;
 
   /**
-   * This parameter is set only for the &#x60;text&#x60; type track.
+   * This parameter is only set for &#x60;text&#x60; type tracks.
    */
   @JsonAdapter(TextTypeEnum.Adapter.class)
   public enum TextTypeEnum {
@@ -175,6 +175,59 @@ public class Track {
   @SerializedName(SERIALIZED_NAME_PASSTHROUGH)
   private String passthrough;
 
+  /**
+   * The status of the track. This parameter is only set for &#x60;text&#x60; type tracks.
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    PREPARING("preparing"),
+    
+    READY("ready"),
+    
+    ERRORED("errored");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
+
 
   public Track id(String id) {
     
@@ -229,11 +282,11 @@ public class Track {
   }
 
    /**
-   * The duration in seconds of the track media. This parameter is not set for the &#x60;text&#x60; type track. This field is optional and may not be set. The top level &#x60;duration&#x60; field of an asset will always be set.
+   * The duration in seconds of the track media. This parameter is not set for &#x60;text&#x60; type tracks. This field is optional and may not be set. The top level &#x60;duration&#x60; field of an asset will always be set.
    * @return duration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The duration in seconds of the track media. This parameter is not set for the `text` type track. This field is optional and may not be set. The top level `duration` field of an asset will always be set.")
+  @ApiModelProperty(value = "The duration in seconds of the track media. This parameter is not set for `text` type tracks. This field is optional and may not be set. The top level `duration` field of an asset will always be set.")
 
   public Double getDuration() {
     return duration;
@@ -367,11 +420,11 @@ public class Track {
   }
 
    /**
-   * This parameter is set only for the &#x60;text&#x60; type track.
+   * This parameter is only set for &#x60;text&#x60; type tracks.
    * @return textType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This parameter is set only for the `text` type track.")
+  @ApiModelProperty(value = "This parameter is only set for `text` type tracks.")
 
   public TextTypeEnum getTextType() {
     return textType;
@@ -390,11 +443,11 @@ public class Track {
   }
 
    /**
-   * The language code value represents [BCP 47](https://tools.ietf.org/html/bcp47) specification compliant value. For example, &#x60;en&#x60; for English or &#x60;en-US&#x60; for the US version of English. This parameter is set for &#x60;text&#x60; type and &#x60;subtitles&#x60; text type track.
+   * The language code value represents [BCP 47](https://tools.ietf.org/html/bcp47) specification compliant value. For example, &#x60;en&#x60; for English or &#x60;en-US&#x60; for the US version of English. This parameter is only set for &#x60;text&#x60; type and &#x60;subtitles&#x60; text type tracks.
    * @return languageCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The language code value represents [BCP 47](https://tools.ietf.org/html/bcp47) specification compliant value. For example, `en` for English or `en-US` for the US version of English. This parameter is set for `text` type and `subtitles` text type track.")
+  @ApiModelProperty(value = "The language code value represents [BCP 47](https://tools.ietf.org/html/bcp47) specification compliant value. For example, `en` for English or `en-US` for the US version of English. This parameter is only set for `text` type and `subtitles` text type tracks.")
 
   public String getLanguageCode() {
     return languageCode;
@@ -413,11 +466,11 @@ public class Track {
   }
 
    /**
-   * The name of the track containing a human-readable description. The hls manifest will associate a subtitle text track with this value. For example, the value is \&quot;English\&quot; for subtitles text track for the &#x60;language_code&#x60; value of &#x60;en-US&#x60;. This parameter is set for the &#x60;text&#x60; type and &#x60;subtitles&#x60; text type track.
+   * The name of the track containing a human-readable description. The hls manifest will associate a subtitle text track with this value. For example, the value is \&quot;English\&quot; for subtitles text track for the &#x60;language_code&#x60; value of &#x60;en-US&#x60;. This parameter is only set for &#x60;text&#x60; type and &#x60;subtitles&#x60; text type tracks.
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the track containing a human-readable description. The hls manifest will associate a subtitle text track with this value. For example, the value is \"English\" for subtitles text track for the `language_code` value of `en-US`. This parameter is set for the `text` type and `subtitles` text type track.")
+  @ApiModelProperty(value = "The name of the track containing a human-readable description. The hls manifest will associate a subtitle text track with this value. For example, the value is \"English\" for subtitles text track for the `language_code` value of `en-US`. This parameter is only set for `text` type and `subtitles` text type tracks.")
 
   public String getName() {
     return name;
@@ -436,11 +489,11 @@ public class Track {
   }
 
    /**
-   * Indicates the track provides Subtitles for the Deaf or Hard-of-hearing (SDH). This parameter is set for the &#x60;text&#x60; type and &#x60;subtitles&#x60; text type track.
+   * Indicates the track provides Subtitles for the Deaf or Hard-of-hearing (SDH). This parameter is only set for &#x60;text&#x60; type and &#x60;subtitles&#x60; text type tracks.
    * @return closedCaptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates the track provides Subtitles for the Deaf or Hard-of-hearing (SDH). This parameter is set for the `text` type and `subtitles` text type track.")
+  @ApiModelProperty(value = "Indicates the track provides Subtitles for the Deaf or Hard-of-hearing (SDH). This parameter is only set for `text` type and `subtitles` text type tracks.")
 
   public Boolean getClosedCaptions() {
     return closedCaptions;
@@ -459,11 +512,11 @@ public class Track {
   }
 
    /**
-   * Arbitrary user-supplied metadata set for the track either when creating the asset or track. This parameter is set for &#x60;text&#x60; type and &#x60;subtitles&#x60; text type track. Max 255 characters.
+   * Arbitrary user-supplied metadata set for the track either when creating the asset or track. This parameter is only set for &#x60;text&#x60; type tracks. Max 255 characters.
    * @return passthrough
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Arbitrary user-supplied metadata set for the track either when creating the asset or track. This parameter is set for `text` type and `subtitles` text type track. Max 255 characters.")
+  @ApiModelProperty(value = "Arbitrary user-supplied metadata set for the track either when creating the asset or track. This parameter is only set for `text` type tracks. Max 255 characters.")
 
   public String getPassthrough() {
     return passthrough;
@@ -472,6 +525,29 @@ public class Track {
 
   public void setPassthrough(String passthrough) {
     this.passthrough = passthrough;
+  }
+
+
+  public Track status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * The status of the track. This parameter is only set for &#x60;text&#x60; type tracks.
+   * @return status
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The status of the track. This parameter is only set for `text` type tracks.")
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
 
@@ -496,12 +572,13 @@ public class Track {
         Objects.equals(this.languageCode, track.languageCode) &&
         Objects.equals(this.name, track.name) &&
         Objects.equals(this.closedCaptions, track.closedCaptions) &&
-        Objects.equals(this.passthrough, track.passthrough);
+        Objects.equals(this.passthrough, track.passthrough) &&
+        Objects.equals(this.status, track.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, duration, maxWidth, maxHeight, maxFrameRate, maxChannels, maxChannelLayout, textType, languageCode, name, closedCaptions, passthrough);
+    return Objects.hash(id, type, duration, maxWidth, maxHeight, maxFrameRate, maxChannels, maxChannelLayout, textType, languageCode, name, closedCaptions, passthrough, status);
   }
 
   @Override
@@ -521,6 +598,7 @@ public class Track {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    closedCaptions: ").append(toIndentedString(closedCaptions)).append("\n");
     sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
