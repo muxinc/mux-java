@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * DeliveryReport
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T16:49:42.215909-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
 public class DeliveryReport {
   public static final String SERIALIZED_NAME_LIVE_STREAM_ID = "live_stream_id";
   @SerializedName(SERIALIZED_NAME_LIVE_STREAM_ID)

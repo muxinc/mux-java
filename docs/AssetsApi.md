@@ -48,7 +48,7 @@ public class Example {
     accessToken.setPassword("YOUR PASSWORD");
 
     AssetsApi apiInstance = new AssetsApi(defaultClient);
-    CreateAssetRequest createAssetRequest = {"input":"https://muxed.s3.amazonaws.com/leds.mp4","playback_policy":["public"]}; // CreateAssetRequest | 
+    CreateAssetRequest createAssetRequest = {"input":[{"url":"https://muxed.s3.amazonaws.com/leds.mp4"}],"playback_policy":["public"]}; // CreateAssetRequest | 
     try {
       AssetResponse result = apiInstance.createAsset(createAssetRequest)
             .execute();
@@ -93,6 +93,8 @@ Name | Type | Description  | Notes
 > CreatePlaybackIDResponse createAssetPlaybackId(ASSET_ID, createPlaybackIDRequest).execute();
 
 Create a playback ID
+
+Creates a playback ID that can be used to stream the asset to a viewer.
 
 ### Example
 ```java
@@ -162,6 +164,8 @@ Name | Type | Description  | Notes
 > CreateTrackResponse createAssetTrack(ASSET_ID, createTrackRequest).execute();
 
 Create an asset track
+
+Adds an asset track (for example, subtitles) to an asset.
 
 ### Example
 ```java
@@ -299,6 +303,8 @@ null (empty response body)
 > deleteAssetPlaybackId(ASSET_ID, PLAYBACK_ID).execute();
 
 Delete a playback ID
+
+Deletes a playback ID, rendering it nonfunctional for viewing an asset&#39;s video content. Please note that deleting the playback ID removes access to the underlying asset; a viewer who started playback before the playback ID was deleted may be able to watch the entire video for a limited duration.
 
 ### Example
 ```java
@@ -575,6 +581,8 @@ Name | Type | Description  | Notes
 > GetAssetPlaybackIDResponse getAssetPlaybackId(ASSET_ID, PLAYBACK_ID).execute();
 
 Retrieve a playback ID
+
+Retrieves information about the specified playback ID.
 
 ### Example
 ```java

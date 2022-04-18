@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **PlaybackRestriction** |  |  [optional]
+**data** | [**PlaybackRestriction**](PlaybackRestriction.md) |  |  [optional]
 
 
 

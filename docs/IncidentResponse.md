@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **Incident** |  |  [optional]
+**data** | [**Incident**](Incident.md) |  |  [optional]
 **timeframe** | **java.util.List&lt;Long&gt;** |  |  [optional]
 
 

@@ -86,6 +86,8 @@ Name | Type | Description  | Notes
 
 Create a new direct upload URL
 
+Creates a new direct upload, through which video content can be uploaded for ingest to Mux.
+
 ### Example
 ```java
 // Import classes:
@@ -153,6 +155,8 @@ Name | Type | Description  | Notes
 
 Retrieve a single direct upload&#39;s info
 
+Fetches information about a single direct upload in the current environment.
+
 ### Example
 ```java
 // Import classes:
@@ -219,6 +223,8 @@ Name | Type | Description  | Notes
 > ListUploadsResponse listDirectUploads().limit(limit).page(page).execute();
 
 List direct uploads
+
+Lists currently extant direct uploads in the current environment.
 
 ### Example
 ```java

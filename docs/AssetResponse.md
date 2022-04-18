@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **Asset** |  |  [optional]
+**data** | [**Asset**](Asset.md) |  |  [optional]
 
 
 

@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**referrer** | **ReferrerDomainRestriction** |  |  [optional]
+**referrer** | [**ReferrerDomainRestriction**](ReferrerDomainRestriction.md) |  |  [optional]
 
 
 

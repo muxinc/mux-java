@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 <a name="updateReferrerDomainRestriction"></a>
 # **updateReferrerDomainRestriction**
-> PlaybackRestrictionResponse updateReferrerDomainRestriction(PLAYBACK_RESTRICTION_ID, body).execute();
+> PlaybackRestrictionResponse updateReferrerDomainRestriction(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest).execute();
 
 Update the Referrer Playback Restriction
 
@@ -320,9 +320,9 @@ public class Example {
 
     PlaybackRestrictionsApi apiInstance = new PlaybackRestrictionsApi(defaultClient);
     String PLAYBACK_RESTRICTION_ID = "PLAYBACK_RESTRICTION_ID_example"; // String | ID of the Playback Restriction.
-    ReferrerDomainRestriction body = {"allowed_domains":["*.example.com"],"allow_no_referrer":true}; // ReferrerDomainRestriction | 
+    UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest = {"allowed_domains":["*.example.com"],"allow_no_referrer":true}; // UpdateReferrerDomainRestrictionRequest | 
     try {
-      PlaybackRestrictionResponse result = apiInstance.updateReferrerDomainRestriction(PLAYBACK_RESTRICTION_ID, body)
+      PlaybackRestrictionResponse result = apiInstance.updateReferrerDomainRestriction(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -341,7 +341,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **PLAYBACK_RESTRICTION_ID** | **String**| ID of the Playback Restriction. |
- **body** | **ReferrerDomainRestriction**|  |
+ **updateReferrerDomainRestrictionRequest** | [**UpdateReferrerDomainRestrictionRequest**](UpdateReferrerDomainRestrictionRequest.md)|  |
 
 ### Return type
 

@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **PlaybackID** |  |  [optional]
+**data** | [**PlaybackID**](PlaybackID.md) |  |  [optional]
 
 
 

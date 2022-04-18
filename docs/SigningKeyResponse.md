@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **SigningKey** |  |  [optional]
+**data** | [**SigningKey**](SigningKey.md) |  |  [optional]
 
 
 

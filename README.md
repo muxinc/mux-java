@@ -2,7 +2,7 @@
 
 Mux API
 - API version: v1
-  - Build date: 2022-04-06T16:49:42.215909-04:00[America/New_York]
+  - Build date: 2022-04-18T12:08:06.708135-04:00[America/New_York]
 
 Mux is how developers build online video. This API encompasses both Mux Video and Mux Data functionality to help you build your video-related projects better and faster than ever before.
 
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux.sdk</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>4.0.0-alpha-1</version>
+  <version>4.0.0-alpha-2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux.sdk:mux-sdk-java:4.0.0-alpha-1"
+compile "com.mux.sdk:mux-sdk-java:4.0.0-alpha-2"
 ```
 
 ### Others
@@ -64,7 +64,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-4.0.0-alpha-1.jar`
+* `target/mux-sdk-java-4.0.0-alpha-2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -92,7 +92,7 @@ public class Example {
     accessToken.setPassword("YOUR PASSWORD");
 
     AssetsApi apiInstance = new AssetsApi(defaultClient);
-    CreateAssetRequest createAssetRequest = {"input":"https://muxed.s3.amazonaws.com/leds.mp4","playback_policy":["public"]}; // CreateAssetRequest | 
+    CreateAssetRequest createAssetRequest = {"input":[{"url":"https://muxed.s3.amazonaws.com/leds.mp4"}],"playback_policy":["public"]}; // CreateAssetRequest | 
     try {
       AssetResponse result = apiInstance.createAsset(createAssetRequest)
             .execute();
@@ -155,7 +155,7 @@ Class | Method | HTTP request | Description
 *LiveStreamsApi* | [**getLiveStreamPlaybackId**](docs/LiveStreamsApi.md#getLiveStreamPlaybackId) | **GET** /video/v1/live-streams/{LIVE_STREAM_ID}/playback-ids/{PLAYBACK_ID} | Retrieve a live stream playback ID
 *LiveStreamsApi* | [**getLiveStreamSimulcastTarget**](docs/LiveStreamsApi.md#getLiveStreamSimulcastTarget) | **GET** /video/v1/live-streams/{LIVE_STREAM_ID}/simulcast-targets/{SIMULCAST_TARGET_ID} | Retrieve a Live Stream Simulcast Target
 *LiveStreamsApi* | [**listLiveStreams**](docs/LiveStreamsApi.md#listLiveStreams) | **GET** /video/v1/live-streams | List live streams
-*LiveStreamsApi* | [**resetStreamKey**](docs/LiveStreamsApi.md#resetStreamKey) | **POST** /video/v1/live-streams/{LIVE_STREAM_ID}/reset-stream-key | Reset a live stream’s stream key
+*LiveStreamsApi* | [**resetStreamKey**](docs/LiveStreamsApi.md#resetStreamKey) | **POST** /video/v1/live-streams/{LIVE_STREAM_ID}/reset-stream-key | Reset a live stream&#39;s stream key
 *LiveStreamsApi* | [**signalLiveStreamComplete**](docs/LiveStreamsApi.md#signalLiveStreamComplete) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/complete | Signal a live stream is finished
 *LiveStreamsApi* | [**updateLiveStream**](docs/LiveStreamsApi.md#updateLiveStream) | **PATCH** /video/v1/live-streams/{LIVE_STREAM_ID} | Update a live stream
 *LiveStreamsApi* | [**updateLiveStreamEmbeddedSubtitles**](docs/LiveStreamsApi.md#updateLiveStreamEmbeddedSubtitles) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/embedded-subtitles | Update a live stream&#39;s embedded subtitles

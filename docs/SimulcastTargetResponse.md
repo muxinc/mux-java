@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **SimulcastTarget** |  |  [optional]
+**data** | [**SimulcastTarget**](SimulcastTarget.md) |  |  [optional]
 
 
 

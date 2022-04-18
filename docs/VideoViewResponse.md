@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **VideoView** |  |  [optional]
+**data** | [**VideoView**](VideoView.md) |  |  [optional]
 **timeframe** | **java.util.List&lt;Long&gt;** |  |  [optional]
 
 

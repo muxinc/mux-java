@@ -28,7 +28,7 @@ import java.io.IOException;
  * A list of domains allowed to play your videos.
  */
 @ApiModel(description = "A list of domains allowed to play your videos.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T16:49:42.215909-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
 public class ReferrerDomainRestriction {
   public static final String SERIALIZED_NAME_ALLOWED_DOMAINS = "allowed_domains";
   @SerializedName(SERIALIZED_NAME_ALLOWED_DOMAINS)

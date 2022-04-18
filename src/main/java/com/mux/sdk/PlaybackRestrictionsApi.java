@@ -30,6 +30,7 @@ import java.io.IOException;
 import com.mux.sdk.models.CreatePlaybackRestrictionRequest;
 import com.mux.sdk.models.ListPlaybackRestrictionsResponse;
 import com.mux.sdk.models.PlaybackRestrictionResponse;
+import com.mux.sdk.models.UpdateReferrerDomainRestrictionRequest;
 // TODO: due to import parsing issues for the RDR type; fix in spec in future
 import com.mux.sdk.models.ReferrerDomainRestriction;
 
@@ -634,8 +635,8 @@ public class PlaybackRestrictionsApi {
     public APIlistPlaybackRestrictionsRequest listPlaybackRestrictions() {
         return new APIlistPlaybackRestrictionsRequest();
     }
-    private okhttp3.Call updateReferrerDomainRestrictionCall(String PLAYBACK_RESTRICTION_ID, ReferrerDomainRestriction body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    private okhttp3.Call updateReferrerDomainRestrictionCall(String PLAYBACK_RESTRICTION_ID, UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateReferrerDomainRestrictionRequest;
 
         // create path and map variables
         String localVarPath = "/video/v1/playback-restrictions/{PLAYBACK_RESTRICTION_ID}/referrer"
@@ -666,34 +667,34 @@ public class PlaybackRestrictionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateReferrerDomainRestrictionValidateBeforeCall(String PLAYBACK_RESTRICTION_ID, ReferrerDomainRestriction body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateReferrerDomainRestrictionValidateBeforeCall(String PLAYBACK_RESTRICTION_ID, UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'PLAYBACK_RESTRICTION_ID' is set
         if (PLAYBACK_RESTRICTION_ID == null) {
             throw new ApiException("Missing the required parameter 'PLAYBACK_RESTRICTION_ID' when calling updateReferrerDomainRestriction(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateReferrerDomainRestriction(Async)");
+        // verify the required parameter 'updateReferrerDomainRestrictionRequest' is set
+        if (updateReferrerDomainRestrictionRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateReferrerDomainRestrictionRequest' when calling updateReferrerDomainRestriction(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateReferrerDomainRestrictionCall(PLAYBACK_RESTRICTION_ID, body, _callback);
+        okhttp3.Call localVarCall = updateReferrerDomainRestrictionCall(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<PlaybackRestrictionResponse> updateReferrerDomainRestrictionWithHttpInfo(String PLAYBACK_RESTRICTION_ID, ReferrerDomainRestriction body) throws ApiException {
-        okhttp3.Call localVarCall = updateReferrerDomainRestrictionValidateBeforeCall(PLAYBACK_RESTRICTION_ID, body, null);
+    private ApiResponse<PlaybackRestrictionResponse> updateReferrerDomainRestrictionWithHttpInfo(String PLAYBACK_RESTRICTION_ID, UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateReferrerDomainRestrictionValidateBeforeCall(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest, null);
         Type localVarReturnType = new TypeToken<PlaybackRestrictionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updateReferrerDomainRestrictionAsync(String PLAYBACK_RESTRICTION_ID, ReferrerDomainRestriction body, final ApiCallback<PlaybackRestrictionResponse> _callback) throws ApiException {
+    private okhttp3.Call updateReferrerDomainRestrictionAsync(String PLAYBACK_RESTRICTION_ID, UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest, final ApiCallback<PlaybackRestrictionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateReferrerDomainRestrictionValidateBeforeCall(PLAYBACK_RESTRICTION_ID, body, _callback);
+        okhttp3.Call localVarCall = updateReferrerDomainRestrictionValidateBeforeCall(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest, _callback);
         Type localVarReturnType = new TypeToken<PlaybackRestrictionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -701,11 +702,11 @@ public class PlaybackRestrictionsApi {
 
     public class APIupdateReferrerDomainRestrictionRequest {
         private final String PLAYBACK_RESTRICTION_ID;
-        private final ReferrerDomainRestriction body;
+        private final UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest;
 
-        private APIupdateReferrerDomainRestrictionRequest(String PLAYBACK_RESTRICTION_ID, ReferrerDomainRestriction body) {
+        private APIupdateReferrerDomainRestrictionRequest(String PLAYBACK_RESTRICTION_ID, UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest) {
             this.PLAYBACK_RESTRICTION_ID = PLAYBACK_RESTRICTION_ID;
-            this.body = body;
+            this.updateReferrerDomainRestrictionRequest = updateReferrerDomainRestrictionRequest;
         }
 
         /**
@@ -720,7 +721,7 @@ public class PlaybackRestrictionsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateReferrerDomainRestrictionCall(PLAYBACK_RESTRICTION_ID, body, _callback);
+            return updateReferrerDomainRestrictionCall(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest, _callback);
         }
 
         /**
@@ -734,7 +735,7 @@ public class PlaybackRestrictionsApi {
          </table>
          */
         public PlaybackRestrictionResponse execute() throws ApiException {
-            ApiResponse<PlaybackRestrictionResponse> localVarResp = updateReferrerDomainRestrictionWithHttpInfo(PLAYBACK_RESTRICTION_ID, body);
+            ApiResponse<PlaybackRestrictionResponse> localVarResp = updateReferrerDomainRestrictionWithHttpInfo(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest);
             return localVarResp.getData();
         }
 
@@ -749,7 +750,7 @@ public class PlaybackRestrictionsApi {
          </table>
          */
         public ApiResponse<PlaybackRestrictionResponse> executeWithHttpInfo() throws ApiException {
-            return updateReferrerDomainRestrictionWithHttpInfo(PLAYBACK_RESTRICTION_ID, body);
+            return updateReferrerDomainRestrictionWithHttpInfo(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest);
         }
 
         /**
@@ -764,7 +765,7 @@ public class PlaybackRestrictionsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PlaybackRestrictionResponse> _callback) throws ApiException {
-            return updateReferrerDomainRestrictionAsync(PLAYBACK_RESTRICTION_ID, body, _callback);
+            return updateReferrerDomainRestrictionAsync(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest, _callback);
         }
     }
 
@@ -772,7 +773,7 @@ public class PlaybackRestrictionsApi {
      * Update the Referrer Playback Restriction
      * Allows you to modify the list of domains or change how Mux validates playback requests without the &#x60;Referer&#x60; HTTP header. The Referrer restriction fully replaces the old list with this new list of domains.
      * @param PLAYBACK_RESTRICTION_ID ID of the Playback Restriction. (required)
-     * @param body  (required)
+     * @param updateReferrerDomainRestrictionRequest  (required)
      * @return APIupdateReferrerDomainRestrictionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -780,7 +781,7 @@ public class PlaybackRestrictionsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdateReferrerDomainRestrictionRequest updateReferrerDomainRestriction(String PLAYBACK_RESTRICTION_ID, ReferrerDomainRestriction body) {
-        return new APIupdateReferrerDomainRestrictionRequest(PLAYBACK_RESTRICTION_ID, body);
+    public APIupdateReferrerDomainRestrictionRequest updateReferrerDomainRestriction(String PLAYBACK_RESTRICTION_ID, UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest) {
+        return new APIupdateReferrerDomainRestrictionRequest(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest);
     }
 }

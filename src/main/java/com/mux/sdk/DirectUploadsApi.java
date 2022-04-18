@@ -328,7 +328,7 @@ public class DirectUploadsApi {
 
     /**
      * Create a new direct upload URL
-     * 
+     * Creates a new direct upload, through which video content can be uploaded for ingest to Mux.
      * @param createUploadRequest  (required)
      * @return APIcreateDirectUploadRequest
      * @http.response.details
@@ -469,7 +469,7 @@ public class DirectUploadsApi {
 
     /**
      * Retrieve a single direct upload&#39;s info
-     * 
+     * Fetches information about a single direct upload in the current environment.
      * @param UPLOAD_ID ID of the Upload (required)
      * @return APIgetDirectUploadRequest
      * @http.response.details
@@ -632,7 +632,7 @@ public class DirectUploadsApi {
 
     /**
      * List direct uploads
-     * 
+     * Lists currently extant direct uploads in the current environment.
      * @return APIlistDirectUploadsRequest
      * @http.response.details
      <table summary="Response Details" border="1">

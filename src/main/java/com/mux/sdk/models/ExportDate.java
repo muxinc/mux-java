@@ -29,7 +29,7 @@ import java.time.LocalDate;
 /**
  * ExportDate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T16:49:42.215909-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
 public class ExportDate {
   public static final String SERIALIZED_NAME_EXPORT_DATE = "export_date";
   @SerializedName(SERIALIZED_NAME_EXPORT_DATE)

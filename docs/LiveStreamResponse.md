@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **LiveStream** |  |  [optional]
+**data** | [**LiveStream**](LiveStream.md) |  |  [optional]
 
 
 

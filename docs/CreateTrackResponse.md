@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **Track** |  |  [optional]
+**data** | [**Track**](Track.md) |  |  [optional]
 
 
 

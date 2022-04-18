@@ -3,7 +3,7 @@ apply plugin: 'idea'
 apply plugin: 'java'
 
 group = 'com.mux.sdk'
-version = '4.0.0-alpha-1'
+version = '4.0.0-alpha-2'
 
 buildscript {
     repositories {

@@ -15,12 +15,83 @@ package com.mux.sdk.models;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import com.mux.sdk.models.ReferrerDomainRestriction;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * UpdateReferrerDomainRestrictionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-06T16:49:42.215909-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
 public class UpdateReferrerDomainRestrictionRequest {
+  public static final String SERIALIZED_NAME_ALLOWED_DOMAINS = "allowed_domains";
+  @SerializedName(SERIALIZED_NAME_ALLOWED_DOMAINS)
+  private java.util.List<String> allowedDomains = null;
+
+  public static final String SERIALIZED_NAME_ALLOW_NO_REFERRER = "allow_no_referrer";
+  @SerializedName(SERIALIZED_NAME_ALLOW_NO_REFERRER)
+  private Boolean allowNoReferrer = false;
+
+
+  public UpdateReferrerDomainRestrictionRequest allowedDomains(java.util.List<String> allowedDomains) {
+    
+    this.allowedDomains = allowedDomains;
+    return this;
+  }
+
+  public UpdateReferrerDomainRestrictionRequest addAllowedDomainsItem(String allowedDomainsItem) {
+    if (this.allowedDomains == null) {
+      this.allowedDomains = new java.util.ArrayList<>();
+    }
+    this.allowedDomains.add(allowedDomainsItem);
+    return this;
+  }
+
+   /**
+   * List of domains allowed to play videos. Possible values are   * &#x60;[]&#x60; Empty Array indicates deny video playback requests for all domains   * &#x60;[\&quot;*\&quot;]&#x60; A Single Wildcard &#x60;*&#x60; entry means allow video playback requests from any domain   *  &#x60;[\&quot;*.example.com\&quot;, \&quot;foo.com\&quot;]&#x60; A list of up to 10 domains or valid dns-style wildcards 
+   * @return allowedDomains
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "List of domains allowed to play videos. Possible values are   * `[]` Empty Array indicates deny video playback requests for all domains   * `[\"*\"]` A Single Wildcard `*` entry means allow video playback requests from any domain   *  `[\"*.example.com\", \"foo.com\"]` A list of up to 10 domains or valid dns-style wildcards ")
+
+  public java.util.List<String> getAllowedDomains() {
+    return allowedDomains;
+  }
+
+
+  public void setAllowedDomains(java.util.List<String> allowedDomains) {
+    this.allowedDomains = allowedDomains;
+  }
+
+
+  public UpdateReferrerDomainRestrictionRequest allowNoReferrer(Boolean allowNoReferrer) {
+    
+    this.allowNoReferrer = allowNoReferrer;
+    return this;
+  }
+
+   /**
+   * A boolean to determine whether to allow or deny HTTP requests without &#x60;Referer&#x60; HTTP request header. Playback requests coming from non-web/native applications like iOS, Android or smart TVs will not have a &#x60;Referer&#x60; HTTP header. Set this value to &#x60;true&#x60; to allow these playback requests.
+   * @return allowNoReferrer
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A boolean to determine whether to allow or deny HTTP requests without `Referer` HTTP request header. Playback requests coming from non-web/native applications like iOS, Android or smart TVs will not have a `Referer` HTTP header. Set this value to `true` to allow these playback requests.")
+
+  public Boolean getAllowNoReferrer() {
+    return allowNoReferrer;
+  }
+
+
+  public void setAllowNoReferrer(Boolean allowNoReferrer) {
+    this.allowNoReferrer = allowNoReferrer;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -30,18 +101,22 @@ public class UpdateReferrerDomainRestrictionRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest = (UpdateReferrerDomainRestrictionRequest) o;
+    return Objects.equals(this.allowedDomains, updateReferrerDomainRestrictionRequest.allowedDomains) &&
+        Objects.equals(this.allowNoReferrer, updateReferrerDomainRestrictionRequest.allowNoReferrer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash();
+    return Objects.hash(allowedDomains, allowNoReferrer);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateReferrerDomainRestrictionRequest {\n");
+    sb.append("    allowedDomains: ").append(toIndentedString(allowedDomains)).append("\n");
+    sb.append("    allowNoReferrer: ").append(toIndentedString(allowNoReferrer)).append("\n");
     sb.append("}");
     return sb.toString();
   }

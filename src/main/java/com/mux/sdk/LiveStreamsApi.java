@@ -193,7 +193,7 @@ public class LiveStreamsApi {
 
     /**
      * Create a live stream
-     * 
+     * Creates a new live stream. Once created, an encoder can connect to Mux via the specified stream key and begin streaming to an audience.
      * @param createLiveStreamRequest  (required)
      * @return APIcreateLiveStreamRequest
      * @http.response.details
@@ -341,7 +341,7 @@ public class LiveStreamsApi {
 
     /**
      * Create a live stream playback ID
-     * 
+     * Create a new playback ID for this live stream, through which a viewer can watch the streamed content of the live stream.
      * @param LIVE_STREAM_ID The live stream ID (required)
      * @param createPlaybackIDRequest  (required)
      * @return APIcreateLiveStreamPlaybackIdRequest
@@ -628,7 +628,7 @@ public class LiveStreamsApi {
 
     /**
      * Delete a live stream
-     * 
+     * Deletes a live stream from the current environment. If the live stream is currently active and being streamed to, ingest will be terminated and the encoder will be disconnected.
      * @param LIVE_STREAM_ID The live stream ID (required)
      * @return APIdeleteLiveStreamRequest
      * @http.response.details
@@ -773,7 +773,7 @@ public class LiveStreamsApi {
 
     /**
      * Delete a live stream playback ID
-     * 
+     * Deletes the playback ID for the live stream. This will not disable ingest (as the live stream still exists). New attempts to play back the live stream will fail immediately. However, current viewers will be able to continue watching the stream for some period of time.
      * @param LIVE_STREAM_ID The live stream ID (required)
      * @param PLAYBACK_ID The live stream&#39;s playback ID. (required)
      * @return APIdeleteLiveStreamPlaybackIdRequest
@@ -1492,7 +1492,7 @@ public class LiveStreamsApi {
 
     /**
      * Retrieve a live stream playback ID
-     * 
+     * Fetches information about a live stream&#39;s playback ID, through which a viewer can watch the streamed content from this live stream.
      * @param LIVE_STREAM_ID The live stream ID (required)
      * @param PLAYBACK_ID The live stream&#39;s playback ID. (required)
      * @return APIgetLiveStreamPlaybackIdRequest
@@ -1836,7 +1836,7 @@ public class LiveStreamsApi {
 
     /**
      * List live streams
-     * 
+     * Lists the live streams that currently exist in the current environment.
      * @return APIlistLiveStreamsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1975,7 +1975,7 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Reset a live stream’s stream key
+     * Reset a live stream&#39;s stream key
      * Reset a live stream key if you want to immediately stop the current stream key from working and create a new stream key that can be used for future broadcasts.
      * @param LIVE_STREAM_ID The live stream ID (required)
      * @return APIresetStreamKeyRequest

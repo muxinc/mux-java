@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **Upload** |  |  [optional]
+**data** | [**Upload**](Upload.md) |  |  [optional]
 
 
 
