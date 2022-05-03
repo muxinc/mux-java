@@ -1,0 +1,59 @@
+name: Release to NuGet
+on:
+  push:
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+"
+    - "v[0-9]+.[0-9]+.[0-9]+-[a-z]+.[0-9]+"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java-package: [temurin]
+        java-version: [11]
+
+    steps:
+    - name: Install Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: ${{ matrix.java-package }}
+        java-version: ${{ matrix.java-version }}
+    - name: Check out code
+      uses: actions/checkout@v3
+    - name: Adding /tmp/output
+      run: mkdir -p /tmp/output
+
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+    - name: Verify commit exists in origin/main
+      run: |
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+        git branch --remote --contains | grep origin/main
+    # have we configured the generator?
+    - name: Verify that the version exists in generator-config (have we updated versions?)
+      run: 'sudo apt-get install -y jq && [[ "$(jq -r ".packageVersion" gen/generator-config.json)" == "$VERSION" ]]'
+    # have we run the generator?
+    # TODO: once the OAS document is more readily available publicly, we can pull it here.
+    - name: Verify that the version exists in the built artifact
+      run: grep "version = "$VERSION"' build.gradle
+
+    - name: Build and run tests
+      env:
+        MUX_TOKEN_ID: "${{ secrets.MUX_TOKEN_ID }}"
+        MUX_TOKEN_SECRET: "${{ secrets.MUX_TOKEN_SECRET }}"
+      run: "./gradlew build --no-daemon"
+    - name: Uploading jar
+      uses: actions/upload-artifact@v2
+      with:
+        name: mux_java.jar
+        path: build/libs/mux-sdk-java.jar
+    
+    - name: Publish with Gradle
+      env:
+        ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
+        ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
+        ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
+        ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
+      run: ./gradlew publishToSonatype --no-daemon

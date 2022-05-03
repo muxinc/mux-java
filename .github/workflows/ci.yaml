@@ -16,7 +16,7 @@ jobs:
       env:
         MUX_TOKEN_ID: "${{ secrets.MUX_TOKEN_ID }}"
         MUX_TOKEN_SECRET: "${{ secrets.MUX_TOKEN_SECRET }}"
-      run: "./gradlew build"
+      run: "./gradlew build --no-daemon"
     - name: Uploading jar
       uses: actions/upload-artifact@v2
       with:
