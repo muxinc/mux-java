@@ -1,12 +1,4 @@
 // FYI: this is actually gen/templates/libraries/okhttp-gson/build.gradle.mustache
-apply plugin: 'idea'
-{{#sourceFolder}}
-apply plugin: 'java'
-{{/sourceFolder}}
-
-group = '{{groupId}}'
-version = '{{artifactVersion}}'
-
 buildscript {
     repositories {
         maven { url "https://repo1.maven.org/maven2" }
@@ -18,6 +10,19 @@ buildscript {
     }
 }
 
+plugins {
+    id 'idea'
+    id 'java-library'
+    id 'signing'
+    id 'java'
+    id 'maven'
+    id 'maven-publish'
+    id('io.github.gradle-nexus.publish-plugin') version '1.1.0'
+}
+
+group = '{{groupId}}'
+version = '{{artifactVersion}}'
+
 repositories {
     jcenter()
 }
@@ -27,10 +32,6 @@ sourceSets {
 }
 
 {{/sourceFolder}}
-
-
-apply plugin: 'java'
-apply plugin: 'maven'
 
 {{#java8}}
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -47,8 +48,56 @@ install {
     }
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 jar {
     archiveName 'mux-sdk-java.jar'
+}
+
+nexusPublishing {
+    repositories {
+        sonatype()
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from(components.java)
+            pom {
+                name = '{{artifactId}}'
+                description = '{{artifactDescription}}'
+                url = '{{artifactUrl}}'
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'mux-sdk'
+                        name = 'Mux DevEx Team'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/muxinc/mux-java'
+                    connection = 'scm:git://github.com/muxinc/mux-java.git'
+                    developerConnection = 'scm:git://github.com/muxinc/mux-java.git'
+                }
+            }
+        }
+    }
+}
+
+signing {
+    def signingKey = findProperty("signingKey")
+    def signingPassword = findProperty("signingPassword")
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign publishing.publications.mavenJava
 }
 
 task execute(type:JavaExec) {
