@@ -37,7 +37,7 @@ jobs:
     # have we run the generator?
     # TODO: once the OAS document is more readily available publicly, we can pull it here.
     - name: Verify that the version exists in the built artifact
-      run: grep "version = "$VERSION"' build.gradle
+      run: grep "version = '$VERSION'" build.gradle
 
     - name: Build and run tests
       env:
