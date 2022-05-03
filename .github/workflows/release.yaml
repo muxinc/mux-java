@@ -1,4 +1,4 @@
-name: Release to NuGet
+name: Release to Central
 on:
   push:
     tags:
@@ -33,7 +33,7 @@ jobs:
         git branch --remote --contains | grep origin/main
     # have we configured the generator?
     - name: Verify that the version exists in generator-config (have we updated versions?)
-      run: 'sudo apt-get install -y jq && [[ "$(jq -r ".packageVersion" gen/generator-config.json)" == "$VERSION" ]]'
+      run: 'sudo apt-get install -y jq && [[ "$(jq -r ".artifactVersion" gen/generator-config.json)" == "$VERSION" ]]'
     # have we run the generator?
     # TODO: once the OAS document is more readily available publicly, we can pull it here.
     - name: Verify that the version exists in the built artifact
