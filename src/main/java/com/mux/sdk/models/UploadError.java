@@ -28,7 +28,7 @@ import java.io.IOException;
  * Only set if an error occurred during asset creation.
  */
 @ApiModel(description = "Only set if an error occurred during asset creation.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UploadError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

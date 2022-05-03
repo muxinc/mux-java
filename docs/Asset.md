@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **errors** | [**AssetErrors**](AssetErrors.md) |  |  [optional]
 **perTitleEncode** | **Boolean** |  |  [optional]
 **uploadId** | **String** | Unique identifier for the Direct Upload. This is an optional parameter added when the asset is created from a direct upload. |  [optional]
-**isLive** | **Boolean** | Whether the asset is created from a live stream and the live stream is currently &#x60;active&#x60; and not in &#x60;idle&#x60; state. |  [optional]
+**isLive** | **Boolean** | Indicates whether the live stream that created this asset is currently &#x60;active&#x60; and not in &#x60;idle&#x60; state. This is an optional parameter added when the asset is created from a live stream. |  [optional]
 **passthrough** | **String** | Arbitrary user-supplied metadata set for the asset. Max 255 characters. |  [optional]
 **liveStreamId** | **String** | Unique identifier for the live stream. This is an optional parameter added when the asset is created from a live stream. |  [optional]
 **master** | [**AssetMaster**](AssetMaster.md) |  |  [optional]

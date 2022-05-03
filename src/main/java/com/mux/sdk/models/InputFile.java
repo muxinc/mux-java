@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * InputFile
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InputFile {
   public static final String SERIALIZED_NAME_CONTAINER_FORMAT = "container_format";
   @SerializedName(SERIALIZED_NAME_CONTAINER_FORMAT)

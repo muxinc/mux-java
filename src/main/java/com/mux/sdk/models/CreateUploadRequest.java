@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * CreateUploadRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateUploadRequest {
   public static final String SERIALIZED_NAME_TIMEOUT = "timeout";
   @SerializedName(SERIALIZED_NAME_TIMEOUT)

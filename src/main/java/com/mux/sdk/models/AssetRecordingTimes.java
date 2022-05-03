@@ -28,7 +28,7 @@ import java.time.OffsetDateTime;
 /**
  * AssetRecordingTimes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AssetRecordingTimes {
   public static final String SERIALIZED_NAME_STARTED_AT = "started_at";
   @SerializedName(SERIALIZED_NAME_STARTED_AT)

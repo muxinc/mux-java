@@ -31,7 +31,7 @@ import java.io.IOException;
 /**
  * CreateLiveStreamRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateLiveStreamRequest {
   public static final String SERIALIZED_NAME_PLAYBACK_POLICY = "playback_policy";
   @SerializedName(SERIALIZED_NAME_PLAYBACK_POLICY)

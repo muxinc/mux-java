@@ -34,7 +34,7 @@ import java.io.IOException;
 /**
  * Asset
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Asset {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -628,11 +628,11 @@ public class Asset {
   }
 
    /**
-   * Whether the asset is created from a live stream and the live stream is currently &#x60;active&#x60; and not in &#x60;idle&#x60; state.
+   * Indicates whether the live stream that created this asset is currently &#x60;active&#x60; and not in &#x60;idle&#x60; state. This is an optional parameter added when the asset is created from a live stream.
    * @return isLive
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the asset is created from a live stream and the live stream is currently `active` and not in `idle` state.")
+  @ApiModelProperty(value = "Indicates whether the live stream that created this asset is currently `active` and not in `idle` state. This is an optional parameter added when the asset is created from a live stream.")
 
   public Boolean getIsLive() {
     return isLive;

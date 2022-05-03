@@ -1,6 +1,6 @@
 {
   "!!source": "https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/java.md",
-  "artifactVersion": "4.0.0-alpha-2",
+  "artifactVersion": "0.1.0-beta.1",
   "apiPackage": "com.mux.sdk",
   "artifactDescription": "Mux SDK for Java",
   "artifactId": "mux-sdk-java",
@@ -12,6 +12,7 @@
   "developerOrganizationUrl": "https://mux.com",
   "fullJavaUtil": true,
   "groupId": "com.mux.sdk",
+  "hideGenerationTimestamp": true,
   "java8": true,
   "library": "okhttp-gson",
   "modelPackage": "com.mux.sdk.models",

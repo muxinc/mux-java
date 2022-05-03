@@ -2,7 +2,6 @@
 
 Mux API
 - API version: v1
-  - Build date: 2022-04-18T12:08:06.708135-04:00[America/New_York]
 
 Mux is how developers build online video. This API encompasses both Mux Video and Mux Data functionality to help you build your video-related projects better and faster than ever before.
 
@@ -41,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux.sdk</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>4.0.0-alpha-2</version>
+  <version>0.1.0-beta.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -51,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux.sdk:mux-sdk-java:4.0.0-alpha-2"
+compile "com.mux.sdk:mux-sdk-java:0.1.0-beta.1"
 ```
 
 ### Others
@@ -64,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-4.0.0-alpha-2.jar`
+* `target/mux-sdk-java-0.1.0-beta.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

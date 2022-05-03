@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * RealTimeHistogramTimeseriesBucketValues
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-04-18T12:08:06.708135-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RealTimeHistogramTimeseriesBucketValues {
   public static final String SERIALIZED_NAME_PERCENTAGE = "percentage";
   @SerializedName(SERIALIZED_NAME_PERCENTAGE)
