@@ -58,4 +58,4 @@ jobs:
         ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
       run: |
         ./scripts/publish.sh
-        ./gradlew publishToSonatype --no-daemon
+        ./gradlew publishToSonatype --no-daemon --debug
