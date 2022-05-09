@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.mux.sdk</groupId>
+  <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
   <version>0.1.0-beta.1</version>
   <scope>compile</scope>
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux.sdk:mux-sdk-java:0.1.0-beta.1"
+compile "com.mux:mux-sdk-java:0.1.0-beta.1"
 ```
 
 ### Others

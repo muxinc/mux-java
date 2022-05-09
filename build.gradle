@@ -1,30 +1,25 @@
 // FYI: this is actually gen/templates/libraries/okhttp-gson/build.gradle.mustache
 buildscript {
     repositories {
-        maven { url "https://repo1.maven.org/maven2" }
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.+'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
 plugins {
     id 'idea'
-    id 'java-library'
     id 'signing'
     id 'java'
-    id 'maven'
     id 'maven-publish'
     id('io.github.gradle-nexus.publish-plugin') version '1.1.0'
 }
 
-group = 'com.mux.sdk'
+group = 'com.mux'
 version = '0.1.0-beta.1'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 sourceSets {
     main.java.srcDirs = ['src/main/java']
@@ -34,19 +29,23 @@ sourceSets {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-install {
-    repositories.mavenInstaller {
-        pom.artifactId = 'mux-sdk-java'
-    }
+tasks.named('jar') {
+    archiveBaseName = 'mux-sdk-java'
 }
 
-java {
-    withJavadocJar()
-    withSourcesJar()
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
 }
 
-jar {
-    archiveName 'mux-sdk-java.jar'
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
 }
 
 nexusPublishing {
@@ -60,6 +59,7 @@ publishing {
         mavenJava(MavenPublication) {
             from(components.java)
             pom {
+                groupId = 'com.mux'
                 name = 'mux-sdk-java'
                 description = 'Mux SDK for Java'
                 url = 'https://github.com/muxinc/mux-java'
@@ -87,14 +87,14 @@ publishing {
 
 signing {
     def signingKey = findProperty("signingKey")
-    System.out.println("signing key length: " + signingKey.toString().length())
     def signingPassword = findProperty("signingPassword")
+
     useInMemoryPgpKeys(signingKey, signingPassword)
     sign publishing.publications.mavenJava
 }
 
 task execute(type:JavaExec) {
-    main = System.getProperty('mainClass')
+    mainClass = System.getProperty('mainClass')
     classpath = sourceSets.main.runtimeClasspath
 }
 
