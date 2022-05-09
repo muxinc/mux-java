@@ -11,7 +11,7 @@
   "developerOrganization": "Mux",
   "developerOrganizationUrl": "https://mux.com",
   "fullJavaUtil": true,
-  "groupId": "com.mux.sdk",
+  "groupId": "com.mux",
   "hideGenerationTimestamp": true,
   "java8": true,
   "library": "okhttp-gson",

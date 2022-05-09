@@ -47,8 +47,8 @@ jobs:
     - name: Uploading jar
       uses: actions/upload-artifact@v2
       with:
-        name: mux_java.jar
-        path: build/libs/mux-sdk-java.jar
+        name: mux_java
+        path: build/libs/*.jar
     
     - name: Publish with Gradle
       env:
