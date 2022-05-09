@@ -39,6 +39,9 @@ jobs:
     - name: Verify that the version exists in the built artifact
       run: grep "version = '$VERSION'" build.gradle
 
+    - name: Get Gradle info
+      run: "./gradlew --version"
+      
     - name: Build and run tests
       env:
         MUX_TOKEN_ID: "${{ secrets.MUX_TOKEN_ID }}"
