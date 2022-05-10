@@ -41,19 +41,9 @@ tasks.named('jar') {
     archiveBaseName = 'mux-sdk-java'
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
+java {
+    withSourcesJar()
+    withJavadocJar()
 }
 
 nexusPublishing {
