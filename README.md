@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.1.0"
+compile "com.mux:mux-sdk-java:0.2.0"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.1.0.jar`
+* `target/mux-sdk-java-0.2.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -182,6 +182,15 @@ Class | Method | HTTP request | Description
 *RealTimeApi* | [**getRealtimeTimeseries**](docs/RealTimeApi.md#getRealtimeTimeseries) | **GET** /data/v1/realtime/metrics/{REALTIME_METRIC_ID}/timeseries | Get Real-Time Timeseries
 *RealTimeApi* | [**listRealtimeDimensions**](docs/RealTimeApi.md#listRealtimeDimensions) | **GET** /data/v1/realtime/dimensions | List Real-Time Dimensions
 *RealTimeApi* | [**listRealtimeMetrics**](docs/RealTimeApi.md#listRealtimeMetrics) | **GET** /data/v1/realtime/metrics | List Real-Time Metrics
+*SpacesApi* | [**createSpace**](docs/SpacesApi.md#createSpace) | **POST** /video/v1/spaces | Create a space
+*SpacesApi* | [**createSpaceBroadcast**](docs/SpacesApi.md#createSpaceBroadcast) | **POST** /video/v1/spaces/${SPACE_ID}/broadcasts | Create a space broadcast
+*SpacesApi* | [**deleteSpace**](docs/SpacesApi.md#deleteSpace) | **DELETE** /video/v1/spaces/${SPACE_ID} | Delete a space
+*SpacesApi* | [**deleteSpaceBroadcast**](docs/SpacesApi.md#deleteSpaceBroadcast) | **DELETE** /video/v1/spaces/${SPACE_ID}/broadcasts/${BROADCAST_ID} | Delete a space broadcast
+*SpacesApi* | [**getSpace**](docs/SpacesApi.md#getSpace) | **GET** /video/v1/spaces/${SPACE_ID} | Retrieve a space
+*SpacesApi* | [**getSpaceBroadcast**](docs/SpacesApi.md#getSpaceBroadcast) | **GET** /video/v1/spaces/${SPACE_ID}/broadcasts/${BROADCAST_ID} | Retrieve space broadcast
+*SpacesApi* | [**listSpaces**](docs/SpacesApi.md#listSpaces) | **GET** /video/v1/spaces | List spaces
+*SpacesApi* | [**startSpaceBroadcast**](docs/SpacesApi.md#startSpaceBroadcast) | **POST** /video/v1/spaces/${SPACE_ID}/broadcasts/${BROADCAST_ID}/start | Start a space broadcast
+*SpacesApi* | [**stopSpaceBroadcast**](docs/SpacesApi.md#stopSpaceBroadcast) | **POST** /video/v1/spaces/${SPACE_ID}/broadcasts/${BROADCAST_ID}/stop | Stop a space broadcast
 *UrlSigningKeysApi* | [**createUrlSigningKey**](docs/UrlSigningKeysApi.md#createUrlSigningKey) | **POST** /video/v1/signing-keys | Create a URL signing key
 *UrlSigningKeysApi* | [**deleteUrlSigningKey**](docs/UrlSigningKeysApi.md#deleteUrlSigningKey) | **DELETE** /video/v1/signing-keys/{SIGNING_KEY_ID} | Delete a URL signing key
 *UrlSigningKeysApi* | [**getUrlSigningKey**](docs/UrlSigningKeysApi.md#getUrlSigningKey) | **GET** /video/v1/signing-keys/{SIGNING_KEY_ID} | Retrieve a URL signing key
@@ -202,12 +211,19 @@ Class | Method | HTTP request | Description
  - [AssetStaticRenditions](docs/AssetStaticRenditions.md)
  - [AssetStaticRenditionsFiles](docs/AssetStaticRenditionsFiles.md)
  - [BreakdownValue](docs/BreakdownValue.md)
+ - [Broadcast](docs/Broadcast.md)
+ - [BroadcastLayout](docs/BroadcastLayout.md)
+ - [BroadcastResolution](docs/BroadcastResolution.md)
+ - [BroadcastResponse](docs/BroadcastResponse.md)
+ - [BroadcastStatus](docs/BroadcastStatus.md)
  - [CreateAssetRequest](docs/CreateAssetRequest.md)
+ - [CreateBroadcastRequest](docs/CreateBroadcastRequest.md)
  - [CreateLiveStreamRequest](docs/CreateLiveStreamRequest.md)
  - [CreatePlaybackIDRequest](docs/CreatePlaybackIDRequest.md)
  - [CreatePlaybackIDResponse](docs/CreatePlaybackIDResponse.md)
  - [CreatePlaybackRestrictionRequest](docs/CreatePlaybackRestrictionRequest.md)
  - [CreateSimulcastTargetRequest](docs/CreateSimulcastTargetRequest.md)
+ - [CreateSpaceRequest](docs/CreateSpaceRequest.md)
  - [CreateTrackRequest](docs/CreateTrackRequest.md)
  - [CreateTrackResponse](docs/CreateTrackResponse.md)
  - [CreateUploadRequest](docs/CreateUploadRequest.md)
@@ -262,6 +278,7 @@ Class | Method | HTTP request | Description
  - [ListRealTimeMetricsResponse](docs/ListRealTimeMetricsResponse.md)
  - [ListRelatedIncidentsResponse](docs/ListRelatedIncidentsResponse.md)
  - [ListSigningKeysResponse](docs/ListSigningKeysResponse.md)
+ - [ListSpacesResponse](docs/ListSpacesResponse.md)
  - [ListUploadsResponse](docs/ListUploadsResponse.md)
  - [ListVideoViewExportsResponse](docs/ListVideoViewExportsResponse.md)
  - [ListVideoViewsResponse](docs/ListVideoViewsResponse.md)
@@ -288,6 +305,12 @@ Class | Method | HTTP request | Description
  - [SigningKeyResponse](docs/SigningKeyResponse.md)
  - [SimulcastTarget](docs/SimulcastTarget.md)
  - [SimulcastTargetResponse](docs/SimulcastTargetResponse.md)
+ - [Space](docs/Space.md)
+ - [SpaceResponse](docs/SpaceResponse.md)
+ - [SpaceStatus](docs/SpaceStatus.md)
+ - [SpaceType](docs/SpaceType.md)
+ - [StartSpaceBroadcastResponse](docs/StartSpaceBroadcastResponse.md)
+ - [StopSpaceBroadcastResponse](docs/StopSpaceBroadcastResponse.md)
  - [Track](docs/Track.md)
  - [UpdateAssetMP4SupportRequest](docs/UpdateAssetMP4SupportRequest.md)
  - [UpdateAssetMasterAccessRequest](docs/UpdateAssetMasterAccessRequest.md)
