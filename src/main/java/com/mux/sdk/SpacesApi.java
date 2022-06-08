@@ -1259,7 +1259,7 @@ public class SpacesApi {
 
     /**
      * Start a space broadcast
-     * Starts broadcasting a space to the associated destination.
+     * Starts broadcasting a space to the associated destination. Broadcasts can only be started when the space is &#x60;active&#x60; (when there are participants connected).
      * @param SPACE_ID The space ID. (required)
      * @param BROADCAST_ID The broadcast ID. (required)
      * @return APIstartSpaceBroadcastRequest

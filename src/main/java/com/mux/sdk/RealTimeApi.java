@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import java.math.BigDecimal;
 import com.mux.sdk.models.GetRealTimeBreakdownResponse;
 import com.mux.sdk.models.GetRealTimeHistogramTimeseriesResponse;
 import com.mux.sdk.models.GetRealTimeTimeseriesResponse;
@@ -57,7 +56,7 @@ public class RealTimeApi {
         this.localVarApiClient = apiClient;
     }
 
-    private okhttp3.Call getRealtimeBreakdownCall(String REALTIME_METRIC_ID, String dimension, BigDecimal timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRealtimeBreakdownCall(String REALTIME_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -109,7 +108,7 @@ public class RealTimeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRealtimeBreakdownValidateBeforeCall(String REALTIME_METRIC_ID, String dimension, BigDecimal timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRealtimeBreakdownValidateBeforeCall(String REALTIME_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'REALTIME_METRIC_ID' is set
         if (REALTIME_METRIC_ID == null) {
@@ -123,13 +122,13 @@ public class RealTimeApi {
     }
 
 
-    private ApiResponse<GetRealTimeBreakdownResponse> getRealtimeBreakdownWithHttpInfo(String REALTIME_METRIC_ID, String dimension, BigDecimal timestamp, java.util.List<String> filters, String orderBy, String orderDirection) throws ApiException {
+    private ApiResponse<GetRealTimeBreakdownResponse> getRealtimeBreakdownWithHttpInfo(String REALTIME_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection) throws ApiException {
         okhttp3.Call localVarCall = getRealtimeBreakdownValidateBeforeCall(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, null);
         Type localVarReturnType = new TypeToken<GetRealTimeBreakdownResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getRealtimeBreakdownAsync(String REALTIME_METRIC_ID, String dimension, BigDecimal timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback<GetRealTimeBreakdownResponse> _callback) throws ApiException {
+    private okhttp3.Call getRealtimeBreakdownAsync(String REALTIME_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback<GetRealTimeBreakdownResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRealtimeBreakdownValidateBeforeCall(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, _callback);
         Type localVarReturnType = new TypeToken<GetRealTimeBreakdownResponse>(){}.getType();
@@ -140,7 +139,7 @@ public class RealTimeApi {
     public class APIgetRealtimeBreakdownRequest {
         private final String REALTIME_METRIC_ID;
         private String dimension;
-        private BigDecimal timestamp;
+        private Integer timestamp;
         private java.util.List<String> filters;
         private String orderBy;
         private String orderDirection;
@@ -164,7 +163,7 @@ public class RealTimeApi {
          * @param timestamp Timestamp to limit results by. This value must be provided as a unix timestamp. Defaults to the current unix timestamp. (optional)
          * @return APIgetRealtimeBreakdownRequest
          */
-        public APIgetRealtimeBreakdownRequest timestamp(BigDecimal timestamp) {
+        public APIgetRealtimeBreakdownRequest timestamp(Integer timestamp) {
             this.timestamp = timestamp;
             return this;
         }
