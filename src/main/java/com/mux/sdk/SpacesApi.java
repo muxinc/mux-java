@@ -207,7 +207,7 @@ public class SpacesApi {
         Object localVarPostBody = createBroadcastRequest;
 
         // create path and map variables
-        String localVarPath = "/video/v1/spaces/${SPACE_ID}/broadcasts"
+        String localVarPath = "/video/v1/spaces/{SPACE_ID}/broadcasts"
             .replaceAll("\\{" + "SPACE_ID" + "\\}", localVarApiClient.escapeString(SPACE_ID.toString()));
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
@@ -361,7 +361,7 @@ public class SpacesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/spaces/${SPACE_ID}"
+        String localVarPath = "/video/v1/spaces/{SPACE_ID}"
             .replaceAll("\\{" + "SPACE_ID" + "\\}", localVarApiClient.escapeString(SPACE_ID.toString()));
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
@@ -503,7 +503,7 @@ public class SpacesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/spaces/${SPACE_ID}/broadcasts/${BROADCAST_ID}"
+        String localVarPath = "/video/v1/spaces/{SPACE_ID}/broadcasts/{BROADCAST_ID}"
             .replaceAll("\\{" + "SPACE_ID" + "\\}", localVarApiClient.escapeString(SPACE_ID.toString()))
             .replaceAll("\\{" + "BROADCAST_ID" + "\\}", localVarApiClient.escapeString(BROADCAST_ID.toString()));
 
@@ -654,7 +654,7 @@ public class SpacesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/spaces/${SPACE_ID}"
+        String localVarPath = "/video/v1/spaces/{SPACE_ID}"
             .replaceAll("\\{" + "SPACE_ID" + "\\}", localVarApiClient.escapeString(SPACE_ID.toString()));
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
@@ -800,7 +800,7 @@ public class SpacesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/spaces/${SPACE_ID}/broadcasts/${BROADCAST_ID}"
+        String localVarPath = "/video/v1/spaces/{SPACE_ID}/broadcasts/{BROADCAST_ID}"
             .replaceAll("\\{" + "SPACE_ID" + "\\}", localVarApiClient.escapeString(SPACE_ID.toString()))
             .replaceAll("\\{" + "BROADCAST_ID" + "\\}", localVarApiClient.escapeString(BROADCAST_ID.toString()));
 
@@ -1122,7 +1122,7 @@ public class SpacesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/spaces/${SPACE_ID}/broadcasts/${BROADCAST_ID}/start"
+        String localVarPath = "/video/v1/spaces/{SPACE_ID}/broadcasts/{BROADCAST_ID}/start"
             .replaceAll("\\{" + "SPACE_ID" + "\\}", localVarApiClient.escapeString(SPACE_ID.toString()))
             .replaceAll("\\{" + "BROADCAST_ID" + "\\}", localVarApiClient.escapeString(BROADCAST_ID.toString()));
 
@@ -1277,7 +1277,7 @@ public class SpacesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/spaces/${SPACE_ID}/broadcasts/${BROADCAST_ID}/stop"
+        String localVarPath = "/video/v1/spaces/{SPACE_ID}/broadcasts/{BROADCAST_ID}/stop"
             .replaceAll("\\{" + "SPACE_ID" + "\\}", localVarApiClient.escapeString(SPACE_ID.toString()))
             .replaceAll("\\{" + "BROADCAST_ID" + "\\}", localVarApiClient.escapeString(BROADCAST_ID.toString()));
 
