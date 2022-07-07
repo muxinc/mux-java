@@ -150,7 +150,7 @@ public class UpdateLiveStreamRequest {
    /**
    * When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset.
    * minimum: 0.1
-   * maximum: 300
+   * maximum: 1800
    * @return reconnectWindow
   **/
   @javax.annotation.Nullable

@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import com.mux.sdk.models.CreateAssetRequest;
 import com.mux.sdk.models.CreateSimulcastTargetRequest;
 import com.mux.sdk.models.LiveStreamEmbeddedSubtitleSettings;
+import com.mux.sdk.models.LiveStreamGeneratedSubtitleSettings;
 import com.mux.sdk.models.PlaybackPolicy;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -56,6 +57,10 @@ public class CreateLiveStreamRequest {
   public static final String SERIALIZED_NAME_EMBEDDED_SUBTITLES = "embedded_subtitles";
   @SerializedName(SERIALIZED_NAME_EMBEDDED_SUBTITLES)
   private java.util.List<LiveStreamEmbeddedSubtitleSettings> embeddedSubtitles = null;
+
+  public static final String SERIALIZED_NAME_GENERATED_SUBTITLES = "generated_subtitles";
+  @SerializedName(SERIALIZED_NAME_GENERATED_SUBTITLES)
+  private java.util.List<LiveStreamGeneratedSubtitleSettings> generatedSubtitles = null;
 
   public static final String SERIALIZED_NAME_REDUCED_LATENCY = "reduced_latency";
   @SerializedName(SERIALIZED_NAME_REDUCED_LATENCY)
@@ -194,7 +199,7 @@ public class CreateLiveStreamRequest {
    /**
    * When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset. Defaults to 60 seconds on the API if not specified.
    * minimum: 0.1
-   * maximum: 300
+   * maximum: 1800
    * @return reconnectWindow
   **/
   @javax.annotation.Nullable
@@ -284,6 +289,37 @@ public class CreateLiveStreamRequest {
 
   public void setEmbeddedSubtitles(java.util.List<LiveStreamEmbeddedSubtitleSettings> embeddedSubtitles) {
     this.embeddedSubtitles = embeddedSubtitles;
+  }
+
+
+  public CreateLiveStreamRequest generatedSubtitles(java.util.List<LiveStreamGeneratedSubtitleSettings> generatedSubtitles) {
+    
+    this.generatedSubtitles = generatedSubtitles;
+    return this;
+  }
+
+  public CreateLiveStreamRequest addGeneratedSubtitlesItem(LiveStreamGeneratedSubtitleSettings generatedSubtitlesItem) {
+    if (this.generatedSubtitles == null) {
+      this.generatedSubtitles = new java.util.ArrayList<>();
+    }
+    this.generatedSubtitles.add(generatedSubtitlesItem);
+    return this;
+  }
+
+   /**
+   * Configure the incoming live stream to include subtitles created with automatic speech recognition. Each Asset created from a live stream with &#x60;generated_subtitles&#x60; configured will automatically receive two text tracks. The first of these will have a &#x60;text_source&#x60; value of &#x60;generated_live&#x60;, and will be available with &#x60;ready&#x60; status as soon as the stream is live. The second text track will have a &#x60;text_source&#x60; value of &#x60;generated_live_final&#x60; and will contain subtitles with improved accuracy, timing, and formatting. However, &#x60;generated_live_final&#x60; tracks will not be available in &#x60;ready&#x60; status until the live stream ends. If an Asset has both &#x60;generated_live&#x60; and &#x60;generated_live_final&#x60; tracks that are &#x60;ready&#x60;, then only the &#x60;generated_live_final&#x60; track will be included during playback.
+   * @return generatedSubtitles
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Configure the incoming live stream to include subtitles created with automatic speech recognition. Each Asset created from a live stream with `generated_subtitles` configured will automatically receive two text tracks. The first of these will have a `text_source` value of `generated_live`, and will be available with `ready` status as soon as the stream is live. The second text track will have a `text_source` value of `generated_live_final` and will contain subtitles with improved accuracy, timing, and formatting. However, `generated_live_final` tracks will not be available in `ready` status until the live stream ends. If an Asset has both `generated_live` and `generated_live_final` tracks that are `ready`, then only the `generated_live_final` track will be included during playback.")
+
+  public java.util.List<LiveStreamGeneratedSubtitleSettings> getGeneratedSubtitles() {
+    return generatedSubtitles;
+  }
+
+
+  public void setGeneratedSubtitles(java.util.List<LiveStreamGeneratedSubtitleSettings> generatedSubtitles) {
+    this.generatedSubtitles = generatedSubtitles;
   }
 
 
@@ -450,6 +486,7 @@ public class CreateLiveStreamRequest {
         Objects.equals(this.passthrough, createLiveStreamRequest.passthrough) &&
         Objects.equals(this.audioOnly, createLiveStreamRequest.audioOnly) &&
         Objects.equals(this.embeddedSubtitles, createLiveStreamRequest.embeddedSubtitles) &&
+        Objects.equals(this.generatedSubtitles, createLiveStreamRequest.generatedSubtitles) &&
         Objects.equals(this.reducedLatency, createLiveStreamRequest.reducedLatency) &&
         Objects.equals(this.lowLatency, createLiveStreamRequest.lowLatency) &&
         Objects.equals(this.latencyMode, createLiveStreamRequest.latencyMode) &&
@@ -460,7 +497,7 @@ public class CreateLiveStreamRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(playbackPolicy, newAssetSettings, reconnectWindow, passthrough, audioOnly, embeddedSubtitles, reducedLatency, lowLatency, latencyMode, test, simulcastTargets, maxContinuousDuration);
+    return Objects.hash(playbackPolicy, newAssetSettings, reconnectWindow, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reducedLatency, lowLatency, latencyMode, test, simulcastTargets, maxContinuousDuration);
   }
 
   @Override
@@ -473,6 +510,7 @@ public class CreateLiveStreamRequest {
     sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
     sb.append("    audioOnly: ").append(toIndentedString(audioOnly)).append("\n");
     sb.append("    embeddedSubtitles: ").append(toIndentedString(embeddedSubtitles)).append("\n");
+    sb.append("    generatedSubtitles: ").append(toIndentedString(generatedSubtitles)).append("\n");
     sb.append("    reducedLatency: ").append(toIndentedString(reducedLatency)).append("\n");
     sb.append("    lowLatency: ").append(toIndentedString(lowLatency)).append("\n");
     sb.append("    latencyMode: ").append(toIndentedString(latencyMode)).append("\n");

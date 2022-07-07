@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**signalLiveStreamComplete**](LiveStreamsApi.md#signalLiveStreamComplete) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/complete | Signal a live stream is finished
 [**updateLiveStream**](LiveStreamsApi.md#updateLiveStream) | **PATCH** /video/v1/live-streams/{LIVE_STREAM_ID} | Update a live stream
 [**updateLiveStreamEmbeddedSubtitles**](LiveStreamsApi.md#updateLiveStreamEmbeddedSubtitles) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/embedded-subtitles | Update a live stream&#39;s embedded subtitles
+[**updateLiveStreamGeneratedSubtitles**](LiveStreamsApi.md#updateLiveStreamGeneratedSubtitles) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/generated-subtitles | Update a live stream&#39;s generated subtitles
 
 
 <a name="createLiveStream"></a>
@@ -1130,6 +1131,77 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **LIVE_STREAM_ID** | **String**| The live stream ID |
  **updateLiveStreamEmbeddedSubtitlesRequest** | [**UpdateLiveStreamEmbeddedSubtitlesRequest**](UpdateLiveStreamEmbeddedSubtitlesRequest.md)|  |
+
+### Return type
+
+[**LiveStreamResponse**](LiveStreamResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="updateLiveStreamGeneratedSubtitles"></a>
+# **updateLiveStreamGeneratedSubtitles**
+> LiveStreamResponse updateLiveStreamGeneratedSubtitles(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest).execute();
+
+Update a live stream&#39;s generated subtitles
+
+Updates a live stream&#39;s automatic-speech-recognition-generated subtitle configuration. Automatic speech recognition subtitles can be removed by sending an empty array in the request payload. 
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.LiveStreamsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
+    String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
+    UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest = {"generated_subtitles":[{"name":"English CC (ASR)","language":"en","passthrough":"Example"}]}; // UpdateLiveStreamGeneratedSubtitlesRequest | 
+    try {
+      LiveStreamResponse result = apiInstance.updateLiveStreamGeneratedSubtitles(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#updateLiveStreamGeneratedSubtitles");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **LIVE_STREAM_ID** | **String**| The live stream ID |
+ **updateLiveStreamGeneratedSubtitlesRequest** | [**UpdateLiveStreamGeneratedSubtitlesRequest**](UpdateLiveStreamGeneratedSubtitlesRequest.md)|  |
 
 ### Return type
 

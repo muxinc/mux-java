@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.2.3</version>
+  <version>0.3.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.2.3"
+compile "com.mux:mux-sdk-java:0.3.0"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.2.3.jar`
+* `target/mux-sdk-java-0.3.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -166,6 +166,7 @@ Class | Method | HTTP request | Description
 *LiveStreamsApi* | [**signalLiveStreamComplete**](docs/LiveStreamsApi.md#signalLiveStreamComplete) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/complete | Signal a live stream is finished
 *LiveStreamsApi* | [**updateLiveStream**](docs/LiveStreamsApi.md#updateLiveStream) | **PATCH** /video/v1/live-streams/{LIVE_STREAM_ID} | Update a live stream
 *LiveStreamsApi* | [**updateLiveStreamEmbeddedSubtitles**](docs/LiveStreamsApi.md#updateLiveStreamEmbeddedSubtitles) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/embedded-subtitles | Update a live stream&#39;s embedded subtitles
+*LiveStreamsApi* | [**updateLiveStreamGeneratedSubtitles**](docs/LiveStreamsApi.md#updateLiveStreamGeneratedSubtitles) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/generated-subtitles | Update a live stream&#39;s generated subtitles
 *MetricsApi* | [**getMetricTimeseriesData**](docs/MetricsApi.md#getMetricTimeseriesData) | **GET** /data/v1/metrics/{METRIC_ID}/timeseries | Get metric timeseries data
 *MetricsApi* | [**getOverallValues**](docs/MetricsApi.md#getOverallValues) | **GET** /data/v1/metrics/{METRIC_ID}/overall | Get Overall values
 *MetricsApi* | [**listAllMetricValues**](docs/MetricsApi.md#listAllMetricValues) | **GET** /data/v1/metrics/comparison | List all metric values
@@ -191,6 +192,11 @@ Class | Method | HTTP request | Description
 *SpacesApi* | [**listSpaces**](docs/SpacesApi.md#listSpaces) | **GET** /video/v1/spaces | List spaces
 *SpacesApi* | [**startSpaceBroadcast**](docs/SpacesApi.md#startSpaceBroadcast) | **POST** /video/v1/spaces/{SPACE_ID}/broadcasts/{BROADCAST_ID}/start | Start a space broadcast
 *SpacesApi* | [**stopSpaceBroadcast**](docs/SpacesApi.md#stopSpaceBroadcast) | **POST** /video/v1/spaces/{SPACE_ID}/broadcasts/{BROADCAST_ID}/stop | Stop a space broadcast
+*TranscriptionVocabulariesApi* | [**createTranscriptionVocabulary**](docs/TranscriptionVocabulariesApi.md#createTranscriptionVocabulary) | **POST** /video/v1/transcription-vocabularies | Create a Transcription Vocabulary
+*TranscriptionVocabulariesApi* | [**deleteTranscriptionVocabulary**](docs/TranscriptionVocabulariesApi.md#deleteTranscriptionVocabulary) | **DELETE** /video/v1/transcription-vocabularies/{TRANSCRIPTION_VOCABULARY_ID} | Delete a Transcription Vocabulary
+*TranscriptionVocabulariesApi* | [**getTranscriptionVocabulary**](docs/TranscriptionVocabulariesApi.md#getTranscriptionVocabulary) | **GET** /video/v1/transcription-vocabularies/{TRANSCRIPTION_VOCABULARY_ID} | Retrieve a Transcription Vocabulary
+*TranscriptionVocabulariesApi* | [**listTranscriptionVocabularies**](docs/TranscriptionVocabulariesApi.md#listTranscriptionVocabularies) | **GET** /video/v1/transcription-vocabularies | List Transcription Vocabularies
+*TranscriptionVocabulariesApi* | [**updateTranscriptionVocabulary**](docs/TranscriptionVocabulariesApi.md#updateTranscriptionVocabulary) | **PUT** /video/v1/transcription-vocabularies/{TRANSCRIPTION_VOCABULARY_ID} | Update a Transcription Vocabulary
 *UrlSigningKeysApi* | [**createUrlSigningKey**](docs/UrlSigningKeysApi.md#createUrlSigningKey) | **POST** /video/v1/signing-keys | Create a URL signing key
 *UrlSigningKeysApi* | [**deleteUrlSigningKey**](docs/UrlSigningKeysApi.md#deleteUrlSigningKey) | **DELETE** /video/v1/signing-keys/{SIGNING_KEY_ID} | Delete a URL signing key
 *UrlSigningKeysApi* | [**getUrlSigningKey**](docs/UrlSigningKeysApi.md#getUrlSigningKey) | **GET** /video/v1/signing-keys/{SIGNING_KEY_ID} | Retrieve a URL signing key
@@ -226,6 +232,7 @@ Class | Method | HTTP request | Description
  - [CreateSpaceRequest](docs/CreateSpaceRequest.md)
  - [CreateTrackRequest](docs/CreateTrackRequest.md)
  - [CreateTrackResponse](docs/CreateTrackResponse.md)
+ - [CreateTranscriptionVocabularyRequest](docs/CreateTranscriptionVocabularyRequest.md)
  - [CreateUploadRequest](docs/CreateUploadRequest.md)
  - [DeliveryReport](docs/DeliveryReport.md)
  - [DimensionValue](docs/DimensionValue.md)
@@ -279,11 +286,13 @@ Class | Method | HTTP request | Description
  - [ListRelatedIncidentsResponse](docs/ListRelatedIncidentsResponse.md)
  - [ListSigningKeysResponse](docs/ListSigningKeysResponse.md)
  - [ListSpacesResponse](docs/ListSpacesResponse.md)
+ - [ListTranscriptionVocabulariesResponse](docs/ListTranscriptionVocabulariesResponse.md)
  - [ListUploadsResponse](docs/ListUploadsResponse.md)
  - [ListVideoViewExportsResponse](docs/ListVideoViewExportsResponse.md)
  - [ListVideoViewsResponse](docs/ListVideoViewsResponse.md)
  - [LiveStream](docs/LiveStream.md)
  - [LiveStreamEmbeddedSubtitleSettings](docs/LiveStreamEmbeddedSubtitleSettings.md)
+ - [LiveStreamGeneratedSubtitleSettings](docs/LiveStreamGeneratedSubtitleSettings.md)
  - [LiveStreamResponse](docs/LiveStreamResponse.md)
  - [LiveStreamStatus](docs/LiveStreamStatus.md)
  - [Metric](docs/Metric.md)
@@ -312,12 +321,16 @@ Class | Method | HTTP request | Description
  - [StartSpaceBroadcastResponse](docs/StartSpaceBroadcastResponse.md)
  - [StopSpaceBroadcastResponse](docs/StopSpaceBroadcastResponse.md)
  - [Track](docs/Track.md)
+ - [TranscriptionVocabulary](docs/TranscriptionVocabulary.md)
+ - [TranscriptionVocabularyResponse](docs/TranscriptionVocabularyResponse.md)
  - [UpdateAssetMP4SupportRequest](docs/UpdateAssetMP4SupportRequest.md)
  - [UpdateAssetMasterAccessRequest](docs/UpdateAssetMasterAccessRequest.md)
  - [UpdateAssetRequest](docs/UpdateAssetRequest.md)
  - [UpdateLiveStreamEmbeddedSubtitlesRequest](docs/UpdateLiveStreamEmbeddedSubtitlesRequest.md)
+ - [UpdateLiveStreamGeneratedSubtitlesRequest](docs/UpdateLiveStreamGeneratedSubtitlesRequest.md)
  - [UpdateLiveStreamRequest](docs/UpdateLiveStreamRequest.md)
  - [UpdateReferrerDomainRestrictionRequest](docs/UpdateReferrerDomainRestrictionRequest.md)
+ - [UpdateTranscriptionVocabularyRequest](docs/UpdateTranscriptionVocabularyRequest.md)
  - [Upload](docs/Upload.md)
  - [UploadError](docs/UploadError.md)
  - [UploadResponse](docs/UploadResponse.md)

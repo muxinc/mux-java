@@ -40,6 +40,7 @@ import com.mux.sdk.models.LiveStreamStatus;
 import com.mux.sdk.models.SignalLiveStreamCompleteResponse;
 import com.mux.sdk.models.SimulcastTargetResponse;
 import com.mux.sdk.models.UpdateLiveStreamEmbeddedSubtitlesRequest;
+import com.mux.sdk.models.UpdateLiveStreamGeneratedSubtitlesRequest;
 import com.mux.sdk.models.UpdateLiveStreamRequest;
 // TODO: due to import parsing issues for the RDR type; fix in spec in future
 import com.mux.sdk.models.ReferrerDomainRestriction;
@@ -2506,5 +2507,159 @@ public class LiveStreamsApi {
      */
     public APIupdateLiveStreamEmbeddedSubtitlesRequest updateLiveStreamEmbeddedSubtitles(String LIVE_STREAM_ID, UpdateLiveStreamEmbeddedSubtitlesRequest updateLiveStreamEmbeddedSubtitlesRequest) {
         return new APIupdateLiveStreamEmbeddedSubtitlesRequest(LIVE_STREAM_ID, updateLiveStreamEmbeddedSubtitlesRequest);
+    }
+    private okhttp3.Call updateLiveStreamGeneratedSubtitlesCall(String LIVE_STREAM_ID, UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateLiveStreamGeneratedSubtitlesRequest;
+
+        // create path and map variables
+        String localVarPath = "/video/v1/live-streams/{LIVE_STREAM_ID}/generated-subtitles"
+            .replaceAll("\\{" + "LIVE_STREAM_ID" + "\\}", localVarApiClient.escapeString(LIVE_STREAM_ID.toString()));
+
+        java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
+        java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
+        java.util.Map<String, String> localVarHeaderParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, String> localVarCookieParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "accessToken" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateLiveStreamGeneratedSubtitlesValidateBeforeCall(String LIVE_STREAM_ID, UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'LIVE_STREAM_ID' is set
+        if (LIVE_STREAM_ID == null) {
+            throw new ApiException("Missing the required parameter 'LIVE_STREAM_ID' when calling updateLiveStreamGeneratedSubtitles(Async)");
+        }
+        
+        // verify the required parameter 'updateLiveStreamGeneratedSubtitlesRequest' is set
+        if (updateLiveStreamGeneratedSubtitlesRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateLiveStreamGeneratedSubtitlesRequest' when calling updateLiveStreamGeneratedSubtitles(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateLiveStreamGeneratedSubtitlesCall(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest, _callback);
+        return localVarCall;
+
+    }
+
+
+    private ApiResponse<LiveStreamResponse> updateLiveStreamGeneratedSubtitlesWithHttpInfo(String LIVE_STREAM_ID, UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateLiveStreamGeneratedSubtitlesValidateBeforeCall(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest, null);
+        Type localVarReturnType = new TypeToken<LiveStreamResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateLiveStreamGeneratedSubtitlesAsync(String LIVE_STREAM_ID, UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest, final ApiCallback<LiveStreamResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateLiveStreamGeneratedSubtitlesValidateBeforeCall(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest, _callback);
+        Type localVarReturnType = new TypeToken<LiveStreamResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateLiveStreamGeneratedSubtitlesRequest {
+        private final String LIVE_STREAM_ID;
+        private final UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest;
+
+        private APIupdateLiveStreamGeneratedSubtitlesRequest(String LIVE_STREAM_ID, UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest) {
+            this.LIVE_STREAM_ID = LIVE_STREAM_ID;
+            this.updateLiveStreamGeneratedSubtitlesRequest = updateLiveStreamGeneratedSubtitlesRequest;
+        }
+
+        /**
+         * Build call for updateLiveStreamGeneratedSubtitles
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateLiveStreamGeneratedSubtitlesCall(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest, _callback);
+        }
+
+        /**
+         * Execute updateLiveStreamGeneratedSubtitles request
+         * @return LiveStreamResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public LiveStreamResponse execute() throws ApiException {
+            ApiResponse<LiveStreamResponse> localVarResp = updateLiveStreamGeneratedSubtitlesWithHttpInfo(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateLiveStreamGeneratedSubtitles request with HTTP info returned
+         * @return ApiResponse&lt;LiveStreamResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LiveStreamResponse> executeWithHttpInfo() throws ApiException {
+            return updateLiveStreamGeneratedSubtitlesWithHttpInfo(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest);
+        }
+
+        /**
+         * Execute updateLiveStreamGeneratedSubtitles request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LiveStreamResponse> _callback) throws ApiException {
+            return updateLiveStreamGeneratedSubtitlesAsync(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest, _callback);
+        }
+    }
+
+    /**
+     * Update a live stream&#39;s generated subtitles
+     * Updates a live stream&#39;s automatic-speech-recognition-generated subtitle configuration. Automatic speech recognition subtitles can be removed by sending an empty array in the request payload. 
+     * @param LIVE_STREAM_ID The live stream ID (required)
+     * @param updateLiveStreamGeneratedSubtitlesRequest  (required)
+     * @return APIupdateLiveStreamGeneratedSubtitlesRequest
+     * @http.response.details
+     <table border="1">
+        <caption>Response Summary</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitles(String LIVE_STREAM_ID, UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest) {
+        return new APIupdateLiveStreamGeneratedSubtitlesRequest(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest);
     }
 }

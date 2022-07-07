@@ -126,6 +126,11 @@ Name | Type | Description | Notes
 **viewerConnectionType** | **String** |  |  [optional]
 **viewerDeviceModel** | **String** |  |  [optional]
 **weightedAverageBitrate** | **Long** |  |  [optional]
+**custom1** | **String** |  |  [optional]
+**custom2** | **String** |  |  [optional]
+**custom3** | **String** |  |  [optional]
+**custom4** | **String** |  |  [optional]
+**custom5** | **String** |  |  [optional]
 
 
 

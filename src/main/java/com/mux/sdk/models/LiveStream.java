@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mux.sdk.models.CreateAssetRequest;
 import com.mux.sdk.models.LiveStreamEmbeddedSubtitleSettings;
+import com.mux.sdk.models.LiveStreamGeneratedSubtitleSettings;
 import com.mux.sdk.models.LiveStreamStatus;
 import com.mux.sdk.models.PlaybackID;
 import com.mux.sdk.models.SimulcastTarget;
@@ -77,6 +78,10 @@ public class LiveStream {
   public static final String SERIALIZED_NAME_EMBEDDED_SUBTITLES = "embedded_subtitles";
   @SerializedName(SERIALIZED_NAME_EMBEDDED_SUBTITLES)
   private java.util.List<LiveStreamEmbeddedSubtitleSettings> embeddedSubtitles = null;
+
+  public static final String SERIALIZED_NAME_GENERATED_SUBTITLES = "generated_subtitles";
+  @SerializedName(SERIALIZED_NAME_GENERATED_SUBTITLES)
+  private java.util.List<LiveStreamGeneratedSubtitleSettings> generatedSubtitles = null;
 
   public static final String SERIALIZED_NAME_RECONNECT_WINDOW = "reconnect_window";
   @SerializedName(SERIALIZED_NAME_RECONNECT_WINDOW)
@@ -433,6 +438,37 @@ public class LiveStream {
   }
 
 
+  public LiveStream generatedSubtitles(java.util.List<LiveStreamGeneratedSubtitleSettings> generatedSubtitles) {
+    
+    this.generatedSubtitles = generatedSubtitles;
+    return this;
+  }
+
+  public LiveStream addGeneratedSubtitlesItem(LiveStreamGeneratedSubtitleSettings generatedSubtitlesItem) {
+    if (this.generatedSubtitles == null) {
+      this.generatedSubtitles = new java.util.ArrayList<>();
+    }
+    this.generatedSubtitles.add(generatedSubtitlesItem);
+    return this;
+  }
+
+   /**
+   * Configure the incoming live stream to include subtitles created with automatic speech recognition. Each Asset created from a live stream with &#x60;generated_subtitles&#x60; configured will automatically receive two text tracks. The first of these will have a &#x60;text_source&#x60; value of &#x60;generated_live&#x60;, and will be available with &#x60;ready&#x60; status as soon as the stream is live. The second text track will have a &#x60;text_source&#x60; value of &#x60;generated_live_final&#x60; and will contain subtitles with improved accuracy, timing, and formatting. However, &#x60;generated_live_final&#x60; tracks will not be available in &#x60;ready&#x60; status until the live stream ends. If an Asset has both &#x60;generated_live&#x60; and &#x60;generated_live_final&#x60; tracks that are &#x60;ready&#x60;, then only the &#x60;generated_live_final&#x60; track will be included during playback.
+   * @return generatedSubtitles
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Configure the incoming live stream to include subtitles created with automatic speech recognition. Each Asset created from a live stream with `generated_subtitles` configured will automatically receive two text tracks. The first of these will have a `text_source` value of `generated_live`, and will be available with `ready` status as soon as the stream is live. The second text track will have a `text_source` value of `generated_live_final` and will contain subtitles with improved accuracy, timing, and formatting. However, `generated_live_final` tracks will not be available in `ready` status until the live stream ends. If an Asset has both `generated_live` and `generated_live_final` tracks that are `ready`, then only the `generated_live_final` track will be included during playback.")
+
+  public java.util.List<LiveStreamGeneratedSubtitleSettings> getGeneratedSubtitles() {
+    return generatedSubtitles;
+  }
+
+
+  public void setGeneratedSubtitles(java.util.List<LiveStreamGeneratedSubtitleSettings> generatedSubtitles) {
+    this.generatedSubtitles = generatedSubtitles;
+  }
+
+
   public LiveStream reconnectWindow(Float reconnectWindow) {
     
     this.reconnectWindow = reconnectWindow;
@@ -440,11 +476,11 @@ public class LiveStream {
   }
 
    /**
-   * When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset. **Min**: 0.1s. **Max**: 300s (5 minutes).
+   * When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset. **Min**: 0.1s. **Max**: 1800s (30 minutes).
    * @return reconnectWindow
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset. **Min**: 0.1s. **Max**: 300s (5 minutes).")
+  @ApiModelProperty(value = "When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset. **Min**: 0.1s. **Max**: 1800s (30 minutes).")
 
   public Float getReconnectWindow() {
     return reconnectWindow;
@@ -624,6 +660,7 @@ public class LiveStream {
         Objects.equals(this.passthrough, liveStream.passthrough) &&
         Objects.equals(this.audioOnly, liveStream.audioOnly) &&
         Objects.equals(this.embeddedSubtitles, liveStream.embeddedSubtitles) &&
+        Objects.equals(this.generatedSubtitles, liveStream.generatedSubtitles) &&
         Objects.equals(this.reconnectWindow, liveStream.reconnectWindow) &&
         Objects.equals(this.reducedLatency, liveStream.reducedLatency) &&
         Objects.equals(this.lowLatency, liveStream.lowLatency) &&
@@ -635,7 +672,7 @@ public class LiveStream {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, streamKey, activeAssetId, recentAssetIds, status, playbackIds, newAssetSettings, passthrough, audioOnly, embeddedSubtitles, reconnectWindow, reducedLatency, lowLatency, simulcastTargets, latencyMode, test, maxContinuousDuration);
+    return Objects.hash(id, createdAt, streamKey, activeAssetId, recentAssetIds, status, playbackIds, newAssetSettings, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reconnectWindow, reducedLatency, lowLatency, simulcastTargets, latencyMode, test, maxContinuousDuration);
   }
 
   @Override
@@ -653,6 +690,7 @@ public class LiveStream {
     sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
     sb.append("    audioOnly: ").append(toIndentedString(audioOnly)).append("\n");
     sb.append("    embeddedSubtitles: ").append(toIndentedString(embeddedSubtitles)).append("\n");
+    sb.append("    generatedSubtitles: ").append(toIndentedString(generatedSubtitles)).append("\n");
     sb.append("    reconnectWindow: ").append(toIndentedString(reconnectWindow)).append("\n");
     sb.append("    reducedLatency: ").append(toIndentedString(reducedLatency)).append("\n");
     sb.append("    lowLatency: ").append(toIndentedString(lowLatency)).append("\n");
