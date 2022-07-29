@@ -34,7 +34,7 @@ public class UpdateLiveStreamRequest {
   private String passthrough;
 
   /**
-   * Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags. The Low Latency value is a beta feature. Note: Reconnect windows are incompatible with Reduced Latency and Low Latency and will always be set to zero (0) seconds. Read more here: https://mux.com/blog/introducing-low-latency-live-streaming/
+   * Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags. The Low Latency value is a beta feature. Read more here: https://mux.com/blog/introducing-low-latency-live-streaming/
    */
   @JsonAdapter(LatencyModeEnum.Adapter.class)
   public enum LatencyModeEnum {
@@ -88,7 +88,15 @@ public class UpdateLiveStreamRequest {
 
   public static final String SERIALIZED_NAME_RECONNECT_WINDOW = "reconnect_window";
   @SerializedName(SERIALIZED_NAME_RECONNECT_WINDOW)
-  private Float reconnectWindow;
+  private Float reconnectWindow = 60f;
+
+  public static final String SERIALIZED_NAME_USE_SLATE_FOR_STANDARD_LATENCY = "use_slate_for_standard_latency";
+  @SerializedName(SERIALIZED_NAME_USE_SLATE_FOR_STANDARD_LATENCY)
+  private Boolean useSlateForStandardLatency = false;
+
+  public static final String SERIALIZED_NAME_RECONNECT_SLATE_URL = "reconnect_slate_url";
+  @SerializedName(SERIALIZED_NAME_RECONNECT_SLATE_URL)
+  private String reconnectSlateUrl;
 
   public static final String SERIALIZED_NAME_MAX_CONTINUOUS_DURATION = "max_continuous_duration";
   @SerializedName(SERIALIZED_NAME_MAX_CONTINUOUS_DURATION)
@@ -125,11 +133,11 @@ public class UpdateLiveStreamRequest {
   }
 
    /**
-   * Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags. The Low Latency value is a beta feature. Note: Reconnect windows are incompatible with Reduced Latency and Low Latency and will always be set to zero (0) seconds. Read more here: https://mux.com/blog/introducing-low-latency-live-streaming/
+   * Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags. The Low Latency value is a beta feature. Read more here: https://mux.com/blog/introducing-low-latency-live-streaming/
    * @return latencyMode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags. The Low Latency value is a beta feature. Note: Reconnect windows are incompatible with Reduced Latency and Low Latency and will always be set to zero (0) seconds. Read more here: https://mux.com/blog/introducing-low-latency-live-streaming/")
+  @ApiModelProperty(value = "Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags. The Low Latency value is a beta feature. Read more here: https://mux.com/blog/introducing-low-latency-live-streaming/")
 
   public LatencyModeEnum getLatencyMode() {
     return latencyMode;
@@ -148,13 +156,13 @@ public class UpdateLiveStreamRequest {
   }
 
    /**
-   * When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset.
-   * minimum: 0.1
+   * When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset.  Reduced and Low Latency streams with a Reconnect Window greater than zero will insert slate media into the recorded asset while waiting for the streaming software to reconnect or when there are brief interruptions in the live stream media. When using a Reconnect Window setting higher than 60 seconds with a Standard Latency stream, we highly recommend enabling slate with the &#x60;use_slate_for_standard_latency&#x60; option. 
+   * minimum: 0
    * maximum: 1800
    * @return reconnectWindow
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset.")
+  @ApiModelProperty(value = "When live streaming software disconnects from Mux, either intentionally or due to a drop in the network, the Reconnect Window is the time in seconds that Mux should wait for the streaming software to reconnect before considering the live stream finished and completing the recorded asset.  Reduced and Low Latency streams with a Reconnect Window greater than zero will insert slate media into the recorded asset while waiting for the streaming software to reconnect or when there are brief interruptions in the live stream media. When using a Reconnect Window setting higher than 60 seconds with a Standard Latency stream, we highly recommend enabling slate with the `use_slate_for_standard_latency` option. ")
 
   public Float getReconnectWindow() {
     return reconnectWindow;
@@ -163,6 +171,52 @@ public class UpdateLiveStreamRequest {
 
   public void setReconnectWindow(Float reconnectWindow) {
     this.reconnectWindow = reconnectWindow;
+  }
+
+
+  public UpdateLiveStreamRequest useSlateForStandardLatency(Boolean useSlateForStandardLatency) {
+    
+    this.useSlateForStandardLatency = useSlateForStandardLatency;
+    return this;
+  }
+
+   /**
+   * By default, Standard Latency live streams do not have slate media inserted while waiting for live streaming software to reconnect to Mux.  Setting this to true enables slate insertion on a Standard Latency stream.
+   * @return useSlateForStandardLatency
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "By default, Standard Latency live streams do not have slate media inserted while waiting for live streaming software to reconnect to Mux.  Setting this to true enables slate insertion on a Standard Latency stream.")
+
+  public Boolean getUseSlateForStandardLatency() {
+    return useSlateForStandardLatency;
+  }
+
+
+  public void setUseSlateForStandardLatency(Boolean useSlateForStandardLatency) {
+    this.useSlateForStandardLatency = useSlateForStandardLatency;
+  }
+
+
+  public UpdateLiveStreamRequest reconnectSlateUrl(String reconnectSlateUrl) {
+    
+    this.reconnectSlateUrl = reconnectSlateUrl;
+    return this;
+  }
+
+   /**
+   * The URL of the image file that Mux should download and use as slate media during interruptions of the live stream media.  This file will be downloaded each time a new recorded asset is created from the live stream.  Set this to a blank string to clear the value so that the default slate media will be used.
+   * @return reconnectSlateUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The URL of the image file that Mux should download and use as slate media during interruptions of the live stream media.  This file will be downloaded each time a new recorded asset is created from the live stream.  Set this to a blank string to clear the value so that the default slate media will be used.")
+
+  public String getReconnectSlateUrl() {
+    return reconnectSlateUrl;
+  }
+
+
+  public void setReconnectSlateUrl(String reconnectSlateUrl) {
+    this.reconnectSlateUrl = reconnectSlateUrl;
   }
 
 
@@ -203,12 +257,14 @@ public class UpdateLiveStreamRequest {
     return Objects.equals(this.passthrough, updateLiveStreamRequest.passthrough) &&
         Objects.equals(this.latencyMode, updateLiveStreamRequest.latencyMode) &&
         Objects.equals(this.reconnectWindow, updateLiveStreamRequest.reconnectWindow) &&
+        Objects.equals(this.useSlateForStandardLatency, updateLiveStreamRequest.useSlateForStandardLatency) &&
+        Objects.equals(this.reconnectSlateUrl, updateLiveStreamRequest.reconnectSlateUrl) &&
         Objects.equals(this.maxContinuousDuration, updateLiveStreamRequest.maxContinuousDuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(passthrough, latencyMode, reconnectWindow, maxContinuousDuration);
+    return Objects.hash(passthrough, latencyMode, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, maxContinuousDuration);
   }
 
   @Override
@@ -218,6 +274,8 @@ public class UpdateLiveStreamRequest {
     sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
     sb.append("    latencyMode: ").append(toIndentedString(latencyMode)).append("\n");
     sb.append("    reconnectWindow: ").append(toIndentedString(reconnectWindow)).append("\n");
+    sb.append("    useSlateForStandardLatency: ").append(toIndentedString(useSlateForStandardLatency)).append("\n");
+    sb.append("    reconnectSlateUrl: ").append(toIndentedString(reconnectSlateUrl)).append("\n");
     sb.append("    maxContinuousDuration: ").append(toIndentedString(maxContinuousDuration)).append("\n");
     sb.append("}");
     return sb.toString();

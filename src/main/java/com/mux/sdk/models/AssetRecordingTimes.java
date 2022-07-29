@@ -38,6 +38,57 @@ public class AssetRecordingTimes {
   @SerializedName(SERIALIZED_NAME_DURATION)
   private Double duration;
 
+  /**
+   * The type of media represented by the recording session, either &#x60;content&#x60; for normal stream content or &#x60;slate&#x60; for slate media inserted during stream interruptions.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    CONTENT("content"),
+    
+    SLATE("slate");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
 
   public AssetRecordingTimes startedAt(OffsetDateTime startedAt) {
     
@@ -85,6 +136,29 @@ public class AssetRecordingTimes {
   }
 
 
+  public AssetRecordingTimes type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The type of media represented by the recording session, either &#x60;content&#x60; for normal stream content or &#x60;slate&#x60; for slate media inserted during stream interruptions.
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The type of media represented by the recording session, either `content` for normal stream content or `slate` for slate media inserted during stream interruptions.")
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,12 +169,13 @@ public class AssetRecordingTimes {
     }
     AssetRecordingTimes assetRecordingTimes = (AssetRecordingTimes) o;
     return Objects.equals(this.startedAt, assetRecordingTimes.startedAt) &&
-        Objects.equals(this.duration, assetRecordingTimes.duration);
+        Objects.equals(this.duration, assetRecordingTimes.duration) &&
+        Objects.equals(this.type, assetRecordingTimes.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startedAt, duration);
+    return Objects.hash(startedAt, duration, type);
   }
 
   @Override
@@ -109,6 +184,7 @@ public class AssetRecordingTimes {
     sb.append("class AssetRecordingTimes {\n");
     sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

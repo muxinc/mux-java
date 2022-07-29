@@ -843,11 +843,11 @@ public class Asset {
   }
 
    /**
-   * An array of individual live stream recording sessions. A recording session is created on each encoder connection during the live stream
+   * An array of individual live stream recording sessions. A recording session is created on each encoder connection during the live stream.  Additionally any time slate media is inserted during brief interruptions in the live stream media or times when the live streaming software disconnects, a recording session representing the slate media will be added with a \&quot;slate\&quot; type.
    * @return recordingTimes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An array of individual live stream recording sessions. A recording session is created on each encoder connection during the live stream")
+  @ApiModelProperty(value = "An array of individual live stream recording sessions. A recording session is created on each encoder connection during the live stream.  Additionally any time slate media is inserted during brief interruptions in the live stream media or times when the live streaming software disconnects, a recording session representing the slate media will be added with a \"slate\" type.")
 
   public java.util.List<AssetRecordingTimes> getRecordingTimes() {
     return recordingTimes;

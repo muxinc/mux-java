@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.3.0</version>
+  <version>0.4.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.3.0"
+compile "com.mux:mux-sdk-java:0.4.0"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.3.0.jar`
+* `target/mux-sdk-java-0.4.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
