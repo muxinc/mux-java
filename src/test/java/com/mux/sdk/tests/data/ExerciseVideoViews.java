@@ -23,7 +23,7 @@ public class ExerciseVideoViews {
         System.out.println("list-video-views OK");
 
         VideoViewResponse view = views.getVideoView(viewId).execute();
-        assertNotEquals(viewId, view.getData().getId());
+        assertEquals(viewId, view.getData().getId());
         System.out.println("get-video-view OK");
     }
 }
