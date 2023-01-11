@@ -20,19 +20,24 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mux.sdk.models.ListMonitoringDimensionsResponseData;
+import com.mux.sdk.models.GetMonitoringHistogramTimeseriesResponseMeta;
+import com.mux.sdk.models.MonitoringHistogramTimeseriesDatapoint;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ListRealTimeMetricsResponse
+ * GetMonitoringHistogramTimeseriesResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ListRealTimeMetricsResponse {
+public class GetMonitoringHistogramTimeseriesResponse {
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private GetMonitoringHistogramTimeseriesResponseMeta meta;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private java.util.List<ListMonitoringDimensionsResponseData> data = null;
+  private java.util.List<MonitoringHistogramTimeseriesDatapoint> data = null;
 
   public static final String SERIALIZED_NAME_TOTAL_ROW_COUNT = "total_row_count";
   @SerializedName(SERIALIZED_NAME_TOTAL_ROW_COUNT)
@@ -43,13 +48,36 @@ public class ListRealTimeMetricsResponse {
   private java.util.List<Long> timeframe = null;
 
 
-  public ListRealTimeMetricsResponse data(java.util.List<ListMonitoringDimensionsResponseData> data) {
+  public GetMonitoringHistogramTimeseriesResponse meta(GetMonitoringHistogramTimeseriesResponseMeta meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public GetMonitoringHistogramTimeseriesResponseMeta getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(GetMonitoringHistogramTimeseriesResponseMeta meta) {
+    this.meta = meta;
+  }
+
+
+  public GetMonitoringHistogramTimeseriesResponse data(java.util.List<MonitoringHistogramTimeseriesDatapoint> data) {
     
     this.data = data;
     return this;
   }
 
-  public ListRealTimeMetricsResponse addDataItem(ListMonitoringDimensionsResponseData dataItem) {
+  public GetMonitoringHistogramTimeseriesResponse addDataItem(MonitoringHistogramTimeseriesDatapoint dataItem) {
     if (this.data == null) {
       this.data = new java.util.ArrayList<>();
     }
@@ -64,17 +92,17 @@ public class ListRealTimeMetricsResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public java.util.List<ListMonitoringDimensionsResponseData> getData() {
+  public java.util.List<MonitoringHistogramTimeseriesDatapoint> getData() {
     return data;
   }
 
 
-  public void setData(java.util.List<ListMonitoringDimensionsResponseData> data) {
+  public void setData(java.util.List<MonitoringHistogramTimeseriesDatapoint> data) {
     this.data = data;
   }
 
 
-  public ListRealTimeMetricsResponse totalRowCount(Long totalRowCount) {
+  public GetMonitoringHistogramTimeseriesResponse totalRowCount(Long totalRowCount) {
     
     this.totalRowCount = totalRowCount;
     return this;
@@ -97,13 +125,13 @@ public class ListRealTimeMetricsResponse {
   }
 
 
-  public ListRealTimeMetricsResponse timeframe(java.util.List<Long> timeframe) {
+  public GetMonitoringHistogramTimeseriesResponse timeframe(java.util.List<Long> timeframe) {
     
     this.timeframe = timeframe;
     return this;
   }
 
-  public ListRealTimeMetricsResponse addTimeframeItem(Long timeframeItem) {
+  public GetMonitoringHistogramTimeseriesResponse addTimeframeItem(Long timeframeItem) {
     if (this.timeframe == null) {
       this.timeframe = new java.util.ArrayList<>();
     }
@@ -136,21 +164,23 @@ public class ListRealTimeMetricsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListRealTimeMetricsResponse listRealTimeMetricsResponse = (ListRealTimeMetricsResponse) o;
-    return Objects.equals(this.data, listRealTimeMetricsResponse.data) &&
-        Objects.equals(this.totalRowCount, listRealTimeMetricsResponse.totalRowCount) &&
-        Objects.equals(this.timeframe, listRealTimeMetricsResponse.timeframe);
+    GetMonitoringHistogramTimeseriesResponse getMonitoringHistogramTimeseriesResponse = (GetMonitoringHistogramTimeseriesResponse) o;
+    return Objects.equals(this.meta, getMonitoringHistogramTimeseriesResponse.meta) &&
+        Objects.equals(this.data, getMonitoringHistogramTimeseriesResponse.data) &&
+        Objects.equals(this.totalRowCount, getMonitoringHistogramTimeseriesResponse.totalRowCount) &&
+        Objects.equals(this.timeframe, getMonitoringHistogramTimeseriesResponse.timeframe);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalRowCount, timeframe);
+    return Objects.hash(meta, data, totalRowCount, timeframe);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListRealTimeMetricsResponse {\n");
+    sb.append("class GetMonitoringHistogramTimeseriesResponse {\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    totalRowCount: ").append(toIndentedString(totalRowCount)).append("\n");
     sb.append("    timeframe: ").append(toIndentedString(timeframe)).append("\n");

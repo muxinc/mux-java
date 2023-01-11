@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.4.0</version>
+  <version>0.5.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.4.0"
+compile "com.mux:mux-sdk-java:0.5.0"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.4.0.jar`
+* `target/mux-sdk-java-0.5.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -172,6 +172,11 @@ Class | Method | HTTP request | Description
 *MetricsApi* | [**listAllMetricValues**](docs/MetricsApi.md#listAllMetricValues) | **GET** /data/v1/metrics/comparison | List all metric values
 *MetricsApi* | [**listBreakdownValues**](docs/MetricsApi.md#listBreakdownValues) | **GET** /data/v1/metrics/{METRIC_ID}/breakdown | List breakdown values
 *MetricsApi* | [**listInsights**](docs/MetricsApi.md#listInsights) | **GET** /data/v1/metrics/{METRIC_ID}/insights | List Insights
+*MonitoringApi* | [**getMonitoringBreakdown**](docs/MonitoringApi.md#getMonitoringBreakdown) | **GET** /data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/breakdown | Get Monitoring Breakdown
+*MonitoringApi* | [**getMonitoringHistogramTimeseries**](docs/MonitoringApi.md#getMonitoringHistogramTimeseries) | **GET** /data/v1/monitoring/metrics/{MONITORING_HISTOGRAM_METRIC_ID}/histogram-timeseries | Get Monitoring Histogram Timeseries
+*MonitoringApi* | [**getMonitoringTimeseries**](docs/MonitoringApi.md#getMonitoringTimeseries) | **GET** /data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/timeseries | Get Monitoring Timeseries
+*MonitoringApi* | [**listMonitoringDimensions**](docs/MonitoringApi.md#listMonitoringDimensions) | **GET** /data/v1/monitoring/dimensions | List Monitoring Dimensions
+*MonitoringApi* | [**listMonitoringMetrics**](docs/MonitoringApi.md#listMonitoringMetrics) | **GET** /data/v1/monitoring/metrics | List Monitoring Metrics
 *PlaybackIdApi* | [**getAssetOrLivestreamId**](docs/PlaybackIdApi.md#getAssetOrLivestreamId) | **GET** /video/v1/playback-ids/{PLAYBACK_ID} | Retrieve an Asset or Live Stream ID
 *PlaybackRestrictionsApi* | [**createPlaybackRestriction**](docs/PlaybackRestrictionsApi.md#createPlaybackRestriction) | **POST** /video/v1/playback-restrictions | Create a Playback Restriction
 *PlaybackRestrictionsApi* | [**deletePlaybackRestriction**](docs/PlaybackRestrictionsApi.md#deletePlaybackRestriction) | **DELETE** /video/v1/playback-restrictions/{PLAYBACK_RESTRICTION_ID} | Delete a Playback Restriction
@@ -249,6 +254,10 @@ Class | Method | HTTP request | Description
  - [GetAssetPlaybackIDResponse](docs/GetAssetPlaybackIDResponse.md)
  - [GetLiveStreamPlaybackIDResponse](docs/GetLiveStreamPlaybackIDResponse.md)
  - [GetMetricTimeseriesDataResponse](docs/GetMetricTimeseriesDataResponse.md)
+ - [GetMonitoringBreakdownResponse](docs/GetMonitoringBreakdownResponse.md)
+ - [GetMonitoringHistogramTimeseriesResponse](docs/GetMonitoringHistogramTimeseriesResponse.md)
+ - [GetMonitoringHistogramTimeseriesResponseMeta](docs/GetMonitoringHistogramTimeseriesResponseMeta.md)
+ - [GetMonitoringTimeseriesResponse](docs/GetMonitoringTimeseriesResponse.md)
  - [GetOverallValuesResponse](docs/GetOverallValuesResponse.md)
  - [GetRealTimeBreakdownResponse](docs/GetRealTimeBreakdownResponse.md)
  - [GetRealTimeHistogramTimeseriesResponse](docs/GetRealTimeHistogramTimeseriesResponse.md)
@@ -279,9 +288,11 @@ Class | Method | HTTP request | Description
  - [ListIncidentsResponse](docs/ListIncidentsResponse.md)
  - [ListInsightsResponse](docs/ListInsightsResponse.md)
  - [ListLiveStreamsResponse](docs/ListLiveStreamsResponse.md)
+ - [ListMonitoringDimensionsResponse](docs/ListMonitoringDimensionsResponse.md)
+ - [ListMonitoringDimensionsResponseData](docs/ListMonitoringDimensionsResponseData.md)
+ - [ListMonitoringMetricsResponse](docs/ListMonitoringMetricsResponse.md)
  - [ListPlaybackRestrictionsResponse](docs/ListPlaybackRestrictionsResponse.md)
  - [ListRealTimeDimensionsResponse](docs/ListRealTimeDimensionsResponse.md)
- - [ListRealTimeDimensionsResponseData](docs/ListRealTimeDimensionsResponseData.md)
  - [ListRealTimeMetricsResponse](docs/ListRealTimeMetricsResponse.md)
  - [ListRelatedIncidentsResponse](docs/ListRelatedIncidentsResponse.md)
  - [ListSigningKeysResponse](docs/ListSigningKeysResponse.md)
@@ -296,6 +307,11 @@ Class | Method | HTTP request | Description
  - [LiveStreamResponse](docs/LiveStreamResponse.md)
  - [LiveStreamStatus](docs/LiveStreamStatus.md)
  - [Metric](docs/Metric.md)
+ - [MonitoringBreakdownValue](docs/MonitoringBreakdownValue.md)
+ - [MonitoringHistogramTimeseriesBucket](docs/MonitoringHistogramTimeseriesBucket.md)
+ - [MonitoringHistogramTimeseriesBucketValues](docs/MonitoringHistogramTimeseriesBucketValues.md)
+ - [MonitoringHistogramTimeseriesDatapoint](docs/MonitoringHistogramTimeseriesDatapoint.md)
+ - [MonitoringTimeseriesDatapoint](docs/MonitoringTimeseriesDatapoint.md)
  - [NotificationRule](docs/NotificationRule.md)
  - [OverallValues](docs/OverallValues.md)
  - [PlaybackID](docs/PlaybackID.md)

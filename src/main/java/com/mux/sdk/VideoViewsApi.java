@@ -429,7 +429,7 @@ public class VideoViewsApi {
 
     /**
      * List Video Views
-     * Returns a list of video views.
+     * Returns a list of video views which match the filters and have a &#x60;view_end&#x60; within the specified timeframe.
      * @return APIlistVideoViewsRequest
      * @http.response.details
      <table border="1">

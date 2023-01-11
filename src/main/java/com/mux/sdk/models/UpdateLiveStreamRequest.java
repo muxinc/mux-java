@@ -181,11 +181,11 @@ public class UpdateLiveStreamRequest {
   }
 
    /**
-   * By default, Standard Latency live streams do not have slate media inserted while waiting for live streaming software to reconnect to Mux.  Setting this to true enables slate insertion on a Standard Latency stream.
+   * By default, Standard Latency live streams do not have slate media inserted while waiting for live streaming software to reconnect to Mux. Setting this to true enables slate insertion on a Standard Latency stream.
    * @return useSlateForStandardLatency
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default, Standard Latency live streams do not have slate media inserted while waiting for live streaming software to reconnect to Mux.  Setting this to true enables slate insertion on a Standard Latency stream.")
+  @ApiModelProperty(value = "By default, Standard Latency live streams do not have slate media inserted while waiting for live streaming software to reconnect to Mux. Setting this to true enables slate insertion on a Standard Latency stream.")
 
   public Boolean getUseSlateForStandardLatency() {
     return useSlateForStandardLatency;
@@ -204,11 +204,11 @@ public class UpdateLiveStreamRequest {
   }
 
    /**
-   * The URL of the image file that Mux should download and use as slate media during interruptions of the live stream media.  This file will be downloaded each time a new recorded asset is created from the live stream.  Set this to a blank string to clear the value so that the default slate media will be used.
+   * The URL of the image file that Mux should download and use as slate media during interruptions of the live stream media. This file will be downloaded each time a new recorded asset is created from the live stream. Set this to a blank string to clear the value so that the default slate media will be used.
    * @return reconnectSlateUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The URL of the image file that Mux should download and use as slate media during interruptions of the live stream media.  This file will be downloaded each time a new recorded asset is created from the live stream.  Set this to a blank string to clear the value so that the default slate media will be used.")
+  @ApiModelProperty(value = "The URL of the image file that Mux should download and use as slate media during interruptions of the live stream media. This file will be downloaded each time a new recorded asset is created from the live stream. Set this to a blank string to clear the value so that the default slate media will be used.")
 
   public String getReconnectSlateUrl() {
     return reconnectSlateUrl;

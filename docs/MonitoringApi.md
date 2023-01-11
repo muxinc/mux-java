@@ -1,23 +1,23 @@
-# RealTimeApi
+# MonitoringApi
 
 All URIs are relative to *https://api.mux.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getRealtimeBreakdown**](RealTimeApi.md#getRealtimeBreakdown) | **GET** /data/v1/realtime/metrics/{REALTIME_METRIC_ID}/breakdown | Get Real-Time Breakdown
-[**getRealtimeHistogramTimeseries**](RealTimeApi.md#getRealtimeHistogramTimeseries) | **GET** /data/v1/realtime/metrics/{REALTIME_HISTOGRAM_METRIC_ID}/histogram-timeseries | Get Real-Time Histogram Timeseries
-[**getRealtimeTimeseries**](RealTimeApi.md#getRealtimeTimeseries) | **GET** /data/v1/realtime/metrics/{REALTIME_METRIC_ID}/timeseries | Get Real-Time Timeseries
-[**listRealtimeDimensions**](RealTimeApi.md#listRealtimeDimensions) | **GET** /data/v1/realtime/dimensions | List Real-Time Dimensions
-[**listRealtimeMetrics**](RealTimeApi.md#listRealtimeMetrics) | **GET** /data/v1/realtime/metrics | List Real-Time Metrics
+[**getMonitoringBreakdown**](MonitoringApi.md#getMonitoringBreakdown) | **GET** /data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/breakdown | Get Monitoring Breakdown
+[**getMonitoringHistogramTimeseries**](MonitoringApi.md#getMonitoringHistogramTimeseries) | **GET** /data/v1/monitoring/metrics/{MONITORING_HISTOGRAM_METRIC_ID}/histogram-timeseries | Get Monitoring Histogram Timeseries
+[**getMonitoringTimeseries**](MonitoringApi.md#getMonitoringTimeseries) | **GET** /data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/timeseries | Get Monitoring Timeseries
+[**listMonitoringDimensions**](MonitoringApi.md#listMonitoringDimensions) | **GET** /data/v1/monitoring/dimensions | List Monitoring Dimensions
+[**listMonitoringMetrics**](MonitoringApi.md#listMonitoringMetrics) | **GET** /data/v1/monitoring/metrics | List Monitoring Metrics
 
 
-<a name="getRealtimeBreakdown"></a>
-# **getRealtimeBreakdown**
-> GetRealTimeBreakdownResponse getRealtimeBreakdown(REALTIME_METRIC_ID).dimension(dimension).timestamp(timestamp).filters(filters).orderBy(orderBy).orderDirection(orderDirection).execute();
+<a name="getMonitoringBreakdown"></a>
+# **getMonitoringBreakdown**
+> GetMonitoringBreakdownResponse getMonitoringBreakdown(MONITORING_METRIC_ID).dimension(dimension).timestamp(timestamp).filters(filters).orderBy(orderBy).orderDirection(orderDirection).execute();
 
-Get Real-Time Breakdown
+Get Monitoring Breakdown
 
-Gets breakdown information for a specific dimension and metric along with the number of concurrent viewers and negative impact score. This API is now deprecated, please use the &#x60;Get Monitoring Breakdown&#x60; API.
+Gets breakdown information for a specific dimension and metric along with the number of concurrent viewers and negative impact score.
 
 ### Example
 ```java
@@ -27,7 +27,7 @@ import com.mux.ApiException;
 import com.mux.Configuration;
 import com.mux.auth.*;
 import com.mux.models.*;
-import com.mux.sdk.RealTimeApi;
+import com.mux.sdk.MonitoringApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -39,15 +39,15 @@ public class Example {
     accessToken.setUsername("YOUR USERNAME");
     accessToken.setPassword("YOUR PASSWORD");
 
-    RealTimeApi apiInstance = new RealTimeApi(defaultClient);
-    String REALTIME_METRIC_ID = "current-concurrent-viewers"; // String | ID of the Realtime Metric
+    MonitoringApi apiInstance = new MonitoringApi(defaultClient);
+    String MONITORING_METRIC_ID = "current-concurrent-viewers"; // String | ID of the Monitoring Metric
     String dimension = "dimension_example"; // String | Dimension the specified value belongs to
     Integer timestamp = 56; // Integer | Timestamp to limit results by. This value must be provided as a unix timestamp. Defaults to the current unix timestamp.
     java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
     String orderBy = "orderBy_example"; // String | Value to order the results by
     String orderDirection = "orderDirection_example"; // String | Sort order.
     try {
-      GetRealTimeBreakdownResponse result = apiInstance.getRealtimeBreakdown(REALTIME_METRIC_ID)
+      GetMonitoringBreakdownResponse result = apiInstance.getMonitoringBreakdown(MONITORING_METRIC_ID)
             .dimension(dimension)
             .timestamp(timestamp)
             .filters(filters)
@@ -56,7 +56,7 @@ public class Example {
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RealTimeApi#getRealtimeBreakdown");
+      System.err.println("Exception when calling MonitoringApi#getMonitoringBreakdown");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -70,7 +70,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **REALTIME_METRIC_ID** | **String**| ID of the Realtime Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
+ **MONITORING_METRIC_ID** | **String**| ID of the Monitoring Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
  **dimension** | **String**| Dimension the specified value belongs to | [optional] [enum: asn, cdn, country, operating_system, player_name, region, stream_type, sub_property_id, video_series, video_title]
  **timestamp** | **Integer**| Timestamp to limit results by. This value must be provided as a unix timestamp. Defaults to the current unix timestamp. | [optional]
  **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetRealTimeBreakdownResponse**](GetRealTimeBreakdownResponse.md)
+[**GetMonitoringBreakdownResponse**](GetMonitoringBreakdownResponse.md)
 
 ### Authorization
 
@@ -95,13 +95,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
-<a name="getRealtimeHistogramTimeseries"></a>
-# **getRealtimeHistogramTimeseries**
-> GetRealTimeHistogramTimeseriesResponse getRealtimeHistogramTimeseries(REALTIME_HISTOGRAM_METRIC_ID).filters(filters).execute();
+<a name="getMonitoringHistogramTimeseries"></a>
+# **getMonitoringHistogramTimeseries**
+> GetMonitoringHistogramTimeseriesResponse getMonitoringHistogramTimeseries(MONITORING_HISTOGRAM_METRIC_ID).filters(filters).execute();
 
-Get Real-Time Histogram Timeseries
+Get Monitoring Histogram Timeseries
 
-Gets histogram timeseries information for a specific metric. This API is now deprecated, please use the &#x60;Get Monitoring Histogram Timeseries&#x60; API.
+Gets histogram timeseries information for a specific metric.
 
 ### Example
 ```java
@@ -111,7 +111,7 @@ import com.mux.ApiException;
 import com.mux.Configuration;
 import com.mux.auth.*;
 import com.mux.models.*;
-import com.mux.sdk.RealTimeApi;
+import com.mux.sdk.MonitoringApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -123,16 +123,16 @@ public class Example {
     accessToken.setUsername("YOUR USERNAME");
     accessToken.setPassword("YOUR PASSWORD");
 
-    RealTimeApi apiInstance = new RealTimeApi(defaultClient);
-    String REALTIME_HISTOGRAM_METRIC_ID = "video-startup-time"; // String | ID of the Realtime Histogram Metric
+    MonitoringApi apiInstance = new MonitoringApi(defaultClient);
+    String MONITORING_HISTOGRAM_METRIC_ID = "video-startup-time"; // String | ID of the Monitoring Histogram Metric
     java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
     try {
-      GetRealTimeHistogramTimeseriesResponse result = apiInstance.getRealtimeHistogramTimeseries(REALTIME_HISTOGRAM_METRIC_ID)
+      GetMonitoringHistogramTimeseriesResponse result = apiInstance.getMonitoringHistogramTimeseries(MONITORING_HISTOGRAM_METRIC_ID)
             .filters(filters)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RealTimeApi#getRealtimeHistogramTimeseries");
+      System.err.println("Exception when calling MonitoringApi#getMonitoringHistogramTimeseries");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -146,12 +146,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **REALTIME_HISTOGRAM_METRIC_ID** | **String**| ID of the Realtime Histogram Metric | [enum: video-startup-time]
+ **MONITORING_HISTOGRAM_METRIC_ID** | **String**| ID of the Monitoring Histogram Metric | [enum: video-startup-time]
  **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
 
 ### Return type
 
-[**GetRealTimeHistogramTimeseriesResponse**](GetRealTimeHistogramTimeseriesResponse.md)
+[**GetMonitoringHistogramTimeseriesResponse**](GetMonitoringHistogramTimeseriesResponse.md)
 
 ### Authorization
 
@@ -167,13 +167,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
-<a name="getRealtimeTimeseries"></a>
-# **getRealtimeTimeseries**
-> GetRealTimeTimeseriesResponse getRealtimeTimeseries(REALTIME_METRIC_ID).filters(filters).execute();
+<a name="getMonitoringTimeseries"></a>
+# **getMonitoringTimeseries**
+> GetMonitoringTimeseriesResponse getMonitoringTimeseries(MONITORING_METRIC_ID).filters(filters).execute();
 
-Get Real-Time Timeseries
+Get Monitoring Timeseries
 
-Gets Time series information for a specific metric along with the number of concurrent viewers. This API is now deprecated, please use the &#x60;Get Monitoring Timeseries&#x60; API.
+Gets Time series information for a specific metric along with the number of concurrent viewers.
 
 ### Example
 ```java
@@ -183,7 +183,7 @@ import com.mux.ApiException;
 import com.mux.Configuration;
 import com.mux.auth.*;
 import com.mux.models.*;
-import com.mux.sdk.RealTimeApi;
+import com.mux.sdk.MonitoringApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -195,16 +195,16 @@ public class Example {
     accessToken.setUsername("YOUR USERNAME");
     accessToken.setPassword("YOUR PASSWORD");
 
-    RealTimeApi apiInstance = new RealTimeApi(defaultClient);
-    String REALTIME_METRIC_ID = "current-concurrent-viewers"; // String | ID of the Realtime Metric
+    MonitoringApi apiInstance = new MonitoringApi(defaultClient);
+    String MONITORING_METRIC_ID = "current-concurrent-viewers"; // String | ID of the Monitoring Metric
     java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
     try {
-      GetRealTimeTimeseriesResponse result = apiInstance.getRealtimeTimeseries(REALTIME_METRIC_ID)
+      GetMonitoringTimeseriesResponse result = apiInstance.getMonitoringTimeseries(MONITORING_METRIC_ID)
             .filters(filters)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RealTimeApi#getRealtimeTimeseries");
+      System.err.println("Exception when calling MonitoringApi#getMonitoringTimeseries");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -218,12 +218,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **REALTIME_METRIC_ID** | **String**| ID of the Realtime Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
+ **MONITORING_METRIC_ID** | **String**| ID of the Monitoring Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
  **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
 
 ### Return type
 
-[**GetRealTimeTimeseriesResponse**](GetRealTimeTimeseriesResponse.md)
+[**GetMonitoringTimeseriesResponse**](GetMonitoringTimeseriesResponse.md)
 
 ### Authorization
 
@@ -239,13 +239,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
-<a name="listRealtimeDimensions"></a>
-# **listRealtimeDimensions**
-> ListRealTimeDimensionsResponse listRealtimeDimensions().execute();
+<a name="listMonitoringDimensions"></a>
+# **listMonitoringDimensions**
+> ListMonitoringDimensionsResponse listMonitoringDimensions().execute();
 
-List Real-Time Dimensions
+List Monitoring Dimensions
 
-Lists available real-time dimensions. This API is now deprecated, please use the &#x60;List Monitoring Dimensions&#x60; API.
+Lists available monitoring dimensions.
 
 ### Example
 ```java
@@ -255,7 +255,7 @@ import com.mux.ApiException;
 import com.mux.Configuration;
 import com.mux.auth.*;
 import com.mux.models.*;
-import com.mux.sdk.RealTimeApi;
+import com.mux.sdk.MonitoringApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -267,13 +267,13 @@ public class Example {
     accessToken.setUsername("YOUR USERNAME");
     accessToken.setPassword("YOUR PASSWORD");
 
-    RealTimeApi apiInstance = new RealTimeApi(defaultClient);
+    MonitoringApi apiInstance = new MonitoringApi(defaultClient);
     try {
-      ListRealTimeDimensionsResponse result = apiInstance.listRealtimeDimensions()
+      ListMonitoringDimensionsResponse result = apiInstance.listMonitoringDimensions()
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RealTimeApi#listRealtimeDimensions");
+      System.err.println("Exception when calling MonitoringApi#listMonitoringDimensions");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -288,7 +288,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ListRealTimeDimensionsResponse**](ListRealTimeDimensionsResponse.md)
+[**ListMonitoringDimensionsResponse**](ListMonitoringDimensionsResponse.md)
 
 ### Authorization
 
@@ -304,13 +304,13 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
-<a name="listRealtimeMetrics"></a>
-# **listRealtimeMetrics**
-> ListRealTimeMetricsResponse listRealtimeMetrics().execute();
+<a name="listMonitoringMetrics"></a>
+# **listMonitoringMetrics**
+> ListMonitoringMetricsResponse listMonitoringMetrics().execute();
 
-List Real-Time Metrics
+List Monitoring Metrics
 
-Lists available real-time metrics. This API is now deprecated, please use the &#x60;List Monitoring Metrics&#x60; API.
+Lists available monitoring metrics.
 
 ### Example
 ```java
@@ -320,7 +320,7 @@ import com.mux.ApiException;
 import com.mux.Configuration;
 import com.mux.auth.*;
 import com.mux.models.*;
-import com.mux.sdk.RealTimeApi;
+import com.mux.sdk.MonitoringApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -332,13 +332,13 @@ public class Example {
     accessToken.setUsername("YOUR USERNAME");
     accessToken.setPassword("YOUR PASSWORD");
 
-    RealTimeApi apiInstance = new RealTimeApi(defaultClient);
+    MonitoringApi apiInstance = new MonitoringApi(defaultClient);
     try {
-      ListRealTimeMetricsResponse result = apiInstance.listRealtimeMetrics()
+      ListMonitoringMetricsResponse result = apiInstance.listMonitoringMetrics()
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RealTimeApi#listRealtimeMetrics");
+      System.err.println("Exception when calling MonitoringApi#listMonitoringMetrics");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -353,7 +353,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ListRealTimeMetricsResponse**](ListRealTimeMetricsResponse.md)
+[**ListMonitoringMetricsResponse**](ListMonitoringMetricsResponse.md)
 
 ### Authorization
 

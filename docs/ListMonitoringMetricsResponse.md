@@ -1,6 +1,6 @@
 
 
-# ListRealTimeMetricsResponse
+# ListMonitoringMetricsResponse
 
 ## Properties
 
