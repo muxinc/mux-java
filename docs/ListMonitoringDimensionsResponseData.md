@@ -1,6 +1,6 @@
 
 
-# ListRealTimeDimensionsResponseData
+# ListMonitoringDimensionsResponseData
 
 ## Properties
 

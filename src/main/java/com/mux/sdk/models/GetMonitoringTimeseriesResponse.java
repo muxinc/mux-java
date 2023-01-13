@@ -20,19 +20,19 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mux.sdk.models.ListMonitoringDimensionsResponseData;
+import com.mux.sdk.models.MonitoringTimeseriesDatapoint;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ListRealTimeMetricsResponse
+ * GetMonitoringTimeseriesResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ListRealTimeMetricsResponse {
+public class GetMonitoringTimeseriesResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private java.util.List<ListMonitoringDimensionsResponseData> data = null;
+  private java.util.List<MonitoringTimeseriesDatapoint> data = null;
 
   public static final String SERIALIZED_NAME_TOTAL_ROW_COUNT = "total_row_count";
   @SerializedName(SERIALIZED_NAME_TOTAL_ROW_COUNT)
@@ -43,13 +43,13 @@ public class ListRealTimeMetricsResponse {
   private java.util.List<Long> timeframe = null;
 
 
-  public ListRealTimeMetricsResponse data(java.util.List<ListMonitoringDimensionsResponseData> data) {
+  public GetMonitoringTimeseriesResponse data(java.util.List<MonitoringTimeseriesDatapoint> data) {
     
     this.data = data;
     return this;
   }
 
-  public ListRealTimeMetricsResponse addDataItem(ListMonitoringDimensionsResponseData dataItem) {
+  public GetMonitoringTimeseriesResponse addDataItem(MonitoringTimeseriesDatapoint dataItem) {
     if (this.data == null) {
       this.data = new java.util.ArrayList<>();
     }
@@ -64,17 +64,17 @@ public class ListRealTimeMetricsResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public java.util.List<ListMonitoringDimensionsResponseData> getData() {
+  public java.util.List<MonitoringTimeseriesDatapoint> getData() {
     return data;
   }
 
 
-  public void setData(java.util.List<ListMonitoringDimensionsResponseData> data) {
+  public void setData(java.util.List<MonitoringTimeseriesDatapoint> data) {
     this.data = data;
   }
 
 
-  public ListRealTimeMetricsResponse totalRowCount(Long totalRowCount) {
+  public GetMonitoringTimeseriesResponse totalRowCount(Long totalRowCount) {
     
     this.totalRowCount = totalRowCount;
     return this;
@@ -97,13 +97,13 @@ public class ListRealTimeMetricsResponse {
   }
 
 
-  public ListRealTimeMetricsResponse timeframe(java.util.List<Long> timeframe) {
+  public GetMonitoringTimeseriesResponse timeframe(java.util.List<Long> timeframe) {
     
     this.timeframe = timeframe;
     return this;
   }
 
-  public ListRealTimeMetricsResponse addTimeframeItem(Long timeframeItem) {
+  public GetMonitoringTimeseriesResponse addTimeframeItem(Long timeframeItem) {
     if (this.timeframe == null) {
       this.timeframe = new java.util.ArrayList<>();
     }
@@ -136,10 +136,10 @@ public class ListRealTimeMetricsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListRealTimeMetricsResponse listRealTimeMetricsResponse = (ListRealTimeMetricsResponse) o;
-    return Objects.equals(this.data, listRealTimeMetricsResponse.data) &&
-        Objects.equals(this.totalRowCount, listRealTimeMetricsResponse.totalRowCount) &&
-        Objects.equals(this.timeframe, listRealTimeMetricsResponse.timeframe);
+    GetMonitoringTimeseriesResponse getMonitoringTimeseriesResponse = (GetMonitoringTimeseriesResponse) o;
+    return Objects.equals(this.data, getMonitoringTimeseriesResponse.data) &&
+        Objects.equals(this.totalRowCount, getMonitoringTimeseriesResponse.totalRowCount) &&
+        Objects.equals(this.timeframe, getMonitoringTimeseriesResponse.timeframe);
   }
 
   @Override
@@ -150,7 +150,7 @@ public class ListRealTimeMetricsResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListRealTimeMetricsResponse {\n");
+    sb.append("class GetMonitoringTimeseriesResponse {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    totalRowCount: ").append(toIndentedString(totalRowCount)).append("\n");
     sb.append("    timeframe: ").append(toIndentedString(timeframe)).append("\n");

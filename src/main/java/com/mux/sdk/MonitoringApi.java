@@ -27,24 +27,24 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mux.sdk.models.GetRealTimeBreakdownResponse;
-import com.mux.sdk.models.GetRealTimeHistogramTimeseriesResponse;
-import com.mux.sdk.models.GetRealTimeTimeseriesResponse;
-import com.mux.sdk.models.ListRealTimeDimensionsResponse;
-import com.mux.sdk.models.ListRealTimeMetricsResponse;
+import com.mux.sdk.models.GetMonitoringBreakdownResponse;
+import com.mux.sdk.models.GetMonitoringHistogramTimeseriesResponse;
+import com.mux.sdk.models.GetMonitoringTimeseriesResponse;
+import com.mux.sdk.models.ListMonitoringDimensionsResponse;
+import com.mux.sdk.models.ListMonitoringMetricsResponse;
 // TODO: due to import parsing issues for the RDR type; fix in spec in future
 import com.mux.sdk.models.ReferrerDomainRestriction;
 
 import java.lang.reflect.Type;
 
-public class RealTimeApi {
+public class MonitoringApi {
     private ApiClient localVarApiClient;
 
-    public RealTimeApi() {
+    public MonitoringApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public RealTimeApi(ApiClient apiClient) {
+    public MonitoringApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -56,12 +56,12 @@ public class RealTimeApi {
         this.localVarApiClient = apiClient;
     }
 
-    private okhttp3.Call getRealtimeBreakdownCall(String REALTIME_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMonitoringBreakdownCall(String MONITORING_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/data/v1/realtime/metrics/{REALTIME_METRIC_ID}/breakdown"
-            .replaceAll("\\{" + "REALTIME_METRIC_ID" + "\\}", localVarApiClient.escapeString(REALTIME_METRIC_ID.toString()));
+        String localVarPath = "/data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/breakdown"
+            .replaceAll("\\{" + "MONITORING_METRIC_ID" + "\\}", localVarApiClient.escapeString(MONITORING_METRIC_ID.toString()));
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
         java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
@@ -107,54 +107,53 @@ public class RealTimeApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRealtimeBreakdownValidateBeforeCall(String REALTIME_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMonitoringBreakdownValidateBeforeCall(String MONITORING_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'REALTIME_METRIC_ID' is set
-        if (REALTIME_METRIC_ID == null) {
-            throw new ApiException("Missing the required parameter 'REALTIME_METRIC_ID' when calling getRealtimeBreakdown(Async)");
+        // verify the required parameter 'MONITORING_METRIC_ID' is set
+        if (MONITORING_METRIC_ID == null) {
+            throw new ApiException("Missing the required parameter 'MONITORING_METRIC_ID' when calling getMonitoringBreakdown(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getRealtimeBreakdownCall(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, _callback);
+        okhttp3.Call localVarCall = getMonitoringBreakdownCall(MONITORING_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<GetRealTimeBreakdownResponse> getRealtimeBreakdownWithHttpInfo(String REALTIME_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection) throws ApiException {
-        okhttp3.Call localVarCall = getRealtimeBreakdownValidateBeforeCall(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, null);
-        Type localVarReturnType = new TypeToken<GetRealTimeBreakdownResponse>(){}.getType();
+    private ApiResponse<GetMonitoringBreakdownResponse> getMonitoringBreakdownWithHttpInfo(String MONITORING_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection) throws ApiException {
+        okhttp3.Call localVarCall = getMonitoringBreakdownValidateBeforeCall(MONITORING_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, null);
+        Type localVarReturnType = new TypeToken<GetMonitoringBreakdownResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getRealtimeBreakdownAsync(String REALTIME_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback<GetRealTimeBreakdownResponse> _callback) throws ApiException {
+    private okhttp3.Call getMonitoringBreakdownAsync(String MONITORING_METRIC_ID, String dimension, Integer timestamp, java.util.List<String> filters, String orderBy, String orderDirection, final ApiCallback<GetMonitoringBreakdownResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRealtimeBreakdownValidateBeforeCall(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, _callback);
-        Type localVarReturnType = new TypeToken<GetRealTimeBreakdownResponse>(){}.getType();
+        okhttp3.Call localVarCall = getMonitoringBreakdownValidateBeforeCall(MONITORING_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, _callback);
+        Type localVarReturnType = new TypeToken<GetMonitoringBreakdownResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIgetRealtimeBreakdownRequest {
-        private final String REALTIME_METRIC_ID;
+    public class APIgetMonitoringBreakdownRequest {
+        private final String MONITORING_METRIC_ID;
         private String dimension;
         private Integer timestamp;
         private java.util.List<String> filters;
         private String orderBy;
         private String orderDirection;
 
-        private APIgetRealtimeBreakdownRequest(String REALTIME_METRIC_ID) {
-            this.REALTIME_METRIC_ID = REALTIME_METRIC_ID;
+        private APIgetMonitoringBreakdownRequest(String MONITORING_METRIC_ID) {
+            this.MONITORING_METRIC_ID = MONITORING_METRIC_ID;
         }
 
         /**
          * Set dimension
          * @param dimension Dimension the specified value belongs to (optional)
-         * @return APIgetRealtimeBreakdownRequest
+         * @return APIgetMonitoringBreakdownRequest
          */
-        public APIgetRealtimeBreakdownRequest dimension(String dimension) {
+        public APIgetMonitoringBreakdownRequest dimension(String dimension) {
             this.dimension = dimension;
             return this;
         }
@@ -162,9 +161,9 @@ public class RealTimeApi {
         /**
          * Set timestamp
          * @param timestamp Timestamp to limit results by. This value must be provided as a unix timestamp. Defaults to the current unix timestamp. (optional)
-         * @return APIgetRealtimeBreakdownRequest
+         * @return APIgetMonitoringBreakdownRequest
          */
-        public APIgetRealtimeBreakdownRequest timestamp(Integer timestamp) {
+        public APIgetMonitoringBreakdownRequest timestamp(Integer timestamp) {
             this.timestamp = timestamp;
             return this;
         }
@@ -172,9 +171,9 @@ public class RealTimeApi {
         /**
          * Set filters
          * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
-         * @return APIgetRealtimeBreakdownRequest
+         * @return APIgetMonitoringBreakdownRequest
          */
-        public APIgetRealtimeBreakdownRequest filters(java.util.List<String> filters) {
+        public APIgetMonitoringBreakdownRequest filters(java.util.List<String> filters) {
             this.filters = filters;
             return this;
         }
@@ -182,9 +181,9 @@ public class RealTimeApi {
         /**
          * Set orderBy
          * @param orderBy Value to order the results by (optional)
-         * @return APIgetRealtimeBreakdownRequest
+         * @return APIgetMonitoringBreakdownRequest
          */
-        public APIgetRealtimeBreakdownRequest orderBy(String orderBy) {
+        public APIgetMonitoringBreakdownRequest orderBy(String orderBy) {
             this.orderBy = orderBy;
             return this;
         }
@@ -192,15 +191,15 @@ public class RealTimeApi {
         /**
          * Set orderDirection
          * @param orderDirection Sort order. (optional)
-         * @return APIgetRealtimeBreakdownRequest
+         * @return APIgetMonitoringBreakdownRequest
          */
-        public APIgetRealtimeBreakdownRequest orderDirection(String orderDirection) {
+        public APIgetMonitoringBreakdownRequest orderDirection(String orderDirection) {
             this.orderDirection = orderDirection;
             return this;
         }
 
         /**
-         * Build call for getRealtimeBreakdown
+         * Build call for getMonitoringBreakdown
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -210,16 +209,14 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getRealtimeBreakdownCall(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, _callback);
+            return getMonitoringBreakdownCall(MONITORING_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, _callback);
         }
 
         /**
-         * Execute getRealtimeBreakdown request
-         * @return GetRealTimeBreakdownResponse
+         * Execute getMonitoringBreakdown request
+         * @return GetMonitoringBreakdownResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -227,17 +224,15 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public GetRealTimeBreakdownResponse execute() throws ApiException {
-            ApiResponse<GetRealTimeBreakdownResponse> localVarResp = getRealtimeBreakdownWithHttpInfo(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection);
+        public GetMonitoringBreakdownResponse execute() throws ApiException {
+            ApiResponse<GetMonitoringBreakdownResponse> localVarResp = getMonitoringBreakdownWithHttpInfo(MONITORING_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getRealtimeBreakdown request with HTTP info returned
-         * @return ApiResponse&lt;GetRealTimeBreakdownResponse&gt;
+         * Execute getMonitoringBreakdown request with HTTP info returned
+         * @return ApiResponse&lt;GetMonitoringBreakdownResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -245,15 +240,13 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public ApiResponse<GetRealTimeBreakdownResponse> executeWithHttpInfo() throws ApiException {
-            return getRealtimeBreakdownWithHttpInfo(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection);
+        public ApiResponse<GetMonitoringBreakdownResponse> executeWithHttpInfo() throws ApiException {
+            return getMonitoringBreakdownWithHttpInfo(MONITORING_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection);
         }
 
         /**
-         * Execute getRealtimeBreakdown request (asynchronously)
+         * Execute getMonitoringBreakdown request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -263,37 +256,33 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public okhttp3.Call executeAsync(final ApiCallback<GetRealTimeBreakdownResponse> _callback) throws ApiException {
-            return getRealtimeBreakdownAsync(REALTIME_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<GetMonitoringBreakdownResponse> _callback) throws ApiException {
+            return getMonitoringBreakdownAsync(MONITORING_METRIC_ID, dimension, timestamp, filters, orderBy, orderDirection, _callback);
         }
     }
 
     /**
-     * Get Real-Time Breakdown
-     * Gets breakdown information for a specific dimension and metric along with the number of concurrent viewers and negative impact score. This API is now deprecated, please use the &#x60;Get Monitoring Breakdown&#x60; API.
-     * @param REALTIME_METRIC_ID ID of the Realtime Metric (required)
-     * @return APIgetRealtimeBreakdownRequest
+     * Get Monitoring Breakdown
+     * Gets breakdown information for a specific dimension and metric along with the number of concurrent viewers and negative impact score.
+     * @param MONITORING_METRIC_ID ID of the Monitoring Metric (required)
+     * @return APIgetMonitoringBreakdownRequest
      * @http.response.details
      <table border="1">
         <caption>Response Summary</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public APIgetRealtimeBreakdownRequest getRealtimeBreakdown(String REALTIME_METRIC_ID) {
-        return new APIgetRealtimeBreakdownRequest(REALTIME_METRIC_ID);
+    public APIgetMonitoringBreakdownRequest getMonitoringBreakdown(String MONITORING_METRIC_ID) {
+        return new APIgetMonitoringBreakdownRequest(MONITORING_METRIC_ID);
     }
-    private okhttp3.Call getRealtimeHistogramTimeseriesCall(String REALTIME_HISTOGRAM_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMonitoringHistogramTimeseriesCall(String MONITORING_HISTOGRAM_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/data/v1/realtime/metrics/{REALTIME_HISTOGRAM_METRIC_ID}/histogram-timeseries"
-            .replaceAll("\\{" + "REALTIME_HISTOGRAM_METRIC_ID" + "\\}", localVarApiClient.escapeString(REALTIME_HISTOGRAM_METRIC_ID.toString()));
+        String localVarPath = "/data/v1/monitoring/metrics/{MONITORING_HISTOGRAM_METRIC_ID}/histogram-timeseries"
+            .replaceAll("\\{" + "MONITORING_HISTOGRAM_METRIC_ID" + "\\}", localVarApiClient.escapeString(MONITORING_HISTOGRAM_METRIC_ID.toString()));
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
         java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
@@ -323,56 +312,55 @@ public class RealTimeApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRealtimeHistogramTimeseriesValidateBeforeCall(String REALTIME_HISTOGRAM_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMonitoringHistogramTimeseriesValidateBeforeCall(String MONITORING_HISTOGRAM_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'REALTIME_HISTOGRAM_METRIC_ID' is set
-        if (REALTIME_HISTOGRAM_METRIC_ID == null) {
-            throw new ApiException("Missing the required parameter 'REALTIME_HISTOGRAM_METRIC_ID' when calling getRealtimeHistogramTimeseries(Async)");
+        // verify the required parameter 'MONITORING_HISTOGRAM_METRIC_ID' is set
+        if (MONITORING_HISTOGRAM_METRIC_ID == null) {
+            throw new ApiException("Missing the required parameter 'MONITORING_HISTOGRAM_METRIC_ID' when calling getMonitoringHistogramTimeseries(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getRealtimeHistogramTimeseriesCall(REALTIME_HISTOGRAM_METRIC_ID, filters, _callback);
+        okhttp3.Call localVarCall = getMonitoringHistogramTimeseriesCall(MONITORING_HISTOGRAM_METRIC_ID, filters, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<GetRealTimeHistogramTimeseriesResponse> getRealtimeHistogramTimeseriesWithHttpInfo(String REALTIME_HISTOGRAM_METRIC_ID, java.util.List<String> filters) throws ApiException {
-        okhttp3.Call localVarCall = getRealtimeHistogramTimeseriesValidateBeforeCall(REALTIME_HISTOGRAM_METRIC_ID, filters, null);
-        Type localVarReturnType = new TypeToken<GetRealTimeHistogramTimeseriesResponse>(){}.getType();
+    private ApiResponse<GetMonitoringHistogramTimeseriesResponse> getMonitoringHistogramTimeseriesWithHttpInfo(String MONITORING_HISTOGRAM_METRIC_ID, java.util.List<String> filters) throws ApiException {
+        okhttp3.Call localVarCall = getMonitoringHistogramTimeseriesValidateBeforeCall(MONITORING_HISTOGRAM_METRIC_ID, filters, null);
+        Type localVarReturnType = new TypeToken<GetMonitoringHistogramTimeseriesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getRealtimeHistogramTimeseriesAsync(String REALTIME_HISTOGRAM_METRIC_ID, java.util.List<String> filters, final ApiCallback<GetRealTimeHistogramTimeseriesResponse> _callback) throws ApiException {
+    private okhttp3.Call getMonitoringHistogramTimeseriesAsync(String MONITORING_HISTOGRAM_METRIC_ID, java.util.List<String> filters, final ApiCallback<GetMonitoringHistogramTimeseriesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRealtimeHistogramTimeseriesValidateBeforeCall(REALTIME_HISTOGRAM_METRIC_ID, filters, _callback);
-        Type localVarReturnType = new TypeToken<GetRealTimeHistogramTimeseriesResponse>(){}.getType();
+        okhttp3.Call localVarCall = getMonitoringHistogramTimeseriesValidateBeforeCall(MONITORING_HISTOGRAM_METRIC_ID, filters, _callback);
+        Type localVarReturnType = new TypeToken<GetMonitoringHistogramTimeseriesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIgetRealtimeHistogramTimeseriesRequest {
-        private final String REALTIME_HISTOGRAM_METRIC_ID;
+    public class APIgetMonitoringHistogramTimeseriesRequest {
+        private final String MONITORING_HISTOGRAM_METRIC_ID;
         private java.util.List<String> filters;
 
-        private APIgetRealtimeHistogramTimeseriesRequest(String REALTIME_HISTOGRAM_METRIC_ID) {
-            this.REALTIME_HISTOGRAM_METRIC_ID = REALTIME_HISTOGRAM_METRIC_ID;
+        private APIgetMonitoringHistogramTimeseriesRequest(String MONITORING_HISTOGRAM_METRIC_ID) {
+            this.MONITORING_HISTOGRAM_METRIC_ID = MONITORING_HISTOGRAM_METRIC_ID;
         }
 
         /**
          * Set filters
          * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
-         * @return APIgetRealtimeHistogramTimeseriesRequest
+         * @return APIgetMonitoringHistogramTimeseriesRequest
          */
-        public APIgetRealtimeHistogramTimeseriesRequest filters(java.util.List<String> filters) {
+        public APIgetMonitoringHistogramTimeseriesRequest filters(java.util.List<String> filters) {
             this.filters = filters;
             return this;
         }
 
         /**
-         * Build call for getRealtimeHistogramTimeseries
+         * Build call for getMonitoringHistogramTimeseries
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -382,16 +370,14 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getRealtimeHistogramTimeseriesCall(REALTIME_HISTOGRAM_METRIC_ID, filters, _callback);
+            return getMonitoringHistogramTimeseriesCall(MONITORING_HISTOGRAM_METRIC_ID, filters, _callback);
         }
 
         /**
-         * Execute getRealtimeHistogramTimeseries request
-         * @return GetRealTimeHistogramTimeseriesResponse
+         * Execute getMonitoringHistogramTimeseries request
+         * @return GetMonitoringHistogramTimeseriesResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -399,17 +385,15 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public GetRealTimeHistogramTimeseriesResponse execute() throws ApiException {
-            ApiResponse<GetRealTimeHistogramTimeseriesResponse> localVarResp = getRealtimeHistogramTimeseriesWithHttpInfo(REALTIME_HISTOGRAM_METRIC_ID, filters);
+        public GetMonitoringHistogramTimeseriesResponse execute() throws ApiException {
+            ApiResponse<GetMonitoringHistogramTimeseriesResponse> localVarResp = getMonitoringHistogramTimeseriesWithHttpInfo(MONITORING_HISTOGRAM_METRIC_ID, filters);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getRealtimeHistogramTimeseries request with HTTP info returned
-         * @return ApiResponse&lt;GetRealTimeHistogramTimeseriesResponse&gt;
+         * Execute getMonitoringHistogramTimeseries request with HTTP info returned
+         * @return ApiResponse&lt;GetMonitoringHistogramTimeseriesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -417,15 +401,13 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public ApiResponse<GetRealTimeHistogramTimeseriesResponse> executeWithHttpInfo() throws ApiException {
-            return getRealtimeHistogramTimeseriesWithHttpInfo(REALTIME_HISTOGRAM_METRIC_ID, filters);
+        public ApiResponse<GetMonitoringHistogramTimeseriesResponse> executeWithHttpInfo() throws ApiException {
+            return getMonitoringHistogramTimeseriesWithHttpInfo(MONITORING_HISTOGRAM_METRIC_ID, filters);
         }
 
         /**
-         * Execute getRealtimeHistogramTimeseries request (asynchronously)
+         * Execute getMonitoringHistogramTimeseries request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -435,37 +417,33 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public okhttp3.Call executeAsync(final ApiCallback<GetRealTimeHistogramTimeseriesResponse> _callback) throws ApiException {
-            return getRealtimeHistogramTimeseriesAsync(REALTIME_HISTOGRAM_METRIC_ID, filters, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<GetMonitoringHistogramTimeseriesResponse> _callback) throws ApiException {
+            return getMonitoringHistogramTimeseriesAsync(MONITORING_HISTOGRAM_METRIC_ID, filters, _callback);
         }
     }
 
     /**
-     * Get Real-Time Histogram Timeseries
-     * Gets histogram timeseries information for a specific metric. This API is now deprecated, please use the &#x60;Get Monitoring Histogram Timeseries&#x60; API.
-     * @param REALTIME_HISTOGRAM_METRIC_ID ID of the Realtime Histogram Metric (required)
-     * @return APIgetRealtimeHistogramTimeseriesRequest
+     * Get Monitoring Histogram Timeseries
+     * Gets histogram timeseries information for a specific metric.
+     * @param MONITORING_HISTOGRAM_METRIC_ID ID of the Monitoring Histogram Metric (required)
+     * @return APIgetMonitoringHistogramTimeseriesRequest
      * @http.response.details
      <table border="1">
         <caption>Response Summary</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public APIgetRealtimeHistogramTimeseriesRequest getRealtimeHistogramTimeseries(String REALTIME_HISTOGRAM_METRIC_ID) {
-        return new APIgetRealtimeHistogramTimeseriesRequest(REALTIME_HISTOGRAM_METRIC_ID);
+    public APIgetMonitoringHistogramTimeseriesRequest getMonitoringHistogramTimeseries(String MONITORING_HISTOGRAM_METRIC_ID) {
+        return new APIgetMonitoringHistogramTimeseriesRequest(MONITORING_HISTOGRAM_METRIC_ID);
     }
-    private okhttp3.Call getRealtimeTimeseriesCall(String REALTIME_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMonitoringTimeseriesCall(String MONITORING_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/data/v1/realtime/metrics/{REALTIME_METRIC_ID}/timeseries"
-            .replaceAll("\\{" + "REALTIME_METRIC_ID" + "\\}", localVarApiClient.escapeString(REALTIME_METRIC_ID.toString()));
+        String localVarPath = "/data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/timeseries"
+            .replaceAll("\\{" + "MONITORING_METRIC_ID" + "\\}", localVarApiClient.escapeString(MONITORING_METRIC_ID.toString()));
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
         java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
@@ -495,56 +473,55 @@ public class RealTimeApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRealtimeTimeseriesValidateBeforeCall(String REALTIME_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMonitoringTimeseriesValidateBeforeCall(String MONITORING_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'REALTIME_METRIC_ID' is set
-        if (REALTIME_METRIC_ID == null) {
-            throw new ApiException("Missing the required parameter 'REALTIME_METRIC_ID' when calling getRealtimeTimeseries(Async)");
+        // verify the required parameter 'MONITORING_METRIC_ID' is set
+        if (MONITORING_METRIC_ID == null) {
+            throw new ApiException("Missing the required parameter 'MONITORING_METRIC_ID' when calling getMonitoringTimeseries(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getRealtimeTimeseriesCall(REALTIME_METRIC_ID, filters, _callback);
+        okhttp3.Call localVarCall = getMonitoringTimeseriesCall(MONITORING_METRIC_ID, filters, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<GetRealTimeTimeseriesResponse> getRealtimeTimeseriesWithHttpInfo(String REALTIME_METRIC_ID, java.util.List<String> filters) throws ApiException {
-        okhttp3.Call localVarCall = getRealtimeTimeseriesValidateBeforeCall(REALTIME_METRIC_ID, filters, null);
-        Type localVarReturnType = new TypeToken<GetRealTimeTimeseriesResponse>(){}.getType();
+    private ApiResponse<GetMonitoringTimeseriesResponse> getMonitoringTimeseriesWithHttpInfo(String MONITORING_METRIC_ID, java.util.List<String> filters) throws ApiException {
+        okhttp3.Call localVarCall = getMonitoringTimeseriesValidateBeforeCall(MONITORING_METRIC_ID, filters, null);
+        Type localVarReturnType = new TypeToken<GetMonitoringTimeseriesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getRealtimeTimeseriesAsync(String REALTIME_METRIC_ID, java.util.List<String> filters, final ApiCallback<GetRealTimeTimeseriesResponse> _callback) throws ApiException {
+    private okhttp3.Call getMonitoringTimeseriesAsync(String MONITORING_METRIC_ID, java.util.List<String> filters, final ApiCallback<GetMonitoringTimeseriesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRealtimeTimeseriesValidateBeforeCall(REALTIME_METRIC_ID, filters, _callback);
-        Type localVarReturnType = new TypeToken<GetRealTimeTimeseriesResponse>(){}.getType();
+        okhttp3.Call localVarCall = getMonitoringTimeseriesValidateBeforeCall(MONITORING_METRIC_ID, filters, _callback);
+        Type localVarReturnType = new TypeToken<GetMonitoringTimeseriesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIgetRealtimeTimeseriesRequest {
-        private final String REALTIME_METRIC_ID;
+    public class APIgetMonitoringTimeseriesRequest {
+        private final String MONITORING_METRIC_ID;
         private java.util.List<String> filters;
 
-        private APIgetRealtimeTimeseriesRequest(String REALTIME_METRIC_ID) {
-            this.REALTIME_METRIC_ID = REALTIME_METRIC_ID;
+        private APIgetMonitoringTimeseriesRequest(String MONITORING_METRIC_ID) {
+            this.MONITORING_METRIC_ID = MONITORING_METRIC_ID;
         }
 
         /**
          * Set filters
          * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
-         * @return APIgetRealtimeTimeseriesRequest
+         * @return APIgetMonitoringTimeseriesRequest
          */
-        public APIgetRealtimeTimeseriesRequest filters(java.util.List<String> filters) {
+        public APIgetMonitoringTimeseriesRequest filters(java.util.List<String> filters) {
             this.filters = filters;
             return this;
         }
 
         /**
-         * Build call for getRealtimeTimeseries
+         * Build call for getMonitoringTimeseries
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -554,16 +531,14 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getRealtimeTimeseriesCall(REALTIME_METRIC_ID, filters, _callback);
+            return getMonitoringTimeseriesCall(MONITORING_METRIC_ID, filters, _callback);
         }
 
         /**
-         * Execute getRealtimeTimeseries request
-         * @return GetRealTimeTimeseriesResponse
+         * Execute getMonitoringTimeseries request
+         * @return GetMonitoringTimeseriesResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -571,17 +546,15 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public GetRealTimeTimeseriesResponse execute() throws ApiException {
-            ApiResponse<GetRealTimeTimeseriesResponse> localVarResp = getRealtimeTimeseriesWithHttpInfo(REALTIME_METRIC_ID, filters);
+        public GetMonitoringTimeseriesResponse execute() throws ApiException {
+            ApiResponse<GetMonitoringTimeseriesResponse> localVarResp = getMonitoringTimeseriesWithHttpInfo(MONITORING_METRIC_ID, filters);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getRealtimeTimeseries request with HTTP info returned
-         * @return ApiResponse&lt;GetRealTimeTimeseriesResponse&gt;
+         * Execute getMonitoringTimeseries request with HTTP info returned
+         * @return ApiResponse&lt;GetMonitoringTimeseriesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -589,15 +562,13 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public ApiResponse<GetRealTimeTimeseriesResponse> executeWithHttpInfo() throws ApiException {
-            return getRealtimeTimeseriesWithHttpInfo(REALTIME_METRIC_ID, filters);
+        public ApiResponse<GetMonitoringTimeseriesResponse> executeWithHttpInfo() throws ApiException {
+            return getMonitoringTimeseriesWithHttpInfo(MONITORING_METRIC_ID, filters);
         }
 
         /**
-         * Execute getRealtimeTimeseries request (asynchronously)
+         * Execute getMonitoringTimeseries request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -607,36 +578,32 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public okhttp3.Call executeAsync(final ApiCallback<GetRealTimeTimeseriesResponse> _callback) throws ApiException {
-            return getRealtimeTimeseriesAsync(REALTIME_METRIC_ID, filters, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<GetMonitoringTimeseriesResponse> _callback) throws ApiException {
+            return getMonitoringTimeseriesAsync(MONITORING_METRIC_ID, filters, _callback);
         }
     }
 
     /**
-     * Get Real-Time Timeseries
-     * Gets Time series information for a specific metric along with the number of concurrent viewers. This API is now deprecated, please use the &#x60;Get Monitoring Timeseries&#x60; API.
-     * @param REALTIME_METRIC_ID ID of the Realtime Metric (required)
-     * @return APIgetRealtimeTimeseriesRequest
+     * Get Monitoring Timeseries
+     * Gets Time series information for a specific metric along with the number of concurrent viewers.
+     * @param MONITORING_METRIC_ID ID of the Monitoring Metric (required)
+     * @return APIgetMonitoringTimeseriesRequest
      * @http.response.details
      <table border="1">
         <caption>Response Summary</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public APIgetRealtimeTimeseriesRequest getRealtimeTimeseries(String REALTIME_METRIC_ID) {
-        return new APIgetRealtimeTimeseriesRequest(REALTIME_METRIC_ID);
+    public APIgetMonitoringTimeseriesRequest getMonitoringTimeseries(String MONITORING_METRIC_ID) {
+        return new APIgetMonitoringTimeseriesRequest(MONITORING_METRIC_ID);
     }
-    private okhttp3.Call listRealtimeDimensionsCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMonitoringDimensionsCall(final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/data/v1/realtime/dimensions";
+        String localVarPath = "/data/v1/monitoring/dimensions";
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
         java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
@@ -662,38 +629,37 @@ public class RealTimeApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listRealtimeDimensionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMonitoringDimensionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listRealtimeDimensionsCall(_callback);
+        okhttp3.Call localVarCall = listMonitoringDimensionsCall(_callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<ListRealTimeDimensionsResponse> listRealtimeDimensionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listRealtimeDimensionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ListRealTimeDimensionsResponse>(){}.getType();
+    private ApiResponse<ListMonitoringDimensionsResponse> listMonitoringDimensionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listMonitoringDimensionsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListMonitoringDimensionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listRealtimeDimensionsAsync(final ApiCallback<ListRealTimeDimensionsResponse> _callback) throws ApiException {
+    private okhttp3.Call listMonitoringDimensionsAsync(final ApiCallback<ListMonitoringDimensionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listRealtimeDimensionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ListRealTimeDimensionsResponse>(){}.getType();
+        okhttp3.Call localVarCall = listMonitoringDimensionsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListMonitoringDimensionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIlistRealtimeDimensionsRequest {
+    public class APIlistMonitoringDimensionsRequest {
 
-        private APIlistRealtimeDimensionsRequest() {
+        private APIlistMonitoringDimensionsRequest() {
         }
 
         /**
-         * Build call for listRealtimeDimensions
+         * Build call for listMonitoringDimensions
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -703,16 +669,14 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listRealtimeDimensionsCall(_callback);
+            return listMonitoringDimensionsCall(_callback);
         }
 
         /**
-         * Execute listRealtimeDimensions request
-         * @return ListRealTimeDimensionsResponse
+         * Execute listMonitoringDimensions request
+         * @return ListMonitoringDimensionsResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -720,17 +684,15 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public ListRealTimeDimensionsResponse execute() throws ApiException {
-            ApiResponse<ListRealTimeDimensionsResponse> localVarResp = listRealtimeDimensionsWithHttpInfo();
+        public ListMonitoringDimensionsResponse execute() throws ApiException {
+            ApiResponse<ListMonitoringDimensionsResponse> localVarResp = listMonitoringDimensionsWithHttpInfo();
             return localVarResp.getData();
         }
 
         /**
-         * Execute listRealtimeDimensions request with HTTP info returned
-         * @return ApiResponse&lt;ListRealTimeDimensionsResponse&gt;
+         * Execute listMonitoringDimensions request with HTTP info returned
+         * @return ApiResponse&lt;ListMonitoringDimensionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -738,15 +700,13 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public ApiResponse<ListRealTimeDimensionsResponse> executeWithHttpInfo() throws ApiException {
-            return listRealtimeDimensionsWithHttpInfo();
+        public ApiResponse<ListMonitoringDimensionsResponse> executeWithHttpInfo() throws ApiException {
+            return listMonitoringDimensionsWithHttpInfo();
         }
 
         /**
-         * Execute listRealtimeDimensions request (asynchronously)
+         * Execute listMonitoringDimensions request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -756,35 +716,31 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public okhttp3.Call executeAsync(final ApiCallback<ListRealTimeDimensionsResponse> _callback) throws ApiException {
-            return listRealtimeDimensionsAsync(_callback);
+        public okhttp3.Call executeAsync(final ApiCallback<ListMonitoringDimensionsResponse> _callback) throws ApiException {
+            return listMonitoringDimensionsAsync(_callback);
         }
     }
 
     /**
-     * List Real-Time Dimensions
-     * Lists available real-time dimensions. This API is now deprecated, please use the &#x60;List Monitoring Dimensions&#x60; API.
-     * @return APIlistRealtimeDimensionsRequest
+     * List Monitoring Dimensions
+     * Lists available monitoring dimensions.
+     * @return APIlistMonitoringDimensionsRequest
      * @http.response.details
      <table border="1">
         <caption>Response Summary</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public APIlistRealtimeDimensionsRequest listRealtimeDimensions() {
-        return new APIlistRealtimeDimensionsRequest();
+    public APIlistMonitoringDimensionsRequest listMonitoringDimensions() {
+        return new APIlistMonitoringDimensionsRequest();
     }
-    private okhttp3.Call listRealtimeMetricsCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMonitoringMetricsCall(final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/data/v1/realtime/metrics";
+        String localVarPath = "/data/v1/monitoring/metrics";
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
         java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
@@ -810,38 +766,37 @@ public class RealTimeApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listRealtimeMetricsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMonitoringMetricsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listRealtimeMetricsCall(_callback);
+        okhttp3.Call localVarCall = listMonitoringMetricsCall(_callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<ListRealTimeMetricsResponse> listRealtimeMetricsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listRealtimeMetricsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ListRealTimeMetricsResponse>(){}.getType();
+    private ApiResponse<ListMonitoringMetricsResponse> listMonitoringMetricsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listMonitoringMetricsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListMonitoringMetricsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listRealtimeMetricsAsync(final ApiCallback<ListRealTimeMetricsResponse> _callback) throws ApiException {
+    private okhttp3.Call listMonitoringMetricsAsync(final ApiCallback<ListMonitoringMetricsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listRealtimeMetricsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ListRealTimeMetricsResponse>(){}.getType();
+        okhttp3.Call localVarCall = listMonitoringMetricsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListMonitoringMetricsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIlistRealtimeMetricsRequest {
+    public class APIlistMonitoringMetricsRequest {
 
-        private APIlistRealtimeMetricsRequest() {
+        private APIlistMonitoringMetricsRequest() {
         }
 
         /**
-         * Build call for listRealtimeMetrics
+         * Build call for listMonitoringMetrics
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -851,16 +806,14 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listRealtimeMetricsCall(_callback);
+            return listMonitoringMetricsCall(_callback);
         }
 
         /**
-         * Execute listRealtimeMetrics request
-         * @return ListRealTimeMetricsResponse
+         * Execute listMonitoringMetrics request
+         * @return ListMonitoringMetricsResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -868,17 +821,15 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public ListRealTimeMetricsResponse execute() throws ApiException {
-            ApiResponse<ListRealTimeMetricsResponse> localVarResp = listRealtimeMetricsWithHttpInfo();
+        public ListMonitoringMetricsResponse execute() throws ApiException {
+            ApiResponse<ListMonitoringMetricsResponse> localVarResp = listMonitoringMetricsWithHttpInfo();
             return localVarResp.getData();
         }
 
         /**
-         * Execute listRealtimeMetrics request with HTTP info returned
-         * @return ApiResponse&lt;ListRealTimeMetricsResponse&gt;
+         * Execute listMonitoringMetrics request with HTTP info returned
+         * @return ApiResponse&lt;ListMonitoringMetricsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -886,15 +837,13 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public ApiResponse<ListRealTimeMetricsResponse> executeWithHttpInfo() throws ApiException {
-            return listRealtimeMetricsWithHttpInfo();
+        public ApiResponse<ListMonitoringMetricsResponse> executeWithHttpInfo() throws ApiException {
+            return listMonitoringMetricsWithHttpInfo();
         }
 
         /**
-         * Execute listRealtimeMetrics request (asynchronously)
+         * Execute listMonitoringMetrics request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -904,28 +853,24 @@ public class RealTimeApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
-         * @deprecated
          */
-        @Deprecated
-        public okhttp3.Call executeAsync(final ApiCallback<ListRealTimeMetricsResponse> _callback) throws ApiException {
-            return listRealtimeMetricsAsync(_callback);
+        public okhttp3.Call executeAsync(final ApiCallback<ListMonitoringMetricsResponse> _callback) throws ApiException {
+            return listMonitoringMetricsAsync(_callback);
         }
     }
 
     /**
-     * List Real-Time Metrics
-     * Lists available real-time metrics. This API is now deprecated, please use the &#x60;List Monitoring Metrics&#x60; API.
-     * @return APIlistRealtimeMetricsRequest
+     * List Monitoring Metrics
+     * Lists available monitoring metrics.
+     * @return APIlistMonitoringMetricsRequest
      * @http.response.details
      <table border="1">
         <caption>Response Summary</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public APIlistRealtimeMetricsRequest listRealtimeMetrics() {
-        return new APIlistRealtimeMetricsRequest();
+    public APIlistMonitoringMetricsRequest listMonitoringMetrics() {
+        return new APIlistMonitoringMetricsRequest();
     }
 }

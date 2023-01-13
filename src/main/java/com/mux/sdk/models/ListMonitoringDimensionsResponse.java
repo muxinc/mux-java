@@ -26,10 +26,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ListRealTimeMetricsResponse
+ * ListMonitoringDimensionsResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ListRealTimeMetricsResponse {
+public class ListMonitoringDimensionsResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private java.util.List<ListMonitoringDimensionsResponseData> data = null;
@@ -43,13 +43,13 @@ public class ListRealTimeMetricsResponse {
   private java.util.List<Long> timeframe = null;
 
 
-  public ListRealTimeMetricsResponse data(java.util.List<ListMonitoringDimensionsResponseData> data) {
+  public ListMonitoringDimensionsResponse data(java.util.List<ListMonitoringDimensionsResponseData> data) {
     
     this.data = data;
     return this;
   }
 
-  public ListRealTimeMetricsResponse addDataItem(ListMonitoringDimensionsResponseData dataItem) {
+  public ListMonitoringDimensionsResponse addDataItem(ListMonitoringDimensionsResponseData dataItem) {
     if (this.data == null) {
       this.data = new java.util.ArrayList<>();
     }
@@ -74,7 +74,7 @@ public class ListRealTimeMetricsResponse {
   }
 
 
-  public ListRealTimeMetricsResponse totalRowCount(Long totalRowCount) {
+  public ListMonitoringDimensionsResponse totalRowCount(Long totalRowCount) {
     
     this.totalRowCount = totalRowCount;
     return this;
@@ -97,13 +97,13 @@ public class ListRealTimeMetricsResponse {
   }
 
 
-  public ListRealTimeMetricsResponse timeframe(java.util.List<Long> timeframe) {
+  public ListMonitoringDimensionsResponse timeframe(java.util.List<Long> timeframe) {
     
     this.timeframe = timeframe;
     return this;
   }
 
-  public ListRealTimeMetricsResponse addTimeframeItem(Long timeframeItem) {
+  public ListMonitoringDimensionsResponse addTimeframeItem(Long timeframeItem) {
     if (this.timeframe == null) {
       this.timeframe = new java.util.ArrayList<>();
     }
@@ -136,10 +136,10 @@ public class ListRealTimeMetricsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListRealTimeMetricsResponse listRealTimeMetricsResponse = (ListRealTimeMetricsResponse) o;
-    return Objects.equals(this.data, listRealTimeMetricsResponse.data) &&
-        Objects.equals(this.totalRowCount, listRealTimeMetricsResponse.totalRowCount) &&
-        Objects.equals(this.timeframe, listRealTimeMetricsResponse.timeframe);
+    ListMonitoringDimensionsResponse listMonitoringDimensionsResponse = (ListMonitoringDimensionsResponse) o;
+    return Objects.equals(this.data, listMonitoringDimensionsResponse.data) &&
+        Objects.equals(this.totalRowCount, listMonitoringDimensionsResponse.totalRowCount) &&
+        Objects.equals(this.timeframe, listMonitoringDimensionsResponse.timeframe);
   }
 
   @Override
@@ -150,7 +150,7 @@ public class ListRealTimeMetricsResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListRealTimeMetricsResponse {\n");
+    sb.append("class ListMonitoringDimensionsResponse {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    totalRowCount: ").append(toIndentedString(totalRowCount)).append("\n");
     sb.append("    timeframe: ").append(toIndentedString(timeframe)).append("\n");

@@ -1,12 +1,12 @@
 
 
-# ListRealTimeMetricsResponse
+# GetMonitoringTimeseriesResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**java.util.List&lt;ListMonitoringDimensionsResponseData&gt;**](ListMonitoringDimensionsResponseData.md) |  |  [optional]
+**data** | [**java.util.List&lt;MonitoringTimeseriesDatapoint&gt;**](MonitoringTimeseriesDatapoint.md) |  |  [optional]
 **totalRowCount** | **Long** |  |  [optional]
 **timeframe** | **java.util.List&lt;Long&gt;** |  |  [optional]
 

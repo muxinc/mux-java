@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mux.sdk.models.ListRealTimeDimensionsResponseData;
+import com.mux.sdk.models.ListMonitoringDimensionsResponseData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -32,7 +32,7 @@ import java.io.IOException;
 public class ListRealTimeDimensionsResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private java.util.List<ListRealTimeDimensionsResponseData> data = null;
+  private java.util.List<ListMonitoringDimensionsResponseData> data = null;
 
   public static final String SERIALIZED_NAME_TOTAL_ROW_COUNT = "total_row_count";
   @SerializedName(SERIALIZED_NAME_TOTAL_ROW_COUNT)
@@ -43,13 +43,13 @@ public class ListRealTimeDimensionsResponse {
   private java.util.List<Long> timeframe = null;
 
 
-  public ListRealTimeDimensionsResponse data(java.util.List<ListRealTimeDimensionsResponseData> data) {
+  public ListRealTimeDimensionsResponse data(java.util.List<ListMonitoringDimensionsResponseData> data) {
     
     this.data = data;
     return this;
   }
 
-  public ListRealTimeDimensionsResponse addDataItem(ListRealTimeDimensionsResponseData dataItem) {
+  public ListRealTimeDimensionsResponse addDataItem(ListMonitoringDimensionsResponseData dataItem) {
     if (this.data == null) {
       this.data = new java.util.ArrayList<>();
     }
@@ -64,12 +64,12 @@ public class ListRealTimeDimensionsResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public java.util.List<ListRealTimeDimensionsResponseData> getData() {
+  public java.util.List<ListMonitoringDimensionsResponseData> getData() {
     return data;
   }
 
 
-  public void setData(java.util.List<ListRealTimeDimensionsResponseData> data) {
+  public void setData(java.util.List<ListMonitoringDimensionsResponseData> data) {
     this.data = data;
   }
 
