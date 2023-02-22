@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.5.0</version>
+  <version>0.6.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.5.0"
+compile "com.mux:mux-sdk-java:0.6.0"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.5.0.jar`
+* `target/mux-sdk-java-0.6.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -240,6 +240,7 @@ Class | Method | HTTP request | Description
  - [CreateTranscriptionVocabularyRequest](docs/CreateTranscriptionVocabularyRequest.md)
  - [CreateUploadRequest](docs/CreateUploadRequest.md)
  - [DeliveryReport](docs/DeliveryReport.md)
+ - [DeliveryReportDeliveredSecondsByResolution](docs/DeliveryReportDeliveredSecondsByResolution.md)
  - [DimensionValue](docs/DimensionValue.md)
  - [DisableLiveStreamResponse](docs/DisableLiveStreamResponse.md)
  - [EnableLiveStreamResponse](docs/EnableLiveStreamResponse.md)

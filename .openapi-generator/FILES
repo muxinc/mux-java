@@ -30,6 +30,7 @@ docs/CreateTrackResponse.md
 docs/CreateTranscriptionVocabularyRequest.md
 docs/CreateUploadRequest.md
 docs/DeliveryReport.md
+docs/DeliveryReportDeliveredSecondsByResolution.md
 docs/DeliveryUsageApi.md
 docs/DimensionValue.md
 docs/DimensionsApi.md
@@ -229,6 +230,7 @@ src/main/java/com/mux/sdk/models/CreateTrackResponse.java
 src/main/java/com/mux/sdk/models/CreateTranscriptionVocabularyRequest.java
 src/main/java/com/mux/sdk/models/CreateUploadRequest.java
 src/main/java/com/mux/sdk/models/DeliveryReport.java
+src/main/java/com/mux/sdk/models/DeliveryReportDeliveredSecondsByResolution.java
 src/main/java/com/mux/sdk/models/DimensionValue.java
 src/main/java/com/mux/sdk/models/DisableLiveStreamResponse.java
 src/main/java/com/mux/sdk/models/EnableLiveStreamResponse.java

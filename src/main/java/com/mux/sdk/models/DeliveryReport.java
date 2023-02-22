@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mux.sdk.models.DeliveryReportDeliveredSecondsByResolution;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -109,6 +110,10 @@ public class DeliveryReport {
   public static final String SERIALIZED_NAME_DELIVERED_SECONDS = "delivered_seconds";
   @SerializedName(SERIALIZED_NAME_DELIVERED_SECONDS)
   private Double deliveredSeconds;
+
+  public static final String SERIALIZED_NAME_DELIVERED_SECONDS_BY_RESOLUTION = "delivered_seconds_by_resolution";
+  @SerializedName(SERIALIZED_NAME_DELIVERED_SECONDS_BY_RESOLUTION)
+  private DeliveryReportDeliveredSecondsByResolution deliveredSecondsByResolution;
 
 
   public DeliveryReport liveStreamId(String liveStreamId) {
@@ -295,6 +300,29 @@ public class DeliveryReport {
   }
 
 
+  public DeliveryReport deliveredSecondsByResolution(DeliveryReportDeliveredSecondsByResolution deliveredSecondsByResolution) {
+    
+    this.deliveredSecondsByResolution = deliveredSecondsByResolution;
+    return this;
+  }
+
+   /**
+   * Get deliveredSecondsByResolution
+   * @return deliveredSecondsByResolution
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public DeliveryReportDeliveredSecondsByResolution getDeliveredSecondsByResolution() {
+    return deliveredSecondsByResolution;
+  }
+
+
+  public void setDeliveredSecondsByResolution(DeliveryReportDeliveredSecondsByResolution deliveredSecondsByResolution) {
+    this.deliveredSecondsByResolution = deliveredSecondsByResolution;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -311,12 +339,13 @@ public class DeliveryReport {
         Objects.equals(this.deletedAt, deliveryReport.deletedAt) &&
         Objects.equals(this.assetState, deliveryReport.assetState) &&
         Objects.equals(this.assetDuration, deliveryReport.assetDuration) &&
-        Objects.equals(this.deliveredSeconds, deliveryReport.deliveredSeconds);
+        Objects.equals(this.deliveredSeconds, deliveryReport.deliveredSeconds) &&
+        Objects.equals(this.deliveredSecondsByResolution, deliveryReport.deliveredSecondsByResolution);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(liveStreamId, assetId, passthrough, createdAt, deletedAt, assetState, assetDuration, deliveredSeconds);
+    return Objects.hash(liveStreamId, assetId, passthrough, createdAt, deletedAt, assetState, assetDuration, deliveredSeconds, deliveredSecondsByResolution);
   }
 
   @Override
@@ -331,6 +360,7 @@ public class DeliveryReport {
     sb.append("    assetState: ").append(toIndentedString(assetState)).append("\n");
     sb.append("    assetDuration: ").append(toIndentedString(assetDuration)).append("\n");
     sb.append("    deliveredSeconds: ").append(toIndentedString(deliveredSeconds)).append("\n");
+    sb.append("    deliveredSecondsByResolution: ").append(toIndentedString(deliveredSecondsByResolution)).append("\n");
     sb.append("}");
     return sb.toString();
   }
