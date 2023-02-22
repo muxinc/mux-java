@@ -60,6 +60,7 @@ Name | Value
 PREPARING | &quot;preparing&quot;
 READY | &quot;ready&quot;
 ERRORED | &quot;errored&quot;
+DELETED | &quot;deleted&quot;
 
 
 

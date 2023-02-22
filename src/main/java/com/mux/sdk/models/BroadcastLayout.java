@@ -25,14 +25,16 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The layout used when broadcasting the space. Defaults to &#x60;gallery&#x60; if not set.
+ * The layout used when broadcasting the space.  The &#x60;gallery&#x60; layout will show participants in a grid that automatically resizes each participant’s stream to best fit up to 10 participants in the window. The &#x60;active-speaker&#x60; layout will show only the current active speaker, without a border. The &#x60;crop&#x60; layout uses as much of the available space as possible to show the participant&#39;s stream.  Defaults to &#x60;gallery&#x60; if not set. 
  */
 @JsonAdapter(BroadcastLayout.Adapter.class)
 public enum BroadcastLayout {
   
   GALLERY("gallery"),
   
-  ACTIVE_SPEAKER("active-speaker");
+  ACTIVE_SPEAKER("active-speaker"),
+  
+  CROP("crop");
 
   private String value;
 

@@ -9,5 +9,7 @@
 
 * `ACTIVE_SPEAKER` (value: `"active-speaker"`)
 
+* `CROP` (value: `"crop"`)
+
 
 

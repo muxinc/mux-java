@@ -239,7 +239,9 @@ public class Track {
     
     READY("ready"),
     
-    ERRORED("errored");
+    ERRORED("errored"),
+    
+    DELETED("deleted");
 
     private String value;
 

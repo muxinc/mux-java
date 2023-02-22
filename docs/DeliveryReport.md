@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **assetState** | [**AssetStateEnum**](#AssetStateEnum) | The state of the asset. |  [optional]
 **assetDuration** | **Double** | The duration of the asset in seconds. |  [optional]
 **deliveredSeconds** | **Double** | Total number of delivered seconds during this time window. |  [optional]
+**deliveredSecondsByResolution** | [**DeliveryReportDeliveredSecondsByResolution**](DeliveryReportDeliveredSecondsByResolution.md) |  |  [optional]
 
 
 
