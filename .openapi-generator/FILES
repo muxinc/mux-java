@@ -132,6 +132,7 @@ docs/Score.md
 docs/SignalLiveStreamCompleteResponse.md
 docs/SigningKey.md
 docs/SigningKeyResponse.md
+docs/SigningKeysApi.md
 docs/SimulcastTarget.md
 docs/SimulcastTargetResponse.md
 docs/Space.md
@@ -198,6 +199,7 @@ src/main/java/com/mux/sdk/MonitoringApi.java
 src/main/java/com/mux/sdk/PlaybackIdApi.java
 src/main/java/com/mux/sdk/PlaybackRestrictionsApi.java
 src/main/java/com/mux/sdk/RealTimeApi.java
+src/main/java/com/mux/sdk/SigningKeysApi.java
 src/main/java/com/mux/sdk/SpacesApi.java
 src/main/java/com/mux/sdk/TranscriptionVocabulariesApi.java
 src/main/java/com/mux/sdk/UrlSigningKeysApi.java

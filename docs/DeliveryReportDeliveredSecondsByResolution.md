@@ -7,7 +7,9 @@ Seconds delivered broken into resolution tiers. Each tier will only be displayed
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tier1080p** | **Double** | Total number of delivered seconds during this time window that had a resolution larger than the 720p tier (over 921,600 pixels total). |  [optional]
+**tier2160p** | **Double** | Total number of delivered seconds during this time window that had a resolution larger than the 1440p tier (over 4,194,304 pixels total). |  [optional]
+**tier1440p** | **Double** | Total number of delivered seconds during this time window that had a resolution larger than the 1080p tier but less than or equal to the 2160p tier (over 2,073,600 and &lt;&#x3D; 4,194,304 pixels total). |  [optional]
+**tier1080p** | **Double** | Total number of delivered seconds during this time window that had a resolution larger than the 720p tier but less than or equal to the 1440p tier (over 921,600 and &lt;&#x3D; 2,073,600 pixels total). |  [optional]
 **tier720p** | **Double** | Total number of delivered seconds during this time window that had a resolution within the 720p tier (up to 921,600 pixels total, based on typical 1280x720). |  [optional]
 **tierAudioOnly** | **Double** | Total number of delivered seconds during this time window that had a resolution of audio only. |  [optional]
 

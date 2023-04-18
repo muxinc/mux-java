@@ -530,6 +530,26 @@ public class VideoView {
   @SerializedName(SERIALIZED_NAME_CUSTOM5)
   private String custom5;
 
+  public static final String SERIALIZED_NAME_CUSTOM6 = "custom_6";
+  @SerializedName(SERIALIZED_NAME_CUSTOM6)
+  private String custom6;
+
+  public static final String SERIALIZED_NAME_CUSTOM7 = "custom_7";
+  @SerializedName(SERIALIZED_NAME_CUSTOM7)
+  private String custom7;
+
+  public static final String SERIALIZED_NAME_CUSTOM8 = "custom_8";
+  @SerializedName(SERIALIZED_NAME_CUSTOM8)
+  private String custom8;
+
+  public static final String SERIALIZED_NAME_CUSTOM9 = "custom_9";
+  @SerializedName(SERIALIZED_NAME_CUSTOM9)
+  private String custom9;
+
+  public static final String SERIALIZED_NAME_CUSTOM10 = "custom_10";
+  @SerializedName(SERIALIZED_NAME_CUSTOM10)
+  private String custom10;
+
 
   public VideoView viewTotalUpscaling(String viewTotalUpscaling) {
     
@@ -3414,6 +3434,121 @@ public class VideoView {
   }
 
 
+  public VideoView custom6(String custom6) {
+    
+    this.custom6 = custom6;
+    return this;
+  }
+
+   /**
+   * Get custom6
+   * @return custom6
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCustom6() {
+    return custom6;
+  }
+
+
+  public void setCustom6(String custom6) {
+    this.custom6 = custom6;
+  }
+
+
+  public VideoView custom7(String custom7) {
+    
+    this.custom7 = custom7;
+    return this;
+  }
+
+   /**
+   * Get custom7
+   * @return custom7
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCustom7() {
+    return custom7;
+  }
+
+
+  public void setCustom7(String custom7) {
+    this.custom7 = custom7;
+  }
+
+
+  public VideoView custom8(String custom8) {
+    
+    this.custom8 = custom8;
+    return this;
+  }
+
+   /**
+   * Get custom8
+   * @return custom8
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCustom8() {
+    return custom8;
+  }
+
+
+  public void setCustom8(String custom8) {
+    this.custom8 = custom8;
+  }
+
+
+  public VideoView custom9(String custom9) {
+    
+    this.custom9 = custom9;
+    return this;
+  }
+
+   /**
+   * Get custom9
+   * @return custom9
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCustom9() {
+    return custom9;
+  }
+
+
+  public void setCustom9(String custom9) {
+    this.custom9 = custom9;
+  }
+
+
+  public VideoView custom10(String custom10) {
+    
+    this.custom10 = custom10;
+    return this;
+  }
+
+   /**
+   * Get custom10
+   * @return custom10
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCustom10() {
+    return custom10;
+  }
+
+
+  public void setCustom10(String custom10) {
+    this.custom10 = custom10;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -3547,12 +3682,17 @@ public class VideoView {
         Objects.equals(this.custom2, videoView.custom2) &&
         Objects.equals(this.custom3, videoView.custom3) &&
         Objects.equals(this.custom4, videoView.custom4) &&
-        Objects.equals(this.custom5, videoView.custom5);
+        Objects.equals(this.custom5, videoView.custom5) &&
+        Objects.equals(this.custom6, videoView.custom6) &&
+        Objects.equals(this.custom7, videoView.custom7) &&
+        Objects.equals(this.custom8, videoView.custom8) &&
+        Objects.equals(this.custom9, videoView.custom9) &&
+        Objects.equals(this.custom10, videoView.custom10);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5);
+    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10);
   }
 
   @Override
@@ -3684,6 +3824,11 @@ public class VideoView {
     sb.append("    custom3: ").append(toIndentedString(custom3)).append("\n");
     sb.append("    custom4: ").append(toIndentedString(custom4)).append("\n");
     sb.append("    custom5: ").append(toIndentedString(custom5)).append("\n");
+    sb.append("    custom6: ").append(toIndentedString(custom6)).append("\n");
+    sb.append("    custom7: ").append(toIndentedString(custom7)).append("\n");
+    sb.append("    custom8: ").append(toIndentedString(custom8)).append("\n");
+    sb.append("    custom9: ").append(toIndentedString(custom9)).append("\n");
+    sb.append("    custom10: ").append(toIndentedString(custom10)).append("\n");
     sb.append("}");
     return sb.toString();
   }

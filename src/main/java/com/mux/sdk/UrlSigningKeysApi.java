@@ -83,6 +83,7 @@ public class UrlSigningKeysApi {
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createUrlSigningKeyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
@@ -123,7 +124,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return createUrlSigningKeyCall(_callback);
         }
@@ -138,7 +141,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public SigningKeyResponse execute() throws ApiException {
             ApiResponse<SigningKeyResponse> localVarResp = createUrlSigningKeyWithHttpInfo();
             return localVarResp.getData();
@@ -154,7 +159,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<SigningKeyResponse> executeWithHttpInfo() throws ApiException {
             return createUrlSigningKeyWithHttpInfo();
         }
@@ -170,7 +177,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<SigningKeyResponse> _callback) throws ApiException {
             return createUrlSigningKeyAsync(_callback);
         }
@@ -178,7 +187,7 @@ public class UrlSigningKeysApi {
 
     /**
      * Create a URL signing key
-     * Creates a new signing key pair. When creating a new signing key, the API will generate a 2048-bit RSA key-pair and return the private key and a generated key-id; the public key will be stored at Mux to validate signed tokens.
+     * This route is now deprecated, please use the &#x60;Signing Keys&#x60; API. Creates a new signing key pair. When creating a new signing key, the API will generate a 2048-bit RSA key-pair and return the private key and a generated key-id; the public key will be stored at Mux to validate signed tokens.  Note: Any new access tokens authenticating this route will be required to have &#x60;System&#x60; level permissions. 
      * @return APIcreateUrlSigningKeyRequest
      * @http.response.details
      <table border="1">
@@ -186,7 +195,9 @@ public class UrlSigningKeysApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIcreateUrlSigningKeyRequest createUrlSigningKey() {
         return new APIcreateUrlSigningKeyRequest();
     }
@@ -221,6 +232,7 @@ public class UrlSigningKeysApi {
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteUrlSigningKeyValidateBeforeCall(String SIGNING_KEY_ID, final ApiCallback _callback) throws ApiException {
         
@@ -266,7 +278,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return deleteUrlSigningKeyCall(SIGNING_KEY_ID, _callback);
         }
@@ -280,7 +294,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public void execute() throws ApiException {
             deleteUrlSigningKeyWithHttpInfo(SIGNING_KEY_ID);
         }
@@ -295,7 +311,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
             return deleteUrlSigningKeyWithHttpInfo(SIGNING_KEY_ID);
         }
@@ -311,7 +329,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
             return deleteUrlSigningKeyAsync(SIGNING_KEY_ID, _callback);
         }
@@ -319,7 +339,7 @@ public class UrlSigningKeysApi {
 
     /**
      * Delete a URL signing key
-     * Deletes an existing signing key. Use with caution, as this will invalidate any existing signatures and no URLs can be signed using the key again.
+     * This route is now deprecated, please use the &#x60;Signing Keys&#x60; API. Deletes an existing signing key. Use with caution, as this will invalidate any existing signatures and no URLs can be signed using the key again.  Note: Any new access tokens authenticating this route will be required to have &#x60;System&#x60; level permissions. 
      * @param SIGNING_KEY_ID The ID of the signing key. (required)
      * @return APIdeleteUrlSigningKeyRequest
      * @http.response.details
@@ -328,7 +348,9 @@ public class UrlSigningKeysApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIdeleteUrlSigningKeyRequest deleteUrlSigningKey(String SIGNING_KEY_ID) {
         return new APIdeleteUrlSigningKeyRequest(SIGNING_KEY_ID);
     }
@@ -363,6 +385,7 @@ public class UrlSigningKeysApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getUrlSigningKeyValidateBeforeCall(String SIGNING_KEY_ID, final ApiCallback _callback) throws ApiException {
         
@@ -410,7 +433,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return getUrlSigningKeyCall(SIGNING_KEY_ID, _callback);
         }
@@ -425,7 +450,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public SigningKeyResponse execute() throws ApiException {
             ApiResponse<SigningKeyResponse> localVarResp = getUrlSigningKeyWithHttpInfo(SIGNING_KEY_ID);
             return localVarResp.getData();
@@ -441,7 +468,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<SigningKeyResponse> executeWithHttpInfo() throws ApiException {
             return getUrlSigningKeyWithHttpInfo(SIGNING_KEY_ID);
         }
@@ -457,7 +486,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<SigningKeyResponse> _callback) throws ApiException {
             return getUrlSigningKeyAsync(SIGNING_KEY_ID, _callback);
         }
@@ -465,7 +496,7 @@ public class UrlSigningKeysApi {
 
     /**
      * Retrieve a URL signing key
-     * Retrieves the details of a URL signing key that has previously been created. Supply the unique signing key ID that was returned from your previous request, and Mux will return the corresponding signing key information. **The private key is not returned in this response.** 
+     * This route is now deprecated, please use the &#x60;Signing Keys&#x60; API. Retrieves the details of a URL signing key that has previously been created. Supply the unique signing key ID that was returned from your previous request, and Mux will return the corresponding signing key information. **The private key is not returned in this response.**  Note: Any new access tokens authenticating this route will be required to have &#x60;System&#x60; level permissions. 
      * @param SIGNING_KEY_ID The ID of the signing key. (required)
      * @return APIgetUrlSigningKeyRequest
      * @http.response.details
@@ -474,7 +505,9 @@ public class UrlSigningKeysApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIgetUrlSigningKeyRequest getUrlSigningKey(String SIGNING_KEY_ID) {
         return new APIgetUrlSigningKeyRequest(SIGNING_KEY_ID);
     }
@@ -516,6 +549,7 @@ public class UrlSigningKeysApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listUrlSigningKeysValidateBeforeCall(Integer limit, Integer page, final ApiCallback _callback) throws ApiException {
         
@@ -578,7 +612,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return listUrlSigningKeysCall(limit, page, _callback);
         }
@@ -593,7 +629,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ListSigningKeysResponse execute() throws ApiException {
             ApiResponse<ListSigningKeysResponse> localVarResp = listUrlSigningKeysWithHttpInfo(limit, page);
             return localVarResp.getData();
@@ -609,7 +647,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<ListSigningKeysResponse> executeWithHttpInfo() throws ApiException {
             return listUrlSigningKeysWithHttpInfo(limit, page);
         }
@@ -625,7 +665,9 @@ public class UrlSigningKeysApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<ListSigningKeysResponse> _callback) throws ApiException {
             return listUrlSigningKeysAsync(limit, page, _callback);
         }
@@ -633,7 +675,7 @@ public class UrlSigningKeysApi {
 
     /**
      * List URL signing keys
-     * Returns a list of URL signing keys.
+     * This route is now deprecated, please use the &#x60;Signing Keys&#x60; API. Returns a list of URL signing keys.  Note: Any new access tokens authenticating this route will be required to have &#x60;System&#x60; level permissions. 
      * @return APIlistUrlSigningKeysRequest
      * @http.response.details
      <table border="1">
@@ -641,7 +683,9 @@ public class UrlSigningKeysApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIlistUrlSigningKeysRequest listUrlSigningKeys() {
         return new APIlistUrlSigningKeysRequest();
     }

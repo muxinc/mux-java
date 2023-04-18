@@ -71,7 +71,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **MONITORING_METRIC_ID** | **String**| ID of the Monitoring Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
- **dimension** | **String**| Dimension the specified value belongs to | [optional] [enum: asn, cdn, country, operating_system, player_name, region, stream_type, sub_property_id, video_series, video_title]
+ **dimension** | **String**| Dimension the specified value belongs to | [optional] [enum: asn, cdn, country, operating_system, player_name, region, stream_type, sub_property_id, video_series, video_title, view_has_ad]
  **timestamp** | **Integer**| Timestamp to limit results by. This value must be provided as a unix timestamp. Defaults to the current unix timestamp. | [optional]
  **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
  **orderBy** | **String**| Value to order the results by | [optional] [enum: negative_impact, value, views, field]
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 <a name="getMonitoringTimeseries"></a>
 # **getMonitoringTimeseries**
-> GetMonitoringTimeseriesResponse getMonitoringTimeseries(MONITORING_METRIC_ID).filters(filters).execute();
+> GetMonitoringTimeseriesResponse getMonitoringTimeseries(MONITORING_METRIC_ID).filters(filters).timestamp(timestamp).execute();
 
 Get Monitoring Timeseries
 
@@ -198,9 +198,11 @@ public class Example {
     MonitoringApi apiInstance = new MonitoringApi(defaultClient);
     String MONITORING_METRIC_ID = "current-concurrent-viewers"; // String | ID of the Monitoring Metric
     java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
+    Integer timestamp = 56; // Integer | Timestamp to use as the start of the timeseries data. This value must be provided as a unix timestamp. Defaults to 30 minutes ago.
     try {
       GetMonitoringTimeseriesResponse result = apiInstance.getMonitoringTimeseries(MONITORING_METRIC_ID)
             .filters(filters)
+            .timestamp(timestamp)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -220,6 +222,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **MONITORING_METRIC_ID** | **String**| ID of the Monitoring Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
  **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
+ **timestamp** | **Integer**| Timestamp to use as the start of the timeseries data. This value must be provided as a unix timestamp. Defaults to 30 minutes ago. | [optional]
 
 ### Return type
 

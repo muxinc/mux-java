@@ -30,6 +30,14 @@ import java.io.IOException;
 @ApiModel(description = "Seconds delivered broken into resolution tiers. Each tier will only be displayed if there was content delivered in the tier.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DeliveryReportDeliveredSecondsByResolution {
+  public static final String SERIALIZED_NAME_TIER2160P = "tier_2160p";
+  @SerializedName(SERIALIZED_NAME_TIER2160P)
+  private Double tier2160p;
+
+  public static final String SERIALIZED_NAME_TIER1440P = "tier_1440p";
+  @SerializedName(SERIALIZED_NAME_TIER1440P)
+  private Double tier1440p;
+
   public static final String SERIALIZED_NAME_TIER1080P = "tier_1080p";
   @SerializedName(SERIALIZED_NAME_TIER1080P)
   private Double tier1080p;
@@ -43,6 +51,52 @@ public class DeliveryReportDeliveredSecondsByResolution {
   private Double tierAudioOnly;
 
 
+  public DeliveryReportDeliveredSecondsByResolution tier2160p(Double tier2160p) {
+    
+    this.tier2160p = tier2160p;
+    return this;
+  }
+
+   /**
+   * Total number of delivered seconds during this time window that had a resolution larger than the 1440p tier (over 4,194,304 pixels total).
+   * @return tier2160p
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of delivered seconds during this time window that had a resolution larger than the 1440p tier (over 4,194,304 pixels total).")
+
+  public Double getTier2160p() {
+    return tier2160p;
+  }
+
+
+  public void setTier2160p(Double tier2160p) {
+    this.tier2160p = tier2160p;
+  }
+
+
+  public DeliveryReportDeliveredSecondsByResolution tier1440p(Double tier1440p) {
+    
+    this.tier1440p = tier1440p;
+    return this;
+  }
+
+   /**
+   * Total number of delivered seconds during this time window that had a resolution larger than the 1080p tier but less than or equal to the 2160p tier (over 2,073,600 and &lt;&#x3D; 4,194,304 pixels total).
+   * @return tier1440p
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of delivered seconds during this time window that had a resolution larger than the 1080p tier but less than or equal to the 2160p tier (over 2,073,600 and <= 4,194,304 pixels total).")
+
+  public Double getTier1440p() {
+    return tier1440p;
+  }
+
+
+  public void setTier1440p(Double tier1440p) {
+    this.tier1440p = tier1440p;
+  }
+
+
   public DeliveryReportDeliveredSecondsByResolution tier1080p(Double tier1080p) {
     
     this.tier1080p = tier1080p;
@@ -50,11 +104,11 @@ public class DeliveryReportDeliveredSecondsByResolution {
   }
 
    /**
-   * Total number of delivered seconds during this time window that had a resolution larger than the 720p tier (over 921,600 pixels total).
+   * Total number of delivered seconds during this time window that had a resolution larger than the 720p tier but less than or equal to the 1440p tier (over 921,600 and &lt;&#x3D; 2,073,600 pixels total).
    * @return tier1080p
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Total number of delivered seconds during this time window that had a resolution larger than the 720p tier (over 921,600 pixels total).")
+  @ApiModelProperty(value = "Total number of delivered seconds during this time window that had a resolution larger than the 720p tier but less than or equal to the 1440p tier (over 921,600 and <= 2,073,600 pixels total).")
 
   public Double getTier1080p() {
     return tier1080p;
@@ -121,20 +175,24 @@ public class DeliveryReportDeliveredSecondsByResolution {
       return false;
     }
     DeliveryReportDeliveredSecondsByResolution deliveryReportDeliveredSecondsByResolution = (DeliveryReportDeliveredSecondsByResolution) o;
-    return Objects.equals(this.tier1080p, deliveryReportDeliveredSecondsByResolution.tier1080p) &&
+    return Objects.equals(this.tier2160p, deliveryReportDeliveredSecondsByResolution.tier2160p) &&
+        Objects.equals(this.tier1440p, deliveryReportDeliveredSecondsByResolution.tier1440p) &&
+        Objects.equals(this.tier1080p, deliveryReportDeliveredSecondsByResolution.tier1080p) &&
         Objects.equals(this.tier720p, deliveryReportDeliveredSecondsByResolution.tier720p) &&
         Objects.equals(this.tierAudioOnly, deliveryReportDeliveredSecondsByResolution.tierAudioOnly);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tier1080p, tier720p, tierAudioOnly);
+    return Objects.hash(tier2160p, tier1440p, tier1080p, tier720p, tierAudioOnly);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeliveryReportDeliveredSecondsByResolution {\n");
+    sb.append("    tier2160p: ").append(toIndentedString(tier2160p)).append("\n");
+    sb.append("    tier1440p: ").append(toIndentedString(tier1440p)).append("\n");
     sb.append("    tier1080p: ").append(toIndentedString(tier1080p)).append("\n");
     sb.append("    tier720p: ").append(toIndentedString(tier720p)).append("\n");
     sb.append("    tierAudioOnly: ").append(toIndentedString(tierAudioOnly)).append("\n");

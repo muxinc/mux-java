@@ -131,6 +131,11 @@ Name | Type | Description | Notes
 **custom3** | **String** |  |  [optional]
 **custom4** | **String** |  |  [optional]
 **custom5** | **String** |  |  [optional]
+**custom6** | **String** |  |  [optional]
+**custom7** | **String** |  |  [optional]
+**custom8** | **String** |  |  [optional]
+**custom9** | **String** |  |  [optional]
+**custom10** | **String** |  |  [optional]
 
 
 

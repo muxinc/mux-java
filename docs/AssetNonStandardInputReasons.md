@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **videoEditList** | [**VideoEditListEnum**](#VideoEditListEnum) | Video Edit List reason indicates that the input file&#39;s video track contains a complex Edit Decision List. |  [optional]
 **audioEditList** | [**AudioEditListEnum**](#AudioEditListEnum) | Audio Edit List reason indicates that the input file&#39;s audio track contains a complex Edit Decision List. |  [optional]
 **unexpectedMediaFileParameters** | [**UnexpectedMediaFileParametersEnum**](#UnexpectedMediaFileParametersEnum) | A catch-all reason when the input file in created with non-standard encoding parameters. |  [optional]
+**unsupportedPixelFormat** | **String** | The video pixel format, as a string, returned by libav. Considered non-standard if not one of yuv420p or yuvj420p. |  [optional]
 
 
 

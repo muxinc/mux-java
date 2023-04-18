@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 <a name="getRealtimeTimeseries"></a>
 # **getRealtimeTimeseries**
-> GetRealTimeTimeseriesResponse getRealtimeTimeseries(REALTIME_METRIC_ID).filters(filters).execute();
+> GetRealTimeTimeseriesResponse getRealtimeTimeseries(REALTIME_METRIC_ID).filters(filters).timestamp(timestamp).execute();
 
 Get Real-Time Timeseries
 
@@ -198,9 +198,11 @@ public class Example {
     RealTimeApi apiInstance = new RealTimeApi(defaultClient);
     String REALTIME_METRIC_ID = "current-concurrent-viewers"; // String | ID of the Realtime Metric
     java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
+    Integer timestamp = 56; // Integer | Timestamp to use as the start of the timeseries data. This value must be provided as a unix timestamp. Defaults to 30 minutes ago.
     try {
       GetRealTimeTimeseriesResponse result = apiInstance.getRealtimeTimeseries(REALTIME_METRIC_ID)
             .filters(filters)
+            .timestamp(timestamp)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -220,6 +222,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **REALTIME_METRIC_ID** | **String**| ID of the Realtime Metric | [enum: current-concurrent-viewers, current-rebuffering-percentage, exits-before-video-start, playback-failure-percentage, current-average-bitrate]
  **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
+ **timestamp** | **Integer**| Timestamp to use as the start of the timeseries data. This value must be provided as a unix timestamp. Defaults to 30 minutes ago. | [optional]
 
 ### Return type
 

@@ -460,7 +460,7 @@ public class RealTimeApi {
     public APIgetRealtimeHistogramTimeseriesRequest getRealtimeHistogramTimeseries(String REALTIME_HISTOGRAM_METRIC_ID) {
         return new APIgetRealtimeHistogramTimeseriesRequest(REALTIME_HISTOGRAM_METRIC_ID);
     }
-    private okhttp3.Call getRealtimeTimeseriesCall(String REALTIME_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRealtimeTimeseriesCall(String REALTIME_METRIC_ID, java.util.List<String> filters, Integer timestamp, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -475,6 +475,10 @@ public class RealTimeApi {
 
         if (filters != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (timestamp != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timestamp", timestamp));
         }
 
         final String[] localVarAccepts = {
@@ -497,7 +501,7 @@ public class RealTimeApi {
 
     @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRealtimeTimeseriesValidateBeforeCall(String REALTIME_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRealtimeTimeseriesValidateBeforeCall(String REALTIME_METRIC_ID, java.util.List<String> filters, Integer timestamp, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'REALTIME_METRIC_ID' is set
         if (REALTIME_METRIC_ID == null) {
@@ -505,21 +509,21 @@ public class RealTimeApi {
         }
         
 
-        okhttp3.Call localVarCall = getRealtimeTimeseriesCall(REALTIME_METRIC_ID, filters, _callback);
+        okhttp3.Call localVarCall = getRealtimeTimeseriesCall(REALTIME_METRIC_ID, filters, timestamp, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<GetRealTimeTimeseriesResponse> getRealtimeTimeseriesWithHttpInfo(String REALTIME_METRIC_ID, java.util.List<String> filters) throws ApiException {
-        okhttp3.Call localVarCall = getRealtimeTimeseriesValidateBeforeCall(REALTIME_METRIC_ID, filters, null);
+    private ApiResponse<GetRealTimeTimeseriesResponse> getRealtimeTimeseriesWithHttpInfo(String REALTIME_METRIC_ID, java.util.List<String> filters, Integer timestamp) throws ApiException {
+        okhttp3.Call localVarCall = getRealtimeTimeseriesValidateBeforeCall(REALTIME_METRIC_ID, filters, timestamp, null);
         Type localVarReturnType = new TypeToken<GetRealTimeTimeseriesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getRealtimeTimeseriesAsync(String REALTIME_METRIC_ID, java.util.List<String> filters, final ApiCallback<GetRealTimeTimeseriesResponse> _callback) throws ApiException {
+    private okhttp3.Call getRealtimeTimeseriesAsync(String REALTIME_METRIC_ID, java.util.List<String> filters, Integer timestamp, final ApiCallback<GetRealTimeTimeseriesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRealtimeTimeseriesValidateBeforeCall(REALTIME_METRIC_ID, filters, _callback);
+        okhttp3.Call localVarCall = getRealtimeTimeseriesValidateBeforeCall(REALTIME_METRIC_ID, filters, timestamp, _callback);
         Type localVarReturnType = new TypeToken<GetRealTimeTimeseriesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -528,6 +532,7 @@ public class RealTimeApi {
     public class APIgetRealtimeTimeseriesRequest {
         private final String REALTIME_METRIC_ID;
         private java.util.List<String> filters;
+        private Integer timestamp;
 
         private APIgetRealtimeTimeseriesRequest(String REALTIME_METRIC_ID) {
             this.REALTIME_METRIC_ID = REALTIME_METRIC_ID;
@@ -540,6 +545,16 @@ public class RealTimeApi {
          */
         public APIgetRealtimeTimeseriesRequest filters(java.util.List<String> filters) {
             this.filters = filters;
+            return this;
+        }
+
+        /**
+         * Set timestamp
+         * @param timestamp Timestamp to use as the start of the timeseries data. This value must be provided as a unix timestamp. Defaults to 30 minutes ago. (optional)
+         * @return APIgetRealtimeTimeseriesRequest
+         */
+        public APIgetRealtimeTimeseriesRequest timestamp(Integer timestamp) {
+            this.timestamp = timestamp;
             return this;
         }
 
@@ -558,7 +573,7 @@ public class RealTimeApi {
          */
         @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getRealtimeTimeseriesCall(REALTIME_METRIC_ID, filters, _callback);
+            return getRealtimeTimeseriesCall(REALTIME_METRIC_ID, filters, timestamp, _callback);
         }
 
         /**
@@ -575,7 +590,7 @@ public class RealTimeApi {
          */
         @Deprecated
         public GetRealTimeTimeseriesResponse execute() throws ApiException {
-            ApiResponse<GetRealTimeTimeseriesResponse> localVarResp = getRealtimeTimeseriesWithHttpInfo(REALTIME_METRIC_ID, filters);
+            ApiResponse<GetRealTimeTimeseriesResponse> localVarResp = getRealtimeTimeseriesWithHttpInfo(REALTIME_METRIC_ID, filters, timestamp);
             return localVarResp.getData();
         }
 
@@ -593,7 +608,7 @@ public class RealTimeApi {
          */
         @Deprecated
         public ApiResponse<GetRealTimeTimeseriesResponse> executeWithHttpInfo() throws ApiException {
-            return getRealtimeTimeseriesWithHttpInfo(REALTIME_METRIC_ID, filters);
+            return getRealtimeTimeseriesWithHttpInfo(REALTIME_METRIC_ID, filters, timestamp);
         }
 
         /**
@@ -611,7 +626,7 @@ public class RealTimeApi {
          */
         @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<GetRealTimeTimeseriesResponse> _callback) throws ApiException {
-            return getRealtimeTimeseriesAsync(REALTIME_METRIC_ID, filters, _callback);
+            return getRealtimeTimeseriesAsync(REALTIME_METRIC_ID, filters, timestamp, _callback);
         }
     }
 

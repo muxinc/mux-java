@@ -1,22 +1,22 @@
-# DirectUploadsApi
+# SigningKeysApi
 
 All URIs are relative to *https://api.mux.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelDirectUpload**](DirectUploadsApi.md#cancelDirectUpload) | **PUT** /video/v1/uploads/{UPLOAD_ID}/cancel | Cancel a direct upload
-[**createDirectUpload**](DirectUploadsApi.md#createDirectUpload) | **POST** /video/v1/uploads | Create a new direct upload URL
-[**getDirectUpload**](DirectUploadsApi.md#getDirectUpload) | **GET** /video/v1/uploads/{UPLOAD_ID} | Retrieve a single direct upload&#39;s info
-[**listDirectUploads**](DirectUploadsApi.md#listDirectUploads) | **GET** /video/v1/uploads | List direct uploads
+[**createSigningKey**](SigningKeysApi.md#createSigningKey) | **POST** /system/v1/signing-keys | Create a signing key
+[**deleteSigningKey**](SigningKeysApi.md#deleteSigningKey) | **DELETE** /system/v1/signing-keys/{SIGNING_KEY_ID} | Delete a signing key
+[**getSigningKey**](SigningKeysApi.md#getSigningKey) | **GET** /system/v1/signing-keys/{SIGNING_KEY_ID} | Retrieve a signing key
+[**listSigningKeys**](SigningKeysApi.md#listSigningKeys) | **GET** /system/v1/signing-keys | List signing keys
 
 
-<a name="cancelDirectUpload"></a>
-# **cancelDirectUpload**
-> UploadResponse cancelDirectUpload(UPLOAD_ID).execute();
+<a name="createSigningKey"></a>
+# **createSigningKey**
+> SigningKeyResponse createSigningKey().execute();
 
-Cancel a direct upload
+Create a signing key
 
-Cancels a direct upload and marks it as cancelled. If a pending upload finishes after this request, no asset will be created. This request will only succeed if the upload is still in the &#x60;waiting&#x60; state. 
+Creates a new signing key pair. When creating a new signing key, the API will generate a 2048-bit RSA key-pair and return the private key and a generated key-id; the public key will be stored at Mux to validate signed tokens.
 
 ### Example
 ```java
@@ -26,7 +26,7 @@ import com.mux.ApiException;
 import com.mux.Configuration;
 import com.mux.auth.*;
 import com.mux.models.*;
-import com.mux.sdk.DirectUploadsApi;
+import com.mux.sdk.SigningKeysApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -38,14 +38,13 @@ public class Example {
     accessToken.setUsername("YOUR USERNAME");
     accessToken.setPassword("YOUR PASSWORD");
 
-    DirectUploadsApi apiInstance = new DirectUploadsApi(defaultClient);
-    String UPLOAD_ID = "abcd1234"; // String | ID of the Upload
+    SigningKeysApi apiInstance = new SigningKeysApi(defaultClient);
     try {
-      UploadResponse result = apiInstance.cancelDirectUpload(UPLOAD_ID)
+      SigningKeyResponse result = apiInstance.createSigningKey()
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DirectUploadsApi#cancelDirectUpload");
+      System.err.println("Exception when calling SigningKeysApi#createSigningKey");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -56,14 +55,11 @@ public class Example {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **UPLOAD_ID** | **String**| ID of the Upload |
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**UploadResponse**](UploadResponse.md)
+[**SigningKeyResponse**](SigningKeyResponse.md)
 
 ### Authorization
 
@@ -72,76 +68,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Cancellation no longer possible |  -  |
-
-<a name="createDirectUpload"></a>
-# **createDirectUpload**
-> UploadResponse createDirectUpload(createUploadRequest).execute();
-
-Create a new direct upload URL
-
-Creates a new direct upload, through which video content can be uploaded for ingest to Mux.
-
-### Example
-```java
-// Import classes:
-import com.mux.ApiClient;
-import com.mux.ApiException;
-import com.mux.Configuration;
-import com.mux.auth.*;
-import com.mux.models.*;
-import com.mux.sdk.DirectUploadsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.mux.com");
-    
-    // Configure HTTP basic authorization: accessToken
-    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
-    accessToken.setUsername("YOUR USERNAME");
-    accessToken.setPassword("YOUR PASSWORD");
-
-    DirectUploadsApi apiInstance = new DirectUploadsApi(defaultClient);
-    CreateUploadRequest createUploadRequest = {"cors_origin":"https://example.com/","new_asset_settings":{"playback_policy":["public"],"mp4_support":"standard"}}; // CreateUploadRequest | 
-    try {
-      UploadResponse result = apiInstance.createDirectUpload(createUploadRequest)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DirectUploadsApi#createDirectUpload");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createUploadRequest** | [**CreateUploadRequest**](CreateUploadRequest.md)|  |
-
-### Return type
-
-[**UploadResponse**](UploadResponse.md)
-
-### Authorization
-
-[accessToken](../README.md#accessToken)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -149,13 +75,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Created |  -  |
 
-<a name="getDirectUpload"></a>
-# **getDirectUpload**
-> UploadResponse getDirectUpload(UPLOAD_ID).execute();
+<a name="deleteSigningKey"></a>
+# **deleteSigningKey**
+> deleteSigningKey(SIGNING_KEY_ID).execute();
 
-Retrieve a single direct upload&#39;s info
+Delete a signing key
 
-Fetches information about a single direct upload in the current environment.
+Deletes an existing signing key. Use with caution, as this will invalidate any existing signatures and no JWTs can be signed using the key again.
 
 ### Example
 ```java
@@ -165,7 +91,7 @@ import com.mux.ApiException;
 import com.mux.Configuration;
 import com.mux.auth.*;
 import com.mux.models.*;
-import com.mux.sdk.DirectUploadsApi;
+import com.mux.sdk.SigningKeysApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -177,14 +103,13 @@ public class Example {
     accessToken.setUsername("YOUR USERNAME");
     accessToken.setPassword("YOUR PASSWORD");
 
-    DirectUploadsApi apiInstance = new DirectUploadsApi(defaultClient);
-    String UPLOAD_ID = "abcd1234"; // String | ID of the Upload
+    SigningKeysApi apiInstance = new SigningKeysApi(defaultClient);
+    String SIGNING_KEY_ID = "SIGNING_KEY_ID_example"; // String | The ID of the signing key.
     try {
-      UploadResponse result = apiInstance.getDirectUpload(UPLOAD_ID)
+      apiInstance.deleteSigningKey(SIGNING_KEY_ID)
             .execute();
-      System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DirectUploadsApi#getDirectUpload");
+      System.err.println("Exception when calling SigningKeysApi#deleteSigningKey");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -198,11 +123,80 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **UPLOAD_ID** | **String**| ID of the Upload |
+ **SIGNING_KEY_ID** | **String**| The ID of the signing key. |
 
 ### Return type
 
-[**UploadResponse**](UploadResponse.md)
+null (empty response body)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
+<a name="getSigningKey"></a>
+# **getSigningKey**
+> SigningKeyResponse getSigningKey(SIGNING_KEY_ID).execute();
+
+Retrieve a signing key
+
+Retrieves the details of a signing key that has previously been created. Supply the unique signing key ID that was returned from your previous request, and Mux will return the corresponding signing key information. **The private key is not returned in this response.** 
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.SigningKeysApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    SigningKeysApi apiInstance = new SigningKeysApi(defaultClient);
+    String SIGNING_KEY_ID = "SIGNING_KEY_ID_example"; // String | The ID of the signing key.
+    try {
+      SigningKeyResponse result = apiInstance.getSigningKey(SIGNING_KEY_ID)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SigningKeysApi#getSigningKey");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **SIGNING_KEY_ID** | **String**| The ID of the signing key. |
+
+### Return type
+
+[**SigningKeyResponse**](SigningKeyResponse.md)
 
 ### Authorization
 
@@ -218,13 +212,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
-<a name="listDirectUploads"></a>
-# **listDirectUploads**
-> ListUploadsResponse listDirectUploads().limit(limit).page(page).execute();
+<a name="listSigningKeys"></a>
+# **listSigningKeys**
+> ListSigningKeysResponse listSigningKeys().limit(limit).page(page).execute();
 
-List direct uploads
+List signing keys
 
-Lists direct uploads in the current environment.
+Returns a list of signing keys.
 
 ### Example
 ```java
@@ -234,7 +228,7 @@ import com.mux.ApiException;
 import com.mux.Configuration;
 import com.mux.auth.*;
 import com.mux.models.*;
-import com.mux.sdk.DirectUploadsApi;
+import com.mux.sdk.SigningKeysApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -246,17 +240,17 @@ public class Example {
     accessToken.setUsername("YOUR USERNAME");
     accessToken.setPassword("YOUR PASSWORD");
 
-    DirectUploadsApi apiInstance = new DirectUploadsApi(defaultClient);
+    SigningKeysApi apiInstance = new SigningKeysApi(defaultClient);
     Integer limit = 25; // Integer | Number of items to include in the response
     Integer page = 1; // Integer | Offset by this many pages, of the size of `limit`
     try {
-      ListUploadsResponse result = apiInstance.listDirectUploads()
+      ListSigningKeysResponse result = apiInstance.listSigningKeys()
             .limit(limit)
             .page(page)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DirectUploadsApi#listDirectUploads");
+      System.err.println("Exception when calling SigningKeysApi#listSigningKeys");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -275,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListUploadsResponse**](ListUploadsResponse.md)
+[**ListSigningKeysResponse**](ListSigningKeysResponse.md)
 
 ### Authorization
 

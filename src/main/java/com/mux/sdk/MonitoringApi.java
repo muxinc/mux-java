@@ -438,7 +438,7 @@ public class MonitoringApi {
     public APIgetMonitoringHistogramTimeseriesRequest getMonitoringHistogramTimeseries(String MONITORING_HISTOGRAM_METRIC_ID) {
         return new APIgetMonitoringHistogramTimeseriesRequest(MONITORING_HISTOGRAM_METRIC_ID);
     }
-    private okhttp3.Call getMonitoringTimeseriesCall(String MONITORING_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMonitoringTimeseriesCall(String MONITORING_METRIC_ID, java.util.List<String> filters, Integer timestamp, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -453,6 +453,10 @@ public class MonitoringApi {
 
         if (filters != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (timestamp != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timestamp", timestamp));
         }
 
         final String[] localVarAccepts = {
@@ -474,7 +478,7 @@ public class MonitoringApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMonitoringTimeseriesValidateBeforeCall(String MONITORING_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMonitoringTimeseriesValidateBeforeCall(String MONITORING_METRIC_ID, java.util.List<String> filters, Integer timestamp, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'MONITORING_METRIC_ID' is set
         if (MONITORING_METRIC_ID == null) {
@@ -482,21 +486,21 @@ public class MonitoringApi {
         }
         
 
-        okhttp3.Call localVarCall = getMonitoringTimeseriesCall(MONITORING_METRIC_ID, filters, _callback);
+        okhttp3.Call localVarCall = getMonitoringTimeseriesCall(MONITORING_METRIC_ID, filters, timestamp, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<GetMonitoringTimeseriesResponse> getMonitoringTimeseriesWithHttpInfo(String MONITORING_METRIC_ID, java.util.List<String> filters) throws ApiException {
-        okhttp3.Call localVarCall = getMonitoringTimeseriesValidateBeforeCall(MONITORING_METRIC_ID, filters, null);
+    private ApiResponse<GetMonitoringTimeseriesResponse> getMonitoringTimeseriesWithHttpInfo(String MONITORING_METRIC_ID, java.util.List<String> filters, Integer timestamp) throws ApiException {
+        okhttp3.Call localVarCall = getMonitoringTimeseriesValidateBeforeCall(MONITORING_METRIC_ID, filters, timestamp, null);
         Type localVarReturnType = new TypeToken<GetMonitoringTimeseriesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getMonitoringTimeseriesAsync(String MONITORING_METRIC_ID, java.util.List<String> filters, final ApiCallback<GetMonitoringTimeseriesResponse> _callback) throws ApiException {
+    private okhttp3.Call getMonitoringTimeseriesAsync(String MONITORING_METRIC_ID, java.util.List<String> filters, Integer timestamp, final ApiCallback<GetMonitoringTimeseriesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMonitoringTimeseriesValidateBeforeCall(MONITORING_METRIC_ID, filters, _callback);
+        okhttp3.Call localVarCall = getMonitoringTimeseriesValidateBeforeCall(MONITORING_METRIC_ID, filters, timestamp, _callback);
         Type localVarReturnType = new TypeToken<GetMonitoringTimeseriesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -505,6 +509,7 @@ public class MonitoringApi {
     public class APIgetMonitoringTimeseriesRequest {
         private final String MONITORING_METRIC_ID;
         private java.util.List<String> filters;
+        private Integer timestamp;
 
         private APIgetMonitoringTimeseriesRequest(String MONITORING_METRIC_ID) {
             this.MONITORING_METRIC_ID = MONITORING_METRIC_ID;
@@ -521,6 +526,16 @@ public class MonitoringApi {
         }
 
         /**
+         * Set timestamp
+         * @param timestamp Timestamp to use as the start of the timeseries data. This value must be provided as a unix timestamp. Defaults to 30 minutes ago. (optional)
+         * @return APIgetMonitoringTimeseriesRequest
+         */
+        public APIgetMonitoringTimeseriesRequest timestamp(Integer timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        /**
          * Build call for getMonitoringTimeseries
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -533,7 +548,7 @@ public class MonitoringApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getMonitoringTimeseriesCall(MONITORING_METRIC_ID, filters, _callback);
+            return getMonitoringTimeseriesCall(MONITORING_METRIC_ID, filters, timestamp, _callback);
         }
 
         /**
@@ -548,7 +563,7 @@ public class MonitoringApi {
          </table>
          */
         public GetMonitoringTimeseriesResponse execute() throws ApiException {
-            ApiResponse<GetMonitoringTimeseriesResponse> localVarResp = getMonitoringTimeseriesWithHttpInfo(MONITORING_METRIC_ID, filters);
+            ApiResponse<GetMonitoringTimeseriesResponse> localVarResp = getMonitoringTimeseriesWithHttpInfo(MONITORING_METRIC_ID, filters, timestamp);
             return localVarResp.getData();
         }
 
@@ -564,7 +579,7 @@ public class MonitoringApi {
          </table>
          */
         public ApiResponse<GetMonitoringTimeseriesResponse> executeWithHttpInfo() throws ApiException {
-            return getMonitoringTimeseriesWithHttpInfo(MONITORING_METRIC_ID, filters);
+            return getMonitoringTimeseriesWithHttpInfo(MONITORING_METRIC_ID, filters, timestamp);
         }
 
         /**
@@ -580,7 +595,7 @@ public class MonitoringApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetMonitoringTimeseriesResponse> _callback) throws ApiException {
-            return getMonitoringTimeseriesAsync(MONITORING_METRIC_ID, filters, _callback);
+            return getMonitoringTimeseriesAsync(MONITORING_METRIC_ID, filters, timestamp, _callback);
         }
     }
 

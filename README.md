@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.6.0</version>
+  <version>0.6.3</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.6.0"
+compile "com.mux:mux-sdk-java:0.6.3"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.6.0.jar`
+* `target/mux-sdk-java-0.6.3.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -188,6 +188,10 @@ Class | Method | HTTP request | Description
 *RealTimeApi* | [**getRealtimeTimeseries**](docs/RealTimeApi.md#getRealtimeTimeseries) | **GET** /data/v1/realtime/metrics/{REALTIME_METRIC_ID}/timeseries | Get Real-Time Timeseries
 *RealTimeApi* | [**listRealtimeDimensions**](docs/RealTimeApi.md#listRealtimeDimensions) | **GET** /data/v1/realtime/dimensions | List Real-Time Dimensions
 *RealTimeApi* | [**listRealtimeMetrics**](docs/RealTimeApi.md#listRealtimeMetrics) | **GET** /data/v1/realtime/metrics | List Real-Time Metrics
+*SigningKeysApi* | [**createSigningKey**](docs/SigningKeysApi.md#createSigningKey) | **POST** /system/v1/signing-keys | Create a signing key
+*SigningKeysApi* | [**deleteSigningKey**](docs/SigningKeysApi.md#deleteSigningKey) | **DELETE** /system/v1/signing-keys/{SIGNING_KEY_ID} | Delete a signing key
+*SigningKeysApi* | [**getSigningKey**](docs/SigningKeysApi.md#getSigningKey) | **GET** /system/v1/signing-keys/{SIGNING_KEY_ID} | Retrieve a signing key
+*SigningKeysApi* | [**listSigningKeys**](docs/SigningKeysApi.md#listSigningKeys) | **GET** /system/v1/signing-keys | List signing keys
 *SpacesApi* | [**createSpace**](docs/SpacesApi.md#createSpace) | **POST** /video/v1/spaces | Create a space
 *SpacesApi* | [**createSpaceBroadcast**](docs/SpacesApi.md#createSpaceBroadcast) | **POST** /video/v1/spaces/{SPACE_ID}/broadcasts | Create a space broadcast
 *SpacesApi* | [**deleteSpace**](docs/SpacesApi.md#deleteSpace) | **DELETE** /video/v1/spaces/{SPACE_ID} | Delete a space

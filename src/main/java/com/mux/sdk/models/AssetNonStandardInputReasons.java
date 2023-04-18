@@ -295,6 +295,10 @@ public class AssetNonStandardInputReasons {
   @SerializedName(SERIALIZED_NAME_UNEXPECTED_MEDIA_FILE_PARAMETERS)
   private UnexpectedMediaFileParametersEnum unexpectedMediaFileParameters;
 
+  public static final String SERIALIZED_NAME_UNSUPPORTED_PIXEL_FORMAT = "unsupported_pixel_format";
+  @SerializedName(SERIALIZED_NAME_UNSUPPORTED_PIXEL_FORMAT)
+  private String unsupportedPixelFormat;
+
 
   public AssetNonStandardInputReasons videoCodec(String videoCodec) {
     
@@ -526,6 +530,29 @@ public class AssetNonStandardInputReasons {
   }
 
 
+  public AssetNonStandardInputReasons unsupportedPixelFormat(String unsupportedPixelFormat) {
+    
+    this.unsupportedPixelFormat = unsupportedPixelFormat;
+    return this;
+  }
+
+   /**
+   * The video pixel format, as a string, returned by libav. Considered non-standard if not one of yuv420p or yuvj420p.
+   * @return unsupportedPixelFormat
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The video pixel format, as a string, returned by libav. Considered non-standard if not one of yuv420p or yuvj420p.")
+
+  public String getUnsupportedPixelFormat() {
+    return unsupportedPixelFormat;
+  }
+
+
+  public void setUnsupportedPixelFormat(String unsupportedPixelFormat) {
+    this.unsupportedPixelFormat = unsupportedPixelFormat;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -544,12 +571,13 @@ public class AssetNonStandardInputReasons {
         Objects.equals(this.pixelAspectRatio, assetNonStandardInputReasons.pixelAspectRatio) &&
         Objects.equals(this.videoEditList, assetNonStandardInputReasons.videoEditList) &&
         Objects.equals(this.audioEditList, assetNonStandardInputReasons.audioEditList) &&
-        Objects.equals(this.unexpectedMediaFileParameters, assetNonStandardInputReasons.unexpectedMediaFileParameters);
+        Objects.equals(this.unexpectedMediaFileParameters, assetNonStandardInputReasons.unexpectedMediaFileParameters) &&
+        Objects.equals(this.unsupportedPixelFormat, assetNonStandardInputReasons.unsupportedPixelFormat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(videoCodec, audioCodec, videoGopSize, videoFrameRate, videoResolution, videoBitrate, pixelAspectRatio, videoEditList, audioEditList, unexpectedMediaFileParameters);
+    return Objects.hash(videoCodec, audioCodec, videoGopSize, videoFrameRate, videoResolution, videoBitrate, pixelAspectRatio, videoEditList, audioEditList, unexpectedMediaFileParameters, unsupportedPixelFormat);
   }
 
   @Override
@@ -566,6 +594,7 @@ public class AssetNonStandardInputReasons {
     sb.append("    videoEditList: ").append(toIndentedString(videoEditList)).append("\n");
     sb.append("    audioEditList: ").append(toIndentedString(audioEditList)).append("\n");
     sb.append("    unexpectedMediaFileParameters: ").append(toIndentedString(unexpectedMediaFileParameters)).append("\n");
+    sb.append("    unsupportedPixelFormat: ").append(toIndentedString(unsupportedPixelFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

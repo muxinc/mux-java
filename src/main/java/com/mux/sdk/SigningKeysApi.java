@@ -27,22 +27,21 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mux.sdk.models.CreateUploadRequest;
-import com.mux.sdk.models.ListUploadsResponse;
-import com.mux.sdk.models.UploadResponse;
+import com.mux.sdk.models.ListSigningKeysResponse;
+import com.mux.sdk.models.SigningKeyResponse;
 // TODO: due to import parsing issues for the RDR type; fix in spec in future
 import com.mux.sdk.models.ReferrerDomainRestriction;
 
 import java.lang.reflect.Type;
 
-public class DirectUploadsApi {
+public class SigningKeysApi {
     private ApiClient localVarApiClient;
 
-    public DirectUploadsApi() {
+    public SigningKeysApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public DirectUploadsApi(ApiClient apiClient) {
+    public SigningKeysApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -54,12 +53,11 @@ public class DirectUploadsApi {
         this.localVarApiClient = apiClient;
     }
 
-    private okhttp3.Call cancelDirectUploadCall(String UPLOAD_ID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createSigningKeyCall(final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/uploads/{UPLOAD_ID}/cancel"
-            .replaceAll("\\{" + "UPLOAD_ID" + "\\}", localVarApiClient.escapeString(UPLOAD_ID.toString()));
+        String localVarPath = "/system/v1/signing-keys";
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
         java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
@@ -82,47 +80,40 @@ public class DirectUploadsApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "accessToken" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelDirectUploadValidateBeforeCall(String UPLOAD_ID, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'UPLOAD_ID' is set
-        if (UPLOAD_ID == null) {
-            throw new ApiException("Missing the required parameter 'UPLOAD_ID' when calling cancelDirectUpload(Async)");
-        }
+    private okhttp3.Call createSigningKeyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = cancelDirectUploadCall(UPLOAD_ID, _callback);
+        okhttp3.Call localVarCall = createSigningKeyCall(_callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<UploadResponse> cancelDirectUploadWithHttpInfo(String UPLOAD_ID) throws ApiException {
-        okhttp3.Call localVarCall = cancelDirectUploadValidateBeforeCall(UPLOAD_ID, null);
-        Type localVarReturnType = new TypeToken<UploadResponse>(){}.getType();
+    private ApiResponse<SigningKeyResponse> createSigningKeyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = createSigningKeyValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<SigningKeyResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call cancelDirectUploadAsync(String UPLOAD_ID, final ApiCallback<UploadResponse> _callback) throws ApiException {
+    private okhttp3.Call createSigningKeyAsync(final ApiCallback<SigningKeyResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelDirectUploadValidateBeforeCall(UPLOAD_ID, _callback);
-        Type localVarReturnType = new TypeToken<UploadResponse>(){}.getType();
+        okhttp3.Call localVarCall = createSigningKeyValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<SigningKeyResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIcancelDirectUploadRequest {
-        private final String UPLOAD_ID;
+    public class APIcreateSigningKeyRequest {
 
-        private APIcancelDirectUploadRequest(String UPLOAD_ID) {
-            this.UPLOAD_ID = UPLOAD_ID;
+        private APIcreateSigningKeyRequest() {
         }
 
         /**
-         * Build call for cancelDirectUpload
+         * Build call for createSigningKey
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -130,49 +121,46 @@ public class DirectUploadsApi {
          <table border="1">
             <caption>Response Summary</caption>
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> Cancellation no longer possible </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return cancelDirectUploadCall(UPLOAD_ID, _callback);
+            return createSigningKeyCall(_callback);
         }
 
         /**
-         * Execute cancelDirectUpload request
-         * @return UploadResponse
+         * Execute createSigningKey request
+         * @return SigningKeyResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
             <caption>Response Summary</caption>
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> Cancellation no longer possible </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
          </table>
          */
-        public UploadResponse execute() throws ApiException {
-            ApiResponse<UploadResponse> localVarResp = cancelDirectUploadWithHttpInfo(UPLOAD_ID);
+        public SigningKeyResponse execute() throws ApiException {
+            ApiResponse<SigningKeyResponse> localVarResp = createSigningKeyWithHttpInfo();
             return localVarResp.getData();
         }
 
         /**
-         * Execute cancelDirectUpload request with HTTP info returned
-         * @return ApiResponse&lt;UploadResponse&gt;
+         * Execute createSigningKey request with HTTP info returned
+         * @return ApiResponse&lt;SigningKeyResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
             <caption>Response Summary</caption>
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> Cancellation no longer possible </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<UploadResponse> executeWithHttpInfo() throws ApiException {
-            return cancelDirectUploadWithHttpInfo(UPLOAD_ID);
+        public ApiResponse<SigningKeyResponse> executeWithHttpInfo() throws ApiException {
+            return createSigningKeyWithHttpInfo();
         }
 
         /**
-         * Execute cancelDirectUpload request (asynchronously)
+         * Execute createSigningKey request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -180,36 +168,34 @@ public class DirectUploadsApi {
          <table border="1">
             <caption>Response Summary</caption>
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> Cancellation no longer possible </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<UploadResponse> _callback) throws ApiException {
-            return cancelDirectUploadAsync(UPLOAD_ID, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<SigningKeyResponse> _callback) throws ApiException {
+            return createSigningKeyAsync(_callback);
         }
     }
 
     /**
-     * Cancel a direct upload
-     * Cancels a direct upload and marks it as cancelled. If a pending upload finishes after this request, no asset will be created. This request will only succeed if the upload is still in the &#x60;waiting&#x60; state. 
-     * @param UPLOAD_ID ID of the Upload (required)
-     * @return APIcancelDirectUploadRequest
+     * Create a signing key
+     * Creates a new signing key pair. When creating a new signing key, the API will generate a 2048-bit RSA key-pair and return the private key and a generated key-id; the public key will be stored at Mux to validate signed tokens.
+     * @return APIcreateSigningKeyRequest
      * @http.response.details
      <table border="1">
         <caption>Response Summary</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Cancellation no longer possible </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public APIcancelDirectUploadRequest cancelDirectUpload(String UPLOAD_ID) {
-        return new APIcancelDirectUploadRequest(UPLOAD_ID);
+    public APIcreateSigningKeyRequest createSigningKey() {
+        return new APIcreateSigningKeyRequest();
     }
-    private okhttp3.Call createDirectUploadCall(CreateUploadRequest createUploadRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = createUploadRequest;
+    private okhttp3.Call deleteSigningKeyCall(String SIGNING_KEY_ID, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/uploads";
+        String localVarPath = "/system/v1/signing-keys/{SIGNING_KEY_ID}"
+            .replaceAll("\\{" + "SIGNING_KEY_ID" + "\\}", localVarApiClient.escapeString(SIGNING_KEY_ID.toString()));
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
         java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
@@ -218,7 +204,7 @@ public class DirectUploadsApi {
         java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -226,53 +212,51 @@ public class DirectUploadsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "accessToken" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDirectUploadValidateBeforeCall(CreateUploadRequest createUploadRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSigningKeyValidateBeforeCall(String SIGNING_KEY_ID, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'createUploadRequest' is set
-        if (createUploadRequest == null) {
-            throw new ApiException("Missing the required parameter 'createUploadRequest' when calling createDirectUpload(Async)");
+        // verify the required parameter 'SIGNING_KEY_ID' is set
+        if (SIGNING_KEY_ID == null) {
+            throw new ApiException("Missing the required parameter 'SIGNING_KEY_ID' when calling deleteSigningKey(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createDirectUploadCall(createUploadRequest, _callback);
+        okhttp3.Call localVarCall = deleteSigningKeyCall(SIGNING_KEY_ID, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<UploadResponse> createDirectUploadWithHttpInfo(CreateUploadRequest createUploadRequest) throws ApiException {
-        okhttp3.Call localVarCall = createDirectUploadValidateBeforeCall(createUploadRequest, null);
-        Type localVarReturnType = new TypeToken<UploadResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    private ApiResponse<Void> deleteSigningKeyWithHttpInfo(String SIGNING_KEY_ID) throws ApiException {
+        okhttp3.Call localVarCall = deleteSigningKeyValidateBeforeCall(SIGNING_KEY_ID, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
-    private okhttp3.Call createDirectUploadAsync(CreateUploadRequest createUploadRequest, final ApiCallback<UploadResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteSigningKeyAsync(String SIGNING_KEY_ID, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDirectUploadValidateBeforeCall(createUploadRequest, _callback);
-        Type localVarReturnType = new TypeToken<UploadResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = deleteSigningKeyValidateBeforeCall(SIGNING_KEY_ID, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
-    public class APIcreateDirectUploadRequest {
-        private final CreateUploadRequest createUploadRequest;
+    public class APIdeleteSigningKeyRequest {
+        private final String SIGNING_KEY_ID;
 
-        private APIcreateDirectUploadRequest(CreateUploadRequest createUploadRequest) {
-            this.createUploadRequest = createUploadRequest;
+        private APIdeleteSigningKeyRequest(String SIGNING_KEY_ID) {
+            this.SIGNING_KEY_ID = SIGNING_KEY_ID;
         }
 
         /**
-         * Build call for createDirectUpload
+         * Build call for deleteSigningKey
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -280,46 +264,44 @@ public class DirectUploadsApi {
          <table border="1">
             <caption>Response Summary</caption>
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createDirectUploadCall(createUploadRequest, _callback);
+            return deleteSigningKeyCall(SIGNING_KEY_ID, _callback);
         }
 
         /**
-         * Execute createDirectUpload request
-         * @return UploadResponse
+         * Execute deleteSigningKey request
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
             <caption>Response Summary</caption>
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
          */
-        public UploadResponse execute() throws ApiException {
-            ApiResponse<UploadResponse> localVarResp = createDirectUploadWithHttpInfo(createUploadRequest);
-            return localVarResp.getData();
+        public void execute() throws ApiException {
+            deleteSigningKeyWithHttpInfo(SIGNING_KEY_ID);
         }
 
         /**
-         * Execute createDirectUpload request with HTTP info returned
-         * @return ApiResponse&lt;UploadResponse&gt;
+         * Execute deleteSigningKey request with HTTP info returned
+         * @return ApiResponse&lt;Void&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
             <caption>Response Summary</caption>
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<UploadResponse> executeWithHttpInfo() throws ApiException {
-            return createDirectUploadWithHttpInfo(createUploadRequest);
+        public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
+            return deleteSigningKeyWithHttpInfo(SIGNING_KEY_ID);
         }
 
         /**
-         * Execute createDirectUpload request (asynchronously)
+         * Execute deleteSigningKey request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -327,35 +309,35 @@ public class DirectUploadsApi {
          <table border="1">
             <caption>Response Summary</caption>
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<UploadResponse> _callback) throws ApiException {
-            return createDirectUploadAsync(createUploadRequest, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
+            return deleteSigningKeyAsync(SIGNING_KEY_ID, _callback);
         }
     }
 
     /**
-     * Create a new direct upload URL
-     * Creates a new direct upload, through which video content can be uploaded for ingest to Mux.
-     * @param createUploadRequest  (required)
-     * @return APIcreateDirectUploadRequest
+     * Delete a signing key
+     * Deletes an existing signing key. Use with caution, as this will invalidate any existing signatures and no JWTs can be signed using the key again.
+     * @param SIGNING_KEY_ID The ID of the signing key. (required)
+     * @return APIdeleteSigningKeyRequest
      * @http.response.details
      <table border="1">
         <caption>Response Summary</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public APIcreateDirectUploadRequest createDirectUpload(CreateUploadRequest createUploadRequest) {
-        return new APIcreateDirectUploadRequest(createUploadRequest);
+    public APIdeleteSigningKeyRequest deleteSigningKey(String SIGNING_KEY_ID) {
+        return new APIdeleteSigningKeyRequest(SIGNING_KEY_ID);
     }
-    private okhttp3.Call getDirectUploadCall(String UPLOAD_ID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSigningKeyCall(String SIGNING_KEY_ID, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/uploads/{UPLOAD_ID}"
-            .replaceAll("\\{" + "UPLOAD_ID" + "\\}", localVarApiClient.escapeString(UPLOAD_ID.toString()));
+        String localVarPath = "/system/v1/signing-keys/{SIGNING_KEY_ID}"
+            .replaceAll("\\{" + "SIGNING_KEY_ID" + "\\}", localVarApiClient.escapeString(SIGNING_KEY_ID.toString()));
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
         java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
@@ -382,43 +364,43 @@ public class DirectUploadsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDirectUploadValidateBeforeCall(String UPLOAD_ID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSigningKeyValidateBeforeCall(String SIGNING_KEY_ID, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'UPLOAD_ID' is set
-        if (UPLOAD_ID == null) {
-            throw new ApiException("Missing the required parameter 'UPLOAD_ID' when calling getDirectUpload(Async)");
+        // verify the required parameter 'SIGNING_KEY_ID' is set
+        if (SIGNING_KEY_ID == null) {
+            throw new ApiException("Missing the required parameter 'SIGNING_KEY_ID' when calling getSigningKey(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getDirectUploadCall(UPLOAD_ID, _callback);
+        okhttp3.Call localVarCall = getSigningKeyCall(SIGNING_KEY_ID, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<UploadResponse> getDirectUploadWithHttpInfo(String UPLOAD_ID) throws ApiException {
-        okhttp3.Call localVarCall = getDirectUploadValidateBeforeCall(UPLOAD_ID, null);
-        Type localVarReturnType = new TypeToken<UploadResponse>(){}.getType();
+    private ApiResponse<SigningKeyResponse> getSigningKeyWithHttpInfo(String SIGNING_KEY_ID) throws ApiException {
+        okhttp3.Call localVarCall = getSigningKeyValidateBeforeCall(SIGNING_KEY_ID, null);
+        Type localVarReturnType = new TypeToken<SigningKeyResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getDirectUploadAsync(String UPLOAD_ID, final ApiCallback<UploadResponse> _callback) throws ApiException {
+    private okhttp3.Call getSigningKeyAsync(String SIGNING_KEY_ID, final ApiCallback<SigningKeyResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDirectUploadValidateBeforeCall(UPLOAD_ID, _callback);
-        Type localVarReturnType = new TypeToken<UploadResponse>(){}.getType();
+        okhttp3.Call localVarCall = getSigningKeyValidateBeforeCall(SIGNING_KEY_ID, _callback);
+        Type localVarReturnType = new TypeToken<SigningKeyResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIgetDirectUploadRequest {
-        private final String UPLOAD_ID;
+    public class APIgetSigningKeyRequest {
+        private final String SIGNING_KEY_ID;
 
-        private APIgetDirectUploadRequest(String UPLOAD_ID) {
-            this.UPLOAD_ID = UPLOAD_ID;
+        private APIgetSigningKeyRequest(String SIGNING_KEY_ID) {
+            this.SIGNING_KEY_ID = SIGNING_KEY_ID;
         }
 
         /**
-         * Build call for getDirectUpload
+         * Build call for getSigningKey
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -430,12 +412,12 @@ public class DirectUploadsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getDirectUploadCall(UPLOAD_ID, _callback);
+            return getSigningKeyCall(SIGNING_KEY_ID, _callback);
         }
 
         /**
-         * Execute getDirectUpload request
-         * @return UploadResponse
+         * Execute getSigningKey request
+         * @return SigningKeyResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -444,14 +426,14 @@ public class DirectUploadsApi {
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
          */
-        public UploadResponse execute() throws ApiException {
-            ApiResponse<UploadResponse> localVarResp = getDirectUploadWithHttpInfo(UPLOAD_ID);
+        public SigningKeyResponse execute() throws ApiException {
+            ApiResponse<SigningKeyResponse> localVarResp = getSigningKeyWithHttpInfo(SIGNING_KEY_ID);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getDirectUpload request with HTTP info returned
-         * @return ApiResponse&lt;UploadResponse&gt;
+         * Execute getSigningKey request with HTTP info returned
+         * @return ApiResponse&lt;SigningKeyResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -460,12 +442,12 @@ public class DirectUploadsApi {
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<UploadResponse> executeWithHttpInfo() throws ApiException {
-            return getDirectUploadWithHttpInfo(UPLOAD_ID);
+        public ApiResponse<SigningKeyResponse> executeWithHttpInfo() throws ApiException {
+            return getSigningKeyWithHttpInfo(SIGNING_KEY_ID);
         }
 
         /**
-         * Execute getDirectUpload request (asynchronously)
+         * Execute getSigningKey request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -476,16 +458,16 @@ public class DirectUploadsApi {
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<UploadResponse> _callback) throws ApiException {
-            return getDirectUploadAsync(UPLOAD_ID, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<SigningKeyResponse> _callback) throws ApiException {
+            return getSigningKeyAsync(SIGNING_KEY_ID, _callback);
         }
     }
 
     /**
-     * Retrieve a single direct upload&#39;s info
-     * Fetches information about a single direct upload in the current environment.
-     * @param UPLOAD_ID ID of the Upload (required)
-     * @return APIgetDirectUploadRequest
+     * Retrieve a signing key
+     * Retrieves the details of a signing key that has previously been created. Supply the unique signing key ID that was returned from your previous request, and Mux will return the corresponding signing key information. **The private key is not returned in this response.** 
+     * @param SIGNING_KEY_ID The ID of the signing key. (required)
+     * @return APIgetSigningKeyRequest
      * @http.response.details
      <table border="1">
         <caption>Response Summary</caption>
@@ -493,14 +475,14 @@ public class DirectUploadsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetDirectUploadRequest getDirectUpload(String UPLOAD_ID) {
-        return new APIgetDirectUploadRequest(UPLOAD_ID);
+    public APIgetSigningKeyRequest getSigningKey(String SIGNING_KEY_ID) {
+        return new APIgetSigningKeyRequest(SIGNING_KEY_ID);
     }
-    private okhttp3.Call listDirectUploadsCall(Integer limit, Integer page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listSigningKeysCall(Integer limit, Integer page, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/video/v1/uploads";
+        String localVarPath = "/system/v1/signing-keys";
 
         java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
         java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
@@ -535,42 +517,42 @@ public class DirectUploadsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDirectUploadsValidateBeforeCall(Integer limit, Integer page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listSigningKeysValidateBeforeCall(Integer limit, Integer page, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listDirectUploadsCall(limit, page, _callback);
+        okhttp3.Call localVarCall = listSigningKeysCall(limit, page, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<ListUploadsResponse> listDirectUploadsWithHttpInfo(Integer limit, Integer page) throws ApiException {
-        okhttp3.Call localVarCall = listDirectUploadsValidateBeforeCall(limit, page, null);
-        Type localVarReturnType = new TypeToken<ListUploadsResponse>(){}.getType();
+    private ApiResponse<ListSigningKeysResponse> listSigningKeysWithHttpInfo(Integer limit, Integer page) throws ApiException {
+        okhttp3.Call localVarCall = listSigningKeysValidateBeforeCall(limit, page, null);
+        Type localVarReturnType = new TypeToken<ListSigningKeysResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listDirectUploadsAsync(Integer limit, Integer page, final ApiCallback<ListUploadsResponse> _callback) throws ApiException {
+    private okhttp3.Call listSigningKeysAsync(Integer limit, Integer page, final ApiCallback<ListSigningKeysResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDirectUploadsValidateBeforeCall(limit, page, _callback);
-        Type localVarReturnType = new TypeToken<ListUploadsResponse>(){}.getType();
+        okhttp3.Call localVarCall = listSigningKeysValidateBeforeCall(limit, page, _callback);
+        Type localVarReturnType = new TypeToken<ListSigningKeysResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIlistDirectUploadsRequest {
+    public class APIlistSigningKeysRequest {
         private Integer limit;
         private Integer page;
 
-        private APIlistDirectUploadsRequest() {
+        private APIlistSigningKeysRequest() {
         }
 
         /**
          * Set limit
          * @param limit Number of items to include in the response (optional, default to 25)
-         * @return APIlistDirectUploadsRequest
+         * @return APIlistSigningKeysRequest
          */
-        public APIlistDirectUploadsRequest limit(Integer limit) {
+        public APIlistSigningKeysRequest limit(Integer limit) {
             this.limit = limit;
             return this;
         }
@@ -578,15 +560,15 @@ public class DirectUploadsApi {
         /**
          * Set page
          * @param page Offset by this many pages, of the size of &#x60;limit&#x60; (optional, default to 1)
-         * @return APIlistDirectUploadsRequest
+         * @return APIlistSigningKeysRequest
          */
-        public APIlistDirectUploadsRequest page(Integer page) {
+        public APIlistSigningKeysRequest page(Integer page) {
             this.page = page;
             return this;
         }
 
         /**
-         * Build call for listDirectUploads
+         * Build call for listSigningKeys
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -598,12 +580,12 @@ public class DirectUploadsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listDirectUploadsCall(limit, page, _callback);
+            return listSigningKeysCall(limit, page, _callback);
         }
 
         /**
-         * Execute listDirectUploads request
-         * @return ListUploadsResponse
+         * Execute listSigningKeys request
+         * @return ListSigningKeysResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -612,14 +594,14 @@ public class DirectUploadsApi {
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
          */
-        public ListUploadsResponse execute() throws ApiException {
-            ApiResponse<ListUploadsResponse> localVarResp = listDirectUploadsWithHttpInfo(limit, page);
+        public ListSigningKeysResponse execute() throws ApiException {
+            ApiResponse<ListSigningKeysResponse> localVarResp = listSigningKeysWithHttpInfo(limit, page);
             return localVarResp.getData();
         }
 
         /**
-         * Execute listDirectUploads request with HTTP info returned
-         * @return ApiResponse&lt;ListUploadsResponse&gt;
+         * Execute listSigningKeys request with HTTP info returned
+         * @return ApiResponse&lt;ListSigningKeysResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table border="1">
@@ -628,12 +610,12 @@ public class DirectUploadsApi {
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ListUploadsResponse> executeWithHttpInfo() throws ApiException {
-            return listDirectUploadsWithHttpInfo(limit, page);
+        public ApiResponse<ListSigningKeysResponse> executeWithHttpInfo() throws ApiException {
+            return listSigningKeysWithHttpInfo(limit, page);
         }
 
         /**
-         * Execute listDirectUploads request (asynchronously)
+         * Execute listSigningKeys request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -644,15 +626,15 @@ public class DirectUploadsApi {
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ListUploadsResponse> _callback) throws ApiException {
-            return listDirectUploadsAsync(limit, page, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<ListSigningKeysResponse> _callback) throws ApiException {
+            return listSigningKeysAsync(limit, page, _callback);
         }
     }
 
     /**
-     * List direct uploads
-     * Lists direct uploads in the current environment.
-     * @return APIlistDirectUploadsRequest
+     * List signing keys
+     * Returns a list of signing keys.
+     * @return APIlistSigningKeysRequest
      * @http.response.details
      <table border="1">
         <caption>Response Summary</caption>
@@ -660,7 +642,7 @@ public class DirectUploadsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public APIlistDirectUploadsRequest listDirectUploads() {
-        return new APIlistDirectUploadsRequest();
+    public APIlistSigningKeysRequest listSigningKeys() {
+        return new APIlistSigningKeysRequest();
     }
 }
