@@ -550,6 +550,50 @@ public class VideoView {
   @SerializedName(SERIALIZED_NAME_CUSTOM10)
   private String custom10;
 
+  public static final String SERIALIZED_NAME_LIVE_STREAM_LATENCY = "live_stream_latency";
+  @SerializedName(SERIALIZED_NAME_LIVE_STREAM_LATENCY)
+  private Long liveStreamLatency;
+
+  public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
+  @SerializedName(SERIALIZED_NAME_ASSET_ID)
+  private String assetId;
+
+  public static final String SERIALIZED_NAME_ENVIRONMENT_ID = "environment_id";
+  @SerializedName(SERIALIZED_NAME_ENVIRONMENT_ID)
+  private String environmentId;
+
+  public static final String SERIALIZED_NAME_LIVE_STREAM_ID = "live_stream_id";
+  @SerializedName(SERIALIZED_NAME_LIVE_STREAM_ID)
+  private String liveStreamId;
+
+  public static final String SERIALIZED_NAME_MUX_EMBED = "mux_embed";
+  @SerializedName(SERIALIZED_NAME_MUX_EMBED)
+  private String muxEmbed;
+
+  public static final String SERIALIZED_NAME_PLAYBACK_ID = "playback_id";
+  @SerializedName(SERIALIZED_NAME_PLAYBACK_ID)
+  private String playbackId;
+
+  public static final String SERIALIZED_NAME_PLAYER_ERROR_CONTEXT = "player_error_context";
+  @SerializedName(SERIALIZED_NAME_PLAYER_ERROR_CONTEXT)
+  private String playerErrorContext;
+
+  public static final String SERIALIZED_NAME_VIEW_DRM_TYPE = "view_drm_type";
+  @SerializedName(SERIALIZED_NAME_VIEW_DRM_TYPE)
+  private String viewDrmType;
+
+  public static final String SERIALIZED_NAME_VIEW_DROPPED_FRAME_COUNT = "view_dropped_frame_count";
+  @SerializedName(SERIALIZED_NAME_VIEW_DROPPED_FRAME_COUNT)
+  private Long viewDroppedFrameCount;
+
+  public static final String SERIALIZED_NAME_VIEW_HAS_AD = "view_has_ad";
+  @SerializedName(SERIALIZED_NAME_VIEW_HAS_AD)
+  private Boolean viewHasAd;
+
+  public static final String SERIALIZED_NAME_VIDEO_STARTUP_FAILURE = "video_startup_failure";
+  @SerializedName(SERIALIZED_NAME_VIDEO_STARTUP_FAILURE)
+  private Boolean videoStartupFailure;
+
 
   public VideoView viewTotalUpscaling(String viewTotalUpscaling) {
     
@@ -3549,6 +3593,259 @@ public class VideoView {
   }
 
 
+  public VideoView liveStreamLatency(Long liveStreamLatency) {
+    
+    this.liveStreamLatency = liveStreamLatency;
+    return this;
+  }
+
+   /**
+   * Get liveStreamLatency
+   * @return liveStreamLatency
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getLiveStreamLatency() {
+    return liveStreamLatency;
+  }
+
+
+  public void setLiveStreamLatency(Long liveStreamLatency) {
+    this.liveStreamLatency = liveStreamLatency;
+  }
+
+
+  public VideoView assetId(String assetId) {
+    
+    this.assetId = assetId;
+    return this;
+  }
+
+   /**
+   * Get assetId
+   * @return assetId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAssetId() {
+    return assetId;
+  }
+
+
+  public void setAssetId(String assetId) {
+    this.assetId = assetId;
+  }
+
+
+  public VideoView environmentId(String environmentId) {
+    
+    this.environmentId = environmentId;
+    return this;
+  }
+
+   /**
+   * Get environmentId
+   * @return environmentId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getEnvironmentId() {
+    return environmentId;
+  }
+
+
+  public void setEnvironmentId(String environmentId) {
+    this.environmentId = environmentId;
+  }
+
+
+  public VideoView liveStreamId(String liveStreamId) {
+    
+    this.liveStreamId = liveStreamId;
+    return this;
+  }
+
+   /**
+   * Get liveStreamId
+   * @return liveStreamId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getLiveStreamId() {
+    return liveStreamId;
+  }
+
+
+  public void setLiveStreamId(String liveStreamId) {
+    this.liveStreamId = liveStreamId;
+  }
+
+
+  public VideoView muxEmbed(String muxEmbed) {
+    
+    this.muxEmbed = muxEmbed;
+    return this;
+  }
+
+   /**
+   * Get muxEmbed
+   * @return muxEmbed
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getMuxEmbed() {
+    return muxEmbed;
+  }
+
+
+  public void setMuxEmbed(String muxEmbed) {
+    this.muxEmbed = muxEmbed;
+  }
+
+
+  public VideoView playbackId(String playbackId) {
+    
+    this.playbackId = playbackId;
+    return this;
+  }
+
+   /**
+   * Get playbackId
+   * @return playbackId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPlaybackId() {
+    return playbackId;
+  }
+
+
+  public void setPlaybackId(String playbackId) {
+    this.playbackId = playbackId;
+  }
+
+
+  public VideoView playerErrorContext(String playerErrorContext) {
+    
+    this.playerErrorContext = playerErrorContext;
+    return this;
+  }
+
+   /**
+   * Get playerErrorContext
+   * @return playerErrorContext
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPlayerErrorContext() {
+    return playerErrorContext;
+  }
+
+
+  public void setPlayerErrorContext(String playerErrorContext) {
+    this.playerErrorContext = playerErrorContext;
+  }
+
+
+  public VideoView viewDrmType(String viewDrmType) {
+    
+    this.viewDrmType = viewDrmType;
+    return this;
+  }
+
+   /**
+   * Get viewDrmType
+   * @return viewDrmType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getViewDrmType() {
+    return viewDrmType;
+  }
+
+
+  public void setViewDrmType(String viewDrmType) {
+    this.viewDrmType = viewDrmType;
+  }
+
+
+  public VideoView viewDroppedFrameCount(Long viewDroppedFrameCount) {
+    
+    this.viewDroppedFrameCount = viewDroppedFrameCount;
+    return this;
+  }
+
+   /**
+   * Get viewDroppedFrameCount
+   * @return viewDroppedFrameCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getViewDroppedFrameCount() {
+    return viewDroppedFrameCount;
+  }
+
+
+  public void setViewDroppedFrameCount(Long viewDroppedFrameCount) {
+    this.viewDroppedFrameCount = viewDroppedFrameCount;
+  }
+
+
+  public VideoView viewHasAd(Boolean viewHasAd) {
+    
+    this.viewHasAd = viewHasAd;
+    return this;
+  }
+
+   /**
+   * Get viewHasAd
+   * @return viewHasAd
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getViewHasAd() {
+    return viewHasAd;
+  }
+
+
+  public void setViewHasAd(Boolean viewHasAd) {
+    this.viewHasAd = viewHasAd;
+  }
+
+
+  public VideoView videoStartupFailure(Boolean videoStartupFailure) {
+    
+    this.videoStartupFailure = videoStartupFailure;
+    return this;
+  }
+
+   /**
+   * Get videoStartupFailure
+   * @return videoStartupFailure
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getVideoStartupFailure() {
+    return videoStartupFailure;
+  }
+
+
+  public void setVideoStartupFailure(Boolean videoStartupFailure) {
+    this.videoStartupFailure = videoStartupFailure;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -3687,12 +3984,23 @@ public class VideoView {
         Objects.equals(this.custom7, videoView.custom7) &&
         Objects.equals(this.custom8, videoView.custom8) &&
         Objects.equals(this.custom9, videoView.custom9) &&
-        Objects.equals(this.custom10, videoView.custom10);
+        Objects.equals(this.custom10, videoView.custom10) &&
+        Objects.equals(this.liveStreamLatency, videoView.liveStreamLatency) &&
+        Objects.equals(this.assetId, videoView.assetId) &&
+        Objects.equals(this.environmentId, videoView.environmentId) &&
+        Objects.equals(this.liveStreamId, videoView.liveStreamId) &&
+        Objects.equals(this.muxEmbed, videoView.muxEmbed) &&
+        Objects.equals(this.playbackId, videoView.playbackId) &&
+        Objects.equals(this.playerErrorContext, videoView.playerErrorContext) &&
+        Objects.equals(this.viewDrmType, videoView.viewDrmType) &&
+        Objects.equals(this.viewDroppedFrameCount, videoView.viewDroppedFrameCount) &&
+        Objects.equals(this.viewHasAd, videoView.viewHasAd) &&
+        Objects.equals(this.videoStartupFailure, videoView.videoStartupFailure);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10);
+    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure);
   }
 
   @Override
@@ -3829,6 +4137,17 @@ public class VideoView {
     sb.append("    custom8: ").append(toIndentedString(custom8)).append("\n");
     sb.append("    custom9: ").append(toIndentedString(custom9)).append("\n");
     sb.append("    custom10: ").append(toIndentedString(custom10)).append("\n");
+    sb.append("    liveStreamLatency: ").append(toIndentedString(liveStreamLatency)).append("\n");
+    sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    environmentId: ").append(toIndentedString(environmentId)).append("\n");
+    sb.append("    liveStreamId: ").append(toIndentedString(liveStreamId)).append("\n");
+    sb.append("    muxEmbed: ").append(toIndentedString(muxEmbed)).append("\n");
+    sb.append("    playbackId: ").append(toIndentedString(playbackId)).append("\n");
+    sb.append("    playerErrorContext: ").append(toIndentedString(playerErrorContext)).append("\n");
+    sb.append("    viewDrmType: ").append(toIndentedString(viewDrmType)).append("\n");
+    sb.append("    viewDroppedFrameCount: ").append(toIndentedString(viewDroppedFrameCount)).append("\n");
+    sb.append("    viewHasAd: ").append(toIndentedString(viewHasAd)).append("\n");
+    sb.append("    videoStartupFailure: ").append(toIndentedString(videoStartupFailure)).append("\n");
     sb.append("}");
     return sb.toString();
   }

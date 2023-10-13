@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.mux.sdk.models.GetMonitoringBreakdownResponse;
+import com.mux.sdk.models.GetMonitoringBreakdownTimeseriesResponse;
 import com.mux.sdk.models.GetMonitoringHistogramTimeseriesResponse;
 import com.mux.sdk.models.GetMonitoringTimeseriesResponse;
 import com.mux.sdk.models.ListMonitoringDimensionsResponse;
@@ -170,7 +171,7 @@ public class MonitoringApi {
 
         /**
          * Set filters
-         * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
+         * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Monitoring Dimensions endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
          * @return APIgetMonitoringBreakdownRequest
          */
         public APIgetMonitoringBreakdownRequest filters(java.util.List<String> filters) {
@@ -277,6 +278,242 @@ public class MonitoringApi {
     public APIgetMonitoringBreakdownRequest getMonitoringBreakdown(String MONITORING_METRIC_ID) {
         return new APIgetMonitoringBreakdownRequest(MONITORING_METRIC_ID);
     }
+    private okhttp3.Call getMonitoringBreakdownTimeseriesCall(String MONITORING_METRIC_ID, String dimension, java.util.List<String> timeframe, java.util.List<String> filters, Integer limit, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/breakdown-timeseries"
+            .replaceAll("\\{" + "MONITORING_METRIC_ID" + "\\}", localVarApiClient.escapeString(MONITORING_METRIC_ID.toString()));
+
+        java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
+        java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
+        java.util.Map<String, String> localVarHeaderParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, String> localVarCookieParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
+
+        if (dimension != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dimension", dimension));
+        }
+
+        if (timeframe != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "timeframe[]", timeframe));
+        }
+
+        if (filters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (orderBy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order_by", orderBy));
+        }
+
+        if (orderDirection != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order_direction", orderDirection));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "accessToken" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMonitoringBreakdownTimeseriesValidateBeforeCall(String MONITORING_METRIC_ID, String dimension, java.util.List<String> timeframe, java.util.List<String> filters, Integer limit, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'MONITORING_METRIC_ID' is set
+        if (MONITORING_METRIC_ID == null) {
+            throw new ApiException("Missing the required parameter 'MONITORING_METRIC_ID' when calling getMonitoringBreakdownTimeseries(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getMonitoringBreakdownTimeseriesCall(MONITORING_METRIC_ID, dimension, timeframe, filters, limit, orderBy, orderDirection, _callback);
+        return localVarCall;
+
+    }
+
+
+    private ApiResponse<GetMonitoringBreakdownTimeseriesResponse> getMonitoringBreakdownTimeseriesWithHttpInfo(String MONITORING_METRIC_ID, String dimension, java.util.List<String> timeframe, java.util.List<String> filters, Integer limit, String orderBy, String orderDirection) throws ApiException {
+        okhttp3.Call localVarCall = getMonitoringBreakdownTimeseriesValidateBeforeCall(MONITORING_METRIC_ID, dimension, timeframe, filters, limit, orderBy, orderDirection, null);
+        Type localVarReturnType = new TypeToken<GetMonitoringBreakdownTimeseriesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getMonitoringBreakdownTimeseriesAsync(String MONITORING_METRIC_ID, String dimension, java.util.List<String> timeframe, java.util.List<String> filters, Integer limit, String orderBy, String orderDirection, final ApiCallback<GetMonitoringBreakdownTimeseriesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMonitoringBreakdownTimeseriesValidateBeforeCall(MONITORING_METRIC_ID, dimension, timeframe, filters, limit, orderBy, orderDirection, _callback);
+        Type localVarReturnType = new TypeToken<GetMonitoringBreakdownTimeseriesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetMonitoringBreakdownTimeseriesRequest {
+        private final String MONITORING_METRIC_ID;
+        private String dimension;
+        private java.util.List<String> timeframe;
+        private java.util.List<String> filters;
+        private Integer limit;
+        private String orderBy;
+        private String orderDirection;
+
+        private APIgetMonitoringBreakdownTimeseriesRequest(String MONITORING_METRIC_ID) {
+            this.MONITORING_METRIC_ID = MONITORING_METRIC_ID;
+        }
+
+        /**
+         * Set dimension
+         * @param dimension Dimension the specified value belongs to (optional)
+         * @return APIgetMonitoringBreakdownTimeseriesRequest
+         */
+        public APIgetMonitoringBreakdownTimeseriesRequest dimension(String dimension) {
+            this.dimension = dimension;
+            return this;
+        }
+
+        /**
+         * Set timeframe
+         * @param timeframe Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  The default for this is the last 60 seconds of available data. Timeframes larger than 10 minutes are not allowed, and must be within the last 24 hours.  (optional)
+         * @return APIgetMonitoringBreakdownTimeseriesRequest
+         */
+        public APIgetMonitoringBreakdownTimeseriesRequest timeframe(java.util.List<String> timeframe) {
+            this.timeframe = timeframe;
+            return this;
+        }
+
+        /**
+         * Set filters
+         * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Monitoring Dimensions endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
+         * @return APIgetMonitoringBreakdownTimeseriesRequest
+         */
+        public APIgetMonitoringBreakdownTimeseriesRequest filters(java.util.List<String> filters) {
+            this.filters = filters;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Number of items to include in each timestamp&#39;s &#x60;value&#x60; list.  The default is 10, and the maximum is 100.  (optional, default to 10)
+         * @return APIgetMonitoringBreakdownTimeseriesRequest
+         */
+        public APIgetMonitoringBreakdownTimeseriesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set orderBy
+         * @param orderBy Value to order the results by (optional)
+         * @return APIgetMonitoringBreakdownTimeseriesRequest
+         */
+        public APIgetMonitoringBreakdownTimeseriesRequest orderBy(String orderBy) {
+            this.orderBy = orderBy;
+            return this;
+        }
+
+        /**
+         * Set orderDirection
+         * @param orderDirection Sort order. (optional)
+         * @return APIgetMonitoringBreakdownTimeseriesRequest
+         */
+        public APIgetMonitoringBreakdownTimeseriesRequest orderDirection(String orderDirection) {
+            this.orderDirection = orderDirection;
+            return this;
+        }
+
+        /**
+         * Build call for getMonitoringBreakdownTimeseries
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getMonitoringBreakdownTimeseriesCall(MONITORING_METRIC_ID, dimension, timeframe, filters, limit, orderBy, orderDirection, _callback);
+        }
+
+        /**
+         * Execute getMonitoringBreakdownTimeseries request
+         * @return GetMonitoringBreakdownTimeseriesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetMonitoringBreakdownTimeseriesResponse execute() throws ApiException {
+            ApiResponse<GetMonitoringBreakdownTimeseriesResponse> localVarResp = getMonitoringBreakdownTimeseriesWithHttpInfo(MONITORING_METRIC_ID, dimension, timeframe, filters, limit, orderBy, orderDirection);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getMonitoringBreakdownTimeseries request with HTTP info returned
+         * @return ApiResponse&lt;GetMonitoringBreakdownTimeseriesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetMonitoringBreakdownTimeseriesResponse> executeWithHttpInfo() throws ApiException {
+            return getMonitoringBreakdownTimeseriesWithHttpInfo(MONITORING_METRIC_ID, dimension, timeframe, filters, limit, orderBy, orderDirection);
+        }
+
+        /**
+         * Execute getMonitoringBreakdownTimeseries request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetMonitoringBreakdownTimeseriesResponse> _callback) throws ApiException {
+            return getMonitoringBreakdownTimeseriesAsync(MONITORING_METRIC_ID, dimension, timeframe, filters, limit, orderBy, orderDirection, _callback);
+        }
+    }
+
+    /**
+     * Get Monitoring Breakdown Timeseries
+     * Gets timeseries of breakdown information for a specific dimension and metric. Each datapoint in the response represents 5 seconds worth of data.
+     * @param MONITORING_METRIC_ID ID of the Monitoring Metric (required)
+     * @return APIgetMonitoringBreakdownTimeseriesRequest
+     * @http.response.details
+     <table border="1">
+        <caption>Response Summary</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetMonitoringBreakdownTimeseriesRequest getMonitoringBreakdownTimeseries(String MONITORING_METRIC_ID) {
+        return new APIgetMonitoringBreakdownTimeseriesRequest(MONITORING_METRIC_ID);
+    }
     private okhttp3.Call getMonitoringHistogramTimeseriesCall(String MONITORING_HISTOGRAM_METRIC_ID, java.util.List<String> filters, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
@@ -351,7 +588,7 @@ public class MonitoringApi {
 
         /**
          * Set filters
-         * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
+         * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Monitoring Dimensions endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
          * @return APIgetMonitoringHistogramTimeseriesRequest
          */
         public APIgetMonitoringHistogramTimeseriesRequest filters(java.util.List<String> filters) {
@@ -517,7 +754,7 @@ public class MonitoringApi {
 
         /**
          * Set filters
-         * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
+         * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Monitoring Dimensions endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
          * @return APIgetMonitoringTimeseriesRequest
          */
         public APIgetMonitoringTimeseriesRequest filters(java.util.List<String> filters) {

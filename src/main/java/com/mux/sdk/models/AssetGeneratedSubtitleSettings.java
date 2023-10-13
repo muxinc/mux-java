@@ -25,10 +25,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * LiveStreamEmbeddedSubtitleSettings
+ * AssetGeneratedSubtitleSettings
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class LiveStreamEmbeddedSubtitleSettings {
+public class AssetGeneratedSubtitleSettings {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -37,26 +37,18 @@ public class LiveStreamEmbeddedSubtitleSettings {
   @SerializedName(SERIALIZED_NAME_PASSTHROUGH)
   private String passthrough;
 
-  public static final String SERIALIZED_NAME_LANGUAGE_CODE = "language_code";
-  @SerializedName(SERIALIZED_NAME_LANGUAGE_CODE)
-  private String languageCode = "en";
-
   /**
-   * CEA-608 caption channel to read data from.
+   * The language to generate subtitles in.
    */
-  @JsonAdapter(LanguageChannelEnum.Adapter.class)
-  public enum LanguageChannelEnum {
-    CC1("cc1"),
+  @JsonAdapter(LanguageCodeEnum.Adapter.class)
+  public enum LanguageCodeEnum {
+    EN("en"),
     
-    CC2("cc2"),
-    
-    CC3("cc3"),
-    
-    CC4("cc4");
+    EN_US("en-US");
 
     private String value;
 
-    LanguageChannelEnum(String value) {
+    LanguageCodeEnum(String value) {
       this.value = value;
     }
 
@@ -69,8 +61,8 @@ public class LiveStreamEmbeddedSubtitleSettings {
       return String.valueOf(value);
     }
 
-    public static LanguageChannelEnum fromValue(String value) {
-      for (LanguageChannelEnum b : LanguageChannelEnum.values()) {
+    public static LanguageCodeEnum fromValue(String value) {
+      for (LanguageCodeEnum b : LanguageCodeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -78,37 +70,37 @@ public class LiveStreamEmbeddedSubtitleSettings {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<LanguageChannelEnum> {
+    public static class Adapter extends TypeAdapter<LanguageCodeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final LanguageChannelEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final LanguageCodeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public LanguageChannelEnum read(final JsonReader jsonReader) throws IOException {
+      public LanguageCodeEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return LanguageChannelEnum.fromValue(value);
+        return LanguageCodeEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_LANGUAGE_CHANNEL = "language_channel";
-  @SerializedName(SERIALIZED_NAME_LANGUAGE_CHANNEL)
-  private LanguageChannelEnum languageChannel = LanguageChannelEnum.CC1;
+  public static final String SERIALIZED_NAME_LANGUAGE_CODE = "language_code";
+  @SerializedName(SERIALIZED_NAME_LANGUAGE_CODE)
+  private LanguageCodeEnum languageCode = LanguageCodeEnum.EN;
 
 
-  public LiveStreamEmbeddedSubtitleSettings name(String name) {
+  public AssetGeneratedSubtitleSettings name(String name) {
     
     this.name = name;
     return this;
   }
 
    /**
-   * A name for this live stream closed caption track.
+   * A name for this subtitle track.
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A name for this live stream closed caption track.")
+  @ApiModelProperty(value = "A name for this subtitle track.")
 
   public String getName() {
     return name;
@@ -120,18 +112,18 @@ public class LiveStreamEmbeddedSubtitleSettings {
   }
 
 
-  public LiveStreamEmbeddedSubtitleSettings passthrough(String passthrough) {
+  public AssetGeneratedSubtitleSettings passthrough(String passthrough) {
     
     this.passthrough = passthrough;
     return this;
   }
 
    /**
-   * Arbitrary user-supplied metadata set for the live stream closed caption track. Max 255 characters.
+   * Arbitrary metadata set for the subtitle track. Max 255 characters.
    * @return passthrough
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Arbitrary user-supplied metadata set for the live stream closed caption track. Max 255 characters.")
+  @ApiModelProperty(value = "Arbitrary metadata set for the subtitle track. Max 255 characters.")
 
   public String getPassthrough() {
     return passthrough;
@@ -143,49 +135,26 @@ public class LiveStreamEmbeddedSubtitleSettings {
   }
 
 
-  public LiveStreamEmbeddedSubtitleSettings languageCode(String languageCode) {
+  public AssetGeneratedSubtitleSettings languageCode(LanguageCodeEnum languageCode) {
     
     this.languageCode = languageCode;
     return this;
   }
 
    /**
-   * The language of the closed caption stream. Value must be BCP 47 compliant.
+   * The language to generate subtitles in.
    * @return languageCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The language of the closed caption stream. Value must be BCP 47 compliant.")
+  @ApiModelProperty(value = "The language to generate subtitles in.")
 
-  public String getLanguageCode() {
+  public LanguageCodeEnum getLanguageCode() {
     return languageCode;
   }
 
 
-  public void setLanguageCode(String languageCode) {
+  public void setLanguageCode(LanguageCodeEnum languageCode) {
     this.languageCode = languageCode;
-  }
-
-
-  public LiveStreamEmbeddedSubtitleSettings languageChannel(LanguageChannelEnum languageChannel) {
-    
-    this.languageChannel = languageChannel;
-    return this;
-  }
-
-   /**
-   * CEA-608 caption channel to read data from.
-   * @return languageChannel
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "CEA-608 caption channel to read data from.")
-
-  public LanguageChannelEnum getLanguageChannel() {
-    return languageChannel;
-  }
-
-
-  public void setLanguageChannel(LanguageChannelEnum languageChannel) {
-    this.languageChannel = languageChannel;
   }
 
 
@@ -197,26 +166,24 @@ public class LiveStreamEmbeddedSubtitleSettings {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LiveStreamEmbeddedSubtitleSettings liveStreamEmbeddedSubtitleSettings = (LiveStreamEmbeddedSubtitleSettings) o;
-    return Objects.equals(this.name, liveStreamEmbeddedSubtitleSettings.name) &&
-        Objects.equals(this.passthrough, liveStreamEmbeddedSubtitleSettings.passthrough) &&
-        Objects.equals(this.languageCode, liveStreamEmbeddedSubtitleSettings.languageCode) &&
-        Objects.equals(this.languageChannel, liveStreamEmbeddedSubtitleSettings.languageChannel);
+    AssetGeneratedSubtitleSettings assetGeneratedSubtitleSettings = (AssetGeneratedSubtitleSettings) o;
+    return Objects.equals(this.name, assetGeneratedSubtitleSettings.name) &&
+        Objects.equals(this.passthrough, assetGeneratedSubtitleSettings.passthrough) &&
+        Objects.equals(this.languageCode, assetGeneratedSubtitleSettings.languageCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, passthrough, languageCode, languageChannel);
+    return Objects.hash(name, passthrough, languageCode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LiveStreamEmbeddedSubtitleSettings {\n");
+    sb.append("class AssetGeneratedSubtitleSettings {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
     sb.append("    languageCode: ").append(toIndentedString(languageCode)).append("\n");
-    sb.append("    languageChannel: ").append(toIndentedString(languageChannel)).append("\n");
     sb.append("}");
     return sb.toString();
   }

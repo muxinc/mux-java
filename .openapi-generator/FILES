@@ -4,6 +4,7 @@ build.gradle
 docs/AbridgedVideoView.md
 docs/Asset.md
 docs/AssetErrors.md
+docs/AssetGeneratedSubtitleSettings.md
 docs/AssetMaster.md
 docs/AssetNonStandardInputReasons.md
 docs/AssetRecordingTimes.md
@@ -52,6 +53,7 @@ docs/GetAssetPlaybackIDResponse.md
 docs/GetLiveStreamPlaybackIDResponse.md
 docs/GetMetricTimeseriesDataResponse.md
 docs/GetMonitoringBreakdownResponse.md
+docs/GetMonitoringBreakdownTimeseriesResponse.md
 docs/GetMonitoringHistogramTimeseriesResponse.md
 docs/GetMonitoringHistogramTimeseriesResponseMeta.md
 docs/GetMonitoringTimeseriesResponse.md
@@ -108,6 +110,8 @@ docs/LiveStreamsApi.md
 docs/Metric.md
 docs/MetricsApi.md
 docs/MonitoringApi.md
+docs/MonitoringBreakdownTimeseriesDatapoint.md
+docs/MonitoringBreakdownTimeseriesValues.md
 docs/MonitoringBreakdownValue.md
 docs/MonitoringHistogramTimeseriesBucket.md
 docs/MonitoringHistogramTimeseriesBucketValues.md
@@ -207,6 +211,7 @@ src/main/java/com/mux/sdk/VideoViewsApi.java
 src/main/java/com/mux/sdk/models/AbridgedVideoView.java
 src/main/java/com/mux/sdk/models/Asset.java
 src/main/java/com/mux/sdk/models/AssetErrors.java
+src/main/java/com/mux/sdk/models/AssetGeneratedSubtitleSettings.java
 src/main/java/com/mux/sdk/models/AssetMaster.java
 src/main/java/com/mux/sdk/models/AssetNonStandardInputReasons.java
 src/main/java/com/mux/sdk/models/AssetRecordingTimes.java
@@ -248,6 +253,7 @@ src/main/java/com/mux/sdk/models/GetAssetPlaybackIDResponse.java
 src/main/java/com/mux/sdk/models/GetLiveStreamPlaybackIDResponse.java
 src/main/java/com/mux/sdk/models/GetMetricTimeseriesDataResponse.java
 src/main/java/com/mux/sdk/models/GetMonitoringBreakdownResponse.java
+src/main/java/com/mux/sdk/models/GetMonitoringBreakdownTimeseriesResponse.java
 src/main/java/com/mux/sdk/models/GetMonitoringHistogramTimeseriesResponse.java
 src/main/java/com/mux/sdk/models/GetMonitoringHistogramTimeseriesResponseMeta.java
 src/main/java/com/mux/sdk/models/GetMonitoringTimeseriesResponse.java
@@ -300,6 +306,8 @@ src/main/java/com/mux/sdk/models/LiveStreamGeneratedSubtitleSettings.java
 src/main/java/com/mux/sdk/models/LiveStreamResponse.java
 src/main/java/com/mux/sdk/models/LiveStreamStatus.java
 src/main/java/com/mux/sdk/models/Metric.java
+src/main/java/com/mux/sdk/models/MonitoringBreakdownTimeseriesDatapoint.java
+src/main/java/com/mux/sdk/models/MonitoringBreakdownTimeseriesValues.java
 src/main/java/com/mux/sdk/models/MonitoringBreakdownValue.java
 src/main/java/com/mux/sdk/models/MonitoringHistogramTimeseriesBucket.java
 src/main/java/com/mux/sdk/models/MonitoringHistogramTimeseriesBucketValues.java

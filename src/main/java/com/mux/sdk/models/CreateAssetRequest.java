@@ -157,6 +157,110 @@ public class CreateAssetRequest {
   @SerializedName(SERIALIZED_NAME_TEST)
   private Boolean test;
 
+  /**
+   * Max resolution tier can be used to control the maximum &#x60;resolution_tier&#x60; your asset is encoded, stored, and streamed at. If not set, this defaults to &#x60;1080p&#x60;.
+   */
+  @JsonAdapter(MaxResolutionTierEnum.Adapter.class)
+  public enum MaxResolutionTierEnum {
+    _1080P("1080p"),
+    
+    _1440P("1440p"),
+    
+    _2160P("2160p");
+
+    private String value;
+
+    MaxResolutionTierEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MaxResolutionTierEnum fromValue(String value) {
+      for (MaxResolutionTierEnum b : MaxResolutionTierEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MaxResolutionTierEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MaxResolutionTierEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MaxResolutionTierEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MaxResolutionTierEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MAX_RESOLUTION_TIER = "max_resolution_tier";
+  @SerializedName(SERIALIZED_NAME_MAX_RESOLUTION_TIER)
+  private MaxResolutionTierEnum maxResolutionTier;
+
+  /**
+   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used.
+   */
+  @JsonAdapter(EncodingTierEnum.Adapter.class)
+  public enum EncodingTierEnum {
+    SMART("smart"),
+    
+    BASELINE("baseline");
+
+    private String value;
+
+    EncodingTierEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static EncodingTierEnum fromValue(String value) {
+      for (EncodingTierEnum b : EncodingTierEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<EncodingTierEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final EncodingTierEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public EncodingTierEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return EncodingTierEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ENCODING_TIER = "encoding_tier";
+  @SerializedName(SERIALIZED_NAME_ENCODING_TIER)
+  private EncodingTierEnum encodingTier;
+
 
   public CreateAssetRequest input(java.util.List<InputSettings> input) {
     
@@ -358,6 +462,52 @@ public class CreateAssetRequest {
   }
 
 
+  public CreateAssetRequest maxResolutionTier(MaxResolutionTierEnum maxResolutionTier) {
+    
+    this.maxResolutionTier = maxResolutionTier;
+    return this;
+  }
+
+   /**
+   * Max resolution tier can be used to control the maximum &#x60;resolution_tier&#x60; your asset is encoded, stored, and streamed at. If not set, this defaults to &#x60;1080p&#x60;.
+   * @return maxResolutionTier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Max resolution tier can be used to control the maximum `resolution_tier` your asset is encoded, stored, and streamed at. If not set, this defaults to `1080p`.")
+
+  public MaxResolutionTierEnum getMaxResolutionTier() {
+    return maxResolutionTier;
+  }
+
+
+  public void setMaxResolutionTier(MaxResolutionTierEnum maxResolutionTier) {
+    this.maxResolutionTier = maxResolutionTier;
+  }
+
+
+  public CreateAssetRequest encodingTier(EncodingTierEnum encodingTier) {
+    
+    this.encodingTier = encodingTier;
+    return this;
+  }
+
+   /**
+   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used.
+   * @return encodingTier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The encoding tier informs the cost, quality, and available platform features for the asset. By default the `smart` encoding tier is used.")
+
+  public EncodingTierEnum getEncodingTier() {
+    return encodingTier;
+  }
+
+
+  public void setEncodingTier(EncodingTierEnum encodingTier) {
+    this.encodingTier = encodingTier;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -374,12 +524,14 @@ public class CreateAssetRequest {
         Objects.equals(this.mp4Support, createAssetRequest.mp4Support) &&
         Objects.equals(this.normalizeAudio, createAssetRequest.normalizeAudio) &&
         Objects.equals(this.masterAccess, createAssetRequest.masterAccess) &&
-        Objects.equals(this.test, createAssetRequest.test);
+        Objects.equals(this.test, createAssetRequest.test) &&
+        Objects.equals(this.maxResolutionTier, createAssetRequest.maxResolutionTier) &&
+        Objects.equals(this.encodingTier, createAssetRequest.encodingTier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(input, playbackPolicy, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test);
+    return Objects.hash(input, playbackPolicy, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test, maxResolutionTier, encodingTier);
   }
 
   @Override
@@ -394,6 +546,8 @@ public class CreateAssetRequest {
     sb.append("    normalizeAudio: ").append(toIndentedString(normalizeAudio)).append("\n");
     sb.append("    masterAccess: ").append(toIndentedString(masterAccess)).append("\n");
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
+    sb.append("    maxResolutionTier: ").append(toIndentedString(maxResolutionTier)).append("\n");
+    sb.append("    encodingTier: ").append(toIndentedString(encodingTier)).append("\n");
     sb.append("}");
     return sb.toString();
   }
