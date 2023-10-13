@@ -18,6 +18,9 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 CC1 | &quot;cc1&quot;
+CC2 | &quot;cc2&quot;
+CC3 | &quot;cc3&quot;
+CC4 | &quot;cc4&quot;
 
 
 

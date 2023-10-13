@@ -10,7 +10,10 @@ Name | Type | Description | Notes
 **createdAt** | **String** | Time the Asset was created, defined as a Unix timestamp (seconds since epoch). |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) | The status of the asset. |  [optional]
 **duration** | **Double** | The duration of the asset in seconds (max duration for a single asset is 12 hours). |  [optional]
-**maxStoredResolution** | [**MaxStoredResolutionEnum**](#MaxStoredResolutionEnum) | The maximum resolution that has been stored for the asset. The asset may be delivered at lower resolutions depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored. |  [optional]
+**maxStoredResolution** | [**MaxStoredResolutionEnum**](#MaxStoredResolutionEnum) | This field is deprecated. Please use &#x60;resolution_tier&#x60; instead. The maximum resolution that has been stored for the asset. The asset may be delivered at lower resolutions depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored. |  [optional]
+**resolutionTier** | [**ResolutionTierEnum**](#ResolutionTierEnum) | The resolution tier that the asset was ingested at, affecting billing for ingest &amp; storage. This field also represents the highest resolution tier that the content can be delivered at, however the actual resolution may be lower depending on the device, bandwidth, and exact resolution of the uploaded asset. |  [optional]
+**maxResolutionTier** | [**MaxResolutionTierEnum**](#MaxResolutionTierEnum) | Max resolution tier can be used to control the maximum &#x60;resolution_tier&#x60; your asset is encoded, stored, and streamed at. If not set, this defaults to &#x60;1080p&#x60;. |  [optional]
+**encodingTier** | [**EncodingTierEnum**](#EncodingTierEnum) | The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. |  [optional]
 **maxStoredFrameRate** | **Double** | The maximum frame rate that has been stored for the asset. The asset may be delivered at lower frame rates depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored. This field may return -1 if the frame rate of the input cannot be reliably determined. |  [optional]
 **aspectRatio** | **String** | The aspect ratio of the asset in the form of &#x60;width:height&#x60;, for example &#x60;16:9&#x60;. |  [optional]
 **playbackIds** | [**java.util.List&lt;PlaybackID&gt;**](PlaybackID.md) | An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/video/play-your-videos) for more details. |  [optional]
@@ -52,6 +55,37 @@ SD | &quot;SD&quot;
 HD | &quot;HD&quot;
 FHD | &quot;FHD&quot;
 UHD | &quot;UHD&quot;
+
+
+
+## Enum: ResolutionTierEnum
+
+Name | Value
+---- | -----
+AUDIO_ONLY | &quot;audio-only&quot;
+_720P | &quot;720p&quot;
+_1080P | &quot;1080p&quot;
+_1440P | &quot;1440p&quot;
+_2160P | &quot;2160p&quot;
+
+
+
+## Enum: MaxResolutionTierEnum
+
+Name | Value
+---- | -----
+_1080P | &quot;1080p&quot;
+_1440P | &quot;1440p&quot;
+_2160P | &quot;2160p&quot;
+
+
+
+## Enum: EncodingTierEnum
+
+Name | Value
+---- | -----
+SMART | &quot;smart&quot;
+BASELINE | &quot;baseline&quot;
 
 
 

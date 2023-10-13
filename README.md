@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.6.3</version>
+  <version>0.7.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.6.3"
+compile "com.mux:mux-sdk-java:0.7.0"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.6.3.jar`
+* `target/mux-sdk-java-0.7.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -173,6 +173,7 @@ Class | Method | HTTP request | Description
 *MetricsApi* | [**listBreakdownValues**](docs/MetricsApi.md#listBreakdownValues) | **GET** /data/v1/metrics/{METRIC_ID}/breakdown | List breakdown values
 *MetricsApi* | [**listInsights**](docs/MetricsApi.md#listInsights) | **GET** /data/v1/metrics/{METRIC_ID}/insights | List Insights
 *MonitoringApi* | [**getMonitoringBreakdown**](docs/MonitoringApi.md#getMonitoringBreakdown) | **GET** /data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/breakdown | Get Monitoring Breakdown
+*MonitoringApi* | [**getMonitoringBreakdownTimeseries**](docs/MonitoringApi.md#getMonitoringBreakdownTimeseries) | **GET** /data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/breakdown-timeseries | Get Monitoring Breakdown Timeseries
 *MonitoringApi* | [**getMonitoringHistogramTimeseries**](docs/MonitoringApi.md#getMonitoringHistogramTimeseries) | **GET** /data/v1/monitoring/metrics/{MONITORING_HISTOGRAM_METRIC_ID}/histogram-timeseries | Get Monitoring Histogram Timeseries
 *MonitoringApi* | [**getMonitoringTimeseries**](docs/MonitoringApi.md#getMonitoringTimeseries) | **GET** /data/v1/monitoring/metrics/{MONITORING_METRIC_ID}/timeseries | Get Monitoring Timeseries
 *MonitoringApi* | [**listMonitoringDimensions**](docs/MonitoringApi.md#listMonitoringDimensions) | **GET** /data/v1/monitoring/dimensions | List Monitoring Dimensions
@@ -219,6 +220,7 @@ Class | Method | HTTP request | Description
  - [AbridgedVideoView](docs/AbridgedVideoView.md)
  - [Asset](docs/Asset.md)
  - [AssetErrors](docs/AssetErrors.md)
+ - [AssetGeneratedSubtitleSettings](docs/AssetGeneratedSubtitleSettings.md)
  - [AssetMaster](docs/AssetMaster.md)
  - [AssetNonStandardInputReasons](docs/AssetNonStandardInputReasons.md)
  - [AssetRecordingTimes](docs/AssetRecordingTimes.md)
@@ -260,6 +262,7 @@ Class | Method | HTTP request | Description
  - [GetLiveStreamPlaybackIDResponse](docs/GetLiveStreamPlaybackIDResponse.md)
  - [GetMetricTimeseriesDataResponse](docs/GetMetricTimeseriesDataResponse.md)
  - [GetMonitoringBreakdownResponse](docs/GetMonitoringBreakdownResponse.md)
+ - [GetMonitoringBreakdownTimeseriesResponse](docs/GetMonitoringBreakdownTimeseriesResponse.md)
  - [GetMonitoringHistogramTimeseriesResponse](docs/GetMonitoringHistogramTimeseriesResponse.md)
  - [GetMonitoringHistogramTimeseriesResponseMeta](docs/GetMonitoringHistogramTimeseriesResponseMeta.md)
  - [GetMonitoringTimeseriesResponse](docs/GetMonitoringTimeseriesResponse.md)
@@ -312,6 +315,8 @@ Class | Method | HTTP request | Description
  - [LiveStreamResponse](docs/LiveStreamResponse.md)
  - [LiveStreamStatus](docs/LiveStreamStatus.md)
  - [Metric](docs/Metric.md)
+ - [MonitoringBreakdownTimeseriesDatapoint](docs/MonitoringBreakdownTimeseriesDatapoint.md)
+ - [MonitoringBreakdownTimeseriesValues](docs/MonitoringBreakdownTimeseriesValues.md)
  - [MonitoringBreakdownValue](docs/MonitoringBreakdownValue.md)
  - [MonitoringHistogramTimeseriesBucket](docs/MonitoringHistogramTimeseriesBucket.md)
  - [MonitoringHistogramTimeseriesBucketValues](docs/MonitoringHistogramTimeseriesBucketValues.md)

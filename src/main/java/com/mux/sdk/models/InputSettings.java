@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mux.sdk.models.AssetGeneratedSubtitleSettings;
 import com.mux.sdk.models.InputSettingsOverlaySettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -38,6 +39,10 @@ public class InputSettings {
   public static final String SERIALIZED_NAME_OVERLAY_SETTINGS = "overlay_settings";
   @SerializedName(SERIALIZED_NAME_OVERLAY_SETTINGS)
   private InputSettingsOverlaySettings overlaySettings;
+
+  public static final String SERIALIZED_NAME_GENERATED_SUBTITLES = "generated_subtitles";
+  @SerializedName(SERIALIZED_NAME_GENERATED_SUBTITLES)
+  private java.util.List<AssetGeneratedSubtitleSettings> generatedSubtitles = null;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
@@ -173,11 +178,11 @@ public class InputSettings {
   }
 
    /**
-   * The URL of the file that Mux should download and use. * For subtitles text tracks, the URL is the location of subtitle/captions file. Mux supports [SubRip Text (SRT)](https://en.wikipedia.org/wiki/SubRip) and [Web Video Text Tracks](https://www.w3.org/TR/webvtt1/) format for ingesting Subtitles and Closed Captions. * For Watermarking or Overlay, the URL is the location of the watermark image. * When creating clips from existing Mux assets, the URL is defined with &#x60;mux://assets/{asset_id}&#x60; template where &#x60;asset_id&#x60; is the Asset Identifier for creating the clip from. 
+   * The URL of the file that Mux should download and use. * For the main input file, this should be the URL to the muxed file for Mux to download, for example an MP4, MOV, MKV, or TS file. Mux supports most audio/video file formats and codecs, but for fastest processing, you should [use standard inputs wherever possible](https://docs.mux.com/guides/video/minimize-processing-time). * For &#x60;audio&#x60; tracks, the URL is the location of the audio file for Mux to download, for example an M4A, WAV, or MP3 file. Mux supports most audio file formats and codecs, but for fastest processing, you should [use standard inputs wherever possible](https://docs.mux.com/guides/video/minimize-processing-time). * For &#x60;text&#x60; tracks, the URL is the location of subtitle/captions file. Mux supports [SubRip Text (SRT)](https://en.wikipedia.org/wiki/SubRip) and [Web Video Text Tracks](https://www.w3.org/TR/webvtt1/) formats for ingesting Subtitles and Closed Captions. * For Watermarking or Overlay, the URL is the location of the watermark image. * When creating clips from existing Mux assets, the URL is defined with &#x60;mux://assets/{asset_id}&#x60; template where &#x60;asset_id&#x60; is the Asset Identifier for creating the clip from. The url property may be omitted on the first input object when providing asset settings for LiveStream and Upload objects, in order to configure settings related to the primary (live stream or direct upload) input. 
    * @return url
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The URL of the file that Mux should download and use. * For subtitles text tracks, the URL is the location of subtitle/captions file. Mux supports [SubRip Text (SRT)](https://en.wikipedia.org/wiki/SubRip) and [Web Video Text Tracks](https://www.w3.org/TR/webvtt1/) format for ingesting Subtitles and Closed Captions. * For Watermarking or Overlay, the URL is the location of the watermark image. * When creating clips from existing Mux assets, the URL is defined with `mux://assets/{asset_id}` template where `asset_id` is the Asset Identifier for creating the clip from. ")
+  @ApiModelProperty(value = "The URL of the file that Mux should download and use. * For the main input file, this should be the URL to the muxed file for Mux to download, for example an MP4, MOV, MKV, or TS file. Mux supports most audio/video file formats and codecs, but for fastest processing, you should [use standard inputs wherever possible](https://docs.mux.com/guides/video/minimize-processing-time). * For `audio` tracks, the URL is the location of the audio file for Mux to download, for example an M4A, WAV, or MP3 file. Mux supports most audio file formats and codecs, but for fastest processing, you should [use standard inputs wherever possible](https://docs.mux.com/guides/video/minimize-processing-time). * For `text` tracks, the URL is the location of subtitle/captions file. Mux supports [SubRip Text (SRT)](https://en.wikipedia.org/wiki/SubRip) and [Web Video Text Tracks](https://www.w3.org/TR/webvtt1/) formats for ingesting Subtitles and Closed Captions. * For Watermarking or Overlay, the URL is the location of the watermark image. * When creating clips from existing Mux assets, the URL is defined with `mux://assets/{asset_id}` template where `asset_id` is the Asset Identifier for creating the clip from. The url property may be omitted on the first input object when providing asset settings for LiveStream and Upload objects, in order to configure settings related to the primary (live stream or direct upload) input. ")
 
   public String getUrl() {
     return url;
@@ -209,6 +214,37 @@ public class InputSettings {
 
   public void setOverlaySettings(InputSettingsOverlaySettings overlaySettings) {
     this.overlaySettings = overlaySettings;
+  }
+
+
+  public InputSettings generatedSubtitles(java.util.List<AssetGeneratedSubtitleSettings> generatedSubtitles) {
+    
+    this.generatedSubtitles = generatedSubtitles;
+    return this;
+  }
+
+  public InputSettings addGeneratedSubtitlesItem(AssetGeneratedSubtitleSettings generatedSubtitlesItem) {
+    if (this.generatedSubtitles == null) {
+      this.generatedSubtitles = new java.util.ArrayList<>();
+    }
+    this.generatedSubtitles.add(generatedSubtitlesItem);
+    return this;
+  }
+
+   /**
+   * Generate subtitle tracks using automatic speech recognition using this configuration. This may only be provided for the first input object (the main input file). For direct uploads, this first input should omit the url parameter, as the main input file is provided via the direct upload. This will create subtitles based on the audio track ingested from that main input file. Note that subtitle generation happens after initial ingest, so the generated tracks will be in the &#x60;preparing&#x60; state when the asset transitions to &#x60;ready&#x60;.
+   * @return generatedSubtitles
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Generate subtitle tracks using automatic speech recognition using this configuration. This may only be provided for the first input object (the main input file). For direct uploads, this first input should omit the url parameter, as the main input file is provided via the direct upload. This will create subtitles based on the audio track ingested from that main input file. Note that subtitle generation happens after initial ingest, so the generated tracks will be in the `preparing` state when the asset transitions to `ready`.")
+
+  public java.util.List<AssetGeneratedSubtitleSettings> getGeneratedSubtitles() {
+    return generatedSubtitles;
+  }
+
+
+  public void setGeneratedSubtitles(java.util.List<AssetGeneratedSubtitleSettings> generatedSubtitles) {
+    this.generatedSubtitles = generatedSubtitles;
   }
 
 
@@ -311,11 +347,11 @@ public class InputSettings {
   }
 
    /**
-   * The language code value must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) specification compliant value. For example, en for English or en-US for the US version of English. This parameter is required for text type and subtitles text type track.
+   * The language code value must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) specification compliant value. For example, &#x60;en&#x60; for English or &#x60;en-US&#x60; for the US version of English. This parameter is required for &#x60;text&#x60; and &#x60;audio&#x60; track types.
    * @return languageCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The language code value must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) specification compliant value. For example, en for English or en-US for the US version of English. This parameter is required for text type and subtitles text type track.")
+  @ApiModelProperty(value = "The language code value must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) specification compliant value. For example, `en` for English or `en-US` for the US version of English. This parameter is required for `text` and `audio` track types.")
 
   public String getLanguageCode() {
     return languageCode;
@@ -334,11 +370,11 @@ public class InputSettings {
   }
 
    /**
-   * The name of the track containing a human-readable description. This value must be unique across all text type and subtitles &#x60;text&#x60; type tracks. The hls manifest will associate a subtitle text track with this value. For example, the value should be \&quot;English\&quot; for subtitles text track with language_code as en. This optional parameter should be used only for &#x60;text&#x60; type and subtitles &#x60;text&#x60; type tracks. If this parameter is not included, Mux will auto-populate based on the &#x60;input[].language_code&#x60; value.
+   * The name of the track containing a human-readable description. This value must be unique within each group of &#x60;text&#x60; or &#x60;audio&#x60; track types. The HLS manifest will associate a subtitle text track with this value. For example, the value should be \&quot;English\&quot; for a subtitle text track with &#x60;language_code&#x60; set to &#x60;en&#x60;. This optional parameter should be used only for &#x60;text&#x60; and &#x60;audio&#x60; type tracks. This parameter can be optionally provided for the first video input to denote the name of the muxed audio track if present. If this parameter is not included, Mux will auto-populate based on the &#x60;input[].language_code&#x60; value.
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the track containing a human-readable description. This value must be unique across all text type and subtitles `text` type tracks. The hls manifest will associate a subtitle text track with this value. For example, the value should be \"English\" for subtitles text track with language_code as en. This optional parameter should be used only for `text` type and subtitles `text` type tracks. If this parameter is not included, Mux will auto-populate based on the `input[].language_code` value.")
+  @ApiModelProperty(value = "The name of the track containing a human-readable description. This value must be unique within each group of `text` or `audio` track types. The HLS manifest will associate a subtitle text track with this value. For example, the value should be \"English\" for a subtitle text track with `language_code` set to `en`. This optional parameter should be used only for `text` and `audio` type tracks. This parameter can be optionally provided for the first video input to denote the name of the muxed audio track if present. If this parameter is not included, Mux will auto-populate based on the `input[].language_code` value.")
 
   public String getName() {
     return name;
@@ -357,11 +393,11 @@ public class InputSettings {
   }
 
    /**
-   * Indicates the track provides Subtitles for the Deaf or Hard-of-hearing (SDH). This optional parameter should be used for &#x60;text&#x60; type and subtitles &#x60;text&#x60; type tracks.
+   * Indicates the track provides Subtitles for the Deaf or Hard-of-hearing (SDH). This optional parameter should be used for tracks with &#x60;type&#x60; of &#x60;text&#x60; and &#x60;text_type&#x60; set to &#x60;subtitles&#x60;.
    * @return closedCaptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates the track provides Subtitles for the Deaf or Hard-of-hearing (SDH). This optional parameter should be used for `text` type and subtitles `text` type tracks.")
+  @ApiModelProperty(value = "Indicates the track provides Subtitles for the Deaf or Hard-of-hearing (SDH). This optional parameter should be used for tracks with `type` of `text` and `text_type` set to `subtitles`.")
 
   public Boolean getClosedCaptions() {
     return closedCaptions;
@@ -380,11 +416,11 @@ public class InputSettings {
   }
 
    /**
-   * This optional parameter should be used for &#x60;text&#x60; type and subtitles &#x60;text&#x60; type tracks.
+   * This optional parameter should be used tracks with &#x60;type&#x60; of &#x60;text&#x60; and &#x60;text_type&#x60; set to &#x60;subtitles&#x60;.
    * @return passthrough
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This optional parameter should be used for `text` type and subtitles `text` type tracks.")
+  @ApiModelProperty(value = "This optional parameter should be used tracks with `type` of `text` and `text_type` set to `subtitles`.")
 
   public String getPassthrough() {
     return passthrough;
@@ -407,6 +443,7 @@ public class InputSettings {
     InputSettings inputSettings = (InputSettings) o;
     return Objects.equals(this.url, inputSettings.url) &&
         Objects.equals(this.overlaySettings, inputSettings.overlaySettings) &&
+        Objects.equals(this.generatedSubtitles, inputSettings.generatedSubtitles) &&
         Objects.equals(this.startTime, inputSettings.startTime) &&
         Objects.equals(this.endTime, inputSettings.endTime) &&
         Objects.equals(this.type, inputSettings.type) &&
@@ -419,7 +456,7 @@ public class InputSettings {
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, overlaySettings, startTime, endTime, type, textType, languageCode, name, closedCaptions, passthrough);
+    return Objects.hash(url, overlaySettings, generatedSubtitles, startTime, endTime, type, textType, languageCode, name, closedCaptions, passthrough);
   }
 
   @Override
@@ -428,6 +465,7 @@ public class InputSettings {
     sb.append("class InputSettings {\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    overlaySettings: ").append(toIndentedString(overlaySettings)).append("\n");
+    sb.append("    generatedSubtitles: ").append(toIndentedString(generatedSubtitles)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

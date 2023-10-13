@@ -102,7 +102,7 @@ public class Asset {
   private Double duration;
 
   /**
-   * The maximum resolution that has been stored for the asset. The asset may be delivered at lower resolutions depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored.
+   * This field is deprecated. Please use &#x60;resolution_tier&#x60; instead. The maximum resolution that has been stored for the asset. The asset may be delivered at lower resolutions depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored.
    */
   @JsonAdapter(MaxStoredResolutionEnum.Adapter.class)
   public enum MaxStoredResolutionEnum {
@@ -157,6 +157,167 @@ public class Asset {
   public static final String SERIALIZED_NAME_MAX_STORED_RESOLUTION = "max_stored_resolution";
   @SerializedName(SERIALIZED_NAME_MAX_STORED_RESOLUTION)
   private MaxStoredResolutionEnum maxStoredResolution;
+
+  /**
+   * The resolution tier that the asset was ingested at, affecting billing for ingest &amp; storage. This field also represents the highest resolution tier that the content can be delivered at, however the actual resolution may be lower depending on the device, bandwidth, and exact resolution of the uploaded asset.
+   */
+  @JsonAdapter(ResolutionTierEnum.Adapter.class)
+  public enum ResolutionTierEnum {
+    AUDIO_ONLY("audio-only"),
+    
+    _720P("720p"),
+    
+    _1080P("1080p"),
+    
+    _1440P("1440p"),
+    
+    _2160P("2160p");
+
+    private String value;
+
+    ResolutionTierEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ResolutionTierEnum fromValue(String value) {
+      for (ResolutionTierEnum b : ResolutionTierEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ResolutionTierEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ResolutionTierEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ResolutionTierEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ResolutionTierEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_RESOLUTION_TIER = "resolution_tier";
+  @SerializedName(SERIALIZED_NAME_RESOLUTION_TIER)
+  private ResolutionTierEnum resolutionTier;
+
+  /**
+   * Max resolution tier can be used to control the maximum &#x60;resolution_tier&#x60; your asset is encoded, stored, and streamed at. If not set, this defaults to &#x60;1080p&#x60;.
+   */
+  @JsonAdapter(MaxResolutionTierEnum.Adapter.class)
+  public enum MaxResolutionTierEnum {
+    _1080P("1080p"),
+    
+    _1440P("1440p"),
+    
+    _2160P("2160p");
+
+    private String value;
+
+    MaxResolutionTierEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MaxResolutionTierEnum fromValue(String value) {
+      for (MaxResolutionTierEnum b : MaxResolutionTierEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MaxResolutionTierEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MaxResolutionTierEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MaxResolutionTierEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MaxResolutionTierEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MAX_RESOLUTION_TIER = "max_resolution_tier";
+  @SerializedName(SERIALIZED_NAME_MAX_RESOLUTION_TIER)
+  private MaxResolutionTierEnum maxResolutionTier;
+
+  /**
+   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used.
+   */
+  @JsonAdapter(EncodingTierEnum.Adapter.class)
+  public enum EncodingTierEnum {
+    SMART("smart"),
+    
+    BASELINE("baseline");
+
+    private String value;
+
+    EncodingTierEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static EncodingTierEnum fromValue(String value) {
+      for (EncodingTierEnum b : EncodingTierEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<EncodingTierEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final EncodingTierEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public EncodingTierEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return EncodingTierEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ENCODING_TIER = "encoding_tier";
+  @SerializedName(SERIALIZED_NAME_ENCODING_TIER)
+  private EncodingTierEnum encodingTier;
 
   public static final String SERIALIZED_NAME_MAX_STORED_FRAME_RATE = "max_stored_frame_rate";
   @SerializedName(SERIALIZED_NAME_MAX_STORED_FRAME_RATE)
@@ -428,11 +589,11 @@ public class Asset {
   }
 
    /**
-   * The maximum resolution that has been stored for the asset. The asset may be delivered at lower resolutions depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored.
+   * This field is deprecated. Please use &#x60;resolution_tier&#x60; instead. The maximum resolution that has been stored for the asset. The asset may be delivered at lower resolutions depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored.
    * @return maxStoredResolution
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum resolution that has been stored for the asset. The asset may be delivered at lower resolutions depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored.")
+  @ApiModelProperty(value = "This field is deprecated. Please use `resolution_tier` instead. The maximum resolution that has been stored for the asset. The asset may be delivered at lower resolutions depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored.")
 
   public MaxStoredResolutionEnum getMaxStoredResolution() {
     return maxStoredResolution;
@@ -441,6 +602,75 @@ public class Asset {
 
   public void setMaxStoredResolution(MaxStoredResolutionEnum maxStoredResolution) {
     this.maxStoredResolution = maxStoredResolution;
+  }
+
+
+  public Asset resolutionTier(ResolutionTierEnum resolutionTier) {
+    
+    this.resolutionTier = resolutionTier;
+    return this;
+  }
+
+   /**
+   * The resolution tier that the asset was ingested at, affecting billing for ingest &amp; storage. This field also represents the highest resolution tier that the content can be delivered at, however the actual resolution may be lower depending on the device, bandwidth, and exact resolution of the uploaded asset.
+   * @return resolutionTier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The resolution tier that the asset was ingested at, affecting billing for ingest & storage. This field also represents the highest resolution tier that the content can be delivered at, however the actual resolution may be lower depending on the device, bandwidth, and exact resolution of the uploaded asset.")
+
+  public ResolutionTierEnum getResolutionTier() {
+    return resolutionTier;
+  }
+
+
+  public void setResolutionTier(ResolutionTierEnum resolutionTier) {
+    this.resolutionTier = resolutionTier;
+  }
+
+
+  public Asset maxResolutionTier(MaxResolutionTierEnum maxResolutionTier) {
+    
+    this.maxResolutionTier = maxResolutionTier;
+    return this;
+  }
+
+   /**
+   * Max resolution tier can be used to control the maximum &#x60;resolution_tier&#x60; your asset is encoded, stored, and streamed at. If not set, this defaults to &#x60;1080p&#x60;.
+   * @return maxResolutionTier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Max resolution tier can be used to control the maximum `resolution_tier` your asset is encoded, stored, and streamed at. If not set, this defaults to `1080p`.")
+
+  public MaxResolutionTierEnum getMaxResolutionTier() {
+    return maxResolutionTier;
+  }
+
+
+  public void setMaxResolutionTier(MaxResolutionTierEnum maxResolutionTier) {
+    this.maxResolutionTier = maxResolutionTier;
+  }
+
+
+  public Asset encodingTier(EncodingTierEnum encodingTier) {
+    
+    this.encodingTier = encodingTier;
+    return this;
+  }
+
+   /**
+   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used.
+   * @return encodingTier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The encoding tier informs the cost, quality, and available platform features for the asset. By default the `smart` encoding tier is used.")
+
+  public EncodingTierEnum getEncodingTier() {
+    return encodingTier;
+  }
+
+
+  public void setEncodingTier(EncodingTierEnum encodingTier) {
+    this.encodingTier = encodingTier;
   }
 
 
@@ -919,6 +1149,9 @@ public class Asset {
         Objects.equals(this.status, asset.status) &&
         Objects.equals(this.duration, asset.duration) &&
         Objects.equals(this.maxStoredResolution, asset.maxStoredResolution) &&
+        Objects.equals(this.resolutionTier, asset.resolutionTier) &&
+        Objects.equals(this.maxResolutionTier, asset.maxResolutionTier) &&
+        Objects.equals(this.encodingTier, asset.encodingTier) &&
         Objects.equals(this.maxStoredFrameRate, asset.maxStoredFrameRate) &&
         Objects.equals(this.aspectRatio, asset.aspectRatio) &&
         Objects.equals(this.playbackIds, asset.playbackIds) &&
@@ -942,7 +1175,7 @@ public class Asset {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, duration, maxStoredResolution, maxStoredFrameRate, aspectRatio, playbackIds, tracks, errors, perTitleEncode, uploadId, isLive, passthrough, liveStreamId, master, masterAccess, mp4Support, sourceAssetId, normalizeAudio, staticRenditions, recordingTimes, nonStandardInputReasons, test);
+    return Objects.hash(id, createdAt, status, duration, maxStoredResolution, resolutionTier, maxResolutionTier, encodingTier, maxStoredFrameRate, aspectRatio, playbackIds, tracks, errors, perTitleEncode, uploadId, isLive, passthrough, liveStreamId, master, masterAccess, mp4Support, sourceAssetId, normalizeAudio, staticRenditions, recordingTimes, nonStandardInputReasons, test);
   }
 
   @Override
@@ -954,6 +1187,9 @@ public class Asset {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    maxStoredResolution: ").append(toIndentedString(maxStoredResolution)).append("\n");
+    sb.append("    resolutionTier: ").append(toIndentedString(resolutionTier)).append("\n");
+    sb.append("    maxResolutionTier: ").append(toIndentedString(maxResolutionTier)).append("\n");
+    sb.append("    encodingTier: ").append(toIndentedString(encodingTier)).append("\n");
     sb.append("    maxStoredFrameRate: ").append(toIndentedString(maxStoredFrameRate)).append("\n");
     sb.append("    aspectRatio: ").append(toIndentedString(aspectRatio)).append("\n");
     sb.append("    playbackIds: ").append(toIndentedString(playbackIds)).append("\n");

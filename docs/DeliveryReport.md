@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **deletedAt** | **String** | If exists, time at which the asset was deleted. Measured in seconds since the Unix epoch. |  [optional]
 **assetState** | [**AssetStateEnum**](#AssetStateEnum) | The state of the asset. |  [optional]
 **assetDuration** | **Double** | The duration of the asset in seconds. |  [optional]
+**assetResolutionTier** | [**AssetResolutionTierEnum**](#AssetResolutionTierEnum) | The resolution tier that the asset was ingested at, affecting billing for ingest &amp; storage |  [optional]
 **deliveredSeconds** | **Double** | Total number of delivered seconds during this time window. |  [optional]
 **deliveredSecondsByResolution** | [**DeliveryReportDeliveredSecondsByResolution**](DeliveryReportDeliveredSecondsByResolution.md) |  |  [optional]
 
@@ -25,6 +26,18 @@ Name | Value
 READY | &quot;ready&quot;
 ERRORED | &quot;errored&quot;
 DELETED | &quot;deleted&quot;
+
+
+
+## Enum: AssetResolutionTierEnum
+
+Name | Value
+---- | -----
+AUDIO_ONLY | &quot;audio-only&quot;
+_720P | &quot;720p&quot;
+_1080P | &quot;1080p&quot;
+_1440P | &quot;1440p&quot;
+_2160P | &quot;2160p&quot;
 
 
 

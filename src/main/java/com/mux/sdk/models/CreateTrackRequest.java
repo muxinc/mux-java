@@ -38,7 +38,9 @@ public class CreateTrackRequest {
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    TEXT("text");
+    TEXT("text"),
+    
+    AUDIO("audio");
 
     private String value;
 
@@ -155,10 +157,10 @@ public class CreateTrackRequest {
   }
 
    /**
-   * Get url
+   * The URL of the file that Mux should download and use. * For &#x60;audio&#x60; tracks, the URL is the location of the audio file for Mux to download, for example an M4A, WAV, or MP3 file. Mux supports most audio file formats and codecs, but for fastest processing, you should [use standard inputs wherever possible](https://docs.mux.com/guides/video/minimize-processing-time). * For &#x60;text&#x60; tracks, the URL is the location of subtitle/captions file. Mux supports [SubRip Text (SRT)](https://en.wikipedia.org/wiki/SubRip) and [Web Video Text Tracks](https://www.w3.org/TR/webvtt1/) formats for ingesting Subtitles and Closed Captions. 
    * @return url
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The URL of the file that Mux should download and use. * For `audio` tracks, the URL is the location of the audio file for Mux to download, for example an M4A, WAV, or MP3 file. Mux supports most audio file formats and codecs, but for fastest processing, you should [use standard inputs wherever possible](https://docs.mux.com/guides/video/minimize-processing-time). * For `text` tracks, the URL is the location of subtitle/captions file. Mux supports [SubRip Text (SRT)](https://en.wikipedia.org/wiki/SubRip) and [Web Video Text Tracks](https://www.w3.org/TR/webvtt1/) formats for ingesting Subtitles and Closed Captions. ")
 
   public String getUrl() {
     return url;
@@ -243,11 +245,11 @@ public class CreateTrackRequest {
   }
 
    /**
-   * The name of the track containing a human-readable description. This value must be unique across all the text type and subtitles text type tracks. HLS manifest will associate subtitle text track with this value. For example, set the value to \&quot;English\&quot; for subtitles text track with language_code as en-US. If this parameter is not included, Mux will auto-populate based on the language_code value.
+   * The name of the track containing a human-readable description. This value must be unique within each group of &#x60;text&#x60; or &#x60;audio&#x60; track types. The HLS manifest will associate the &#x60;text&#x60; or &#x60;audio&#x60; track with this value. For example, set the value to \&quot;English\&quot; for subtitles text track with &#x60;language_code&#x60; as en-US. If this parameter is not included, Mux will auto-populate a value based on the &#x60;language_code&#x60; value.
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the track containing a human-readable description. This value must be unique across all the text type and subtitles text type tracks. HLS manifest will associate subtitle text track with this value. For example, set the value to \"English\" for subtitles text track with language_code as en-US. If this parameter is not included, Mux will auto-populate based on the language_code value.")
+  @ApiModelProperty(value = "The name of the track containing a human-readable description. This value must be unique within each group of `text` or `audio` track types. The HLS manifest will associate the `text` or `audio` track with this value. For example, set the value to \"English\" for subtitles text track with `language_code` as en-US. If this parameter is not included, Mux will auto-populate a value based on the `language_code` value.")
 
   public String getName() {
     return name;

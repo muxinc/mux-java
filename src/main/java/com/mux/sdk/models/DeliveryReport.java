@@ -107,6 +107,63 @@ public class DeliveryReport {
   @SerializedName(SERIALIZED_NAME_ASSET_DURATION)
   private Double assetDuration;
 
+  /**
+   * The resolution tier that the asset was ingested at, affecting billing for ingest &amp; storage
+   */
+  @JsonAdapter(AssetResolutionTierEnum.Adapter.class)
+  public enum AssetResolutionTierEnum {
+    AUDIO_ONLY("audio-only"),
+    
+    _720P("720p"),
+    
+    _1080P("1080p"),
+    
+    _1440P("1440p"),
+    
+    _2160P("2160p");
+
+    private String value;
+
+    AssetResolutionTierEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AssetResolutionTierEnum fromValue(String value) {
+      for (AssetResolutionTierEnum b : AssetResolutionTierEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AssetResolutionTierEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AssetResolutionTierEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AssetResolutionTierEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AssetResolutionTierEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ASSET_RESOLUTION_TIER = "asset_resolution_tier";
+  @SerializedName(SERIALIZED_NAME_ASSET_RESOLUTION_TIER)
+  private AssetResolutionTierEnum assetResolutionTier;
+
   public static final String SERIALIZED_NAME_DELIVERED_SECONDS = "delivered_seconds";
   @SerializedName(SERIALIZED_NAME_DELIVERED_SECONDS)
   private Double deliveredSeconds;
@@ -277,6 +334,29 @@ public class DeliveryReport {
   }
 
 
+  public DeliveryReport assetResolutionTier(AssetResolutionTierEnum assetResolutionTier) {
+    
+    this.assetResolutionTier = assetResolutionTier;
+    return this;
+  }
+
+   /**
+   * The resolution tier that the asset was ingested at, affecting billing for ingest &amp; storage
+   * @return assetResolutionTier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The resolution tier that the asset was ingested at, affecting billing for ingest & storage")
+
+  public AssetResolutionTierEnum getAssetResolutionTier() {
+    return assetResolutionTier;
+  }
+
+
+  public void setAssetResolutionTier(AssetResolutionTierEnum assetResolutionTier) {
+    this.assetResolutionTier = assetResolutionTier;
+  }
+
+
   public DeliveryReport deliveredSeconds(Double deliveredSeconds) {
     
     this.deliveredSeconds = deliveredSeconds;
@@ -339,13 +419,14 @@ public class DeliveryReport {
         Objects.equals(this.deletedAt, deliveryReport.deletedAt) &&
         Objects.equals(this.assetState, deliveryReport.assetState) &&
         Objects.equals(this.assetDuration, deliveryReport.assetDuration) &&
+        Objects.equals(this.assetResolutionTier, deliveryReport.assetResolutionTier) &&
         Objects.equals(this.deliveredSeconds, deliveryReport.deliveredSeconds) &&
         Objects.equals(this.deliveredSecondsByResolution, deliveryReport.deliveredSecondsByResolution);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(liveStreamId, assetId, passthrough, createdAt, deletedAt, assetState, assetDuration, deliveredSeconds, deliveredSecondsByResolution);
+    return Objects.hash(liveStreamId, assetId, passthrough, createdAt, deletedAt, assetState, assetDuration, assetResolutionTier, deliveredSeconds, deliveredSecondsByResolution);
   }
 
   @Override
@@ -359,6 +440,7 @@ public class DeliveryReport {
     sb.append("    deletedAt: ").append(toIndentedString(deletedAt)).append("\n");
     sb.append("    assetState: ").append(toIndentedString(assetState)).append("\n");
     sb.append("    assetDuration: ").append(toIndentedString(assetDuration)).append("\n");
+    sb.append("    assetResolutionTier: ").append(toIndentedString(assetResolutionTier)).append("\n");
     sb.append("    deliveredSeconds: ").append(toIndentedString(deliveredSeconds)).append("\n");
     sb.append("    deliveredSecondsByResolution: ").append(toIndentedString(deliveredSecondsByResolution)).append("\n");
     sb.append("}");

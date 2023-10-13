@@ -88,6 +88,7 @@ public class SpacesApi {
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createSpaceValidateBeforeCall(CreateSpaceRequest createSpaceRequest, final ApiCallback _callback) throws ApiException {
         
@@ -135,7 +136,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Space Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return createSpaceCall(createSpaceRequest, _callback);
         }
@@ -150,7 +153,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Space Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public SpaceResponse execute() throws ApiException {
             ApiResponse<SpaceResponse> localVarResp = createSpaceWithHttpInfo(createSpaceRequest);
             return localVarResp.getData();
@@ -166,7 +171,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Space Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<SpaceResponse> executeWithHttpInfo() throws ApiException {
             return createSpaceWithHttpInfo(createSpaceRequest);
         }
@@ -182,7 +189,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Space Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<SpaceResponse> _callback) throws ApiException {
             return createSpaceAsync(createSpaceRequest, _callback);
         }
@@ -199,7 +208,9 @@ public class SpacesApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Space Created </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIcreateSpaceRequest createSpace(CreateSpaceRequest createSpaceRequest) {
         return new APIcreateSpaceRequest(createSpaceRequest);
     }
@@ -234,6 +245,7 @@ public class SpacesApi {
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createSpaceBroadcastValidateBeforeCall(String SPACE_ID, CreateBroadcastRequest createBroadcastRequest, final ApiCallback _callback) throws ApiException {
         
@@ -288,7 +300,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Broadcast Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return createSpaceBroadcastCall(SPACE_ID, createBroadcastRequest, _callback);
         }
@@ -303,7 +317,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Broadcast Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public BroadcastResponse execute() throws ApiException {
             ApiResponse<BroadcastResponse> localVarResp = createSpaceBroadcastWithHttpInfo(SPACE_ID, createBroadcastRequest);
             return localVarResp.getData();
@@ -319,7 +335,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Broadcast Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<BroadcastResponse> executeWithHttpInfo() throws ApiException {
             return createSpaceBroadcastWithHttpInfo(SPACE_ID, createBroadcastRequest);
         }
@@ -335,7 +353,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 201 </td><td> Broadcast Created </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<BroadcastResponse> _callback) throws ApiException {
             return createSpaceBroadcastAsync(SPACE_ID, createBroadcastRequest, _callback);
         }
@@ -353,7 +373,9 @@ public class SpacesApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Broadcast Created </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIcreateSpaceBroadcastRequest createSpaceBroadcast(String SPACE_ID, CreateBroadcastRequest createBroadcastRequest) {
         return new APIcreateSpaceBroadcastRequest(SPACE_ID, createBroadcastRequest);
     }
@@ -388,6 +410,7 @@ public class SpacesApi {
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteSpaceValidateBeforeCall(String SPACE_ID, final ApiCallback _callback) throws ApiException {
         
@@ -433,7 +456,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return deleteSpaceCall(SPACE_ID, _callback);
         }
@@ -447,7 +472,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public void execute() throws ApiException {
             deleteSpaceWithHttpInfo(SPACE_ID);
         }
@@ -462,7 +489,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
             return deleteSpaceWithHttpInfo(SPACE_ID);
         }
@@ -478,7 +507,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
             return deleteSpaceAsync(SPACE_ID, _callback);
         }
@@ -495,7 +526,9 @@ public class SpacesApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIdeleteSpaceRequest deleteSpace(String SPACE_ID) {
         return new APIdeleteSpaceRequest(SPACE_ID);
     }
@@ -531,6 +564,7 @@ public class SpacesApi {
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteSpaceBroadcastValidateBeforeCall(String SPACE_ID, String BROADCAST_ID, final ApiCallback _callback) throws ApiException {
         
@@ -583,7 +617,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return deleteSpaceBroadcastCall(SPACE_ID, BROADCAST_ID, _callback);
         }
@@ -597,7 +633,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public void execute() throws ApiException {
             deleteSpaceBroadcastWithHttpInfo(SPACE_ID, BROADCAST_ID);
         }
@@ -612,7 +650,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
             return deleteSpaceBroadcastWithHttpInfo(SPACE_ID, BROADCAST_ID);
         }
@@ -628,7 +668,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
             return deleteSpaceBroadcastAsync(SPACE_ID, BROADCAST_ID, _callback);
         }
@@ -646,7 +688,9 @@ public class SpacesApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIdeleteSpaceBroadcastRequest deleteSpaceBroadcast(String SPACE_ID, String BROADCAST_ID) {
         return new APIdeleteSpaceBroadcastRequest(SPACE_ID, BROADCAST_ID);
     }
@@ -681,6 +725,7 @@ public class SpacesApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getSpaceValidateBeforeCall(String SPACE_ID, final ApiCallback _callback) throws ApiException {
         
@@ -728,7 +773,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return getSpaceCall(SPACE_ID, _callback);
         }
@@ -743,7 +790,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public SpaceResponse execute() throws ApiException {
             ApiResponse<SpaceResponse> localVarResp = getSpaceWithHttpInfo(SPACE_ID);
             return localVarResp.getData();
@@ -759,7 +808,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<SpaceResponse> executeWithHttpInfo() throws ApiException {
             return getSpaceWithHttpInfo(SPACE_ID);
         }
@@ -775,7 +826,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<SpaceResponse> _callback) throws ApiException {
             return getSpaceAsync(SPACE_ID, _callback);
         }
@@ -792,7 +845,9 @@ public class SpacesApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIgetSpaceRequest getSpace(String SPACE_ID) {
         return new APIgetSpaceRequest(SPACE_ID);
     }
@@ -828,6 +883,7 @@ public class SpacesApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getSpaceBroadcastValidateBeforeCall(String SPACE_ID, String BROADCAST_ID, final ApiCallback _callback) throws ApiException {
         
@@ -882,7 +938,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return getSpaceBroadcastCall(SPACE_ID, BROADCAST_ID, _callback);
         }
@@ -897,7 +955,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public BroadcastResponse execute() throws ApiException {
             ApiResponse<BroadcastResponse> localVarResp = getSpaceBroadcastWithHttpInfo(SPACE_ID, BROADCAST_ID);
             return localVarResp.getData();
@@ -913,7 +973,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<BroadcastResponse> executeWithHttpInfo() throws ApiException {
             return getSpaceBroadcastWithHttpInfo(SPACE_ID, BROADCAST_ID);
         }
@@ -929,7 +991,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<BroadcastResponse> _callback) throws ApiException {
             return getSpaceBroadcastAsync(SPACE_ID, BROADCAST_ID, _callback);
         }
@@ -947,7 +1011,9 @@ public class SpacesApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIgetSpaceBroadcastRequest getSpaceBroadcast(String SPACE_ID, String BROADCAST_ID) {
         return new APIgetSpaceBroadcastRequest(SPACE_ID, BROADCAST_ID);
     }
@@ -989,6 +1055,7 @@ public class SpacesApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listSpacesValidateBeforeCall(Integer limit, Integer page, final ApiCallback _callback) throws ApiException {
         
@@ -1051,7 +1118,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return listSpacesCall(limit, page, _callback);
         }
@@ -1066,7 +1135,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ListSpacesResponse execute() throws ApiException {
             ApiResponse<ListSpacesResponse> localVarResp = listSpacesWithHttpInfo(limit, page);
             return localVarResp.getData();
@@ -1082,7 +1153,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<ListSpacesResponse> executeWithHttpInfo() throws ApiException {
             return listSpacesWithHttpInfo(limit, page);
         }
@@ -1098,7 +1171,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<ListSpacesResponse> _callback) throws ApiException {
             return listSpacesAsync(limit, page, _callback);
         }
@@ -1114,7 +1189,9 @@ public class SpacesApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIlistSpacesRequest listSpaces() {
         return new APIlistSpacesRequest();
     }
@@ -1150,6 +1227,7 @@ public class SpacesApi {
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call startSpaceBroadcastValidateBeforeCall(String SPACE_ID, String BROADCAST_ID, final ApiCallback _callback) throws ApiException {
         
@@ -1204,7 +1282,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return startSpaceBroadcastCall(SPACE_ID, BROADCAST_ID, _callback);
         }
@@ -1219,7 +1299,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public StartSpaceBroadcastResponse execute() throws ApiException {
             ApiResponse<StartSpaceBroadcastResponse> localVarResp = startSpaceBroadcastWithHttpInfo(SPACE_ID, BROADCAST_ID);
             return localVarResp.getData();
@@ -1235,7 +1317,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<StartSpaceBroadcastResponse> executeWithHttpInfo() throws ApiException {
             return startSpaceBroadcastWithHttpInfo(SPACE_ID, BROADCAST_ID);
         }
@@ -1251,7 +1335,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<StartSpaceBroadcastResponse> _callback) throws ApiException {
             return startSpaceBroadcastAsync(SPACE_ID, BROADCAST_ID, _callback);
         }
@@ -1269,7 +1355,9 @@ public class SpacesApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIstartSpaceBroadcastRequest startSpaceBroadcast(String SPACE_ID, String BROADCAST_ID) {
         return new APIstartSpaceBroadcastRequest(SPACE_ID, BROADCAST_ID);
     }
@@ -1305,6 +1393,7 @@ public class SpacesApi {
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call stopSpaceBroadcastValidateBeforeCall(String SPACE_ID, String BROADCAST_ID, final ApiCallback _callback) throws ApiException {
         
@@ -1359,7 +1448,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return stopSpaceBroadcastCall(SPACE_ID, BROADCAST_ID, _callback);
         }
@@ -1374,7 +1465,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public StopSpaceBroadcastResponse execute() throws ApiException {
             ApiResponse<StopSpaceBroadcastResponse> localVarResp = stopSpaceBroadcastWithHttpInfo(SPACE_ID, BROADCAST_ID);
             return localVarResp.getData();
@@ -1390,7 +1483,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<StopSpaceBroadcastResponse> executeWithHttpInfo() throws ApiException {
             return stopSpaceBroadcastWithHttpInfo(SPACE_ID, BROADCAST_ID);
         }
@@ -1406,7 +1501,9 @@ public class SpacesApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<StopSpaceBroadcastResponse> _callback) throws ApiException {
             return stopSpaceBroadcastAsync(SPACE_ID, BROADCAST_ID, _callback);
         }
@@ -1424,7 +1521,9 @@ public class SpacesApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIstopSpaceBroadcastRequest stopSpaceBroadcast(String SPACE_ID, String BROADCAST_ID) {
         return new APIstopSpaceBroadcastRequest(SPACE_ID, BROADCAST_ID);
     }

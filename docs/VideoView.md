@@ -136,6 +136,17 @@ Name | Type | Description | Notes
 **custom8** | **String** |  |  [optional]
 **custom9** | **String** |  |  [optional]
 **custom10** | **String** |  |  [optional]
+**liveStreamLatency** | **Long** |  |  [optional]
+**assetId** | **String** |  |  [optional]
+**environmentId** | **String** |  |  [optional]
+**liveStreamId** | **String** |  |  [optional]
+**muxEmbed** | **String** |  |  [optional]
+**playbackId** | **String** |  |  [optional]
+**playerErrorContext** | **String** |  |  [optional]
+**viewDrmType** | **String** |  |  [optional]
+**viewDroppedFrameCount** | **Long** |  |  [optional]
+**viewHasAd** | **Boolean** |  |  [optional]
+**videoStartupFailure** | **Boolean** |  |  [optional]
 
 
 
