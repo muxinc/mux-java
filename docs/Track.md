@@ -50,6 +50,7 @@ UPLOADED | &quot;uploaded&quot;
 EMBEDDED | &quot;embedded&quot;
 GENERATED_LIVE | &quot;generated_live&quot;
 GENERATED_LIVE_FINAL | &quot;generated_live_final&quot;
+GENERATED_VOD | &quot;generated_vod&quot;
 
 
 
