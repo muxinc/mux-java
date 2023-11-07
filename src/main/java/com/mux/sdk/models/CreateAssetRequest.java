@@ -211,7 +211,7 @@ public class CreateAssetRequest {
   private MaxResolutionTierEnum maxResolutionTier;
 
   /**
-   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used.
+   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/video/use-encoding-tiers)
    */
   @JsonAdapter(EncodingTierEnum.Adapter.class)
   public enum EncodingTierEnum {
@@ -492,11 +492,11 @@ public class CreateAssetRequest {
   }
 
    /**
-   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used.
+   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/video/use-encoding-tiers)
    * @return encodingTier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The encoding tier informs the cost, quality, and available platform features for the asset. By default the `smart` encoding tier is used.")
+  @ApiModelProperty(value = "The encoding tier informs the cost, quality, and available platform features for the asset. By default the `smart` encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/video/use-encoding-tiers)")
 
   public EncodingTierEnum getEncodingTier() {
     return encodingTier;

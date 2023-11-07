@@ -170,7 +170,9 @@ public class Track {
     
     GENERATED_LIVE("generated_live"),
     
-    GENERATED_LIVE_FINAL("generated_live_final");
+    GENERATED_LIVE_FINAL("generated_live_final"),
+    
+    GENERATED_VOD("generated_vod");
 
     private String value;
 
