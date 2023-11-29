@@ -269,7 +269,7 @@ public class Asset {
   private MaxResolutionTierEnum maxResolutionTier;
 
   /**
-   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/video/use-encoding-tiers)
+   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
    */
   @JsonAdapter(EncodingTierEnum.Adapter.class)
   public enum EncodingTierEnum {
@@ -658,11 +658,11 @@ public class Asset {
   }
 
    /**
-   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/video/use-encoding-tiers)
+   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
    * @return encodingTier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The encoding tier informs the cost, quality, and available platform features for the asset. By default the `smart` encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/video/use-encoding-tiers)")
+  @ApiModelProperty(value = "The encoding tier informs the cost, quality, and available platform features for the asset. By default the `smart` encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
 
   public EncodingTierEnum getEncodingTier() {
     return encodingTier;
@@ -735,11 +735,11 @@ public class Asset {
   }
 
    /**
-   * An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/video/play-your-videos) for more details.
+   * An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/play-your-videos) for more details.
    * @return playbackIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/video/play-your-videos) for more details.")
+  @ApiModelProperty(value = "An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/play-your-videos) for more details.")
 
   public java.util.List<PlaybackID> getPlaybackIds() {
     return playbackIds;

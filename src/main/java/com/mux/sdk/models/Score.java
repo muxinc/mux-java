@@ -38,13 +38,33 @@ public class Score {
   @SerializedName(SERIALIZED_NAME_VIEW_COUNT)
   private Long viewCount;
 
+  public static final String SERIALIZED_NAME_UNIQUE_VIEWERS = "unique_viewers";
+  @SerializedName(SERIALIZED_NAME_UNIQUE_VIEWERS)
+  private Long uniqueViewers;
+
+  public static final String SERIALIZED_NAME_STARTED_VIEWS = "started_views";
+  @SerializedName(SERIALIZED_NAME_STARTED_VIEWS)
+  private Long startedViews;
+
+  public static final String SERIALIZED_NAME_TOTAL_PLAYING_TIME = "total_playing_time";
+  @SerializedName(SERIALIZED_NAME_TOTAL_PLAYING_TIME)
+  private Long totalPlayingTime;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_ENDED_VIEWS = "ended_views";
+  @SerializedName(SERIALIZED_NAME_ENDED_VIEWS)
+  private Long endedViews;
+
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private Double value;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
   public static final String SERIALIZED_NAME_METRIC = "metric";
   @SerializedName(SERIALIZED_NAME_METRIC)
@@ -101,6 +121,75 @@ public class Score {
   }
 
 
+  public Score uniqueViewers(Long uniqueViewers) {
+    
+    this.uniqueViewers = uniqueViewers;
+    return this;
+  }
+
+   /**
+   * Get uniqueViewers
+   * @return uniqueViewers
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getUniqueViewers() {
+    return uniqueViewers;
+  }
+
+
+  public void setUniqueViewers(Long uniqueViewers) {
+    this.uniqueViewers = uniqueViewers;
+  }
+
+
+  public Score startedViews(Long startedViews) {
+    
+    this.startedViews = startedViews;
+    return this;
+  }
+
+   /**
+   * Get startedViews
+   * @return startedViews
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getStartedViews() {
+    return startedViews;
+  }
+
+
+  public void setStartedViews(Long startedViews) {
+    this.startedViews = startedViews;
+  }
+
+
+  public Score totalPlayingTime(Long totalPlayingTime) {
+    
+    this.totalPlayingTime = totalPlayingTime;
+    return this;
+  }
+
+   /**
+   * Get totalPlayingTime
+   * @return totalPlayingTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getTotalPlayingTime() {
+    return totalPlayingTime;
+  }
+
+
+  public void setTotalPlayingTime(Long totalPlayingTime) {
+    this.totalPlayingTime = totalPlayingTime;
+  }
+
+
   public Score name(String name) {
     
     this.name = name;
@@ -124,6 +213,29 @@ public class Score {
   }
 
 
+  public Score endedViews(Long endedViews) {
+    
+    this.endedViews = endedViews;
+    return this;
+  }
+
+   /**
+   * Get endedViews
+   * @return endedViews
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getEndedViews() {
+    return endedViews;
+  }
+
+
+  public void setEndedViews(Long endedViews) {
+    this.endedViews = endedViews;
+  }
+
+
   public Score value(Double value) {
     
     this.value = value;
@@ -144,6 +256,29 @@ public class Score {
 
   public void setValue(Double value) {
     this.value = value;
+  }
+
+
+  public Score type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -212,15 +347,20 @@ public class Score {
     Score score = (Score) o;
     return Objects.equals(this.watchTime, score.watchTime) &&
         Objects.equals(this.viewCount, score.viewCount) &&
+        Objects.equals(this.uniqueViewers, score.uniqueViewers) &&
+        Objects.equals(this.startedViews, score.startedViews) &&
+        Objects.equals(this.totalPlayingTime, score.totalPlayingTime) &&
         Objects.equals(this.name, score.name) &&
+        Objects.equals(this.endedViews, score.endedViews) &&
         Objects.equals(this.value, score.value) &&
+        Objects.equals(this.type, score.type) &&
         Objects.equals(this.metric, score.metric) &&
         Objects.equals(this.items, score.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(watchTime, viewCount, name, value, metric, items);
+    return Objects.hash(watchTime, viewCount, uniqueViewers, startedViews, totalPlayingTime, name, endedViews, value, type, metric, items);
   }
 
   @Override
@@ -229,8 +369,13 @@ public class Score {
     sb.append("class Score {\n");
     sb.append("    watchTime: ").append(toIndentedString(watchTime)).append("\n");
     sb.append("    viewCount: ").append(toIndentedString(viewCount)).append("\n");
+    sb.append("    uniqueViewers: ").append(toIndentedString(uniqueViewers)).append("\n");
+    sb.append("    startedViews: ").append(toIndentedString(startedViews)).append("\n");
+    sb.append("    totalPlayingTime: ").append(toIndentedString(totalPlayingTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    endedViews: ").append(toIndentedString(endedViews)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    metric: ").append(toIndentedString(metric)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");

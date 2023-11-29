@@ -38,6 +38,10 @@ public class VideoViewResponse {
   @SerializedName(SERIALIZED_NAME_TIMEFRAME)
   private java.util.List<Long> timeframe = null;
 
+  public static final String SERIALIZED_NAME_TOTAL_ROW_COUNT = "total_row_count";
+  @SerializedName(SERIALIZED_NAME_TOTAL_ROW_COUNT)
+  private Long totalRowCount;
+
 
   public VideoViewResponse data(VideoView data) {
     
@@ -93,6 +97,29 @@ public class VideoViewResponse {
   }
 
 
+  public VideoViewResponse totalRowCount(Long totalRowCount) {
+    
+    this.totalRowCount = totalRowCount;
+    return this;
+  }
+
+   /**
+   * Get totalRowCount
+   * @return totalRowCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getTotalRowCount() {
+    return totalRowCount;
+  }
+
+
+  public void setTotalRowCount(Long totalRowCount) {
+    this.totalRowCount = totalRowCount;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -103,12 +130,13 @@ public class VideoViewResponse {
     }
     VideoViewResponse videoViewResponse = (VideoViewResponse) o;
     return Objects.equals(this.data, videoViewResponse.data) &&
-        Objects.equals(this.timeframe, videoViewResponse.timeframe);
+        Objects.equals(this.timeframe, videoViewResponse.timeframe) &&
+        Objects.equals(this.totalRowCount, videoViewResponse.totalRowCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, timeframe);
+    return Objects.hash(data, timeframe, totalRowCount);
   }
 
   @Override
@@ -117,6 +145,7 @@ public class VideoViewResponse {
     sb.append("class VideoViewResponse {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    timeframe: ").append(toIndentedString(timeframe)).append("\n");
+    sb.append("    totalRowCount: ").append(toIndentedString(totalRowCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

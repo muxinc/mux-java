@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * An object containing the current status of Master Access and the link to the Master MP4 file when ready. This object does not exist if &#x60;master_acess&#x60; is set to &#x60;none&#x60; and when the temporary URL expires.
+ * An object containing the current status of Master Access and the link to the Master MP4 file when ready. This object does not exist if &#x60;master_access&#x60; is set to &#x60;none&#x60; and when the temporary URL expires.
  */
-@ApiModel(description = "An object containing the current status of Master Access and the link to the Master MP4 file when ready. This object does not exist if `master_acess` is set to `none` and when the temporary URL expires.")
+@ApiModel(description = "An object containing the current status of Master Access and the link to the Master MP4 file when ready. This object does not exist if `master_access` is set to `none` and when the temporary URL expires.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AssetMaster {
   /**

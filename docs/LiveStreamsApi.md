@@ -1180,7 +1180,7 @@ public class Example {
 
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
-    UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest = {"generated_subtitles":[{"name":"English CC (ASR)","language":"en","passthrough":"Example"}]}; // UpdateLiveStreamGeneratedSubtitlesRequest | 
+    UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest = {"generated_subtitles":[{"name":"English CC (ASR)","language_code":"en","passthrough":"Example"}]}; // UpdateLiveStreamGeneratedSubtitlesRequest | 
     try {
       LiveStreamResponse result = apiInstance.updateLiveStreamGeneratedSubtitles(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest)
             .execute();

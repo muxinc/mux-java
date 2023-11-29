@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **metricValue** | **Double** |  |  [optional]
 **displayValue** | **String** |  |  [optional]
 **concurrentViewers** | **Long** |  |  [optional]
+**startingUpViewers** | **Long** |  |  [optional]
 
 
 

@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mux.sdk.models.ListBreakdownValuesResponseMeta;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -40,6 +41,10 @@ public class GetMetricTimeseriesDataResponse {
   public static final String SERIALIZED_NAME_TIMEFRAME = "timeframe";
   @SerializedName(SERIALIZED_NAME_TIMEFRAME)
   private java.util.List<Long> timeframe = null;
+
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private ListBreakdownValuesResponseMeta meta;
 
 
   public GetMetricTimeseriesDataResponse data(java.util.List<java.util.List<String>> data) {
@@ -127,6 +132,29 @@ public class GetMetricTimeseriesDataResponse {
   }
 
 
+  public GetMetricTimeseriesDataResponse meta(ListBreakdownValuesResponseMeta meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ListBreakdownValuesResponseMeta getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(ListBreakdownValuesResponseMeta meta) {
+    this.meta = meta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -138,12 +166,13 @@ public class GetMetricTimeseriesDataResponse {
     GetMetricTimeseriesDataResponse getMetricTimeseriesDataResponse = (GetMetricTimeseriesDataResponse) o;
     return Objects.equals(this.data, getMetricTimeseriesDataResponse.data) &&
         Objects.equals(this.totalRowCount, getMetricTimeseriesDataResponse.totalRowCount) &&
-        Objects.equals(this.timeframe, getMetricTimeseriesDataResponse.timeframe);
+        Objects.equals(this.timeframe, getMetricTimeseriesDataResponse.timeframe) &&
+        Objects.equals(this.meta, getMetricTimeseriesDataResponse.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalRowCount, timeframe);
+    return Objects.hash(data, totalRowCount, timeframe, meta);
   }
 
   @Override
@@ -153,6 +182,7 @@ public class GetMetricTimeseriesDataResponse {
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    totalRowCount: ").append(toIndentedString(totalRowCount)).append("\n");
     sb.append("    timeframe: ").append(toIndentedString(timeframe)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

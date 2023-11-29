@@ -147,6 +147,8 @@ Name | Type | Description | Notes
 **viewDroppedFrameCount** | **Long** |  |  [optional]
 **viewHasAd** | **Boolean** |  |  [optional]
 **videoStartupFailure** | **Boolean** |  |  [optional]
+**longResume** | **Boolean** |  |  [optional]
+**longRebuffering** | **Boolean** |  |  [optional]
 
 
 

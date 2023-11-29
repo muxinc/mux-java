@@ -49,6 +49,10 @@ public class MonitoringBreakdownValue {
   @SerializedName(SERIALIZED_NAME_CONCURRENT_VIEWERS)
   private Long concurrentViewers;
 
+  public static final String SERIALIZED_NAME_STARTING_UP_VIEWERS = "starting_up_viewers";
+  @SerializedName(SERIALIZED_NAME_STARTING_UP_VIEWERS)
+  private Long startingUpViewers;
+
 
   public MonitoringBreakdownValue value(String value) {
     
@@ -165,6 +169,29 @@ public class MonitoringBreakdownValue {
   }
 
 
+  public MonitoringBreakdownValue startingUpViewers(Long startingUpViewers) {
+    
+    this.startingUpViewers = startingUpViewers;
+    return this;
+  }
+
+   /**
+   * Get startingUpViewers
+   * @return startingUpViewers
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getStartingUpViewers() {
+    return startingUpViewers;
+  }
+
+
+  public void setStartingUpViewers(Long startingUpViewers) {
+    this.startingUpViewers = startingUpViewers;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -178,12 +205,13 @@ public class MonitoringBreakdownValue {
         Objects.equals(this.negativeImpact, monitoringBreakdownValue.negativeImpact) &&
         Objects.equals(this.metricValue, monitoringBreakdownValue.metricValue) &&
         Objects.equals(this.displayValue, monitoringBreakdownValue.displayValue) &&
-        Objects.equals(this.concurrentViewers, monitoringBreakdownValue.concurrentViewers);
+        Objects.equals(this.concurrentViewers, monitoringBreakdownValue.concurrentViewers) &&
+        Objects.equals(this.startingUpViewers, monitoringBreakdownValue.startingUpViewers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, negativeImpact, metricValue, displayValue, concurrentViewers);
+    return Objects.hash(value, negativeImpact, metricValue, displayValue, concurrentViewers, startingUpViewers);
   }
 
   @Override
@@ -195,6 +223,7 @@ public class MonitoringBreakdownValue {
     sb.append("    metricValue: ").append(toIndentedString(metricValue)).append("\n");
     sb.append("    displayValue: ").append(toIndentedString(displayValue)).append("\n");
     sb.append("    concurrentViewers: ").append(toIndentedString(concurrentViewers)).append("\n");
+    sb.append("    startingUpViewers: ").append(toIndentedString(startingUpViewers)).append("\n");
     sb.append("}");
     return sb.toString();
   }

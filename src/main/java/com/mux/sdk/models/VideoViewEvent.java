@@ -45,6 +45,10 @@ public class VideoViewEvent {
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
   private Long eventTime;
 
+  public static final String SERIALIZED_NAME_DETAILS = "details";
+  @SerializedName(SERIALIZED_NAME_DETAILS)
+  private java.util.Map<String, Object> details = null;
+
 
   public VideoViewEvent viewerTime(Long viewerTime) {
     
@@ -138,6 +142,37 @@ public class VideoViewEvent {
   }
 
 
+  public VideoViewEvent details(java.util.Map<String, Object> details) {
+    
+    this.details = details;
+    return this;
+  }
+
+  public VideoViewEvent putDetailsItem(String key, Object detailsItem) {
+    if (this.details == null) {
+      this.details = new java.util.HashMap<>();
+    }
+    this.details.put(key, detailsItem);
+    return this;
+  }
+
+   /**
+   * Get details
+   * @return details
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public java.util.Map<String, Object> getDetails() {
+    return details;
+  }
+
+
+  public void setDetails(java.util.Map<String, Object> details) {
+    this.details = details;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -150,12 +185,13 @@ public class VideoViewEvent {
     return Objects.equals(this.viewerTime, videoViewEvent.viewerTime) &&
         Objects.equals(this.playbackTime, videoViewEvent.playbackTime) &&
         Objects.equals(this.name, videoViewEvent.name) &&
-        Objects.equals(this.eventTime, videoViewEvent.eventTime);
+        Objects.equals(this.eventTime, videoViewEvent.eventTime) &&
+        Objects.equals(this.details, videoViewEvent.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(viewerTime, playbackTime, name, eventTime);
+    return Objects.hash(viewerTime, playbackTime, name, eventTime, details);
   }
 
   @Override
@@ -166,6 +202,7 @@ public class VideoViewEvent {
     sb.append("    playbackTime: ").append(toIndentedString(playbackTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    eventTime: ").append(toIndentedString(eventTime)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }

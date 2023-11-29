@@ -33,6 +33,10 @@ public class Insight {
   @SerializedName(SERIALIZED_NAME_TOTAL_WATCH_TIME)
   private Long totalWatchTime;
 
+  public static final String SERIALIZED_NAME_TOTAL_PLAYING_TIME = "total_playing_time";
+  @SerializedName(SERIALIZED_NAME_TOTAL_PLAYING_TIME)
+  private Long totalPlayingTime;
+
   public static final String SERIALIZED_NAME_TOTAL_VIEWS = "total_views";
   @SerializedName(SERIALIZED_NAME_TOTAL_VIEWS)
   private Long totalViews;
@@ -74,6 +78,29 @@ public class Insight {
 
   public void setTotalWatchTime(Long totalWatchTime) {
     this.totalWatchTime = totalWatchTime;
+  }
+
+
+  public Insight totalPlayingTime(Long totalPlayingTime) {
+    
+    this.totalPlayingTime = totalPlayingTime;
+    return this;
+  }
+
+   /**
+   * Get totalPlayingTime
+   * @return totalPlayingTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getTotalPlayingTime() {
+    return totalPlayingTime;
+  }
+
+
+  public void setTotalPlayingTime(Long totalPlayingTime) {
+    this.totalPlayingTime = totalPlayingTime;
   }
 
 
@@ -202,6 +229,7 @@ public class Insight {
     }
     Insight insight = (Insight) o;
     return Objects.equals(this.totalWatchTime, insight.totalWatchTime) &&
+        Objects.equals(this.totalPlayingTime, insight.totalPlayingTime) &&
         Objects.equals(this.totalViews, insight.totalViews) &&
         Objects.equals(this.negativeImpactScore, insight.negativeImpactScore) &&
         Objects.equals(this.metric, insight.metric) &&
@@ -211,7 +239,7 @@ public class Insight {
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalWatchTime, totalViews, negativeImpactScore, metric, filterValue, filterColumn);
+    return Objects.hash(totalWatchTime, totalPlayingTime, totalViews, negativeImpactScore, metric, filterValue, filterColumn);
   }
 
   @Override
@@ -219,6 +247,7 @@ public class Insight {
     StringBuilder sb = new StringBuilder();
     sb.append("class Insight {\n");
     sb.append("    totalWatchTime: ").append(toIndentedString(totalWatchTime)).append("\n");
+    sb.append("    totalPlayingTime: ").append(toIndentedString(totalPlayingTime)).append("\n");
     sb.append("    totalViews: ").append(toIndentedString(totalViews)).append("\n");
     sb.append("    negativeImpactScore: ").append(toIndentedString(negativeImpactScore)).append("\n");
     sb.append("    metric: ").append(toIndentedString(metric)).append("\n");

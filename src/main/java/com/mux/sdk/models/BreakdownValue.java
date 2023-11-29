@@ -41,6 +41,10 @@ public class BreakdownValue {
   @SerializedName(SERIALIZED_NAME_TOTAL_WATCH_TIME)
   private Long totalWatchTime;
 
+  public static final String SERIALIZED_NAME_TOTAL_PLAYING_TIME = "total_playing_time";
+  @SerializedName(SERIALIZED_NAME_TOTAL_PLAYING_TIME)
+  private Long totalPlayingTime;
+
   public static final String SERIALIZED_NAME_NEGATIVE_IMPACT = "negative_impact";
   @SerializedName(SERIALIZED_NAME_NEGATIVE_IMPACT)
   private Integer negativeImpact;
@@ -119,6 +123,29 @@ public class BreakdownValue {
   }
 
 
+  public BreakdownValue totalPlayingTime(Long totalPlayingTime) {
+    
+    this.totalPlayingTime = totalPlayingTime;
+    return this;
+  }
+
+   /**
+   * Get totalPlayingTime
+   * @return totalPlayingTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getTotalPlayingTime() {
+    return totalPlayingTime;
+  }
+
+
+  public void setTotalPlayingTime(Long totalPlayingTime) {
+    this.totalPlayingTime = totalPlayingTime;
+  }
+
+
   public BreakdownValue negativeImpact(Integer negativeImpact) {
     
     this.negativeImpact = negativeImpact;
@@ -177,13 +204,14 @@ public class BreakdownValue {
     return Objects.equals(this.views, breakdownValue.views) &&
         Objects.equals(this.value, breakdownValue.value) &&
         Objects.equals(this.totalWatchTime, breakdownValue.totalWatchTime) &&
+        Objects.equals(this.totalPlayingTime, breakdownValue.totalPlayingTime) &&
         Objects.equals(this.negativeImpact, breakdownValue.negativeImpact) &&
         Objects.equals(this.field, breakdownValue.field);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(views, value, totalWatchTime, negativeImpact, field);
+    return Objects.hash(views, value, totalWatchTime, totalPlayingTime, negativeImpact, field);
   }
 
   @Override
@@ -193,6 +221,7 @@ public class BreakdownValue {
     sb.append("    views: ").append(toIndentedString(views)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    totalWatchTime: ").append(toIndentedString(totalWatchTime)).append("\n");
+    sb.append("    totalPlayingTime: ").append(toIndentedString(totalPlayingTime)).append("\n");
     sb.append("    negativeImpact: ").append(toIndentedString(negativeImpact)).append("\n");
     sb.append("    field: ").append(toIndentedString(field)).append("\n");
     sb.append("}");
