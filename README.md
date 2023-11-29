@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.7.3</version>
+  <version>0.7.4</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.7.3"
+compile "com.mux:mux-sdk-java:0.7.4"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.7.3.jar`
+* `target/mux-sdk-java-0.7.4.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -213,6 +213,14 @@ Class | Method | HTTP request | Description
 *UrlSigningKeysApi* | [**listUrlSigningKeys**](docs/UrlSigningKeysApi.md#listUrlSigningKeys) | **GET** /video/v1/signing-keys | List URL signing keys
 *VideoViewsApi* | [**getVideoView**](docs/VideoViewsApi.md#getVideoView) | **GET** /data/v1/video-views/{VIDEO_VIEW_ID} | Get a Video View
 *VideoViewsApi* | [**listVideoViews**](docs/VideoViewsApi.md#listVideoViews) | **GET** /data/v1/video-views | List Video Views
+*WebInputsApi* | [**createWebInput**](docs/WebInputsApi.md#createWebInput) | **POST** /video/v1/web-inputs | Create a new Web Input
+*WebInputsApi* | [**deleteWebInput**](docs/WebInputsApi.md#deleteWebInput) | **DELETE** /video/v1/web-inputs/{WEB_INPUT_ID} | Delete a Web Input
+*WebInputsApi* | [**getWebInput**](docs/WebInputsApi.md#getWebInput) | **GET** /video/v1/web-inputs/{WEB_INPUT_ID} | Retrieve a Web Input
+*WebInputsApi* | [**launchWebInput**](docs/WebInputsApi.md#launchWebInput) | **PUT** /video/v1/web-inputs/{WEB_INPUT_ID}/launch | Launch a Web Input
+*WebInputsApi* | [**listWebInputs**](docs/WebInputsApi.md#listWebInputs) | **GET** /video/v1/web-inputs | List Web Inputs
+*WebInputsApi* | [**reloadWebInput**](docs/WebInputsApi.md#reloadWebInput) | **PUT** /video/v1/web-inputs/{WEB_INPUT_ID}/reload | Reload a Web Input
+*WebInputsApi* | [**shutdownWebInput**](docs/WebInputsApi.md#shutdownWebInput) | **PUT** /video/v1/web-inputs/{WEB_INPUT_ID}/shutdown | Shut down a Web Input
+*WebInputsApi* | [**updateWebInputUrl**](docs/WebInputsApi.md#updateWebInputUrl) | **PUT** /video/v1/web-inputs/{WEB_INPUT_ID}/url | Update Web Input URL
 
 
 ## Documentation for Models
@@ -245,6 +253,7 @@ Class | Method | HTTP request | Description
  - [CreateTrackResponse](docs/CreateTrackResponse.md)
  - [CreateTranscriptionVocabularyRequest](docs/CreateTranscriptionVocabularyRequest.md)
  - [CreateUploadRequest](docs/CreateUploadRequest.md)
+ - [CreateWebInputRequest](docs/CreateWebInputRequest.md)
  - [DeliveryReport](docs/DeliveryReport.md)
  - [DeliveryReportDeliveredSecondsByResolution](docs/DeliveryReportDeliveredSecondsByResolution.md)
  - [DimensionValue](docs/DimensionValue.md)
@@ -282,9 +291,11 @@ Class | Method | HTTP request | Description
  - [InputSettingsOverlaySettings](docs/InputSettingsOverlaySettings.md)
  - [InputTrack](docs/InputTrack.md)
  - [Insight](docs/Insight.md)
+ - [LaunchWebInputResponse](docs/LaunchWebInputResponse.md)
  - [ListAllMetricValuesResponse](docs/ListAllMetricValuesResponse.md)
  - [ListAssetsResponse](docs/ListAssetsResponse.md)
  - [ListBreakdownValuesResponse](docs/ListBreakdownValuesResponse.md)
+ - [ListBreakdownValuesResponseMeta](docs/ListBreakdownValuesResponseMeta.md)
  - [ListDeliveryUsageResponse](docs/ListDeliveryUsageResponse.md)
  - [ListDimensionValuesResponse](docs/ListDimensionValuesResponse.md)
  - [ListDimensionsResponse](docs/ListDimensionsResponse.md)
@@ -309,6 +320,7 @@ Class | Method | HTTP request | Description
  - [ListUploadsResponse](docs/ListUploadsResponse.md)
  - [ListVideoViewExportsResponse](docs/ListVideoViewExportsResponse.md)
  - [ListVideoViewsResponse](docs/ListVideoViewsResponse.md)
+ - [ListWebInputsResponse](docs/ListWebInputsResponse.md)
  - [LiveStream](docs/LiveStream.md)
  - [LiveStreamEmbeddedSubtitleSettings](docs/LiveStreamEmbeddedSubtitleSettings.md)
  - [LiveStreamGeneratedSubtitleSettings](docs/LiveStreamGeneratedSubtitleSettings.md)
@@ -334,7 +346,9 @@ Class | Method | HTTP request | Description
  - [RealTimeHistogramTimeseriesDatapoint](docs/RealTimeHistogramTimeseriesDatapoint.md)
  - [RealTimeTimeseriesDatapoint](docs/RealTimeTimeseriesDatapoint.md)
  - [ReferrerDomainRestriction](docs/ReferrerDomainRestriction.md)
+ - [ReloadWebInputResponse](docs/ReloadWebInputResponse.md)
  - [Score](docs/Score.md)
+ - [ShutdownWebInputResponse](docs/ShutdownWebInputResponse.md)
  - [SignalLiveStreamCompleteResponse](docs/SignalLiveStreamCompleteResponse.md)
  - [SigningKey](docs/SigningKey.md)
  - [SigningKeyResponse](docs/SigningKeyResponse.md)
@@ -357,12 +371,15 @@ Class | Method | HTTP request | Description
  - [UpdateLiveStreamRequest](docs/UpdateLiveStreamRequest.md)
  - [UpdateReferrerDomainRestrictionRequest](docs/UpdateReferrerDomainRestrictionRequest.md)
  - [UpdateTranscriptionVocabularyRequest](docs/UpdateTranscriptionVocabularyRequest.md)
+ - [UpdateWebInputUrlRequest](docs/UpdateWebInputUrlRequest.md)
  - [Upload](docs/Upload.md)
  - [UploadError](docs/UploadError.md)
  - [UploadResponse](docs/UploadResponse.md)
  - [VideoView](docs/VideoView.md)
  - [VideoViewEvent](docs/VideoViewEvent.md)
  - [VideoViewResponse](docs/VideoViewResponse.md)
+ - [WebInput](docs/WebInput.md)
+ - [WebInputResponse](docs/WebInputResponse.md)
 
 
 ## Documentation for Authorization
