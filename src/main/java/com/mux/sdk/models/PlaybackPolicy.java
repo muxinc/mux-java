@@ -25,7 +25,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * * &#x60;public&#x60; playback IDs are accessible by constructing an HLS URL like &#x60;https://stream.mux.com/${PLAYBACK_ID}&#x60;  * &#x60;signed&#x60; playback IDs should be used with tokens &#x60;https://stream.mux.com/${PLAYBACK_ID}?token&#x3D;{TOKEN}&#x60;. See [Secure video playback](https://docs.mux.com/guides/video/secure-video-playback) for details about creating tokens. 
+ * * &#x60;public&#x60; playback IDs are accessible by constructing an HLS URL like &#x60;https://stream.mux.com/${PLAYBACK_ID}&#x60;  * &#x60;signed&#x60; playback IDs should be used with tokens &#x60;https://stream.mux.com/${PLAYBACK_ID}?token&#x3D;{TOKEN}&#x60;. See [Secure video playback](https://docs.mux.com/guides/secure-video-playback) for details about creating tokens. 
  */
 @JsonAdapter(PlaybackPolicy.Adapter.class)
 public enum PlaybackPolicy {

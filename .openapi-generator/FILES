@@ -30,6 +30,7 @@ docs/CreateTrackRequest.md
 docs/CreateTrackResponse.md
 docs/CreateTranscriptionVocabularyRequest.md
 docs/CreateUploadRequest.md
+docs/CreateWebInputRequest.md
 docs/DeliveryReport.md
 docs/DeliveryReportDeliveredSecondsByResolution.md
 docs/DeliveryUsageApi.md
@@ -74,9 +75,11 @@ docs/InputSettings.md
 docs/InputSettingsOverlaySettings.md
 docs/InputTrack.md
 docs/Insight.md
+docs/LaunchWebInputResponse.md
 docs/ListAllMetricValuesResponse.md
 docs/ListAssetsResponse.md
 docs/ListBreakdownValuesResponse.md
+docs/ListBreakdownValuesResponseMeta.md
 docs/ListDeliveryUsageResponse.md
 docs/ListDimensionValuesResponse.md
 docs/ListDimensionsResponse.md
@@ -101,6 +104,7 @@ docs/ListTranscriptionVocabulariesResponse.md
 docs/ListUploadsResponse.md
 docs/ListVideoViewExportsResponse.md
 docs/ListVideoViewsResponse.md
+docs/ListWebInputsResponse.md
 docs/LiveStream.md
 docs/LiveStreamEmbeddedSubtitleSettings.md
 docs/LiveStreamGeneratedSubtitleSettings.md
@@ -132,7 +136,9 @@ docs/RealTimeHistogramTimeseriesBucketValues.md
 docs/RealTimeHistogramTimeseriesDatapoint.md
 docs/RealTimeTimeseriesDatapoint.md
 docs/ReferrerDomainRestriction.md
+docs/ReloadWebInputResponse.md
 docs/Score.md
+docs/ShutdownWebInputResponse.md
 docs/SignalLiveStreamCompleteResponse.md
 docs/SigningKey.md
 docs/SigningKeyResponse.md
@@ -158,6 +164,7 @@ docs/UpdateLiveStreamGeneratedSubtitlesRequest.md
 docs/UpdateLiveStreamRequest.md
 docs/UpdateReferrerDomainRestrictionRequest.md
 docs/UpdateTranscriptionVocabularyRequest.md
+docs/UpdateWebInputUrlRequest.md
 docs/Upload.md
 docs/UploadError.md
 docs/UploadResponse.md
@@ -166,6 +173,9 @@ docs/VideoView.md
 docs/VideoViewEvent.md
 docs/VideoViewResponse.md
 docs/VideoViewsApi.md
+docs/WebInput.md
+docs/WebInputResponse.md
+docs/WebInputsApi.md
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
@@ -208,6 +218,7 @@ src/main/java/com/mux/sdk/SpacesApi.java
 src/main/java/com/mux/sdk/TranscriptionVocabulariesApi.java
 src/main/java/com/mux/sdk/UrlSigningKeysApi.java
 src/main/java/com/mux/sdk/VideoViewsApi.java
+src/main/java/com/mux/sdk/WebInputsApi.java
 src/main/java/com/mux/sdk/models/AbridgedVideoView.java
 src/main/java/com/mux/sdk/models/Asset.java
 src/main/java/com/mux/sdk/models/AssetErrors.java
@@ -236,6 +247,7 @@ src/main/java/com/mux/sdk/models/CreateTrackRequest.java
 src/main/java/com/mux/sdk/models/CreateTrackResponse.java
 src/main/java/com/mux/sdk/models/CreateTranscriptionVocabularyRequest.java
 src/main/java/com/mux/sdk/models/CreateUploadRequest.java
+src/main/java/com/mux/sdk/models/CreateWebInputRequest.java
 src/main/java/com/mux/sdk/models/DeliveryReport.java
 src/main/java/com/mux/sdk/models/DeliveryReportDeliveredSecondsByResolution.java
 src/main/java/com/mux/sdk/models/DimensionValue.java
@@ -273,9 +285,11 @@ src/main/java/com/mux/sdk/models/InputSettings.java
 src/main/java/com/mux/sdk/models/InputSettingsOverlaySettings.java
 src/main/java/com/mux/sdk/models/InputTrack.java
 src/main/java/com/mux/sdk/models/Insight.java
+src/main/java/com/mux/sdk/models/LaunchWebInputResponse.java
 src/main/java/com/mux/sdk/models/ListAllMetricValuesResponse.java
 src/main/java/com/mux/sdk/models/ListAssetsResponse.java
 src/main/java/com/mux/sdk/models/ListBreakdownValuesResponse.java
+src/main/java/com/mux/sdk/models/ListBreakdownValuesResponseMeta.java
 src/main/java/com/mux/sdk/models/ListDeliveryUsageResponse.java
 src/main/java/com/mux/sdk/models/ListDimensionValuesResponse.java
 src/main/java/com/mux/sdk/models/ListDimensionsResponse.java
@@ -300,6 +314,7 @@ src/main/java/com/mux/sdk/models/ListTranscriptionVocabulariesResponse.java
 src/main/java/com/mux/sdk/models/ListUploadsResponse.java
 src/main/java/com/mux/sdk/models/ListVideoViewExportsResponse.java
 src/main/java/com/mux/sdk/models/ListVideoViewsResponse.java
+src/main/java/com/mux/sdk/models/ListWebInputsResponse.java
 src/main/java/com/mux/sdk/models/LiveStream.java
 src/main/java/com/mux/sdk/models/LiveStreamEmbeddedSubtitleSettings.java
 src/main/java/com/mux/sdk/models/LiveStreamGeneratedSubtitleSettings.java
@@ -325,7 +340,9 @@ src/main/java/com/mux/sdk/models/RealTimeHistogramTimeseriesBucketValues.java
 src/main/java/com/mux/sdk/models/RealTimeHistogramTimeseriesDatapoint.java
 src/main/java/com/mux/sdk/models/RealTimeTimeseriesDatapoint.java
 src/main/java/com/mux/sdk/models/ReferrerDomainRestriction.java
+src/main/java/com/mux/sdk/models/ReloadWebInputResponse.java
 src/main/java/com/mux/sdk/models/Score.java
+src/main/java/com/mux/sdk/models/ShutdownWebInputResponse.java
 src/main/java/com/mux/sdk/models/SignalLiveStreamCompleteResponse.java
 src/main/java/com/mux/sdk/models/SigningKey.java
 src/main/java/com/mux/sdk/models/SigningKeyResponse.java
@@ -348,9 +365,12 @@ src/main/java/com/mux/sdk/models/UpdateLiveStreamGeneratedSubtitlesRequest.java
 src/main/java/com/mux/sdk/models/UpdateLiveStreamRequest.java
 src/main/java/com/mux/sdk/models/UpdateReferrerDomainRestrictionRequest.java
 src/main/java/com/mux/sdk/models/UpdateTranscriptionVocabularyRequest.java
+src/main/java/com/mux/sdk/models/UpdateWebInputUrlRequest.java
 src/main/java/com/mux/sdk/models/Upload.java
 src/main/java/com/mux/sdk/models/UploadError.java
 src/main/java/com/mux/sdk/models/UploadResponse.java
 src/main/java/com/mux/sdk/models/VideoView.java
 src/main/java/com/mux/sdk/models/VideoViewEvent.java
 src/main/java/com/mux/sdk/models/VideoViewResponse.java
+src/main/java/com/mux/sdk/models/WebInput.java
+src/main/java/com/mux/sdk/models/WebInputResponse.java

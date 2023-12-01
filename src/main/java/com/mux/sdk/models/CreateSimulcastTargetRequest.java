@@ -98,7 +98,8 @@ public class CreateSimulcastTargetRequest {
    * RTMP hostname including application name for the third party live streaming service. Example: &#x60;rtmp://live.example.com/app&#x60;.
    * @return url
   **/
-  @ApiModelProperty(required = true, value = "RTMP hostname including application name for the third party live streaming service. Example: `rtmp://live.example.com/app`.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "RTMP hostname including application name for the third party live streaming service. Example: `rtmp://live.example.com/app`.")
 
   public String getUrl() {
     return url;

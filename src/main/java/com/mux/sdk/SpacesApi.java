@@ -1181,7 +1181,7 @@ public class SpacesApi {
 
     /**
      * List spaces
-     * List all spaces in the current enviroment.
+     * List all spaces in the current environment.
      * @return APIlistSpacesRequest
      * @http.response.details
      <table border="1">

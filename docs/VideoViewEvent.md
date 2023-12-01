@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **playbackTime** | **Long** |  |  [optional]
 **name** | **String** |  |  [optional]
 **eventTime** | **Long** |  |  [optional]
+**details** | **Map&lt;String, Object&gt;** |  |  [optional]
 
 
 

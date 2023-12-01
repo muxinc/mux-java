@@ -108,7 +108,7 @@ public class LiveStream {
   private java.util.List<SimulcastTarget> simulcastTargets = null;
 
   /**
-   * Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags. The Low Latency value is a beta feature. Read more here: https://mux.com/blog/introducing-low-latency-live-streaming/
+   * Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags.
    */
   @JsonAdapter(LatencyModeEnum.Adapter.class)
   public enum LatencyModeEnum {
@@ -330,11 +330,11 @@ public class LiveStream {
   }
 
    /**
-   * An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/video/play-your-videos) for more details.
+   * An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/play-your-videos) for more details.
    * @return playbackIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/video/play-your-videos) for more details.")
+  @ApiModelProperty(value = "An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/play-your-videos) for more details.")
 
   public java.util.List<PlaybackID> getPlaybackIds() {
     return playbackIds;
@@ -555,11 +555,11 @@ public class LiveStream {
   }
 
    /**
-   * This field is deprecated. Please use &#x60;latency_mode&#x60; instead. Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this if you want lower latency for your live stream. See the [Reduce live stream latency guide](https://docs.mux.com/guides/video/reduce-live-stream-latency) to understand the tradeoffs.
+   * This field is deprecated. Please use &#x60;latency_mode&#x60; instead. Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this if you want lower latency for your live stream. See the [Reduce live stream latency guide](https://docs.mux.com/guides/reduce-live-stream-latency) to understand the tradeoffs.
    * @return reducedLatency
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This field is deprecated. Please use `latency_mode` instead. Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this if you want lower latency for your live stream. See the [Reduce live stream latency guide](https://docs.mux.com/guides/video/reduce-live-stream-latency) to understand the tradeoffs.")
+  @ApiModelProperty(value = "This field is deprecated. Please use `latency_mode` instead. Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this if you want lower latency for your live stream. See the [Reduce live stream latency guide](https://docs.mux.com/guides/reduce-live-stream-latency) to understand the tradeoffs.")
 
   public Boolean getReducedLatency() {
     return reducedLatency;
@@ -609,11 +609,11 @@ public class LiveStream {
   }
 
    /**
-   * Each Simulcast Target contains configuration details to broadcast (or \&quot;restream\&quot;) a live stream to a third-party streaming service. [See the Stream live to 3rd party platforms guide](https://docs.mux.com/guides/video/stream-live-to-3rd-party-platforms).
+   * Each Simulcast Target contains configuration details to broadcast (or \&quot;restream\&quot;) a live stream to a third-party streaming service. [See the Stream live to 3rd party platforms guide](https://docs.mux.com/guides/stream-live-to-3rd-party-platforms).
    * @return simulcastTargets
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Each Simulcast Target contains configuration details to broadcast (or \"restream\") a live stream to a third-party streaming service. [See the Stream live to 3rd party platforms guide](https://docs.mux.com/guides/video/stream-live-to-3rd-party-platforms).")
+  @ApiModelProperty(value = "Each Simulcast Target contains configuration details to broadcast (or \"restream\") a live stream to a third-party streaming service. [See the Stream live to 3rd party platforms guide](https://docs.mux.com/guides/stream-live-to-3rd-party-platforms).")
 
   public java.util.List<SimulcastTarget> getSimulcastTargets() {
     return simulcastTargets;
@@ -632,11 +632,11 @@ public class LiveStream {
   }
 
    /**
-   * Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags. The Low Latency value is a beta feature. Read more here: https://mux.com/blog/introducing-low-latency-live-streaming/
+   * Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags.
    * @return latencyMode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags. The Low Latency value is a beta feature. Read more here: https://mux.com/blog/introducing-low-latency-live-streaming/")
+  @ApiModelProperty(value = "Latency is the time from when the streamer transmits a frame of video to when you see it in the player. Set this as an alternative to setting low latency or reduced latency flags.")
 
   public LatencyModeEnum getLatencyMode() {
     return latencyMode;

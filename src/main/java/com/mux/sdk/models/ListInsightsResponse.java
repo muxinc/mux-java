@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mux.sdk.models.Insight;
+import com.mux.sdk.models.ListBreakdownValuesResponseMeta;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -41,6 +42,10 @@ public class ListInsightsResponse {
   public static final String SERIALIZED_NAME_TIMEFRAME = "timeframe";
   @SerializedName(SERIALIZED_NAME_TIMEFRAME)
   private java.util.List<Long> timeframe = null;
+
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private ListBreakdownValuesResponseMeta meta;
 
 
   public ListInsightsResponse data(java.util.List<Insight> data) {
@@ -128,6 +133,29 @@ public class ListInsightsResponse {
   }
 
 
+  public ListInsightsResponse meta(ListBreakdownValuesResponseMeta meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ListBreakdownValuesResponseMeta getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(ListBreakdownValuesResponseMeta meta) {
+    this.meta = meta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -139,12 +167,13 @@ public class ListInsightsResponse {
     ListInsightsResponse listInsightsResponse = (ListInsightsResponse) o;
     return Objects.equals(this.data, listInsightsResponse.data) &&
         Objects.equals(this.totalRowCount, listInsightsResponse.totalRowCount) &&
-        Objects.equals(this.timeframe, listInsightsResponse.timeframe);
+        Objects.equals(this.timeframe, listInsightsResponse.timeframe) &&
+        Objects.equals(this.meta, listInsightsResponse.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalRowCount, timeframe);
+    return Objects.hash(data, totalRowCount, timeframe, meta);
   }
 
   @Override
@@ -154,6 +183,7 @@ public class ListInsightsResponse {
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    totalRowCount: ").append(toIndentedString(totalRowCount)).append("\n");
     sb.append("    timeframe: ").append(toIndentedString(timeframe)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

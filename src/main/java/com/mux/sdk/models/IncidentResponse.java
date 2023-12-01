@@ -34,6 +34,10 @@ public class IncidentResponse {
   @SerializedName(SERIALIZED_NAME_DATA)
   private Incident data;
 
+  public static final String SERIALIZED_NAME_TOTAL_ROW_COUNT = "total_row_count";
+  @SerializedName(SERIALIZED_NAME_TOTAL_ROW_COUNT)
+  private Long totalRowCount;
+
   public static final String SERIALIZED_NAME_TIMEFRAME = "timeframe";
   @SerializedName(SERIALIZED_NAME_TIMEFRAME)
   private java.util.List<Long> timeframe = null;
@@ -59,6 +63,29 @@ public class IncidentResponse {
 
   public void setData(Incident data) {
     this.data = data;
+  }
+
+
+  public IncidentResponse totalRowCount(Long totalRowCount) {
+    
+    this.totalRowCount = totalRowCount;
+    return this;
+  }
+
+   /**
+   * Get totalRowCount
+   * @return totalRowCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getTotalRowCount() {
+    return totalRowCount;
+  }
+
+
+  public void setTotalRowCount(Long totalRowCount) {
+    this.totalRowCount = totalRowCount;
   }
 
 
@@ -103,12 +130,13 @@ public class IncidentResponse {
     }
     IncidentResponse incidentResponse = (IncidentResponse) o;
     return Objects.equals(this.data, incidentResponse.data) &&
+        Objects.equals(this.totalRowCount, incidentResponse.totalRowCount) &&
         Objects.equals(this.timeframe, incidentResponse.timeframe);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, timeframe);
+    return Objects.hash(data, totalRowCount, timeframe);
   }
 
   @Override
@@ -116,6 +144,7 @@ public class IncidentResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class IncidentResponse {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    totalRowCount: ").append(toIndentedString(totalRowCount)).append("\n");
     sb.append("    timeframe: ").append(toIndentedString(timeframe)).append("\n");
     sb.append("}");
     return sb.toString();

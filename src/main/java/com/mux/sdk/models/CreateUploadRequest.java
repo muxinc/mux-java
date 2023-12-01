@@ -105,7 +105,8 @@ public class CreateUploadRequest {
    * Get newAssetSettings
    * @return newAssetSettings
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public CreateAssetRequest getNewAssetSettings() {
     return newAssetSettings;

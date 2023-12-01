@@ -41,6 +41,10 @@ public class OverallValues {
   @SerializedName(SERIALIZED_NAME_TOTAL_VIEWS)
   private Long totalViews;
 
+  public static final String SERIALIZED_NAME_TOTAL_PLAYING_TIME = "total_playing_time";
+  @SerializedName(SERIALIZED_NAME_TOTAL_PLAYING_TIME)
+  private Long totalPlayingTime;
+
   public static final String SERIALIZED_NAME_GLOBAL_VALUE = "global_value";
   @SerializedName(SERIALIZED_NAME_GLOBAL_VALUE)
   private Double globalValue;
@@ -115,6 +119,29 @@ public class OverallValues {
   }
 
 
+  public OverallValues totalPlayingTime(Long totalPlayingTime) {
+    
+    this.totalPlayingTime = totalPlayingTime;
+    return this;
+  }
+
+   /**
+   * Get totalPlayingTime
+   * @return totalPlayingTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getTotalPlayingTime() {
+    return totalPlayingTime;
+  }
+
+
+  public void setTotalPlayingTime(Long totalPlayingTime) {
+    this.totalPlayingTime = totalPlayingTime;
+  }
+
+
   public OverallValues globalValue(Double globalValue) {
     
     this.globalValue = globalValue;
@@ -150,12 +177,13 @@ public class OverallValues {
     return Objects.equals(this.value, overallValues.value) &&
         Objects.equals(this.totalWatchTime, overallValues.totalWatchTime) &&
         Objects.equals(this.totalViews, overallValues.totalViews) &&
+        Objects.equals(this.totalPlayingTime, overallValues.totalPlayingTime) &&
         Objects.equals(this.globalValue, overallValues.globalValue);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, totalWatchTime, totalViews, globalValue);
+    return Objects.hash(value, totalWatchTime, totalViews, totalPlayingTime, globalValue);
   }
 
   @Override
@@ -165,6 +193,7 @@ public class OverallValues {
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    totalWatchTime: ").append(toIndentedString(totalWatchTime)).append("\n");
     sb.append("    totalViews: ").append(toIndentedString(totalViews)).append("\n");
+    sb.append("    totalPlayingTime: ").append(toIndentedString(totalPlayingTime)).append("\n");
     sb.append("    globalValue: ").append(toIndentedString(globalValue)).append("\n");
     sb.append("}");
     return sb.toString();

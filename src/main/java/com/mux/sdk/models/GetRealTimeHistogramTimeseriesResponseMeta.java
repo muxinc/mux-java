@@ -30,9 +30,36 @@ import java.io.IOException;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GetRealTimeHistogramTimeseriesResponseMeta {
+  public static final String SERIALIZED_NAME_BUCKET_UNIT = "bucket_unit";
+  @SerializedName(SERIALIZED_NAME_BUCKET_UNIT)
+  private String bucketUnit;
+
   public static final String SERIALIZED_NAME_BUCKETS = "buckets";
   @SerializedName(SERIALIZED_NAME_BUCKETS)
   private java.util.List<RealTimeHistogramTimeseriesBucket> buckets = null;
+
+
+  public GetRealTimeHistogramTimeseriesResponseMeta bucketUnit(String bucketUnit) {
+    
+    this.bucketUnit = bucketUnit;
+    return this;
+  }
+
+   /**
+   * Get bucketUnit
+   * @return bucketUnit
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getBucketUnit() {
+    return bucketUnit;
+  }
+
+
+  public void setBucketUnit(String bucketUnit) {
+    this.bucketUnit = bucketUnit;
+  }
 
 
   public GetRealTimeHistogramTimeseriesResponseMeta buckets(java.util.List<RealTimeHistogramTimeseriesBucket> buckets) {
@@ -75,18 +102,20 @@ public class GetRealTimeHistogramTimeseriesResponseMeta {
       return false;
     }
     GetRealTimeHistogramTimeseriesResponseMeta getRealTimeHistogramTimeseriesResponseMeta = (GetRealTimeHistogramTimeseriesResponseMeta) o;
-    return Objects.equals(this.buckets, getRealTimeHistogramTimeseriesResponseMeta.buckets);
+    return Objects.equals(this.bucketUnit, getRealTimeHistogramTimeseriesResponseMeta.bucketUnit) &&
+        Objects.equals(this.buckets, getRealTimeHistogramTimeseriesResponseMeta.buckets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(buckets);
+    return Objects.hash(bucketUnit, buckets);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetRealTimeHistogramTimeseriesResponseMeta {\n");
+    sb.append("    bucketUnit: ").append(toIndentedString(bucketUnit)).append("\n");
     sb.append("    buckets: ").append(toIndentedString(buckets)).append("\n");
     sb.append("}");
     return sb.toString();

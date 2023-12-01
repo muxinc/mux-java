@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **message** | **String** | The error message. |  [optional]
 **lastSeen** | **String** | The last time this error was seen (ISO 8601 timestamp). |  [optional]
 **description** | **String** | Description of the error. |  [optional]
-**count** | **Long** | The total number of views that experiend this error. |  [optional]
+**count** | **Long** | The total number of views that experienced this error. |  [optional]
 **code** | **Long** | The error code |  [optional]
 
 

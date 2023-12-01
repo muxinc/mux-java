@@ -207,11 +207,11 @@ public class Error {
   }
 
    /**
-   * The total number of views that experiend this error.
+   * The total number of views that experienced this error.
    * @return count
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The total number of views that experiend this error.")
+  @ApiModelProperty(value = "The total number of views that experienced this error.")
 
   public Long getCount() {
     return count;
