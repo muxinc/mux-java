@@ -54,11 +54,11 @@ public class UpdateReferrerDomainRestrictionRequest {
   }
 
    /**
-   * List of domains allowed to play videos. Possible values are   * &#x60;[]&#x60; Empty Array indicates deny video playback requests for all domains   * &#x60;[\&quot;*\&quot;]&#x60; A Single Wildcard &#x60;*&#x60; entry means allow video playback requests from any domain   *  &#x60;[\&quot;*.example.com\&quot;, \&quot;foo.com\&quot;]&#x60; A list of up to 10 domains or valid dns-style wildcards 
+   * List of domains allowed to play videos. Possible values are   * &#x60;[]&#x60; Empty Array indicates deny video playback requests for all domains   * &#x60;[\&quot;*\&quot;]&#x60; A Single Wildcard &#x60;*&#x60; entry means allow video playback requests from any domain   * &#x60;[\&quot;*.example.com\&quot;, \&quot;foo.com\&quot;]&#x60; A list of up to 10 domains or valid dns-style wildcards 
    * @return allowedDomains
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "List of domains allowed to play videos. Possible values are   * `[]` Empty Array indicates deny video playback requests for all domains   * `[\"*\"]` A Single Wildcard `*` entry means allow video playback requests from any domain   *  `[\"*.example.com\", \"foo.com\"]` A list of up to 10 domains or valid dns-style wildcards ")
+  @ApiModelProperty(value = "List of domains allowed to play videos. Possible values are   * `[]` Empty Array indicates deny video playback requests for all domains   * `[\"*\"]` A Single Wildcard `*` entry means allow video playback requests from any domain   * `[\"*.example.com\", \"foo.com\"]` A list of up to 10 domains or valid dns-style wildcards ")
 
   public java.util.List<String> getAllowedDomains() {
     return allowedDomains;

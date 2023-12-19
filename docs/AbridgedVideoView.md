@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **countryCode** | **String** |  |  [optional]
 **viewStart** | **String** |  |  [optional]
 **viewEnd** | **String** |  |  [optional]
+**viewerExperienceScore** | **Float** |  |  [optional]
+**watchTime** | **Integer** |  |  [optional]
 
 
 

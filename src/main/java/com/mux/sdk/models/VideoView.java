@@ -508,7 +508,7 @@ public class VideoView {
 
   public static final String SERIALIZED_NAME_WEIGHTED_AVERAGE_BITRATE = "weighted_average_bitrate";
   @SerializedName(SERIALIZED_NAME_WEIGHTED_AVERAGE_BITRATE)
-  private Long weightedAverageBitrate;
+  private Double weightedAverageBitrate;
 
   public static final String SERIALIZED_NAME_CUSTOM1 = "custom_1";
   @SerializedName(SERIALIZED_NAME_CUSTOM1)
@@ -593,6 +593,50 @@ public class VideoView {
   public static final String SERIALIZED_NAME_VIDEO_STARTUP_FAILURE = "video_startup_failure";
   @SerializedName(SERIALIZED_NAME_VIDEO_STARTUP_FAILURE)
   private Boolean videoStartupFailure;
+
+  public static final String SERIALIZED_NAME_AD_ATTEMPT_COUNT = "ad_attempt_count";
+  @SerializedName(SERIALIZED_NAME_AD_ATTEMPT_COUNT)
+  private Integer adAttemptCount;
+
+  public static final String SERIALIZED_NAME_AD_BREAK_COUNT = "ad_break_count";
+  @SerializedName(SERIALIZED_NAME_AD_BREAK_COUNT)
+  private Integer adBreakCount;
+
+  public static final String SERIALIZED_NAME_AD_BREAK_ERROR_COUNT = "ad_break_error_count";
+  @SerializedName(SERIALIZED_NAME_AD_BREAK_ERROR_COUNT)
+  private Integer adBreakErrorCount;
+
+  public static final String SERIALIZED_NAME_AD_BREAK_ERROR_PERCENTAGE = "ad_break_error_percentage";
+  @SerializedName(SERIALIZED_NAME_AD_BREAK_ERROR_PERCENTAGE)
+  private String adBreakErrorPercentage;
+
+  public static final String SERIALIZED_NAME_AD_ERROR_COUNT = "ad_error_count";
+  @SerializedName(SERIALIZED_NAME_AD_ERROR_COUNT)
+  private Integer adErrorCount;
+
+  public static final String SERIALIZED_NAME_AD_ERROR_PERCENTAGE = "ad_error_percentage";
+  @SerializedName(SERIALIZED_NAME_AD_ERROR_PERCENTAGE)
+  private String adErrorPercentage;
+
+  public static final String SERIALIZED_NAME_AD_IMPRESSION_COUNT = "ad_impression_count";
+  @SerializedName(SERIALIZED_NAME_AD_IMPRESSION_COUNT)
+  private Integer adImpressionCount;
+
+  public static final String SERIALIZED_NAME_AD_STARTUP_ERROR_COUNT = "ad_startup_error_count";
+  @SerializedName(SERIALIZED_NAME_AD_STARTUP_ERROR_COUNT)
+  private Integer adStartupErrorCount;
+
+  public static final String SERIALIZED_NAME_AD_STARTUP_ERROR_PERCENTAGE = "ad_startup_error_percentage";
+  @SerializedName(SERIALIZED_NAME_AD_STARTUP_ERROR_PERCENTAGE)
+  private String adStartupErrorPercentage;
+
+  public static final String SERIALIZED_NAME_AD_EXIT_BEFORE_START_COUNT = "ad_exit_before_start_count";
+  @SerializedName(SERIALIZED_NAME_AD_EXIT_BEFORE_START_COUNT)
+  private Integer adExitBeforeStartCount;
+
+  public static final String SERIALIZED_NAME_AD_EXIT_BEFORE_START_PERCENTAGE = "ad_exit_before_start_percentage";
+  @SerializedName(SERIALIZED_NAME_AD_EXIT_BEFORE_START_PERCENTAGE)
+  private String adExitBeforeStartPercentage;
 
   public static final String SERIALIZED_NAME_LONG_RESUME = "long_resume";
   @SerializedName(SERIALIZED_NAME_LONG_RESUME)
@@ -3348,7 +3392,7 @@ public class VideoView {
   }
 
 
-  public VideoView weightedAverageBitrate(Long weightedAverageBitrate) {
+  public VideoView weightedAverageBitrate(Double weightedAverageBitrate) {
     
     this.weightedAverageBitrate = weightedAverageBitrate;
     return this;
@@ -3361,12 +3405,12 @@ public class VideoView {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Long getWeightedAverageBitrate() {
+  public Double getWeightedAverageBitrate() {
     return weightedAverageBitrate;
   }
 
 
-  public void setWeightedAverageBitrate(Long weightedAverageBitrate) {
+  public void setWeightedAverageBitrate(Double weightedAverageBitrate) {
     this.weightedAverageBitrate = weightedAverageBitrate;
   }
 
@@ -3854,6 +3898,259 @@ public class VideoView {
   }
 
 
+  public VideoView adAttemptCount(Integer adAttemptCount) {
+    
+    this.adAttemptCount = adAttemptCount;
+    return this;
+  }
+
+   /**
+   * Get adAttemptCount
+   * @return adAttemptCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdAttemptCount() {
+    return adAttemptCount;
+  }
+
+
+  public void setAdAttemptCount(Integer adAttemptCount) {
+    this.adAttemptCount = adAttemptCount;
+  }
+
+
+  public VideoView adBreakCount(Integer adBreakCount) {
+    
+    this.adBreakCount = adBreakCount;
+    return this;
+  }
+
+   /**
+   * Get adBreakCount
+   * @return adBreakCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdBreakCount() {
+    return adBreakCount;
+  }
+
+
+  public void setAdBreakCount(Integer adBreakCount) {
+    this.adBreakCount = adBreakCount;
+  }
+
+
+  public VideoView adBreakErrorCount(Integer adBreakErrorCount) {
+    
+    this.adBreakErrorCount = adBreakErrorCount;
+    return this;
+  }
+
+   /**
+   * Get adBreakErrorCount
+   * @return adBreakErrorCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdBreakErrorCount() {
+    return adBreakErrorCount;
+  }
+
+
+  public void setAdBreakErrorCount(Integer adBreakErrorCount) {
+    this.adBreakErrorCount = adBreakErrorCount;
+  }
+
+
+  public VideoView adBreakErrorPercentage(String adBreakErrorPercentage) {
+    
+    this.adBreakErrorPercentage = adBreakErrorPercentage;
+    return this;
+  }
+
+   /**
+   * Get adBreakErrorPercentage
+   * @return adBreakErrorPercentage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAdBreakErrorPercentage() {
+    return adBreakErrorPercentage;
+  }
+
+
+  public void setAdBreakErrorPercentage(String adBreakErrorPercentage) {
+    this.adBreakErrorPercentage = adBreakErrorPercentage;
+  }
+
+
+  public VideoView adErrorCount(Integer adErrorCount) {
+    
+    this.adErrorCount = adErrorCount;
+    return this;
+  }
+
+   /**
+   * Get adErrorCount
+   * @return adErrorCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdErrorCount() {
+    return adErrorCount;
+  }
+
+
+  public void setAdErrorCount(Integer adErrorCount) {
+    this.adErrorCount = adErrorCount;
+  }
+
+
+  public VideoView adErrorPercentage(String adErrorPercentage) {
+    
+    this.adErrorPercentage = adErrorPercentage;
+    return this;
+  }
+
+   /**
+   * Get adErrorPercentage
+   * @return adErrorPercentage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAdErrorPercentage() {
+    return adErrorPercentage;
+  }
+
+
+  public void setAdErrorPercentage(String adErrorPercentage) {
+    this.adErrorPercentage = adErrorPercentage;
+  }
+
+
+  public VideoView adImpressionCount(Integer adImpressionCount) {
+    
+    this.adImpressionCount = adImpressionCount;
+    return this;
+  }
+
+   /**
+   * Get adImpressionCount
+   * @return adImpressionCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdImpressionCount() {
+    return adImpressionCount;
+  }
+
+
+  public void setAdImpressionCount(Integer adImpressionCount) {
+    this.adImpressionCount = adImpressionCount;
+  }
+
+
+  public VideoView adStartupErrorCount(Integer adStartupErrorCount) {
+    
+    this.adStartupErrorCount = adStartupErrorCount;
+    return this;
+  }
+
+   /**
+   * Get adStartupErrorCount
+   * @return adStartupErrorCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdStartupErrorCount() {
+    return adStartupErrorCount;
+  }
+
+
+  public void setAdStartupErrorCount(Integer adStartupErrorCount) {
+    this.adStartupErrorCount = adStartupErrorCount;
+  }
+
+
+  public VideoView adStartupErrorPercentage(String adStartupErrorPercentage) {
+    
+    this.adStartupErrorPercentage = adStartupErrorPercentage;
+    return this;
+  }
+
+   /**
+   * Get adStartupErrorPercentage
+   * @return adStartupErrorPercentage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAdStartupErrorPercentage() {
+    return adStartupErrorPercentage;
+  }
+
+
+  public void setAdStartupErrorPercentage(String adStartupErrorPercentage) {
+    this.adStartupErrorPercentage = adStartupErrorPercentage;
+  }
+
+
+  public VideoView adExitBeforeStartCount(Integer adExitBeforeStartCount) {
+    
+    this.adExitBeforeStartCount = adExitBeforeStartCount;
+    return this;
+  }
+
+   /**
+   * Get adExitBeforeStartCount
+   * @return adExitBeforeStartCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdExitBeforeStartCount() {
+    return adExitBeforeStartCount;
+  }
+
+
+  public void setAdExitBeforeStartCount(Integer adExitBeforeStartCount) {
+    this.adExitBeforeStartCount = adExitBeforeStartCount;
+  }
+
+
+  public VideoView adExitBeforeStartPercentage(String adExitBeforeStartPercentage) {
+    
+    this.adExitBeforeStartPercentage = adExitBeforeStartPercentage;
+    return this;
+  }
+
+   /**
+   * Get adExitBeforeStartPercentage
+   * @return adExitBeforeStartPercentage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAdExitBeforeStartPercentage() {
+    return adExitBeforeStartPercentage;
+  }
+
+
+  public void setAdExitBeforeStartPercentage(String adExitBeforeStartPercentage) {
+    this.adExitBeforeStartPercentage = adExitBeforeStartPercentage;
+  }
+
+
   public VideoView longResume(Boolean longResume) {
     
     this.longResume = longResume;
@@ -4050,13 +4347,24 @@ public class VideoView {
         Objects.equals(this.viewDroppedFrameCount, videoView.viewDroppedFrameCount) &&
         Objects.equals(this.viewHasAd, videoView.viewHasAd) &&
         Objects.equals(this.videoStartupFailure, videoView.videoStartupFailure) &&
+        Objects.equals(this.adAttemptCount, videoView.adAttemptCount) &&
+        Objects.equals(this.adBreakCount, videoView.adBreakCount) &&
+        Objects.equals(this.adBreakErrorCount, videoView.adBreakErrorCount) &&
+        Objects.equals(this.adBreakErrorPercentage, videoView.adBreakErrorPercentage) &&
+        Objects.equals(this.adErrorCount, videoView.adErrorCount) &&
+        Objects.equals(this.adErrorPercentage, videoView.adErrorPercentage) &&
+        Objects.equals(this.adImpressionCount, videoView.adImpressionCount) &&
+        Objects.equals(this.adStartupErrorCount, videoView.adStartupErrorCount) &&
+        Objects.equals(this.adStartupErrorPercentage, videoView.adStartupErrorPercentage) &&
+        Objects.equals(this.adExitBeforeStartCount, videoView.adExitBeforeStartCount) &&
+        Objects.equals(this.adExitBeforeStartPercentage, videoView.adExitBeforeStartPercentage) &&
         Objects.equals(this.longResume, videoView.longResume) &&
         Objects.equals(this.longRebuffering, videoView.longRebuffering);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, longResume, longRebuffering);
+    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, adAttemptCount, adBreakCount, adBreakErrorCount, adBreakErrorPercentage, adErrorCount, adErrorPercentage, adImpressionCount, adStartupErrorCount, adStartupErrorPercentage, adExitBeforeStartCount, adExitBeforeStartPercentage, longResume, longRebuffering);
   }
 
   @Override
@@ -4204,6 +4512,17 @@ public class VideoView {
     sb.append("    viewDroppedFrameCount: ").append(toIndentedString(viewDroppedFrameCount)).append("\n");
     sb.append("    viewHasAd: ").append(toIndentedString(viewHasAd)).append("\n");
     sb.append("    videoStartupFailure: ").append(toIndentedString(videoStartupFailure)).append("\n");
+    sb.append("    adAttemptCount: ").append(toIndentedString(adAttemptCount)).append("\n");
+    sb.append("    adBreakCount: ").append(toIndentedString(adBreakCount)).append("\n");
+    sb.append("    adBreakErrorCount: ").append(toIndentedString(adBreakErrorCount)).append("\n");
+    sb.append("    adBreakErrorPercentage: ").append(toIndentedString(adBreakErrorPercentage)).append("\n");
+    sb.append("    adErrorCount: ").append(toIndentedString(adErrorCount)).append("\n");
+    sb.append("    adErrorPercentage: ").append(toIndentedString(adErrorPercentage)).append("\n");
+    sb.append("    adImpressionCount: ").append(toIndentedString(adImpressionCount)).append("\n");
+    sb.append("    adStartupErrorCount: ").append(toIndentedString(adStartupErrorCount)).append("\n");
+    sb.append("    adStartupErrorPercentage: ").append(toIndentedString(adStartupErrorPercentage)).append("\n");
+    sb.append("    adExitBeforeStartCount: ").append(toIndentedString(adExitBeforeStartCount)).append("\n");
+    sb.append("    adExitBeforeStartPercentage: ").append(toIndentedString(adExitBeforeStartPercentage)).append("\n");
     sb.append("    longResume: ").append(toIndentedString(longResume)).append("\n");
     sb.append("    longRebuffering: ").append(toIndentedString(longRebuffering)).append("\n");
     sb.append("}");

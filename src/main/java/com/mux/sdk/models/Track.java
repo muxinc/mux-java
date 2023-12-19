@@ -287,6 +287,10 @@ public class Track {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
+  public static final String SERIALIZED_NAME_PRIMARY = "primary";
+  @SerializedName(SERIALIZED_NAME_PRIMARY)
+  private Boolean primary;
+
 
   public Track id(String id) {
     
@@ -633,6 +637,29 @@ public class Track {
   }
 
 
+  public Track primary(Boolean primary) {
+    
+    this.primary = primary;
+    return this;
+  }
+
+   /**
+   * For an audio track, indicates that this is the primary audio track, ingested from the main input for this asset. The primary audio track cannot be deleted.
+   * @return primary
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "For an audio track, indicates that this is the primary audio track, ingested from the main input for this asset. The primary audio track cannot be deleted.")
+
+  public Boolean getPrimary() {
+    return primary;
+  }
+
+
+  public void setPrimary(Boolean primary) {
+    this.primary = primary;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -656,12 +683,13 @@ public class Track {
         Objects.equals(this.name, track.name) &&
         Objects.equals(this.closedCaptions, track.closedCaptions) &&
         Objects.equals(this.passthrough, track.passthrough) &&
-        Objects.equals(this.status, track.status);
+        Objects.equals(this.status, track.status) &&
+        Objects.equals(this.primary, track.primary);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, duration, maxWidth, maxHeight, maxFrameRate, maxChannels, maxChannelLayout, textType, textSource, languageCode, name, closedCaptions, passthrough, status);
+    return Objects.hash(id, type, duration, maxWidth, maxHeight, maxFrameRate, maxChannels, maxChannelLayout, textType, textSource, languageCode, name, closedCaptions, passthrough, status, primary);
   }
 
   @Override
@@ -683,6 +711,7 @@ public class Track {
     sb.append("    closedCaptions: ").append(toIndentedString(closedCaptions)).append("\n");
     sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    primary: ").append(toIndentedString(primary)).append("\n");
     sb.append("}");
     return sb.toString();
   }

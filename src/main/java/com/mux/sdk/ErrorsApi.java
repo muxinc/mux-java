@@ -52,7 +52,7 @@ public class ErrorsApi {
         this.localVarApiClient = apiClient;
     }
 
-    private okhttp3.Call listErrorsCall(java.util.List<String> filters, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listErrorsCall(java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -66,6 +66,10 @@ public class ErrorsApi {
 
         if (filters != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (metricFilters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metric_filters[]", metricFilters));
         }
 
         if (timeframe != null) {
@@ -91,24 +95,24 @@ public class ErrorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listErrorsValidateBeforeCall(java.util.List<String> filters, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listErrorsValidateBeforeCall(java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listErrorsCall(filters, timeframe, _callback);
+        okhttp3.Call localVarCall = listErrorsCall(filters, metricFilters, timeframe, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<ListErrorsResponse> listErrorsWithHttpInfo(java.util.List<String> filters, java.util.List<String> timeframe) throws ApiException {
-        okhttp3.Call localVarCall = listErrorsValidateBeforeCall(filters, timeframe, null);
+    private ApiResponse<ListErrorsResponse> listErrorsWithHttpInfo(java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe) throws ApiException {
+        okhttp3.Call localVarCall = listErrorsValidateBeforeCall(filters, metricFilters, timeframe, null);
         Type localVarReturnType = new TypeToken<ListErrorsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listErrorsAsync(java.util.List<String> filters, java.util.List<String> timeframe, final ApiCallback<ListErrorsResponse> _callback) throws ApiException {
+    private okhttp3.Call listErrorsAsync(java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, final ApiCallback<ListErrorsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listErrorsValidateBeforeCall(filters, timeframe, _callback);
+        okhttp3.Call localVarCall = listErrorsValidateBeforeCall(filters, metricFilters, timeframe, _callback);
         Type localVarReturnType = new TypeToken<ListErrorsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -116,6 +120,7 @@ public class ErrorsApi {
 
     public class APIlistErrorsRequest {
         private java.util.List<String> filters;
+        private java.util.List<String> metricFilters;
         private java.util.List<String> timeframe;
 
         private APIlistErrorsRequest() {
@@ -128,6 +133,16 @@ public class ErrorsApi {
          */
         public APIlistErrorsRequest filters(java.util.List<String> filters) {
             this.filters = filters;
+            return this;
+        }
+
+        /**
+         * Set metricFilters
+         * @param metricFilters Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of &#x60;exits_before_video_start&#x60;, &#x60;unique_viewers&#x60;, &#x60;video_startup_failure_percentage&#x60;, and &#x60;views&#x60;.  Example:    * &#x60;metric_filters[]&#x3D;aggregate_startup_time&gt;&#x3D;1000&#x60;  (optional)
+         * @return APIlistErrorsRequest
+         */
+        public APIlistErrorsRequest metricFilters(java.util.List<String> metricFilters) {
+            this.metricFilters = metricFilters;
             return this;
         }
 
@@ -154,7 +169,7 @@ public class ErrorsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listErrorsCall(filters, timeframe, _callback);
+            return listErrorsCall(filters, metricFilters, timeframe, _callback);
         }
 
         /**
@@ -169,7 +184,7 @@ public class ErrorsApi {
          </table>
          */
         public ListErrorsResponse execute() throws ApiException {
-            ApiResponse<ListErrorsResponse> localVarResp = listErrorsWithHttpInfo(filters, timeframe);
+            ApiResponse<ListErrorsResponse> localVarResp = listErrorsWithHttpInfo(filters, metricFilters, timeframe);
             return localVarResp.getData();
         }
 
@@ -185,7 +200,7 @@ public class ErrorsApi {
          </table>
          */
         public ApiResponse<ListErrorsResponse> executeWithHttpInfo() throws ApiException {
-            return listErrorsWithHttpInfo(filters, timeframe);
+            return listErrorsWithHttpInfo(filters, metricFilters, timeframe);
         }
 
         /**
@@ -201,7 +216,7 @@ public class ErrorsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListErrorsResponse> _callback) throws ApiException {
-            return listErrorsAsync(filters, timeframe, _callback);
+            return listErrorsAsync(filters, metricFilters, timeframe, _callback);
         }
     }
 

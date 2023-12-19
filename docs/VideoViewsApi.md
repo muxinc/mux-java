@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 <a name="listVideoViews"></a>
 # **listVideoViews**
-> ListVideoViewsResponse listVideoViews().limit(limit).page(page).viewerId(viewerId).errorId(errorId).orderDirection(orderDirection).filters(filters).timeframe(timeframe).execute();
+> ListVideoViewsResponse listVideoViews().limit(limit).page(page).viewerId(viewerId).errorId(errorId).orderDirection(orderDirection).filters(filters).metricFilters(metricFilters).timeframe(timeframe).execute();
 
 List Video Views
 
@@ -112,6 +112,7 @@ public class Example {
     Integer errorId = 56; // Integer | Filter video views by the provided error ID (as returned in the error_type_id field in the list video views endpoint). If you provide any as the error ID, this will filter the results to those with any error.
     String orderDirection = "orderDirection_example"; // String | Sort order.
     java.util.List<String> filters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a `!` character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * `filters[]=operating_system:windows&filters[]=!country:US` 
+    java.util.List<String> metricFilters = Arrays.asList(); // java.util.List<String> | Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of `exits_before_video_start`, `unique_viewers`, `video_startup_failure_percentage`, and `views`.  Example:    * `metric_filters[]=aggregate_startup_time>=1000` 
     java.util.List<String> timeframe = Arrays.asList(); // java.util.List<String> | Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]=).  Accepted formats are...    * array of epoch timestamps e.g. `timeframe[]=1498867200&timeframe[]=1498953600`   * duration string e.g. `timeframe[]=24:hours or timeframe[]=7:days` 
     try {
       ListVideoViewsResponse result = apiInstance.listVideoViews()
@@ -121,6 +122,7 @@ public class Example {
             .errorId(errorId)
             .orderDirection(orderDirection)
             .filters(filters)
+            .metricFilters(metricFilters)
             .timeframe(timeframe)
             .execute();
       System.out.println(result);
@@ -145,6 +147,7 @@ Name | Type | Description  | Notes
  **errorId** | **Integer**| Filter video views by the provided error ID (as returned in the error_type_id field in the list video views endpoint). If you provide any as the error ID, this will filter the results to those with any error. | [optional]
  **orderDirection** | **String**| Sort order. | [optional] [enum: asc, desc]
  **filters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  | [optional]
+ **metricFilters** | [**java.util.List&lt;String&gt;**](String.md)| Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of &#x60;exits_before_video_start&#x60;, &#x60;unique_viewers&#x60;, &#x60;video_startup_failure_percentage&#x60;, and &#x60;views&#x60;.  Example:    * &#x60;metric_filters[]&#x3D;aggregate_startup_time&gt;&#x3D;1000&#x60;  | [optional]
  **timeframe** | [**java.util.List&lt;String&gt;**](String.md)| Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  | [optional]
 
 ### Return type

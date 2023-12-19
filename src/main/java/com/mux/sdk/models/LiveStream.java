@@ -168,6 +168,10 @@ public class LiveStream {
   @SerializedName(SERIALIZED_NAME_MAX_CONTINUOUS_DURATION)
   private Integer maxContinuousDuration = 43200;
 
+  public static final String SERIALIZED_NAME_SRT_PASSPHRASE = "srt_passphrase";
+  @SerializedName(SERIALIZED_NAME_SRT_PASSPHRASE)
+  private String srtPassphrase;
+
 
   public LiveStream id(String id) {
     
@@ -696,6 +700,29 @@ public class LiveStream {
   }
 
 
+  public LiveStream srtPassphrase(String srtPassphrase) {
+    
+    this.srtPassphrase = srtPassphrase;
+    return this;
+  }
+
+   /**
+   * Unique key used for encrypting a stream to a Mux SRT endpoint.
+   * @return srtPassphrase
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Unique key used for encrypting a stream to a Mux SRT endpoint.")
+
+  public String getSrtPassphrase() {
+    return srtPassphrase;
+  }
+
+
+  public void setSrtPassphrase(String srtPassphrase) {
+    this.srtPassphrase = srtPassphrase;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -725,12 +752,13 @@ public class LiveStream {
         Objects.equals(this.simulcastTargets, liveStream.simulcastTargets) &&
         Objects.equals(this.latencyMode, liveStream.latencyMode) &&
         Objects.equals(this.test, liveStream.test) &&
-        Objects.equals(this.maxContinuousDuration, liveStream.maxContinuousDuration);
+        Objects.equals(this.maxContinuousDuration, liveStream.maxContinuousDuration) &&
+        Objects.equals(this.srtPassphrase, liveStream.srtPassphrase);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, streamKey, activeAssetId, recentAssetIds, status, playbackIds, newAssetSettings, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, reducedLatency, lowLatency, simulcastTargets, latencyMode, test, maxContinuousDuration);
+    return Objects.hash(id, createdAt, streamKey, activeAssetId, recentAssetIds, status, playbackIds, newAssetSettings, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, reducedLatency, lowLatency, simulcastTargets, latencyMode, test, maxContinuousDuration, srtPassphrase);
   }
 
   @Override
@@ -758,6 +786,7 @@ public class LiveStream {
     sb.append("    latencyMode: ").append(toIndentedString(latencyMode)).append("\n");
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("    maxContinuousDuration: ").append(toIndentedString(maxContinuousDuration)).append("\n");
+    sb.append("    srtPassphrase: ").append(toIndentedString(srtPassphrase)).append("\n");
     sb.append("}");
     return sb.toString();
   }
