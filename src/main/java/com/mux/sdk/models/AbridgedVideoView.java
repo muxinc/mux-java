@@ -73,6 +73,14 @@ public class AbridgedVideoView {
   @SerializedName(SERIALIZED_NAME_VIEW_END)
   private String viewEnd;
 
+  public static final String SERIALIZED_NAME_VIEWER_EXPERIENCE_SCORE = "viewer_experience_score";
+  @SerializedName(SERIALIZED_NAME_VIEWER_EXPERIENCE_SCORE)
+  private Float viewerExperienceScore;
+
+  public static final String SERIALIZED_NAME_WATCH_TIME = "watch_time";
+  @SerializedName(SERIALIZED_NAME_WATCH_TIME)
+  private Integer watchTime;
+
 
   public AbridgedVideoView id(String id) {
     
@@ -327,6 +335,52 @@ public class AbridgedVideoView {
   }
 
 
+  public AbridgedVideoView viewerExperienceScore(Float viewerExperienceScore) {
+    
+    this.viewerExperienceScore = viewerExperienceScore;
+    return this;
+  }
+
+   /**
+   * Get viewerExperienceScore
+   * @return viewerExperienceScore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Float getViewerExperienceScore() {
+    return viewerExperienceScore;
+  }
+
+
+  public void setViewerExperienceScore(Float viewerExperienceScore) {
+    this.viewerExperienceScore = viewerExperienceScore;
+  }
+
+
+  public AbridgedVideoView watchTime(Integer watchTime) {
+    
+    this.watchTime = watchTime;
+    return this;
+  }
+
+   /**
+   * Get watchTime
+   * @return watchTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getWatchTime() {
+    return watchTime;
+  }
+
+
+  public void setWatchTime(Integer watchTime) {
+    this.watchTime = watchTime;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -346,12 +400,14 @@ public class AbridgedVideoView {
         Objects.equals(this.errorTypeId, abridgedVideoView.errorTypeId) &&
         Objects.equals(this.countryCode, abridgedVideoView.countryCode) &&
         Objects.equals(this.viewStart, abridgedVideoView.viewStart) &&
-        Objects.equals(this.viewEnd, abridgedVideoView.viewEnd);
+        Objects.equals(this.viewEnd, abridgedVideoView.viewEnd) &&
+        Objects.equals(this.viewerExperienceScore, abridgedVideoView.viewerExperienceScore) &&
+        Objects.equals(this.watchTime, abridgedVideoView.watchTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, viewerOsFamily, viewerApplicationName, videoTitle, totalRowCount, playerErrorMessage, playerErrorCode, errorTypeId, countryCode, viewStart, viewEnd);
+    return Objects.hash(id, viewerOsFamily, viewerApplicationName, videoTitle, totalRowCount, playerErrorMessage, playerErrorCode, errorTypeId, countryCode, viewStart, viewEnd, viewerExperienceScore, watchTime);
   }
 
   @Override
@@ -369,6 +425,8 @@ public class AbridgedVideoView {
     sb.append("    countryCode: ").append(toIndentedString(countryCode)).append("\n");
     sb.append("    viewStart: ").append(toIndentedString(viewStart)).append("\n");
     sb.append("    viewEnd: ").append(toIndentedString(viewEnd)).append("\n");
+    sb.append("    viewerExperienceScore: ").append(toIndentedString(viewerExperienceScore)).append("\n");
+    sb.append("    watchTime: ").append(toIndentedString(watchTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

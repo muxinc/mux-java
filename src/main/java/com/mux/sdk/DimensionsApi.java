@@ -53,7 +53,7 @@ public class DimensionsApi {
         this.localVarApiClient = apiClient;
     }
 
-    private okhttp3.Call listDimensionValuesCall(String DIMENSION_ID, Integer limit, Integer page, java.util.List<String> filters, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDimensionValuesCall(String DIMENSION_ID, Integer limit, Integer page, java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -76,6 +76,10 @@ public class DimensionsApi {
 
         if (filters != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (metricFilters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metric_filters[]", metricFilters));
         }
 
         if (timeframe != null) {
@@ -101,7 +105,7 @@ public class DimensionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDimensionValuesValidateBeforeCall(String DIMENSION_ID, Integer limit, Integer page, java.util.List<String> filters, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDimensionValuesValidateBeforeCall(String DIMENSION_ID, Integer limit, Integer page, java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'DIMENSION_ID' is set
         if (DIMENSION_ID == null) {
@@ -109,21 +113,21 @@ public class DimensionsApi {
         }
         
 
-        okhttp3.Call localVarCall = listDimensionValuesCall(DIMENSION_ID, limit, page, filters, timeframe, _callback);
+        okhttp3.Call localVarCall = listDimensionValuesCall(DIMENSION_ID, limit, page, filters, metricFilters, timeframe, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<ListDimensionValuesResponse> listDimensionValuesWithHttpInfo(String DIMENSION_ID, Integer limit, Integer page, java.util.List<String> filters, java.util.List<String> timeframe) throws ApiException {
-        okhttp3.Call localVarCall = listDimensionValuesValidateBeforeCall(DIMENSION_ID, limit, page, filters, timeframe, null);
+    private ApiResponse<ListDimensionValuesResponse> listDimensionValuesWithHttpInfo(String DIMENSION_ID, Integer limit, Integer page, java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe) throws ApiException {
+        okhttp3.Call localVarCall = listDimensionValuesValidateBeforeCall(DIMENSION_ID, limit, page, filters, metricFilters, timeframe, null);
         Type localVarReturnType = new TypeToken<ListDimensionValuesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listDimensionValuesAsync(String DIMENSION_ID, Integer limit, Integer page, java.util.List<String> filters, java.util.List<String> timeframe, final ApiCallback<ListDimensionValuesResponse> _callback) throws ApiException {
+    private okhttp3.Call listDimensionValuesAsync(String DIMENSION_ID, Integer limit, Integer page, java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, final ApiCallback<ListDimensionValuesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDimensionValuesValidateBeforeCall(DIMENSION_ID, limit, page, filters, timeframe, _callback);
+        okhttp3.Call localVarCall = listDimensionValuesValidateBeforeCall(DIMENSION_ID, limit, page, filters, metricFilters, timeframe, _callback);
         Type localVarReturnType = new TypeToken<ListDimensionValuesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -134,6 +138,7 @@ public class DimensionsApi {
         private Integer limit;
         private Integer page;
         private java.util.List<String> filters;
+        private java.util.List<String> metricFilters;
         private java.util.List<String> timeframe;
 
         private APIlistDimensionValuesRequest(String DIMENSION_ID) {
@@ -171,6 +176,16 @@ public class DimensionsApi {
         }
 
         /**
+         * Set metricFilters
+         * @param metricFilters Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of &#x60;exits_before_video_start&#x60;, &#x60;unique_viewers&#x60;, &#x60;video_startup_failure_percentage&#x60;, and &#x60;views&#x60;.  Example:    * &#x60;metric_filters[]&#x3D;aggregate_startup_time&gt;&#x3D;1000&#x60;  (optional)
+         * @return APIlistDimensionValuesRequest
+         */
+        public APIlistDimensionValuesRequest metricFilters(java.util.List<String> metricFilters) {
+            this.metricFilters = metricFilters;
+            return this;
+        }
+
+        /**
          * Set timeframe
          * @param timeframe Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  (optional)
          * @return APIlistDimensionValuesRequest
@@ -193,7 +208,7 @@ public class DimensionsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listDimensionValuesCall(DIMENSION_ID, limit, page, filters, timeframe, _callback);
+            return listDimensionValuesCall(DIMENSION_ID, limit, page, filters, metricFilters, timeframe, _callback);
         }
 
         /**
@@ -208,7 +223,7 @@ public class DimensionsApi {
          </table>
          */
         public ListDimensionValuesResponse execute() throws ApiException {
-            ApiResponse<ListDimensionValuesResponse> localVarResp = listDimensionValuesWithHttpInfo(DIMENSION_ID, limit, page, filters, timeframe);
+            ApiResponse<ListDimensionValuesResponse> localVarResp = listDimensionValuesWithHttpInfo(DIMENSION_ID, limit, page, filters, metricFilters, timeframe);
             return localVarResp.getData();
         }
 
@@ -224,7 +239,7 @@ public class DimensionsApi {
          </table>
          */
         public ApiResponse<ListDimensionValuesResponse> executeWithHttpInfo() throws ApiException {
-            return listDimensionValuesWithHttpInfo(DIMENSION_ID, limit, page, filters, timeframe);
+            return listDimensionValuesWithHttpInfo(DIMENSION_ID, limit, page, filters, metricFilters, timeframe);
         }
 
         /**
@@ -240,7 +255,7 @@ public class DimensionsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListDimensionValuesResponse> _callback) throws ApiException {
-            return listDimensionValuesAsync(DIMENSION_ID, limit, page, filters, timeframe, _callback);
+            return listDimensionValuesAsync(DIMENSION_ID, limit, page, filters, metricFilters, timeframe, _callback);
         }
     }
 

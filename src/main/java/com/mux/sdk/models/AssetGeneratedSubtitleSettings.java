@@ -44,7 +44,47 @@ public class AssetGeneratedSubtitleSettings {
   public enum LanguageCodeEnum {
     EN("en"),
     
-    EN_US("en-US");
+    ES("es"),
+    
+    IT("it"),
+    
+    PT("pt"),
+    
+    DE("de"),
+    
+    FR("fr"),
+    
+    PL("pl"),
+    
+    RU("ru"),
+    
+    NL("nl"),
+    
+    CA("ca"),
+    
+    TR("tr"),
+    
+    SV("sv"),
+    
+    UK("uk"),
+    
+    NO("no"),
+    
+    FI("fi"),
+    
+    SK("sk"),
+    
+    EL("el"),
+    
+    CS("cs"),
+    
+    HR("hr"),
+    
+    DA("da"),
+    
+    RO("ro"),
+    
+    BG("bg");
 
     private String value;
 

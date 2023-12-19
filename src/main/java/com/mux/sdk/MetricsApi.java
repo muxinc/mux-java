@@ -56,7 +56,7 @@ public class MetricsApi {
         this.localVarApiClient = apiClient;
     }
 
-    private okhttp3.Call getMetricTimeseriesDataCall(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, String measurement, String orderDirection, String groupBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMetricTimeseriesDataCall(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String measurement, String orderDirection, String groupBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -75,6 +75,10 @@ public class MetricsApi {
 
         if (filters != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (metricFilters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metric_filters[]", metricFilters));
         }
 
         if (measurement != null) {
@@ -108,7 +112,7 @@ public class MetricsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMetricTimeseriesDataValidateBeforeCall(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, String measurement, String orderDirection, String groupBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMetricTimeseriesDataValidateBeforeCall(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String measurement, String orderDirection, String groupBy, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'METRIC_ID' is set
         if (METRIC_ID == null) {
@@ -116,21 +120,21 @@ public class MetricsApi {
         }
         
 
-        okhttp3.Call localVarCall = getMetricTimeseriesDataCall(METRIC_ID, timeframe, filters, measurement, orderDirection, groupBy, _callback);
+        okhttp3.Call localVarCall = getMetricTimeseriesDataCall(METRIC_ID, timeframe, filters, metricFilters, measurement, orderDirection, groupBy, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<GetMetricTimeseriesDataResponse> getMetricTimeseriesDataWithHttpInfo(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, String measurement, String orderDirection, String groupBy) throws ApiException {
-        okhttp3.Call localVarCall = getMetricTimeseriesDataValidateBeforeCall(METRIC_ID, timeframe, filters, measurement, orderDirection, groupBy, null);
+    private ApiResponse<GetMetricTimeseriesDataResponse> getMetricTimeseriesDataWithHttpInfo(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String measurement, String orderDirection, String groupBy) throws ApiException {
+        okhttp3.Call localVarCall = getMetricTimeseriesDataValidateBeforeCall(METRIC_ID, timeframe, filters, metricFilters, measurement, orderDirection, groupBy, null);
         Type localVarReturnType = new TypeToken<GetMetricTimeseriesDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getMetricTimeseriesDataAsync(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, String measurement, String orderDirection, String groupBy, final ApiCallback<GetMetricTimeseriesDataResponse> _callback) throws ApiException {
+    private okhttp3.Call getMetricTimeseriesDataAsync(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String measurement, String orderDirection, String groupBy, final ApiCallback<GetMetricTimeseriesDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMetricTimeseriesDataValidateBeforeCall(METRIC_ID, timeframe, filters, measurement, orderDirection, groupBy, _callback);
+        okhttp3.Call localVarCall = getMetricTimeseriesDataValidateBeforeCall(METRIC_ID, timeframe, filters, metricFilters, measurement, orderDirection, groupBy, _callback);
         Type localVarReturnType = new TypeToken<GetMetricTimeseriesDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -140,6 +144,7 @@ public class MetricsApi {
         private final String METRIC_ID;
         private java.util.List<String> timeframe;
         private java.util.List<String> filters;
+        private java.util.List<String> metricFilters;
         private String measurement;
         private String orderDirection;
         private String groupBy;
@@ -165,6 +170,16 @@ public class MetricsApi {
          */
         public APIgetMetricTimeseriesDataRequest filters(java.util.List<String> filters) {
             this.filters = filters;
+            return this;
+        }
+
+        /**
+         * Set metricFilters
+         * @param metricFilters Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of &#x60;exits_before_video_start&#x60;, &#x60;unique_viewers&#x60;, &#x60;video_startup_failure_percentage&#x60;, and &#x60;views&#x60;.  Example:    * &#x60;metric_filters[]&#x3D;aggregate_startup_time&gt;&#x3D;1000&#x60;  (optional)
+         * @return APIgetMetricTimeseriesDataRequest
+         */
+        public APIgetMetricTimeseriesDataRequest metricFilters(java.util.List<String> metricFilters) {
+            this.metricFilters = metricFilters;
             return this;
         }
 
@@ -211,7 +226,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getMetricTimeseriesDataCall(METRIC_ID, timeframe, filters, measurement, orderDirection, groupBy, _callback);
+            return getMetricTimeseriesDataCall(METRIC_ID, timeframe, filters, metricFilters, measurement, orderDirection, groupBy, _callback);
         }
 
         /**
@@ -226,7 +241,7 @@ public class MetricsApi {
          </table>
          */
         public GetMetricTimeseriesDataResponse execute() throws ApiException {
-            ApiResponse<GetMetricTimeseriesDataResponse> localVarResp = getMetricTimeseriesDataWithHttpInfo(METRIC_ID, timeframe, filters, measurement, orderDirection, groupBy);
+            ApiResponse<GetMetricTimeseriesDataResponse> localVarResp = getMetricTimeseriesDataWithHttpInfo(METRIC_ID, timeframe, filters, metricFilters, measurement, orderDirection, groupBy);
             return localVarResp.getData();
         }
 
@@ -242,7 +257,7 @@ public class MetricsApi {
          </table>
          */
         public ApiResponse<GetMetricTimeseriesDataResponse> executeWithHttpInfo() throws ApiException {
-            return getMetricTimeseriesDataWithHttpInfo(METRIC_ID, timeframe, filters, measurement, orderDirection, groupBy);
+            return getMetricTimeseriesDataWithHttpInfo(METRIC_ID, timeframe, filters, metricFilters, measurement, orderDirection, groupBy);
         }
 
         /**
@@ -258,7 +273,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetMetricTimeseriesDataResponse> _callback) throws ApiException {
-            return getMetricTimeseriesDataAsync(METRIC_ID, timeframe, filters, measurement, orderDirection, groupBy, _callback);
+            return getMetricTimeseriesDataAsync(METRIC_ID, timeframe, filters, metricFilters, measurement, orderDirection, groupBy, _callback);
         }
     }
 
@@ -277,7 +292,7 @@ public class MetricsApi {
     public APIgetMetricTimeseriesDataRequest getMetricTimeseriesData(String METRIC_ID) {
         return new APIgetMetricTimeseriesDataRequest(METRIC_ID);
     }
-    private okhttp3.Call getOverallValuesCall(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, String measurement, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getOverallValuesCall(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String measurement, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -296,6 +311,10 @@ public class MetricsApi {
 
         if (filters != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (metricFilters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metric_filters[]", metricFilters));
         }
 
         if (measurement != null) {
@@ -321,7 +340,7 @@ public class MetricsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getOverallValuesValidateBeforeCall(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, String measurement, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getOverallValuesValidateBeforeCall(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String measurement, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'METRIC_ID' is set
         if (METRIC_ID == null) {
@@ -329,21 +348,21 @@ public class MetricsApi {
         }
         
 
-        okhttp3.Call localVarCall = getOverallValuesCall(METRIC_ID, timeframe, filters, measurement, _callback);
+        okhttp3.Call localVarCall = getOverallValuesCall(METRIC_ID, timeframe, filters, metricFilters, measurement, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<GetOverallValuesResponse> getOverallValuesWithHttpInfo(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, String measurement) throws ApiException {
-        okhttp3.Call localVarCall = getOverallValuesValidateBeforeCall(METRIC_ID, timeframe, filters, measurement, null);
+    private ApiResponse<GetOverallValuesResponse> getOverallValuesWithHttpInfo(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String measurement) throws ApiException {
+        okhttp3.Call localVarCall = getOverallValuesValidateBeforeCall(METRIC_ID, timeframe, filters, metricFilters, measurement, null);
         Type localVarReturnType = new TypeToken<GetOverallValuesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getOverallValuesAsync(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, String measurement, final ApiCallback<GetOverallValuesResponse> _callback) throws ApiException {
+    private okhttp3.Call getOverallValuesAsync(String METRIC_ID, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String measurement, final ApiCallback<GetOverallValuesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getOverallValuesValidateBeforeCall(METRIC_ID, timeframe, filters, measurement, _callback);
+        okhttp3.Call localVarCall = getOverallValuesValidateBeforeCall(METRIC_ID, timeframe, filters, metricFilters, measurement, _callback);
         Type localVarReturnType = new TypeToken<GetOverallValuesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -353,6 +372,7 @@ public class MetricsApi {
         private final String METRIC_ID;
         private java.util.List<String> timeframe;
         private java.util.List<String> filters;
+        private java.util.List<String> metricFilters;
         private String measurement;
 
         private APIgetOverallValuesRequest(String METRIC_ID) {
@@ -380,6 +400,16 @@ public class MetricsApi {
         }
 
         /**
+         * Set metricFilters
+         * @param metricFilters Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of &#x60;exits_before_video_start&#x60;, &#x60;unique_viewers&#x60;, &#x60;video_startup_failure_percentage&#x60;, and &#x60;views&#x60;.  Example:    * &#x60;metric_filters[]&#x3D;aggregate_startup_time&gt;&#x3D;1000&#x60;  (optional)
+         * @return APIgetOverallValuesRequest
+         */
+        public APIgetOverallValuesRequest metricFilters(java.util.List<String> metricFilters) {
+            this.metricFilters = metricFilters;
+            return this;
+        }
+
+        /**
          * Set measurement
          * @param measurement Measurement for the provided metric. If omitted, the default for the metric will be used. (optional)
          * @return APIgetOverallValuesRequest
@@ -402,7 +432,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getOverallValuesCall(METRIC_ID, timeframe, filters, measurement, _callback);
+            return getOverallValuesCall(METRIC_ID, timeframe, filters, metricFilters, measurement, _callback);
         }
 
         /**
@@ -417,7 +447,7 @@ public class MetricsApi {
          </table>
          */
         public GetOverallValuesResponse execute() throws ApiException {
-            ApiResponse<GetOverallValuesResponse> localVarResp = getOverallValuesWithHttpInfo(METRIC_ID, timeframe, filters, measurement);
+            ApiResponse<GetOverallValuesResponse> localVarResp = getOverallValuesWithHttpInfo(METRIC_ID, timeframe, filters, metricFilters, measurement);
             return localVarResp.getData();
         }
 
@@ -433,7 +463,7 @@ public class MetricsApi {
          </table>
          */
         public ApiResponse<GetOverallValuesResponse> executeWithHttpInfo() throws ApiException {
-            return getOverallValuesWithHttpInfo(METRIC_ID, timeframe, filters, measurement);
+            return getOverallValuesWithHttpInfo(METRIC_ID, timeframe, filters, metricFilters, measurement);
         }
 
         /**
@@ -449,7 +479,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetOverallValuesResponse> _callback) throws ApiException {
-            return getOverallValuesAsync(METRIC_ID, timeframe, filters, measurement, _callback);
+            return getOverallValuesAsync(METRIC_ID, timeframe, filters, metricFilters, measurement, _callback);
         }
     }
 
@@ -468,7 +498,7 @@ public class MetricsApi {
     public APIgetOverallValuesRequest getOverallValues(String METRIC_ID) {
         return new APIgetOverallValuesRequest(METRIC_ID);
     }
-    private okhttp3.Call listAllMetricValuesCall(java.util.List<String> timeframe, java.util.List<String> filters, String dimension, String value, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listAllMetricValuesCall(java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String dimension, String value, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -486,6 +516,10 @@ public class MetricsApi {
 
         if (filters != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (metricFilters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metric_filters[]", metricFilters));
         }
 
         if (dimension != null) {
@@ -515,24 +549,24 @@ public class MetricsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAllMetricValuesValidateBeforeCall(java.util.List<String> timeframe, java.util.List<String> filters, String dimension, String value, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listAllMetricValuesValidateBeforeCall(java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String dimension, String value, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listAllMetricValuesCall(timeframe, filters, dimension, value, _callback);
+        okhttp3.Call localVarCall = listAllMetricValuesCall(timeframe, filters, metricFilters, dimension, value, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<ListAllMetricValuesResponse> listAllMetricValuesWithHttpInfo(java.util.List<String> timeframe, java.util.List<String> filters, String dimension, String value) throws ApiException {
-        okhttp3.Call localVarCall = listAllMetricValuesValidateBeforeCall(timeframe, filters, dimension, value, null);
+    private ApiResponse<ListAllMetricValuesResponse> listAllMetricValuesWithHttpInfo(java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String dimension, String value) throws ApiException {
+        okhttp3.Call localVarCall = listAllMetricValuesValidateBeforeCall(timeframe, filters, metricFilters, dimension, value, null);
         Type localVarReturnType = new TypeToken<ListAllMetricValuesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listAllMetricValuesAsync(java.util.List<String> timeframe, java.util.List<String> filters, String dimension, String value, final ApiCallback<ListAllMetricValuesResponse> _callback) throws ApiException {
+    private okhttp3.Call listAllMetricValuesAsync(java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, String dimension, String value, final ApiCallback<ListAllMetricValuesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAllMetricValuesValidateBeforeCall(timeframe, filters, dimension, value, _callback);
+        okhttp3.Call localVarCall = listAllMetricValuesValidateBeforeCall(timeframe, filters, metricFilters, dimension, value, _callback);
         Type localVarReturnType = new TypeToken<ListAllMetricValuesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -541,6 +575,7 @@ public class MetricsApi {
     public class APIlistAllMetricValuesRequest {
         private java.util.List<String> timeframe;
         private java.util.List<String> filters;
+        private java.util.List<String> metricFilters;
         private String dimension;
         private String value;
 
@@ -564,6 +599,16 @@ public class MetricsApi {
          */
         public APIlistAllMetricValuesRequest filters(java.util.List<String> filters) {
             this.filters = filters;
+            return this;
+        }
+
+        /**
+         * Set metricFilters
+         * @param metricFilters Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of &#x60;exits_before_video_start&#x60;, &#x60;unique_viewers&#x60;, &#x60;video_startup_failure_percentage&#x60;, and &#x60;views&#x60;.  Example:    * &#x60;metric_filters[]&#x3D;aggregate_startup_time&gt;&#x3D;1000&#x60;  (optional)
+         * @return APIlistAllMetricValuesRequest
+         */
+        public APIlistAllMetricValuesRequest metricFilters(java.util.List<String> metricFilters) {
+            this.metricFilters = metricFilters;
             return this;
         }
 
@@ -600,7 +645,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listAllMetricValuesCall(timeframe, filters, dimension, value, _callback);
+            return listAllMetricValuesCall(timeframe, filters, metricFilters, dimension, value, _callback);
         }
 
         /**
@@ -615,7 +660,7 @@ public class MetricsApi {
          </table>
          */
         public ListAllMetricValuesResponse execute() throws ApiException {
-            ApiResponse<ListAllMetricValuesResponse> localVarResp = listAllMetricValuesWithHttpInfo(timeframe, filters, dimension, value);
+            ApiResponse<ListAllMetricValuesResponse> localVarResp = listAllMetricValuesWithHttpInfo(timeframe, filters, metricFilters, dimension, value);
             return localVarResp.getData();
         }
 
@@ -631,7 +676,7 @@ public class MetricsApi {
          </table>
          */
         public ApiResponse<ListAllMetricValuesResponse> executeWithHttpInfo() throws ApiException {
-            return listAllMetricValuesWithHttpInfo(timeframe, filters, dimension, value);
+            return listAllMetricValuesWithHttpInfo(timeframe, filters, metricFilters, dimension, value);
         }
 
         /**
@@ -647,7 +692,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListAllMetricValuesResponse> _callback) throws ApiException {
-            return listAllMetricValuesAsync(timeframe, filters, dimension, value, _callback);
+            return listAllMetricValuesAsync(timeframe, filters, metricFilters, dimension, value, _callback);
         }
     }
 
@@ -665,7 +710,7 @@ public class MetricsApi {
     public APIlistAllMetricValuesRequest listAllMetricValues() {
         return new APIlistAllMetricValuesRequest();
     }
-    private okhttp3.Call listBreakdownValuesCall(String METRIC_ID, String groupBy, String measurement, java.util.List<String> filters, Integer limit, Integer page, String orderBy, String orderDirection, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listBreakdownValuesCall(String METRIC_ID, String groupBy, String measurement, java.util.List<String> filters, java.util.List<String> metricFilters, Integer limit, Integer page, String orderBy, String orderDirection, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -688,6 +733,10 @@ public class MetricsApi {
 
         if (filters != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (metricFilters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metric_filters[]", metricFilters));
         }
 
         if (limit != null) {
@@ -729,7 +778,7 @@ public class MetricsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listBreakdownValuesValidateBeforeCall(String METRIC_ID, String groupBy, String measurement, java.util.List<String> filters, Integer limit, Integer page, String orderBy, String orderDirection, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listBreakdownValuesValidateBeforeCall(String METRIC_ID, String groupBy, String measurement, java.util.List<String> filters, java.util.List<String> metricFilters, Integer limit, Integer page, String orderBy, String orderDirection, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'METRIC_ID' is set
         if (METRIC_ID == null) {
@@ -737,21 +786,21 @@ public class MetricsApi {
         }
         
 
-        okhttp3.Call localVarCall = listBreakdownValuesCall(METRIC_ID, groupBy, measurement, filters, limit, page, orderBy, orderDirection, timeframe, _callback);
+        okhttp3.Call localVarCall = listBreakdownValuesCall(METRIC_ID, groupBy, measurement, filters, metricFilters, limit, page, orderBy, orderDirection, timeframe, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<ListBreakdownValuesResponse> listBreakdownValuesWithHttpInfo(String METRIC_ID, String groupBy, String measurement, java.util.List<String> filters, Integer limit, Integer page, String orderBy, String orderDirection, java.util.List<String> timeframe) throws ApiException {
-        okhttp3.Call localVarCall = listBreakdownValuesValidateBeforeCall(METRIC_ID, groupBy, measurement, filters, limit, page, orderBy, orderDirection, timeframe, null);
+    private ApiResponse<ListBreakdownValuesResponse> listBreakdownValuesWithHttpInfo(String METRIC_ID, String groupBy, String measurement, java.util.List<String> filters, java.util.List<String> metricFilters, Integer limit, Integer page, String orderBy, String orderDirection, java.util.List<String> timeframe) throws ApiException {
+        okhttp3.Call localVarCall = listBreakdownValuesValidateBeforeCall(METRIC_ID, groupBy, measurement, filters, metricFilters, limit, page, orderBy, orderDirection, timeframe, null);
         Type localVarReturnType = new TypeToken<ListBreakdownValuesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listBreakdownValuesAsync(String METRIC_ID, String groupBy, String measurement, java.util.List<String> filters, Integer limit, Integer page, String orderBy, String orderDirection, java.util.List<String> timeframe, final ApiCallback<ListBreakdownValuesResponse> _callback) throws ApiException {
+    private okhttp3.Call listBreakdownValuesAsync(String METRIC_ID, String groupBy, String measurement, java.util.List<String> filters, java.util.List<String> metricFilters, Integer limit, Integer page, String orderBy, String orderDirection, java.util.List<String> timeframe, final ApiCallback<ListBreakdownValuesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listBreakdownValuesValidateBeforeCall(METRIC_ID, groupBy, measurement, filters, limit, page, orderBy, orderDirection, timeframe, _callback);
+        okhttp3.Call localVarCall = listBreakdownValuesValidateBeforeCall(METRIC_ID, groupBy, measurement, filters, metricFilters, limit, page, orderBy, orderDirection, timeframe, _callback);
         Type localVarReturnType = new TypeToken<ListBreakdownValuesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -762,6 +811,7 @@ public class MetricsApi {
         private String groupBy;
         private String measurement;
         private java.util.List<String> filters;
+        private java.util.List<String> metricFilters;
         private Integer limit;
         private Integer page;
         private String orderBy;
@@ -799,6 +849,16 @@ public class MetricsApi {
          */
         public APIlistBreakdownValuesRequest filters(java.util.List<String> filters) {
             this.filters = filters;
+            return this;
+        }
+
+        /**
+         * Set metricFilters
+         * @param metricFilters Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of &#x60;exits_before_video_start&#x60;, &#x60;unique_viewers&#x60;, &#x60;video_startup_failure_percentage&#x60;, and &#x60;views&#x60;.  Example:    * &#x60;metric_filters[]&#x3D;aggregate_startup_time&gt;&#x3D;1000&#x60;  (optional)
+         * @return APIlistBreakdownValuesRequest
+         */
+        public APIlistBreakdownValuesRequest metricFilters(java.util.List<String> metricFilters) {
+            this.metricFilters = metricFilters;
             return this;
         }
 
@@ -865,7 +925,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listBreakdownValuesCall(METRIC_ID, groupBy, measurement, filters, limit, page, orderBy, orderDirection, timeframe, _callback);
+            return listBreakdownValuesCall(METRIC_ID, groupBy, measurement, filters, metricFilters, limit, page, orderBy, orderDirection, timeframe, _callback);
         }
 
         /**
@@ -880,7 +940,7 @@ public class MetricsApi {
          </table>
          */
         public ListBreakdownValuesResponse execute() throws ApiException {
-            ApiResponse<ListBreakdownValuesResponse> localVarResp = listBreakdownValuesWithHttpInfo(METRIC_ID, groupBy, measurement, filters, limit, page, orderBy, orderDirection, timeframe);
+            ApiResponse<ListBreakdownValuesResponse> localVarResp = listBreakdownValuesWithHttpInfo(METRIC_ID, groupBy, measurement, filters, metricFilters, limit, page, orderBy, orderDirection, timeframe);
             return localVarResp.getData();
         }
 
@@ -896,7 +956,7 @@ public class MetricsApi {
          </table>
          */
         public ApiResponse<ListBreakdownValuesResponse> executeWithHttpInfo() throws ApiException {
-            return listBreakdownValuesWithHttpInfo(METRIC_ID, groupBy, measurement, filters, limit, page, orderBy, orderDirection, timeframe);
+            return listBreakdownValuesWithHttpInfo(METRIC_ID, groupBy, measurement, filters, metricFilters, limit, page, orderBy, orderDirection, timeframe);
         }
 
         /**
@@ -912,7 +972,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListBreakdownValuesResponse> _callback) throws ApiException {
-            return listBreakdownValuesAsync(METRIC_ID, groupBy, measurement, filters, limit, page, orderBy, orderDirection, timeframe, _callback);
+            return listBreakdownValuesAsync(METRIC_ID, groupBy, measurement, filters, metricFilters, limit, page, orderBy, orderDirection, timeframe, _callback);
         }
     }
 
@@ -931,7 +991,7 @@ public class MetricsApi {
     public APIlistBreakdownValuesRequest listBreakdownValues(String METRIC_ID) {
         return new APIlistBreakdownValuesRequest(METRIC_ID);
     }
-    private okhttp3.Call listInsightsCall(String METRIC_ID, String measurement, String orderDirection, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listInsightsCall(String METRIC_ID, String measurement, String orderDirection, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -956,6 +1016,14 @@ public class MetricsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "timeframe[]", timeframe));
         }
 
+        if (filters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (metricFilters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metric_filters[]", metricFilters));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -975,7 +1043,7 @@ public class MetricsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInsightsValidateBeforeCall(String METRIC_ID, String measurement, String orderDirection, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listInsightsValidateBeforeCall(String METRIC_ID, String measurement, String orderDirection, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'METRIC_ID' is set
         if (METRIC_ID == null) {
@@ -983,21 +1051,21 @@ public class MetricsApi {
         }
         
 
-        okhttp3.Call localVarCall = listInsightsCall(METRIC_ID, measurement, orderDirection, timeframe, _callback);
+        okhttp3.Call localVarCall = listInsightsCall(METRIC_ID, measurement, orderDirection, timeframe, filters, metricFilters, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<ListInsightsResponse> listInsightsWithHttpInfo(String METRIC_ID, String measurement, String orderDirection, java.util.List<String> timeframe) throws ApiException {
-        okhttp3.Call localVarCall = listInsightsValidateBeforeCall(METRIC_ID, measurement, orderDirection, timeframe, null);
+    private ApiResponse<ListInsightsResponse> listInsightsWithHttpInfo(String METRIC_ID, String measurement, String orderDirection, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters) throws ApiException {
+        okhttp3.Call localVarCall = listInsightsValidateBeforeCall(METRIC_ID, measurement, orderDirection, timeframe, filters, metricFilters, null);
         Type localVarReturnType = new TypeToken<ListInsightsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listInsightsAsync(String METRIC_ID, String measurement, String orderDirection, java.util.List<String> timeframe, final ApiCallback<ListInsightsResponse> _callback) throws ApiException {
+    private okhttp3.Call listInsightsAsync(String METRIC_ID, String measurement, String orderDirection, java.util.List<String> timeframe, java.util.List<String> filters, java.util.List<String> metricFilters, final ApiCallback<ListInsightsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInsightsValidateBeforeCall(METRIC_ID, measurement, orderDirection, timeframe, _callback);
+        okhttp3.Call localVarCall = listInsightsValidateBeforeCall(METRIC_ID, measurement, orderDirection, timeframe, filters, metricFilters, _callback);
         Type localVarReturnType = new TypeToken<ListInsightsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1008,6 +1076,8 @@ public class MetricsApi {
         private String measurement;
         private String orderDirection;
         private java.util.List<String> timeframe;
+        private java.util.List<String> filters;
+        private java.util.List<String> metricFilters;
 
         private APIlistInsightsRequest(String METRIC_ID) {
             this.METRIC_ID = METRIC_ID;
@@ -1044,6 +1114,26 @@ public class MetricsApi {
         }
 
         /**
+         * Set filters
+         * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
+         * @return APIlistInsightsRequest
+         */
+        public APIlistInsightsRequest filters(java.util.List<String> filters) {
+            this.filters = filters;
+            return this;
+        }
+
+        /**
+         * Set metricFilters
+         * @param metricFilters Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of &#x60;exits_before_video_start&#x60;, &#x60;unique_viewers&#x60;, &#x60;video_startup_failure_percentage&#x60;, and &#x60;views&#x60;.  Example:    * &#x60;metric_filters[]&#x3D;aggregate_startup_time&gt;&#x3D;1000&#x60;  (optional)
+         * @return APIlistInsightsRequest
+         */
+        public APIlistInsightsRequest metricFilters(java.util.List<String> metricFilters) {
+            this.metricFilters = metricFilters;
+            return this;
+        }
+
+        /**
          * Build call for listInsights
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1056,7 +1146,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listInsightsCall(METRIC_ID, measurement, orderDirection, timeframe, _callback);
+            return listInsightsCall(METRIC_ID, measurement, orderDirection, timeframe, filters, metricFilters, _callback);
         }
 
         /**
@@ -1071,7 +1161,7 @@ public class MetricsApi {
          </table>
          */
         public ListInsightsResponse execute() throws ApiException {
-            ApiResponse<ListInsightsResponse> localVarResp = listInsightsWithHttpInfo(METRIC_ID, measurement, orderDirection, timeframe);
+            ApiResponse<ListInsightsResponse> localVarResp = listInsightsWithHttpInfo(METRIC_ID, measurement, orderDirection, timeframe, filters, metricFilters);
             return localVarResp.getData();
         }
 
@@ -1087,7 +1177,7 @@ public class MetricsApi {
          </table>
          */
         public ApiResponse<ListInsightsResponse> executeWithHttpInfo() throws ApiException {
-            return listInsightsWithHttpInfo(METRIC_ID, measurement, orderDirection, timeframe);
+            return listInsightsWithHttpInfo(METRIC_ID, measurement, orderDirection, timeframe, filters, metricFilters);
         }
 
         /**
@@ -1103,7 +1193,7 @@ public class MetricsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListInsightsResponse> _callback) throws ApiException {
-            return listInsightsAsync(METRIC_ID, measurement, orderDirection, timeframe, _callback);
+            return listInsightsAsync(METRIC_ID, measurement, orderDirection, timeframe, filters, metricFilters, _callback);
         }
     }
 
