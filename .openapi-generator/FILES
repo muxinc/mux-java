@@ -46,6 +46,8 @@ docs/ExportFile.md
 docs/ExportsApi.md
 docs/FilterValue.md
 docs/FiltersApi.md
+docs/GenerateTrackSubtitlesRequest.md
+docs/GenerateTrackSubtitlesResponse.md
 docs/GetAssetInputInfoResponse.md
 docs/GetAssetOrLiveStreamIdResponse.md
 docs/GetAssetOrLiveStreamIdResponseData.md
@@ -257,6 +259,8 @@ src/main/java/com/mux/sdk/models/Error.java
 src/main/java/com/mux/sdk/models/ExportDate.java
 src/main/java/com/mux/sdk/models/ExportFile.java
 src/main/java/com/mux/sdk/models/FilterValue.java
+src/main/java/com/mux/sdk/models/GenerateTrackSubtitlesRequest.java
+src/main/java/com/mux/sdk/models/GenerateTrackSubtitlesResponse.java
 src/main/java/com/mux/sdk/models/GetAssetInputInfoResponse.java
 src/main/java/com/mux/sdk/models/GetAssetOrLiveStreamIdResponse.java
 src/main/java/com/mux/sdk/models/GetAssetOrLiveStreamIdResponseData.java

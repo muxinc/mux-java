@@ -184,7 +184,7 @@ public class PlaybackIdApi {
     }
 
     /**
-     * Retrieve an Asset or Live Stream ID
+     * Retrieve an asset or live stream ID
      * Retrieves the Identifier of the Asset or Live Stream associated with the Playback ID.
      * @param PLAYBACK_ID The live stream&#39;s playback ID. (required)
      * @return APIgetAssetOrLivestreamIdRequest

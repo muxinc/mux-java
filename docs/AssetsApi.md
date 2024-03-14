@@ -10,11 +10,12 @@ Method | HTTP request | Description
 [**deleteAsset**](AssetsApi.md#deleteAsset) | **DELETE** /video/v1/assets/{ASSET_ID} | Delete an asset
 [**deleteAssetPlaybackId**](AssetsApi.md#deleteAssetPlaybackId) | **DELETE** /video/v1/assets/{ASSET_ID}/playback-ids/{PLAYBACK_ID} | Delete a playback ID
 [**deleteAssetTrack**](AssetsApi.md#deleteAssetTrack) | **DELETE** /video/v1/assets/{ASSET_ID}/tracks/{TRACK_ID} | Delete an asset track
+[**generateAssetTrackSubtitles**](AssetsApi.md#generateAssetTrackSubtitles) | **POST** /video/v1/assets/{ASSET_ID}/tracks/{TRACK_ID}/generate-subtitles | Generate track subtitles
 [**getAsset**](AssetsApi.md#getAsset) | **GET** /video/v1/assets/{ASSET_ID} | Retrieve an asset
 [**getAssetInputInfo**](AssetsApi.md#getAssetInputInfo) | **GET** /video/v1/assets/{ASSET_ID}/input-info | Retrieve asset input info
 [**getAssetPlaybackId**](AssetsApi.md#getAssetPlaybackId) | **GET** /video/v1/assets/{ASSET_ID}/playback-ids/{PLAYBACK_ID} | Retrieve a playback ID
 [**listAssets**](AssetsApi.md#listAssets) | **GET** /video/v1/assets | List assets
-[**updateAsset**](AssetsApi.md#updateAsset) | **PATCH** /video/v1/assets/{ASSET_ID} | Update an Asset
+[**updateAsset**](AssetsApi.md#updateAsset) | **PATCH** /video/v1/assets/{ASSET_ID} | Update an asset
 [**updateAssetMasterAccess**](AssetsApi.md#updateAssetMasterAccess) | **PUT** /video/v1/assets/{ASSET_ID}/master-access | Update master access
 [**updateAssetMp4Support**](AssetsApi.md#updateAssetMp4Support) | **PUT** /video/v1/assets/{ASSET_ID}/mp4-support | Update MP4 support
 
@@ -48,7 +49,7 @@ public class Example {
     accessToken.setPassword("YOUR PASSWORD");
 
     AssetsApi apiInstance = new AssetsApi(defaultClient);
-    CreateAssetRequest createAssetRequest = {"input":[{"url":"https://muxed.s3.amazonaws.com/leds.mp4"}],"playback_policy":["public"]}; // CreateAssetRequest | 
+    CreateAssetRequest createAssetRequest = {"input":[{"url":"https://muxed.s3.amazonaws.com/leds.mp4"}],"playback_policy":["public"],"encoding_tier":"baseline"}; // CreateAssetRequest | 
     try {
       AssetResponse result = apiInstance.createAsset(createAssetRequest)
             .execute();
@@ -438,6 +439,79 @@ null (empty response body)
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
 
+<a name="generateAssetTrackSubtitles"></a>
+# **generateAssetTrackSubtitles**
+> GenerateTrackSubtitlesResponse generateAssetTrackSubtitles(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest).execute();
+
+Generate track subtitles
+
+Generates subtitles (captions) for a given audio track. This API can be used for up to 7 days after an asset is created.
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.AssetsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    AssetsApi apiInstance = new AssetsApi(defaultClient);
+    String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
+    String TRACK_ID = "TRACK_ID_example"; // String | The track ID.
+    GenerateTrackSubtitlesRequest generateTrackSubtitlesRequest = {"generated_subtitles":[{"language_code":"en","name":"English (generated)","passthrough":"English (generated)"}]}; // GenerateTrackSubtitlesRequest | 
+    try {
+      GenerateTrackSubtitlesResponse result = apiInstance.generateAssetTrackSubtitles(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AssetsApi#generateAssetTrackSubtitles");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ASSET_ID** | **String**| The asset ID. |
+ **TRACK_ID** | **String**| The track ID. |
+ **generateTrackSubtitlesRequest** | [**GenerateTrackSubtitlesRequest**](GenerateTrackSubtitlesRequest.md)|  |
+
+### Return type
+
+[**GenerateTrackSubtitlesResponse**](GenerateTrackSubtitlesResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
 <a name="getAsset"></a>
 # **getAsset**
 > AssetResponse getAsset(ASSET_ID).execute();
@@ -730,7 +804,7 @@ Name | Type | Description  | Notes
 # **updateAsset**
 > AssetResponse updateAsset(ASSET_ID, updateAssetRequest).execute();
 
-Update an Asset
+Update an asset
 
 Updates the details of an already-created Asset with the provided Asset ID. This currently supports only the &#x60;passthrough&#x60; field.
 

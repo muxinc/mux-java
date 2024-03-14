@@ -160,6 +160,9 @@ Name | Type | Description | Notes
 **adExitBeforeStartPercentage** | **String** |  |  [optional]
 **longResume** | **Boolean** |  |  [optional]
 **longRebuffering** | **Boolean** |  |  [optional]
+**playbackFailureErrorTypeId** | **Integer** |  |  [optional]
+**playbackBusinessExceptionErrorTypeId** | **Integer** |  |  [optional]
+**videoStartupBusinessExceptionErrorTypeId** | **Integer** |  |  [optional]
 
 
 

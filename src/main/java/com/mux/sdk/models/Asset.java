@@ -489,6 +489,63 @@ public class Asset {
   @SerializedName(SERIALIZED_NAME_TEST)
   private Boolean test;
 
+  /**
+   * The type of ingest used to create the asset.
+   */
+  @JsonAdapter(IngestTypeEnum.Adapter.class)
+  public enum IngestTypeEnum {
+    ON_DEMAND_URL("on_demand_url"),
+    
+    ON_DEMAND_DIRECT_UPLOAD("on_demand_direct_upload"),
+    
+    ON_DEMAND_CLIP("on_demand_clip"),
+    
+    LIVE_RTMP("live_rtmp"),
+    
+    LIVE_SRT("live_srt");
+
+    private String value;
+
+    IngestTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static IngestTypeEnum fromValue(String value) {
+      for (IngestTypeEnum b : IngestTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<IngestTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final IngestTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public IngestTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return IngestTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_INGEST_TYPE = "ingest_type";
+  @SerializedName(SERIALIZED_NAME_INGEST_TYPE)
+  private IngestTypeEnum ingestType;
+
 
   public Asset id(String id) {
     
@@ -1135,6 +1192,29 @@ public class Asset {
   }
 
 
+  public Asset ingestType(IngestTypeEnum ingestType) {
+    
+    this.ingestType = ingestType;
+    return this;
+  }
+
+   /**
+   * The type of ingest used to create the asset.
+   * @return ingestType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The type of ingest used to create the asset.")
+
+  public IngestTypeEnum getIngestType() {
+    return ingestType;
+  }
+
+
+  public void setIngestType(IngestTypeEnum ingestType) {
+    this.ingestType = ingestType;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -1170,12 +1250,13 @@ public class Asset {
         Objects.equals(this.staticRenditions, asset.staticRenditions) &&
         Objects.equals(this.recordingTimes, asset.recordingTimes) &&
         Objects.equals(this.nonStandardInputReasons, asset.nonStandardInputReasons) &&
-        Objects.equals(this.test, asset.test);
+        Objects.equals(this.test, asset.test) &&
+        Objects.equals(this.ingestType, asset.ingestType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, duration, maxStoredResolution, resolutionTier, maxResolutionTier, encodingTier, maxStoredFrameRate, aspectRatio, playbackIds, tracks, errors, perTitleEncode, uploadId, isLive, passthrough, liveStreamId, master, masterAccess, mp4Support, sourceAssetId, normalizeAudio, staticRenditions, recordingTimes, nonStandardInputReasons, test);
+    return Objects.hash(id, createdAt, status, duration, maxStoredResolution, resolutionTier, maxResolutionTier, encodingTier, maxStoredFrameRate, aspectRatio, playbackIds, tracks, errors, perTitleEncode, uploadId, isLive, passthrough, liveStreamId, master, masterAccess, mp4Support, sourceAssetId, normalizeAudio, staticRenditions, recordingTimes, nonStandardInputReasons, test, ingestType);
   }
 
   @Override
@@ -1209,6 +1290,7 @@ public class Asset {
     sb.append("    recordingTimes: ").append(toIndentedString(recordingTimes)).append("\n");
     sb.append("    nonStandardInputReasons: ").append(toIndentedString(nonStandardInputReasons)).append("\n");
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
+    sb.append("    ingestType: ").append(toIndentedString(ingestType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

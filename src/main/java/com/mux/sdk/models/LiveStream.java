@@ -172,6 +172,57 @@ public class LiveStream {
   @SerializedName(SERIALIZED_NAME_SRT_PASSPHRASE)
   private String srtPassphrase;
 
+  /**
+   * The protocol used for the active ingest stream. This is only set when the live stream is active.
+   */
+  @JsonAdapter(ActiveIngestProtocolEnum.Adapter.class)
+  public enum ActiveIngestProtocolEnum {
+    RTMP("rtmp"),
+    
+    SRT("srt");
+
+    private String value;
+
+    ActiveIngestProtocolEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ActiveIngestProtocolEnum fromValue(String value) {
+      for (ActiveIngestProtocolEnum b : ActiveIngestProtocolEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ActiveIngestProtocolEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ActiveIngestProtocolEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ActiveIngestProtocolEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ActiveIngestProtocolEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ACTIVE_INGEST_PROTOCOL = "active_ingest_protocol";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_INGEST_PROTOCOL)
+  private ActiveIngestProtocolEnum activeIngestProtocol;
+
 
   public LiveStream id(String id) {
     
@@ -723,6 +774,29 @@ public class LiveStream {
   }
 
 
+  public LiveStream activeIngestProtocol(ActiveIngestProtocolEnum activeIngestProtocol) {
+    
+    this.activeIngestProtocol = activeIngestProtocol;
+    return this;
+  }
+
+   /**
+   * The protocol used for the active ingest stream. This is only set when the live stream is active.
+   * @return activeIngestProtocol
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The protocol used for the active ingest stream. This is only set when the live stream is active.")
+
+  public ActiveIngestProtocolEnum getActiveIngestProtocol() {
+    return activeIngestProtocol;
+  }
+
+
+  public void setActiveIngestProtocol(ActiveIngestProtocolEnum activeIngestProtocol) {
+    this.activeIngestProtocol = activeIngestProtocol;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -753,12 +827,13 @@ public class LiveStream {
         Objects.equals(this.latencyMode, liveStream.latencyMode) &&
         Objects.equals(this.test, liveStream.test) &&
         Objects.equals(this.maxContinuousDuration, liveStream.maxContinuousDuration) &&
-        Objects.equals(this.srtPassphrase, liveStream.srtPassphrase);
+        Objects.equals(this.srtPassphrase, liveStream.srtPassphrase) &&
+        Objects.equals(this.activeIngestProtocol, liveStream.activeIngestProtocol);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, streamKey, activeAssetId, recentAssetIds, status, playbackIds, newAssetSettings, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, reducedLatency, lowLatency, simulcastTargets, latencyMode, test, maxContinuousDuration, srtPassphrase);
+    return Objects.hash(id, createdAt, streamKey, activeAssetId, recentAssetIds, status, playbackIds, newAssetSettings, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, reducedLatency, lowLatency, simulcastTargets, latencyMode, test, maxContinuousDuration, srtPassphrase, activeIngestProtocol);
   }
 
   @Override
@@ -787,6 +862,7 @@ public class LiveStream {
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("    maxContinuousDuration: ").append(toIndentedString(maxContinuousDuration)).append("\n");
     sb.append("    srtPassphrase: ").append(toIndentedString(srtPassphrase)).append("\n");
+    sb.append("    activeIngestProtocol: ").append(toIndentedString(activeIngestProtocol)).append("\n");
     sb.append("}");
     return sb.toString();
   }

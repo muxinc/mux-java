@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **recordingTimes** | [**java.util.List&lt;AssetRecordingTimes&gt;**](AssetRecordingTimes.md) | An array of individual live stream recording sessions. A recording session is created on each encoder connection during the live stream. Additionally any time slate media is inserted during brief interruptions in the live stream media or times when the live streaming software disconnects, a recording session representing the slate media will be added with a \&quot;slate\&quot; type. |  [optional]
 **nonStandardInputReasons** | [**AssetNonStandardInputReasons**](AssetNonStandardInputReasons.md) |  |  [optional]
 **test** | **Boolean** | True means this live stream is a test asset. A test asset can help evaluate the Mux Video APIs without incurring any cost. There is no limit on number of test assets created. Test assets are watermarked with the Mux logo, limited to 10 seconds, and deleted after 24 hrs. |  [optional]
+**ingestType** | [**IngestTypeEnum**](#IngestTypeEnum) | The type of ingest used to create the asset. |  [optional]
 
 
 
@@ -104,6 +105,18 @@ Name | Value
 ---- | -----
 STANDARD | &quot;standard&quot;
 NONE | &quot;none&quot;
+
+
+
+## Enum: IngestTypeEnum
+
+Name | Value
+---- | -----
+ON_DEMAND_URL | &quot;on_demand_url&quot;
+ON_DEMAND_DIRECT_UPLOAD | &quot;on_demand_direct_upload&quot;
+ON_DEMAND_CLIP | &quot;on_demand_clip&quot;
+LIVE_RTMP | &quot;live_rtmp&quot;
+LIVE_SRT | &quot;live_srt&quot;
 
 
 

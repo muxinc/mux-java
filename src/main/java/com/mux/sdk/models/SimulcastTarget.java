@@ -38,7 +38,7 @@ public class SimulcastTarget {
   private String passthrough;
 
   /**
-   * The current status of the simulcast target. See Statuses below for detailed description.   * &#x60;idle&#x60;: Default status. When the parent live stream is in disconnected status, simulcast targets will be idle state.   * &#x60;starting&#x60;: The simulcast target transitions into this state when the parent live stream transition into connected state.   * &#x60;broadcasting&#x60;: The simulcast target has successfully connected to the third party live streaming service and is pushing video to that service.   * &#x60;errored&#x60;: The simulcast target encountered an error either while attempting to connect to the third party live streaming service, or mid-broadcasting. Compared to other errored statuses in the Mux Video API, a simulcast may transition back into the broadcasting state if a connection with the service can be re-established. 
+   * The current status of the simulcast target. See Statuses below for detailed description.   * &#x60;idle&#x60;: Default status. When the parent live stream is in disconnected status, simulcast targets will be idle state.   * &#x60;starting&#x60;: The simulcast target transitions into this state when the parent live stream transition into connected state.   * &#x60;broadcasting&#x60;: The simulcast target has successfully connected to the third party live streaming service and is pushing video to that service.   * &#x60;errored&#x60;: The simulcast target encountered an error either while attempting to connect to the third party live streaming service, or mid-broadcasting. When a simulcast target has this status it will have an &#x60;error_severity&#x60; field with more details about the error. 
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -100,6 +100,57 @@ public class SimulcastTarget {
   @SerializedName(SERIALIZED_NAME_URL)
   private String url;
 
+  /**
+   * The severity of the error encountered by the simulcast target. This field is only set when the simulcast target is in the &#x60;errored&#x60; status. See the values of severities below and their descriptions.   * &#x60;normal&#x60;: The simulcast target encountered an error either while attempting to connect to the third party live streaming service, or mid-broadcasting. A simulcast may transition back into the broadcasting state if a connection with the service can be re-established.   * &#x60;fatal&#x60;: The simulcast target is incompatible with the current input to the parent live stream. No further attempts to this simulcast target will be made for the current live stream asset. 
+   */
+  @JsonAdapter(ErrorSeverityEnum.Adapter.class)
+  public enum ErrorSeverityEnum {
+    NORMAL("normal"),
+    
+    FATAL("fatal");
+
+    private String value;
+
+    ErrorSeverityEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ErrorSeverityEnum fromValue(String value) {
+      for (ErrorSeverityEnum b : ErrorSeverityEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ErrorSeverityEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ErrorSeverityEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ErrorSeverityEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ErrorSeverityEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ERROR_SEVERITY = "error_severity";
+  @SerializedName(SERIALIZED_NAME_ERROR_SEVERITY)
+  private ErrorSeverityEnum errorSeverity;
+
 
   public SimulcastTarget id(String id) {
     
@@ -154,11 +205,11 @@ public class SimulcastTarget {
   }
 
    /**
-   * The current status of the simulcast target. See Statuses below for detailed description.   * &#x60;idle&#x60;: Default status. When the parent live stream is in disconnected status, simulcast targets will be idle state.   * &#x60;starting&#x60;: The simulcast target transitions into this state when the parent live stream transition into connected state.   * &#x60;broadcasting&#x60;: The simulcast target has successfully connected to the third party live streaming service and is pushing video to that service.   * &#x60;errored&#x60;: The simulcast target encountered an error either while attempting to connect to the third party live streaming service, or mid-broadcasting. Compared to other errored statuses in the Mux Video API, a simulcast may transition back into the broadcasting state if a connection with the service can be re-established. 
+   * The current status of the simulcast target. See Statuses below for detailed description.   * &#x60;idle&#x60;: Default status. When the parent live stream is in disconnected status, simulcast targets will be idle state.   * &#x60;starting&#x60;: The simulcast target transitions into this state when the parent live stream transition into connected state.   * &#x60;broadcasting&#x60;: The simulcast target has successfully connected to the third party live streaming service and is pushing video to that service.   * &#x60;errored&#x60;: The simulcast target encountered an error either while attempting to connect to the third party live streaming service, or mid-broadcasting. When a simulcast target has this status it will have an &#x60;error_severity&#x60; field with more details about the error. 
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The current status of the simulcast target. See Statuses below for detailed description.   * `idle`: Default status. When the parent live stream is in disconnected status, simulcast targets will be idle state.   * `starting`: The simulcast target transitions into this state when the parent live stream transition into connected state.   * `broadcasting`: The simulcast target has successfully connected to the third party live streaming service and is pushing video to that service.   * `errored`: The simulcast target encountered an error either while attempting to connect to the third party live streaming service, or mid-broadcasting. Compared to other errored statuses in the Mux Video API, a simulcast may transition back into the broadcasting state if a connection with the service can be re-established. ")
+  @ApiModelProperty(value = "The current status of the simulcast target. See Statuses below for detailed description.   * `idle`: Default status. When the parent live stream is in disconnected status, simulcast targets will be idle state.   * `starting`: The simulcast target transitions into this state when the parent live stream transition into connected state.   * `broadcasting`: The simulcast target has successfully connected to the third party live streaming service and is pushing video to that service.   * `errored`: The simulcast target encountered an error either while attempting to connect to the third party live streaming service, or mid-broadcasting. When a simulcast target has this status it will have an `error_severity` field with more details about the error. ")
 
   public StatusEnum getStatus() {
     return status;
@@ -177,11 +228,11 @@ public class SimulcastTarget {
   }
 
    /**
-   * Stream Key represents an stream identifier for the third party live streaming service to simulcast the parent live stream too.
+   * Stream Key represents a stream identifier on the third party live streaming service to send the parent live stream to. Only used for RTMP(s) simulcast destinations.
    * @return streamKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Stream Key represents an stream identifier for the third party live streaming service to simulcast the parent live stream too.")
+  @ApiModelProperty(value = "Stream Key represents a stream identifier on the third party live streaming service to send the parent live stream to. Only used for RTMP(s) simulcast destinations.")
 
   public String getStreamKey() {
     return streamKey;
@@ -200,11 +251,11 @@ public class SimulcastTarget {
   }
 
    /**
-   * RTMP hostname including the application name for the third party live streaming service.
+   * The RTMP(s) or SRT endpoint for a simulcast destination. * For RTMP(s) destinations, this should include the application name for the third party live streaming service, for example: &#x60;rtmp://live.example.com/app&#x60;. * For SRT destinations, this should be a fully formed SRT connection string, for example: &#x60;srt://srt-live.example.com:1234?streamid&#x3D;{stream_key}&amp;passphrase&#x3D;{srt_passphrase}&#x60;.  Note: SRT simulcast targets can only be used when an source is connected over SRT. 
    * @return url
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "RTMP hostname including the application name for the third party live streaming service.")
+  @ApiModelProperty(value = "The RTMP(s) or SRT endpoint for a simulcast destination. * For RTMP(s) destinations, this should include the application name for the third party live streaming service, for example: `rtmp://live.example.com/app`. * For SRT destinations, this should be a fully formed SRT connection string, for example: `srt://srt-live.example.com:1234?streamid={stream_key}&passphrase={srt_passphrase}`.  Note: SRT simulcast targets can only be used when an source is connected over SRT. ")
 
   public String getUrl() {
     return url;
@@ -213,6 +264,29 @@ public class SimulcastTarget {
 
   public void setUrl(String url) {
     this.url = url;
+  }
+
+
+  public SimulcastTarget errorSeverity(ErrorSeverityEnum errorSeverity) {
+    
+    this.errorSeverity = errorSeverity;
+    return this;
+  }
+
+   /**
+   * The severity of the error encountered by the simulcast target. This field is only set when the simulcast target is in the &#x60;errored&#x60; status. See the values of severities below and their descriptions.   * &#x60;normal&#x60;: The simulcast target encountered an error either while attempting to connect to the third party live streaming service, or mid-broadcasting. A simulcast may transition back into the broadcasting state if a connection with the service can be re-established.   * &#x60;fatal&#x60;: The simulcast target is incompatible with the current input to the parent live stream. No further attempts to this simulcast target will be made for the current live stream asset. 
+   * @return errorSeverity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The severity of the error encountered by the simulcast target. This field is only set when the simulcast target is in the `errored` status. See the values of severities below and their descriptions.   * `normal`: The simulcast target encountered an error either while attempting to connect to the third party live streaming service, or mid-broadcasting. A simulcast may transition back into the broadcasting state if a connection with the service can be re-established.   * `fatal`: The simulcast target is incompatible with the current input to the parent live stream. No further attempts to this simulcast target will be made for the current live stream asset. ")
+
+  public ErrorSeverityEnum getErrorSeverity() {
+    return errorSeverity;
+  }
+
+
+  public void setErrorSeverity(ErrorSeverityEnum errorSeverity) {
+    this.errorSeverity = errorSeverity;
   }
 
 
@@ -229,12 +303,13 @@ public class SimulcastTarget {
         Objects.equals(this.passthrough, simulcastTarget.passthrough) &&
         Objects.equals(this.status, simulcastTarget.status) &&
         Objects.equals(this.streamKey, simulcastTarget.streamKey) &&
-        Objects.equals(this.url, simulcastTarget.url);
+        Objects.equals(this.url, simulcastTarget.url) &&
+        Objects.equals(this.errorSeverity, simulcastTarget.errorSeverity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, passthrough, status, streamKey, url);
+    return Objects.hash(id, passthrough, status, streamKey, url, errorSeverity);
   }
 
   @Override
@@ -246,6 +321,7 @@ public class SimulcastTarget {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    streamKey: ").append(toIndentedString(streamKey)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    errorSeverity: ").append(toIndentedString(errorSeverity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

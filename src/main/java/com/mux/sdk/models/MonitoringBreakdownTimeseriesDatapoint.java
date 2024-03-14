@@ -41,6 +41,10 @@ public class MonitoringBreakdownTimeseriesDatapoint {
   @SerializedName(SERIALIZED_NAME_CONCURRENT_VIEWERS)
   private Long concurrentViewers;
 
+  public static final String SERIALIZED_NAME_STARTING_UP_VIEWERS = "starting_up_viewers";
+  @SerializedName(SERIALIZED_NAME_STARTING_UP_VIEWERS)
+  private Long startingUpViewers;
+
 
   public MonitoringBreakdownTimeseriesDatapoint value(String value) {
     
@@ -111,6 +115,29 @@ public class MonitoringBreakdownTimeseriesDatapoint {
   }
 
 
+  public MonitoringBreakdownTimeseriesDatapoint startingUpViewers(Long startingUpViewers) {
+    
+    this.startingUpViewers = startingUpViewers;
+    return this;
+  }
+
+   /**
+   * Get startingUpViewers
+   * @return startingUpViewers
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getStartingUpViewers() {
+    return startingUpViewers;
+  }
+
+
+  public void setStartingUpViewers(Long startingUpViewers) {
+    this.startingUpViewers = startingUpViewers;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -122,12 +149,13 @@ public class MonitoringBreakdownTimeseriesDatapoint {
     MonitoringBreakdownTimeseriesDatapoint monitoringBreakdownTimeseriesDatapoint = (MonitoringBreakdownTimeseriesDatapoint) o;
     return Objects.equals(this.value, monitoringBreakdownTimeseriesDatapoint.value) &&
         Objects.equals(this.metricValue, monitoringBreakdownTimeseriesDatapoint.metricValue) &&
-        Objects.equals(this.concurrentViewers, monitoringBreakdownTimeseriesDatapoint.concurrentViewers);
+        Objects.equals(this.concurrentViewers, monitoringBreakdownTimeseriesDatapoint.concurrentViewers) &&
+        Objects.equals(this.startingUpViewers, monitoringBreakdownTimeseriesDatapoint.startingUpViewers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, metricValue, concurrentViewers);
+    return Objects.hash(value, metricValue, concurrentViewers, startingUpViewers);
   }
 
   @Override
@@ -137,6 +165,7 @@ public class MonitoringBreakdownTimeseriesDatapoint {
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    metricValue: ").append(toIndentedString(metricValue)).append("\n");
     sb.append("    concurrentViewers: ").append(toIndentedString(concurrentViewers)).append("\n");
+    sb.append("    startingUpViewers: ").append(toIndentedString(startingUpViewers)).append("\n");
     sb.append("}");
     return sb.toString();
   }

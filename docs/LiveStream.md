@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **test** | **Boolean** | True means this live stream is a test live stream. Test live streams can be used to help evaluate the Mux Video APIs for free. There is no limit on the number of test live streams, but they are watermarked with the Mux logo, and limited to 5 minutes. The test live stream is disabled after the stream is active for 5 mins and the recorded asset also deleted after 24 hours. |  [optional]
 **maxContinuousDuration** | **Integer** | The time in seconds a live stream may be continuously active before being disconnected. Defaults to 12 hours. |  [optional]
 **srtPassphrase** | **String** | Unique key used for encrypting a stream to a Mux SRT endpoint. |  [optional]
+**activeIngestProtocol** | [**ActiveIngestProtocolEnum**](#ActiveIngestProtocolEnum) | The protocol used for the active ingest stream. This is only set when the live stream is active. |  [optional]
 
 
 
@@ -38,6 +39,15 @@ Name | Value
 LOW | &quot;low&quot;
 REDUCED | &quot;reduced&quot;
 STANDARD | &quot;standard&quot;
+
+
+
+## Enum: ActiveIngestProtocolEnum
+
+Name | Value
+---- | -----
+RTMP | &quot;rtmp&quot;
+SRT | &quot;srt&quot;
 
 
 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **description** | **String** | Description of the error. |  [optional]
 **count** | **Long** | The total number of views that experienced this error. |  [optional]
 **code** | **Long** | The error code |  [optional]
+**playerErrorCode** | **String** | The string version of the error code |  [optional]
 
 
 

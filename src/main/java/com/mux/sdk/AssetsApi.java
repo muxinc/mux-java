@@ -33,6 +33,8 @@ import com.mux.sdk.models.CreatePlaybackIDRequest;
 import com.mux.sdk.models.CreatePlaybackIDResponse;
 import com.mux.sdk.models.CreateTrackRequest;
 import com.mux.sdk.models.CreateTrackResponse;
+import com.mux.sdk.models.GenerateTrackSubtitlesRequest;
+import com.mux.sdk.models.GenerateTrackSubtitlesResponse;
 import com.mux.sdk.models.GetAssetInputInfoResponse;
 import com.mux.sdk.models.GetAssetPlaybackIDResponse;
 import com.mux.sdk.models.ListAssetsResponse;
@@ -960,6 +962,169 @@ public class AssetsApi {
     public APIdeleteAssetTrackRequest deleteAssetTrack(String ASSET_ID, String TRACK_ID) {
         return new APIdeleteAssetTrackRequest(ASSET_ID, TRACK_ID);
     }
+    private okhttp3.Call generateAssetTrackSubtitlesCall(String ASSET_ID, String TRACK_ID, GenerateTrackSubtitlesRequest generateTrackSubtitlesRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = generateTrackSubtitlesRequest;
+
+        // create path and map variables
+        String localVarPath = "/video/v1/assets/{ASSET_ID}/tracks/{TRACK_ID}/generate-subtitles"
+            .replaceAll("\\{" + "ASSET_ID" + "\\}", localVarApiClient.escapeString(ASSET_ID.toString()))
+            .replaceAll("\\{" + "TRACK_ID" + "\\}", localVarApiClient.escapeString(TRACK_ID.toString()));
+
+        java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
+        java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
+        java.util.Map<String, String> localVarHeaderParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, String> localVarCookieParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "accessToken" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call generateAssetTrackSubtitlesValidateBeforeCall(String ASSET_ID, String TRACK_ID, GenerateTrackSubtitlesRequest generateTrackSubtitlesRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'ASSET_ID' is set
+        if (ASSET_ID == null) {
+            throw new ApiException("Missing the required parameter 'ASSET_ID' when calling generateAssetTrackSubtitles(Async)");
+        }
+        
+        // verify the required parameter 'TRACK_ID' is set
+        if (TRACK_ID == null) {
+            throw new ApiException("Missing the required parameter 'TRACK_ID' when calling generateAssetTrackSubtitles(Async)");
+        }
+        
+        // verify the required parameter 'generateTrackSubtitlesRequest' is set
+        if (generateTrackSubtitlesRequest == null) {
+            throw new ApiException("Missing the required parameter 'generateTrackSubtitlesRequest' when calling generateAssetTrackSubtitles(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = generateAssetTrackSubtitlesCall(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest, _callback);
+        return localVarCall;
+
+    }
+
+
+    private ApiResponse<GenerateTrackSubtitlesResponse> generateAssetTrackSubtitlesWithHttpInfo(String ASSET_ID, String TRACK_ID, GenerateTrackSubtitlesRequest generateTrackSubtitlesRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAssetTrackSubtitlesValidateBeforeCall(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest, null);
+        Type localVarReturnType = new TypeToken<GenerateTrackSubtitlesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call generateAssetTrackSubtitlesAsync(String ASSET_ID, String TRACK_ID, GenerateTrackSubtitlesRequest generateTrackSubtitlesRequest, final ApiCallback<GenerateTrackSubtitlesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = generateAssetTrackSubtitlesValidateBeforeCall(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest, _callback);
+        Type localVarReturnType = new TypeToken<GenerateTrackSubtitlesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgenerateAssetTrackSubtitlesRequest {
+        private final String ASSET_ID;
+        private final String TRACK_ID;
+        private final GenerateTrackSubtitlesRequest generateTrackSubtitlesRequest;
+
+        private APIgenerateAssetTrackSubtitlesRequest(String ASSET_ID, String TRACK_ID, GenerateTrackSubtitlesRequest generateTrackSubtitlesRequest) {
+            this.ASSET_ID = ASSET_ID;
+            this.TRACK_ID = TRACK_ID;
+            this.generateTrackSubtitlesRequest = generateTrackSubtitlesRequest;
+        }
+
+        /**
+         * Build call for generateAssetTrackSubtitles
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return generateAssetTrackSubtitlesCall(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest, _callback);
+        }
+
+        /**
+         * Execute generateAssetTrackSubtitles request
+         * @return GenerateTrackSubtitlesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+         </table>
+         */
+        public GenerateTrackSubtitlesResponse execute() throws ApiException {
+            ApiResponse<GenerateTrackSubtitlesResponse> localVarResp = generateAssetTrackSubtitlesWithHttpInfo(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute generateAssetTrackSubtitles request with HTTP info returned
+         * @return ApiResponse&lt;GenerateTrackSubtitlesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GenerateTrackSubtitlesResponse> executeWithHttpInfo() throws ApiException {
+            return generateAssetTrackSubtitlesWithHttpInfo(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest);
+        }
+
+        /**
+         * Execute generateAssetTrackSubtitles request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GenerateTrackSubtitlesResponse> _callback) throws ApiException {
+            return generateAssetTrackSubtitlesAsync(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest, _callback);
+        }
+    }
+
+    /**
+     * Generate track subtitles
+     * Generates subtitles (captions) for a given audio track. This API can be used for up to 7 days after an asset is created.
+     * @param ASSET_ID The asset ID. (required)
+     * @param TRACK_ID The track ID. (required)
+     * @param generateTrackSubtitlesRequest  (required)
+     * @return APIgenerateAssetTrackSubtitlesRequest
+     * @http.response.details
+     <table border="1">
+        <caption>Response Summary</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgenerateAssetTrackSubtitlesRequest generateAssetTrackSubtitles(String ASSET_ID, String TRACK_ID, GenerateTrackSubtitlesRequest generateTrackSubtitlesRequest) {
+        return new APIgenerateAssetTrackSubtitlesRequest(ASSET_ID, TRACK_ID, generateTrackSubtitlesRequest);
+    }
     private okhttp3.Call getAssetCall(String ASSET_ID, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
@@ -1743,7 +1908,7 @@ public class AssetsApi {
     }
 
     /**
-     * Update an Asset
+     * Update an asset
      * Updates the details of an already-created Asset with the provided Asset ID. This currently supports only the &#x60;passthrough&#x60; field.
      * @param ASSET_ID The asset ID. (required)
      * @param updateAssetRequest  (required)
