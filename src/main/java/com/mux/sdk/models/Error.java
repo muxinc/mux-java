@@ -61,6 +61,10 @@ public class Error {
   @SerializedName(SERIALIZED_NAME_CODE)
   private Long code;
 
+  public static final String SERIALIZED_NAME_PLAYER_ERROR_CODE = "player_error_code";
+  @SerializedName(SERIALIZED_NAME_PLAYER_ERROR_CODE)
+  private String playerErrorCode;
+
 
   public Error id(Long id) {
     
@@ -246,6 +250,29 @@ public class Error {
   }
 
 
+  public Error playerErrorCode(String playerErrorCode) {
+    
+    this.playerErrorCode = playerErrorCode;
+    return this;
+  }
+
+   /**
+   * The string version of the error code
+   * @return playerErrorCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The string version of the error code")
+
+  public String getPlayerErrorCode() {
+    return playerErrorCode;
+  }
+
+
+  public void setPlayerErrorCode(String playerErrorCode) {
+    this.playerErrorCode = playerErrorCode;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -262,12 +289,13 @@ public class Error {
         Objects.equals(this.lastSeen, error.lastSeen) &&
         Objects.equals(this.description, error.description) &&
         Objects.equals(this.count, error.count) &&
-        Objects.equals(this.code, error.code);
+        Objects.equals(this.code, error.code) &&
+        Objects.equals(this.playerErrorCode, error.playerErrorCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, percentage, notes, message, lastSeen, description, count, code);
+    return Objects.hash(id, percentage, notes, message, lastSeen, description, count, code, playerErrorCode);
   }
 
   @Override
@@ -282,6 +310,7 @@ public class Error {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    playerErrorCode: ").append(toIndentedString(playerErrorCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

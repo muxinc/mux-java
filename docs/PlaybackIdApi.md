@@ -4,14 +4,14 @@ All URIs are relative to *https://api.mux.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAssetOrLivestreamId**](PlaybackIdApi.md#getAssetOrLivestreamId) | **GET** /video/v1/playback-ids/{PLAYBACK_ID} | Retrieve an Asset or Live Stream ID
+[**getAssetOrLivestreamId**](PlaybackIdApi.md#getAssetOrLivestreamId) | **GET** /video/v1/playback-ids/{PLAYBACK_ID} | Retrieve an asset or live stream ID
 
 
 <a name="getAssetOrLivestreamId"></a>
 # **getAssetOrLivestreamId**
 > GetAssetOrLiveStreamIdResponse getAssetOrLivestreamId(PLAYBACK_ID).execute();
 
-Retrieve an Asset or Live Stream ID
+Retrieve an asset or live stream ID
 
 Retrieves the Identifier of the Asset or Live Stream associated with the Playback ID.
 

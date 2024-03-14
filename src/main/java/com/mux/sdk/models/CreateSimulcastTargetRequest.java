@@ -72,11 +72,11 @@ public class CreateSimulcastTargetRequest {
   }
 
    /**
-   * Stream Key represents a stream identifier on the third party live streaming service to send the parent live stream to.
+   * Stream Key represents a stream identifier on the third party live streaming service to send the parent live stream to. Only used for RTMP(s) simulcast destinations.
    * @return streamKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Stream Key represents a stream identifier on the third party live streaming service to send the parent live stream to.")
+  @ApiModelProperty(value = "Stream Key represents a stream identifier on the third party live streaming service to send the parent live stream to. Only used for RTMP(s) simulcast destinations.")
 
   public String getStreamKey() {
     return streamKey;
@@ -95,11 +95,11 @@ public class CreateSimulcastTargetRequest {
   }
 
    /**
-   * RTMP hostname including application name for the third party live streaming service. Example: &#x60;rtmp://live.example.com/app&#x60;.
+   * The RTMP(s) or SRT endpoint for a simulcast destination. * For RTMP(s) destinations, this should include the application name for the third party live streaming service, for example: &#x60;rtmp://live.example.com/app&#x60;. * For SRT destinations, this should be a fully formed SRT connection string, for example: &#x60;srt://srt-live.example.com:1234?streamid&#x3D;{stream_key}&amp;passphrase&#x3D;{srt_passphrase}&#x60;.  Note: SRT simulcast targets can only be used when an source is connected over SRT. 
    * @return url
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "RTMP hostname including application name for the third party live streaming service. Example: `rtmp://live.example.com/app`.")
+  @ApiModelProperty(value = "The RTMP(s) or SRT endpoint for a simulcast destination. * For RTMP(s) destinations, this should include the application name for the third party live streaming service, for example: `rtmp://live.example.com/app`. * For SRT destinations, this should be a fully formed SRT connection string, for example: `srt://srt-live.example.com:1234?streamid={stream_key}&passphrase={srt_passphrase}`.  Note: SRT simulcast targets can only be used when an source is connected over SRT. ")
 
   public String getUrl() {
     return url;

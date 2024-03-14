@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **value** | **String** |  |  [optional]
 **metricValue** | **Double** |  |  [optional]
 **concurrentViewers** | **Long** |  |  [optional]
+**startingUpViewers** | **Long** |  |  [optional]
 
 
 

@@ -948,7 +948,7 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Delete a Live Stream Simulcast Target
+     * Delete a live stream simulcast target
      * Delete the simulcast target using the simulcast target ID returned when creating the simulcast target. Simulcast Target can only be deleted when the parent live stream is in idle state.
      * @param LIVE_STREAM_ID The live stream ID (required)
      * @param SIMULCAST_TARGET_ID The ID of the simulcast target. (required)
@@ -1696,7 +1696,7 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Retrieve a Live Stream Simulcast Target
+     * Retrieve a live stream simulcast target
      * Retrieves the details of the simulcast target created for the parent live stream. Supply the unique live stream ID and simulcast target ID that was returned in the response of create simulcast target request, and Mux will return the corresponding information.
      * @param LIVE_STREAM_ID The live stream ID (required)
      * @param SIMULCAST_TARGET_ID The ID of the simulcast target. (required)
