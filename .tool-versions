@@ -1,4 +1,4 @@
 java zulu-11.52.13
 groovy 3.0.8
 yarn 1.22.19
-nodejs lts
+nodejs 18.17.0

@@ -948,7 +948,7 @@ Name | Type | Description  | Notes
 
 Update MP4 support
 
-Allows you to add or remove mp4 support for assets that were created without it. Currently there are two values supported in this request, &#x60;standard&#x60; and &#x60;none&#x60;. &#x60;none&#x60; means that an asset *does not* have mp4 support, so submitting a request with &#x60;mp4_support&#x60; set to &#x60;none&#x60; will delete the mp4 assets from the asset in question.
+Allows you to add or remove mp4 support for assets that were created without it. The values supported are &#x60;capped-1080p&#x60;, &#x60;audio-only&#x60;, &#x60;audio-only,capped-1080p&#x60;, &#x60;standard&#x60;(deprecated),  and &#x60;none&#x60;. &#x60;none&#x60; means that an asset *does not* have mp4 support, so submitting a request with &#x60;mp4_support&#x60; set to &#x60;none&#x60; will delete the mp4 assets from the asset in question.
 
 ### Example
 ```java
@@ -972,7 +972,7 @@ public class Example {
 
     AssetsApi apiInstance = new AssetsApi(defaultClient);
     String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
-    UpdateAssetMP4SupportRequest updateAssetMP4SupportRequest = {"mp4_support":"standard"}; // UpdateAssetMP4SupportRequest | 
+    UpdateAssetMP4SupportRequest updateAssetMP4SupportRequest = {"mp4_support":"capped-1080p"}; // UpdateAssetMP4SupportRequest | 
     try {
       AssetResponse result = apiInstance.updateAssetMp4Support(ASSET_ID, updateAssetMP4SupportRequest)
             .execute();

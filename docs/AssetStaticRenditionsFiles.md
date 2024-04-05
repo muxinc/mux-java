@@ -23,6 +23,7 @@ LOW_MP4 | &quot;low.mp4&quot;
 MEDIUM_MP4 | &quot;medium.mp4&quot;
 HIGH_MP4 | &quot;high.mp4&quot;
 AUDIO_M4A | &quot;audio.m4a&quot;
+CAPPED_1080P_MP4 | &quot;capped-1080p.mp4&quot;
 
 
 
