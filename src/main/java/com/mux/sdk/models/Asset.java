@@ -421,7 +421,13 @@ public class Asset {
   public enum Mp4SupportEnum {
     STANDARD("standard"),
     
-    NONE("none");
+    NONE("none"),
+    
+    CAPPED_1080P("capped-1080p"),
+    
+    AUDIO_ONLY("audio-only"),
+    
+    AUDIO_ONLY_CAPPED_1080P("audio-only,capped-1080p");
 
     private String value;
 

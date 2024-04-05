@@ -109,7 +109,7 @@ public class Example {
     accessToken.setPassword("YOUR PASSWORD");
 
     DirectUploadsApi apiInstance = new DirectUploadsApi(defaultClient);
-    CreateUploadRequest createUploadRequest = {"cors_origin":"https://example.com/","new_asset_settings":{"playback_policy":["public"]}}; // CreateUploadRequest | 
+    CreateUploadRequest createUploadRequest = {"cors_origin":"https://example.com/","new_asset_settings":{"playback_policy":["public"],"mp4_support":"capped-1080p"}}; // CreateUploadRequest | 
     try {
       UploadResponse result = apiInstance.createDirectUpload(createUploadRequest)
             .execute();

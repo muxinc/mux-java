@@ -105,6 +105,9 @@ Name | Value
 ---- | -----
 STANDARD | &quot;standard&quot;
 NONE | &quot;none&quot;
+CAPPED_1080P | &quot;capped-1080p&quot;
+AUDIO_ONLY | &quot;audio-only&quot;
+AUDIO_ONLY_CAPPED_1080P | &quot;audio-only,capped-1080p&quot;
 
 
 

@@ -40,7 +40,9 @@ public class AssetStaticRenditionsFiles {
     
     HIGH_MP4("high.mp4"),
     
-    AUDIO_M4A("audio.m4a");
+    AUDIO_M4A("audio.m4a"),
+    
+    CAPPED_1080P_MP4("capped-1080p.mp4");
 
     private String value;
 
