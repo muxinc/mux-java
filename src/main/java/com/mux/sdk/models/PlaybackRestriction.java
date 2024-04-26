@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mux.sdk.models.ReferrerDomainRestriction;
+import com.mux.sdk.models.UserAgentRestrictionSettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -45,6 +46,10 @@ public class PlaybackRestriction {
   public static final String SERIALIZED_NAME_REFERRER = "referrer";
   @SerializedName(SERIALIZED_NAME_REFERRER)
   private ReferrerDomainRestriction referrer;
+
+  public static final String SERIALIZED_NAME_USER_AGENT = "user_agent";
+  @SerializedName(SERIALIZED_NAME_USER_AGENT)
+  private UserAgentRestrictionSettings userAgent;
 
 
   public PlaybackRestriction id(String id) {
@@ -139,6 +144,29 @@ public class PlaybackRestriction {
   }
 
 
+  public PlaybackRestriction userAgent(UserAgentRestrictionSettings userAgent) {
+    
+    this.userAgent = userAgent;
+    return this;
+  }
+
+   /**
+   * Get userAgent
+   * @return userAgent
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public UserAgentRestrictionSettings getUserAgent() {
+    return userAgent;
+  }
+
+
+  public void setUserAgent(UserAgentRestrictionSettings userAgent) {
+    this.userAgent = userAgent;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -151,12 +179,13 @@ public class PlaybackRestriction {
     return Objects.equals(this.id, playbackRestriction.id) &&
         Objects.equals(this.createdAt, playbackRestriction.createdAt) &&
         Objects.equals(this.updatedAt, playbackRestriction.updatedAt) &&
-        Objects.equals(this.referrer, playbackRestriction.referrer);
+        Objects.equals(this.referrer, playbackRestriction.referrer) &&
+        Objects.equals(this.userAgent, playbackRestriction.userAgent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, referrer);
+    return Objects.hash(id, createdAt, updatedAt, referrer, userAgent);
   }
 
   @Override
@@ -167,6 +196,7 @@ public class PlaybackRestriction {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    referrer: ").append(toIndentedString(referrer)).append("\n");
+    sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mux.sdk.models.UpdateLiveStreamNewAssetSettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -101,6 +102,10 @@ public class UpdateLiveStreamRequest {
   public static final String SERIALIZED_NAME_MAX_CONTINUOUS_DURATION = "max_continuous_duration";
   @SerializedName(SERIALIZED_NAME_MAX_CONTINUOUS_DURATION)
   private Integer maxContinuousDuration = 43200;
+
+  public static final String SERIALIZED_NAME_NEW_ASSET_SETTINGS = "new_asset_settings";
+  @SerializedName(SERIALIZED_NAME_NEW_ASSET_SETTINGS)
+  private UpdateLiveStreamNewAssetSettings newAssetSettings;
 
 
   public UpdateLiveStreamRequest passthrough(String passthrough) {
@@ -245,6 +250,29 @@ public class UpdateLiveStreamRequest {
   }
 
 
+  public UpdateLiveStreamRequest newAssetSettings(UpdateLiveStreamNewAssetSettings newAssetSettings) {
+    
+    this.newAssetSettings = newAssetSettings;
+    return this;
+  }
+
+   /**
+   * Get newAssetSettings
+   * @return newAssetSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public UpdateLiveStreamNewAssetSettings getNewAssetSettings() {
+    return newAssetSettings;
+  }
+
+
+  public void setNewAssetSettings(UpdateLiveStreamNewAssetSettings newAssetSettings) {
+    this.newAssetSettings = newAssetSettings;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -259,12 +287,13 @@ public class UpdateLiveStreamRequest {
         Objects.equals(this.reconnectWindow, updateLiveStreamRequest.reconnectWindow) &&
         Objects.equals(this.useSlateForStandardLatency, updateLiveStreamRequest.useSlateForStandardLatency) &&
         Objects.equals(this.reconnectSlateUrl, updateLiveStreamRequest.reconnectSlateUrl) &&
-        Objects.equals(this.maxContinuousDuration, updateLiveStreamRequest.maxContinuousDuration);
+        Objects.equals(this.maxContinuousDuration, updateLiveStreamRequest.maxContinuousDuration) &&
+        Objects.equals(this.newAssetSettings, updateLiveStreamRequest.newAssetSettings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(passthrough, latencyMode, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, maxContinuousDuration);
+    return Objects.hash(passthrough, latencyMode, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, maxContinuousDuration, newAssetSettings);
   }
 
   @Override
@@ -277,6 +306,7 @@ public class UpdateLiveStreamRequest {
     sb.append("    useSlateForStandardLatency: ").append(toIndentedString(useSlateForStandardLatency)).append("\n");
     sb.append("    reconnectSlateUrl: ").append(toIndentedString(reconnectSlateUrl)).append("\n");
     sb.append("    maxContinuousDuration: ").append(toIndentedString(maxContinuousDuration)).append("\n");
+    sb.append("    newAssetSettings: ").append(toIndentedString(newAssetSettings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

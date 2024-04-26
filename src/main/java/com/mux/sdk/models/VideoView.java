@@ -658,6 +658,30 @@ public class VideoView {
   @SerializedName(SERIALIZED_NAME_VIDEO_STARTUP_BUSINESS_EXCEPTION_ERROR_TYPE_ID)
   private Integer videoStartupBusinessExceptionErrorTypeId;
 
+  public static final String SERIALIZED_NAME_PLAYBACK_FAILURE = "playback_failure";
+  @SerializedName(SERIALIZED_NAME_PLAYBACK_FAILURE)
+  private Boolean playbackFailure;
+
+  public static final String SERIALIZED_NAME_AD_PLAYBACK_FAILURE_ERROR_TYPE_ID = "ad_playback_failure_error_type_id";
+  @SerializedName(SERIALIZED_NAME_AD_PLAYBACK_FAILURE_ERROR_TYPE_ID)
+  private Integer adPlaybackFailureErrorTypeId;
+
+  public static final String SERIALIZED_NAME_VIEW_CONTENT_STARTUP_TIME = "view_content_startup_time";
+  @SerializedName(SERIALIZED_NAME_VIEW_CONTENT_STARTUP_TIME)
+  private Integer viewContentStartupTime;
+
+  public static final String SERIALIZED_NAME_AD_PREROLL_STARTUP_TIME = "ad_preroll_startup_time";
+  @SerializedName(SERIALIZED_NAME_AD_PREROLL_STARTUP_TIME)
+  private Integer adPrerollStartupTime;
+
+  public static final String SERIALIZED_NAME_AD_WATCH_TIME = "ad_watch_time";
+  @SerializedName(SERIALIZED_NAME_AD_WATCH_TIME)
+  private Integer adWatchTime;
+
+  public static final String SERIALIZED_NAME_VIEW_CONTENT_WATCH_TIME = "view_content_watch_time";
+  @SerializedName(SERIALIZED_NAME_VIEW_CONTENT_WATCH_TIME)
+  private Integer viewContentWatchTime;
+
 
   public VideoView viewTotalUpscaling(String viewTotalUpscaling) {
     
@@ -4278,6 +4302,144 @@ public class VideoView {
   }
 
 
+  public VideoView playbackFailure(Boolean playbackFailure) {
+    
+    this.playbackFailure = playbackFailure;
+    return this;
+  }
+
+   /**
+   * Get playbackFailure
+   * @return playbackFailure
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getPlaybackFailure() {
+    return playbackFailure;
+  }
+
+
+  public void setPlaybackFailure(Boolean playbackFailure) {
+    this.playbackFailure = playbackFailure;
+  }
+
+
+  public VideoView adPlaybackFailureErrorTypeId(Integer adPlaybackFailureErrorTypeId) {
+    
+    this.adPlaybackFailureErrorTypeId = adPlaybackFailureErrorTypeId;
+    return this;
+  }
+
+   /**
+   * Get adPlaybackFailureErrorTypeId
+   * @return adPlaybackFailureErrorTypeId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdPlaybackFailureErrorTypeId() {
+    return adPlaybackFailureErrorTypeId;
+  }
+
+
+  public void setAdPlaybackFailureErrorTypeId(Integer adPlaybackFailureErrorTypeId) {
+    this.adPlaybackFailureErrorTypeId = adPlaybackFailureErrorTypeId;
+  }
+
+
+  public VideoView viewContentStartupTime(Integer viewContentStartupTime) {
+    
+    this.viewContentStartupTime = viewContentStartupTime;
+    return this;
+  }
+
+   /**
+   * Get viewContentStartupTime
+   * @return viewContentStartupTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getViewContentStartupTime() {
+    return viewContentStartupTime;
+  }
+
+
+  public void setViewContentStartupTime(Integer viewContentStartupTime) {
+    this.viewContentStartupTime = viewContentStartupTime;
+  }
+
+
+  public VideoView adPrerollStartupTime(Integer adPrerollStartupTime) {
+    
+    this.adPrerollStartupTime = adPrerollStartupTime;
+    return this;
+  }
+
+   /**
+   * Get adPrerollStartupTime
+   * @return adPrerollStartupTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdPrerollStartupTime() {
+    return adPrerollStartupTime;
+  }
+
+
+  public void setAdPrerollStartupTime(Integer adPrerollStartupTime) {
+    this.adPrerollStartupTime = adPrerollStartupTime;
+  }
+
+
+  public VideoView adWatchTime(Integer adWatchTime) {
+    
+    this.adWatchTime = adWatchTime;
+    return this;
+  }
+
+   /**
+   * Get adWatchTime
+   * @return adWatchTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAdWatchTime() {
+    return adWatchTime;
+  }
+
+
+  public void setAdWatchTime(Integer adWatchTime) {
+    this.adWatchTime = adWatchTime;
+  }
+
+
+  public VideoView viewContentWatchTime(Integer viewContentWatchTime) {
+    
+    this.viewContentWatchTime = viewContentWatchTime;
+    return this;
+  }
+
+   /**
+   * Get viewContentWatchTime
+   * @return viewContentWatchTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getViewContentWatchTime() {
+    return viewContentWatchTime;
+  }
+
+
+  public void setViewContentWatchTime(Integer viewContentWatchTime) {
+    this.viewContentWatchTime = viewContentWatchTime;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -4443,12 +4605,18 @@ public class VideoView {
         Objects.equals(this.longRebuffering, videoView.longRebuffering) &&
         Objects.equals(this.playbackFailureErrorTypeId, videoView.playbackFailureErrorTypeId) &&
         Objects.equals(this.playbackBusinessExceptionErrorTypeId, videoView.playbackBusinessExceptionErrorTypeId) &&
-        Objects.equals(this.videoStartupBusinessExceptionErrorTypeId, videoView.videoStartupBusinessExceptionErrorTypeId);
+        Objects.equals(this.videoStartupBusinessExceptionErrorTypeId, videoView.videoStartupBusinessExceptionErrorTypeId) &&
+        Objects.equals(this.playbackFailure, videoView.playbackFailure) &&
+        Objects.equals(this.adPlaybackFailureErrorTypeId, videoView.adPlaybackFailureErrorTypeId) &&
+        Objects.equals(this.viewContentStartupTime, videoView.viewContentStartupTime) &&
+        Objects.equals(this.adPrerollStartupTime, videoView.adPrerollStartupTime) &&
+        Objects.equals(this.adWatchTime, videoView.adWatchTime) &&
+        Objects.equals(this.viewContentWatchTime, videoView.viewContentWatchTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, adAttemptCount, adBreakCount, adBreakErrorCount, adBreakErrorPercentage, adErrorCount, adErrorPercentage, adImpressionCount, adStartupErrorCount, adStartupErrorPercentage, adExitBeforeStartCount, adExitBeforeStartPercentage, longResume, longRebuffering, playbackFailureErrorTypeId, playbackBusinessExceptionErrorTypeId, videoStartupBusinessExceptionErrorTypeId);
+    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, adAttemptCount, adBreakCount, adBreakErrorCount, adBreakErrorPercentage, adErrorCount, adErrorPercentage, adImpressionCount, adStartupErrorCount, adStartupErrorPercentage, adExitBeforeStartCount, adExitBeforeStartPercentage, longResume, longRebuffering, playbackFailureErrorTypeId, playbackBusinessExceptionErrorTypeId, videoStartupBusinessExceptionErrorTypeId, playbackFailure, adPlaybackFailureErrorTypeId, viewContentStartupTime, adPrerollStartupTime, adWatchTime, viewContentWatchTime);
   }
 
   @Override
@@ -4612,6 +4780,12 @@ public class VideoView {
     sb.append("    playbackFailureErrorTypeId: ").append(toIndentedString(playbackFailureErrorTypeId)).append("\n");
     sb.append("    playbackBusinessExceptionErrorTypeId: ").append(toIndentedString(playbackBusinessExceptionErrorTypeId)).append("\n");
     sb.append("    videoStartupBusinessExceptionErrorTypeId: ").append(toIndentedString(videoStartupBusinessExceptionErrorTypeId)).append("\n");
+    sb.append("    playbackFailure: ").append(toIndentedString(playbackFailure)).append("\n");
+    sb.append("    adPlaybackFailureErrorTypeId: ").append(toIndentedString(adPlaybackFailureErrorTypeId)).append("\n");
+    sb.append("    viewContentStartupTime: ").append(toIndentedString(viewContentStartupTime)).append("\n");
+    sb.append("    adPrerollStartupTime: ").append(toIndentedString(adPrerollStartupTime)).append("\n");
+    sb.append("    adWatchTime: ").append(toIndentedString(adWatchTime)).append("\n");
+    sb.append("    viewContentWatchTime: ").append(toIndentedString(viewContentWatchTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

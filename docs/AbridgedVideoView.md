@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **viewEnd** | **String** |  |  [optional]
 **viewerExperienceScore** | **Float** |  |  [optional]
 **watchTime** | **Integer** |  |  [optional]
+**playbackFailure** | **Boolean** |  |  [optional]
 
 
 

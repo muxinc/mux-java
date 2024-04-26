@@ -185,6 +185,7 @@ Class | Method | HTTP request | Description
 *PlaybackRestrictionsApi* | [**getPlaybackRestriction**](docs/PlaybackRestrictionsApi.md#getPlaybackRestriction) | **GET** /video/v1/playback-restrictions/{PLAYBACK_RESTRICTION_ID} | Retrieve a Playback Restriction
 *PlaybackRestrictionsApi* | [**listPlaybackRestrictions**](docs/PlaybackRestrictionsApi.md#listPlaybackRestrictions) | **GET** /video/v1/playback-restrictions | List Playback Restrictions
 *PlaybackRestrictionsApi* | [**updateReferrerDomainRestriction**](docs/PlaybackRestrictionsApi.md#updateReferrerDomainRestriction) | **PUT** /video/v1/playback-restrictions/{PLAYBACK_RESTRICTION_ID}/referrer | Update the Referrer Playback Restriction
+*PlaybackRestrictionsApi* | [**updateUserAgentRestriction**](docs/PlaybackRestrictionsApi.md#updateUserAgentRestriction) | **PUT** /video/v1/playback-restrictions/{PLAYBACK_RESTRICTION_ID}/user_agent | Update the User Agent Restriction
 *RealTimeApi* | [**getRealtimeBreakdown**](docs/RealTimeApi.md#getRealtimeBreakdown) | **GET** /data/v1/realtime/metrics/{REALTIME_METRIC_ID}/breakdown | Get Real-Time Breakdown
 *RealTimeApi* | [**getRealtimeHistogramTimeseries**](docs/RealTimeApi.md#getRealtimeHistogramTimeseries) | **GET** /data/v1/realtime/metrics/{REALTIME_HISTOGRAM_METRIC_ID}/histogram-timeseries | Get Real-Time Histogram Timeseries
 *RealTimeApi* | [**getRealtimeTimeseries**](docs/RealTimeApi.md#getRealtimeTimeseries) | **GET** /data/v1/realtime/metrics/{REALTIME_METRIC_ID}/timeseries | Get Real-Time Timeseries
@@ -371,13 +372,17 @@ Class | Method | HTTP request | Description
  - [UpdateAssetRequest](docs/UpdateAssetRequest.md)
  - [UpdateLiveStreamEmbeddedSubtitlesRequest](docs/UpdateLiveStreamEmbeddedSubtitlesRequest.md)
  - [UpdateLiveStreamGeneratedSubtitlesRequest](docs/UpdateLiveStreamGeneratedSubtitlesRequest.md)
+ - [UpdateLiveStreamNewAssetSettings](docs/UpdateLiveStreamNewAssetSettings.md)
  - [UpdateLiveStreamRequest](docs/UpdateLiveStreamRequest.md)
  - [UpdateReferrerDomainRestrictionRequest](docs/UpdateReferrerDomainRestrictionRequest.md)
  - [UpdateTranscriptionVocabularyRequest](docs/UpdateTranscriptionVocabularyRequest.md)
+ - [UpdateUserAgentRestrictionRequest](docs/UpdateUserAgentRestrictionRequest.md)
  - [UpdateWebInputUrlRequest](docs/UpdateWebInputUrlRequest.md)
  - [Upload](docs/Upload.md)
  - [UploadError](docs/UploadError.md)
  - [UploadResponse](docs/UploadResponse.md)
+ - [UserAgentRestrictionRequest](docs/UserAgentRestrictionRequest.md)
+ - [UserAgentRestrictionSettings](docs/UserAgentRestrictionSettings.md)
  - [VideoView](docs/VideoView.md)
  - [VideoViewEvent](docs/VideoViewEvent.md)
  - [VideoViewResponse](docs/VideoViewResponse.md)

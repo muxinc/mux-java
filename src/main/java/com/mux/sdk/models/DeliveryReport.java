@@ -164,6 +164,57 @@ public class DeliveryReport {
   @SerializedName(SERIALIZED_NAME_ASSET_RESOLUTION_TIER)
   private AssetResolutionTierEnum assetResolutionTier;
 
+  /**
+   * The encoding tier that the asset was ingested at. [See the encoding tiers guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   */
+  @JsonAdapter(AssetEncodingTierEnum.Adapter.class)
+  public enum AssetEncodingTierEnum {
+    SMART("smart"),
+    
+    BASELINE("baseline");
+
+    private String value;
+
+    AssetEncodingTierEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AssetEncodingTierEnum fromValue(String value) {
+      for (AssetEncodingTierEnum b : AssetEncodingTierEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AssetEncodingTierEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AssetEncodingTierEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AssetEncodingTierEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AssetEncodingTierEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ASSET_ENCODING_TIER = "asset_encoding_tier";
+  @SerializedName(SERIALIZED_NAME_ASSET_ENCODING_TIER)
+  private AssetEncodingTierEnum assetEncodingTier;
+
   public static final String SERIALIZED_NAME_DELIVERED_SECONDS = "delivered_seconds";
   @SerializedName(SERIALIZED_NAME_DELIVERED_SECONDS)
   private Double deliveredSeconds;
@@ -357,6 +408,29 @@ public class DeliveryReport {
   }
 
 
+  public DeliveryReport assetEncodingTier(AssetEncodingTierEnum assetEncodingTier) {
+    
+    this.assetEncodingTier = assetEncodingTier;
+    return this;
+  }
+
+   /**
+   * The encoding tier that the asset was ingested at. [See the encoding tiers guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * @return assetEncodingTier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The encoding tier that the asset was ingested at. [See the encoding tiers guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
+
+  public AssetEncodingTierEnum getAssetEncodingTier() {
+    return assetEncodingTier;
+  }
+
+
+  public void setAssetEncodingTier(AssetEncodingTierEnum assetEncodingTier) {
+    this.assetEncodingTier = assetEncodingTier;
+  }
+
+
   public DeliveryReport deliveredSeconds(Double deliveredSeconds) {
     
     this.deliveredSeconds = deliveredSeconds;
@@ -420,13 +494,14 @@ public class DeliveryReport {
         Objects.equals(this.assetState, deliveryReport.assetState) &&
         Objects.equals(this.assetDuration, deliveryReport.assetDuration) &&
         Objects.equals(this.assetResolutionTier, deliveryReport.assetResolutionTier) &&
+        Objects.equals(this.assetEncodingTier, deliveryReport.assetEncodingTier) &&
         Objects.equals(this.deliveredSeconds, deliveryReport.deliveredSeconds) &&
         Objects.equals(this.deliveredSecondsByResolution, deliveryReport.deliveredSecondsByResolution);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(liveStreamId, assetId, passthrough, createdAt, deletedAt, assetState, assetDuration, assetResolutionTier, deliveredSeconds, deliveredSecondsByResolution);
+    return Objects.hash(liveStreamId, assetId, passthrough, createdAt, deletedAt, assetState, assetDuration, assetResolutionTier, assetEncodingTier, deliveredSeconds, deliveredSecondsByResolution);
   }
 
   @Override
@@ -441,6 +516,7 @@ public class DeliveryReport {
     sb.append("    assetState: ").append(toIndentedString(assetState)).append("\n");
     sb.append("    assetDuration: ").append(toIndentedString(assetDuration)).append("\n");
     sb.append("    assetResolutionTier: ").append(toIndentedString(assetResolutionTier)).append("\n");
+    sb.append("    assetEncodingTier: ").append(toIndentedString(assetEncodingTier)).append("\n");
     sb.append("    deliveredSeconds: ").append(toIndentedString(deliveredSeconds)).append("\n");
     sb.append("    deliveredSecondsByResolution: ").append(toIndentedString(deliveredSecondsByResolution)).append("\n");
     sb.append("}");
