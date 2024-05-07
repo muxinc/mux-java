@@ -163,6 +163,12 @@ Name | Type | Description | Notes
 **playbackFailureErrorTypeId** | **Integer** |  |  [optional]
 **playbackBusinessExceptionErrorTypeId** | **Integer** |  |  [optional]
 **videoStartupBusinessExceptionErrorTypeId** | **Integer** |  |  [optional]
+**playbackFailure** | **Boolean** |  |  [optional]
+**adPlaybackFailureErrorTypeId** | **Integer** |  |  [optional]
+**viewContentStartupTime** | **Integer** |  |  [optional]
+**adPrerollStartupTime** | **Integer** |  |  [optional]
+**adWatchTime** | **Integer** |  |  [optional]
+**viewContentWatchTime** | **Integer** |  |  [optional]
 
 
 

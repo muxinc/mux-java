@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**Track**](Track.md) |  |  [optional]
+**data** | [**java.util.List&lt;Track&gt;**](Track.md) |  |  [optional]
 
 
 

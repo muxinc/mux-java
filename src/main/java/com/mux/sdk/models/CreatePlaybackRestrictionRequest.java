@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mux.sdk.models.ReferrerDomainRestriction;
+import com.mux.sdk.models.UserAgentRestrictionRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -33,6 +34,10 @@ public class CreatePlaybackRestrictionRequest {
   public static final String SERIALIZED_NAME_REFERRER = "referrer";
   @SerializedName(SERIALIZED_NAME_REFERRER)
   private ReferrerDomainRestriction referrer;
+
+  public static final String SERIALIZED_NAME_USER_AGENT = "user_agent";
+  @SerializedName(SERIALIZED_NAME_USER_AGENT)
+  private UserAgentRestrictionRequest userAgent;
 
 
   public CreatePlaybackRestrictionRequest referrer(ReferrerDomainRestriction referrer) {
@@ -58,6 +63,29 @@ public class CreatePlaybackRestrictionRequest {
   }
 
 
+  public CreatePlaybackRestrictionRequest userAgent(UserAgentRestrictionRequest userAgent) {
+    
+    this.userAgent = userAgent;
+    return this;
+  }
+
+   /**
+   * Get userAgent
+   * @return userAgent
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public UserAgentRestrictionRequest getUserAgent() {
+    return userAgent;
+  }
+
+
+  public void setUserAgent(UserAgentRestrictionRequest userAgent) {
+    this.userAgent = userAgent;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -67,12 +95,13 @@ public class CreatePlaybackRestrictionRequest {
       return false;
     }
     CreatePlaybackRestrictionRequest createPlaybackRestrictionRequest = (CreatePlaybackRestrictionRequest) o;
-    return Objects.equals(this.referrer, createPlaybackRestrictionRequest.referrer);
+    return Objects.equals(this.referrer, createPlaybackRestrictionRequest.referrer) &&
+        Objects.equals(this.userAgent, createPlaybackRestrictionRequest.userAgent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(referrer);
+    return Objects.hash(referrer, userAgent);
   }
 
   @Override
@@ -80,6 +109,7 @@ public class CreatePlaybackRestrictionRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreatePlaybackRestrictionRequest {\n");
     sb.append("    referrer: ").append(toIndentedString(referrer)).append("\n");
+    sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

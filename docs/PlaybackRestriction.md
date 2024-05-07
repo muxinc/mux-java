@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **createdAt** | **String** | Time the Playback Restriction was created, defined as a Unix timestamp (seconds since epoch). |  [optional]
 **updatedAt** | **String** | Time the Playback Restriction was last updated, defined as a Unix timestamp (seconds since epoch). |  [optional]
 **referrer** | [**ReferrerDomainRestriction**](ReferrerDomainRestriction.md) |  |  [optional]
+**userAgent** | [**UserAgentRestrictionSettings**](UserAgentRestrictionSettings.md) |  |  [optional]
 
 
 

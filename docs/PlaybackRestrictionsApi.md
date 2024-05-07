@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getPlaybackRestriction**](PlaybackRestrictionsApi.md#getPlaybackRestriction) | **GET** /video/v1/playback-restrictions/{PLAYBACK_RESTRICTION_ID} | Retrieve a Playback Restriction
 [**listPlaybackRestrictions**](PlaybackRestrictionsApi.md#listPlaybackRestrictions) | **GET** /video/v1/playback-restrictions | List Playback Restrictions
 [**updateReferrerDomainRestriction**](PlaybackRestrictionsApi.md#updateReferrerDomainRestriction) | **PUT** /video/v1/playback-restrictions/{PLAYBACK_RESTRICTION_ID}/referrer | Update the Referrer Playback Restriction
+[**updateUserAgentRestriction**](PlaybackRestrictionsApi.md#updateUserAgentRestriction) | **PUT** /video/v1/playback-restrictions/{PLAYBACK_RESTRICTION_ID}/user_agent | Update the User Agent Restriction
 
 
 <a name="createPlaybackRestriction"></a>
@@ -40,7 +41,7 @@ public class Example {
     accessToken.setPassword("YOUR PASSWORD");
 
     PlaybackRestrictionsApi apiInstance = new PlaybackRestrictionsApi(defaultClient);
-    CreatePlaybackRestrictionRequest createPlaybackRestrictionRequest = {"referrer":{"allowed_domains":["*.example.com"],"allow_no_referrer":true}}; // CreatePlaybackRestrictionRequest | 
+    CreatePlaybackRestrictionRequest createPlaybackRestrictionRequest = {"referrer":{"allowed_domains":["*.example.com"],"allow_no_referrer":true},"user_agent":{"allow_no_user_agent":false,"allow_high_risk_user_agent":false}}; // CreatePlaybackRestrictionRequest | 
     try {
       PlaybackRestrictionResponse result = apiInstance.createPlaybackRestriction(createPlaybackRestrictionRequest)
             .execute();
@@ -342,6 +343,77 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **PLAYBACK_RESTRICTION_ID** | **String**| ID of the Playback Restriction. |
  **updateReferrerDomainRestrictionRequest** | [**UpdateReferrerDomainRestrictionRequest**](UpdateReferrerDomainRestrictionRequest.md)|  |
+
+### Return type
+
+[**PlaybackRestrictionResponse**](PlaybackRestrictionResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="updateUserAgentRestriction"></a>
+# **updateUserAgentRestriction**
+> PlaybackRestrictionResponse updateUserAgentRestriction(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest).execute();
+
+Update the User Agent Restriction
+
+Allows you to modify how Mux validates playback requests with different user agents.  Please see [Using User-Agent HTTP header for validation](https://docs.mux.com/guides/secure-video-playback#using-user-agent-http-header-for-validation) for more details on this feature.
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.PlaybackRestrictionsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    PlaybackRestrictionsApi apiInstance = new PlaybackRestrictionsApi(defaultClient);
+    String PLAYBACK_RESTRICTION_ID = "PLAYBACK_RESTRICTION_ID_example"; // String | ID of the Playback Restriction.
+    UpdateUserAgentRestrictionRequest updateUserAgentRestrictionRequest = {"allow_no_user_agent":false,"allow_high_risk_user_agent":false}; // UpdateUserAgentRestrictionRequest | 
+    try {
+      PlaybackRestrictionResponse result = apiInstance.updateUserAgentRestriction(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PlaybackRestrictionsApi#updateUserAgentRestriction");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **PLAYBACK_RESTRICTION_ID** | **String**| ID of the Playback Restriction. |
+ **updateUserAgentRestrictionRequest** | [**UpdateUserAgentRestrictionRequest**](UpdateUserAgentRestrictionRequest.md)|  |
 
 ### Return type
 

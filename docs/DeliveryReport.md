@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **assetState** | [**AssetStateEnum**](#AssetStateEnum) | The state of the asset. |  [optional]
 **assetDuration** | **Double** | The duration of the asset in seconds. |  [optional]
 **assetResolutionTier** | [**AssetResolutionTierEnum**](#AssetResolutionTierEnum) | The resolution tier that the asset was ingested at, affecting billing for ingest &amp; storage |  [optional]
+**assetEncodingTier** | [**AssetEncodingTierEnum**](#AssetEncodingTierEnum) | The encoding tier that the asset was ingested at. [See the encoding tiers guide for more details.](https://docs.mux.com/guides/use-encoding-tiers) |  [optional]
 **deliveredSeconds** | **Double** | Total number of delivered seconds during this time window. |  [optional]
 **deliveredSecondsByResolution** | [**DeliveryReportDeliveredSecondsByResolution**](DeliveryReportDeliveredSecondsByResolution.md) |  |  [optional]
 
@@ -38,6 +39,15 @@ _720P | &quot;720p&quot;
 _1080P | &quot;1080p&quot;
 _1440P | &quot;1440p&quot;
 _2160P | &quot;2160p&quot;
+
+
+
+## Enum: AssetEncodingTierEnum
+
+Name | Value
+---- | -----
+SMART | &quot;smart&quot;
+BASELINE | &quot;baseline&quot;
 
 
 

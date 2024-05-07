@@ -81,6 +81,10 @@ public class AbridgedVideoView {
   @SerializedName(SERIALIZED_NAME_WATCH_TIME)
   private Integer watchTime;
 
+  public static final String SERIALIZED_NAME_PLAYBACK_FAILURE = "playback_failure";
+  @SerializedName(SERIALIZED_NAME_PLAYBACK_FAILURE)
+  private Boolean playbackFailure;
+
 
   public AbridgedVideoView id(String id) {
     
@@ -381,6 +385,29 @@ public class AbridgedVideoView {
   }
 
 
+  public AbridgedVideoView playbackFailure(Boolean playbackFailure) {
+    
+    this.playbackFailure = playbackFailure;
+    return this;
+  }
+
+   /**
+   * Get playbackFailure
+   * @return playbackFailure
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getPlaybackFailure() {
+    return playbackFailure;
+  }
+
+
+  public void setPlaybackFailure(Boolean playbackFailure) {
+    this.playbackFailure = playbackFailure;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -402,12 +429,13 @@ public class AbridgedVideoView {
         Objects.equals(this.viewStart, abridgedVideoView.viewStart) &&
         Objects.equals(this.viewEnd, abridgedVideoView.viewEnd) &&
         Objects.equals(this.viewerExperienceScore, abridgedVideoView.viewerExperienceScore) &&
-        Objects.equals(this.watchTime, abridgedVideoView.watchTime);
+        Objects.equals(this.watchTime, abridgedVideoView.watchTime) &&
+        Objects.equals(this.playbackFailure, abridgedVideoView.playbackFailure);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, viewerOsFamily, viewerApplicationName, videoTitle, totalRowCount, playerErrorMessage, playerErrorCode, errorTypeId, countryCode, viewStart, viewEnd, viewerExperienceScore, watchTime);
+    return Objects.hash(id, viewerOsFamily, viewerApplicationName, videoTitle, totalRowCount, playerErrorMessage, playerErrorCode, errorTypeId, countryCode, viewStart, viewEnd, viewerExperienceScore, watchTime, playbackFailure);
   }
 
   @Override
@@ -427,6 +455,7 @@ public class AbridgedVideoView {
     sb.append("    viewEnd: ").append(toIndentedString(viewEnd)).append("\n");
     sb.append("    viewerExperienceScore: ").append(toIndentedString(viewerExperienceScore)).append("\n");
     sb.append("    watchTime: ").append(toIndentedString(watchTime)).append("\n");
+    sb.append("    playbackFailure: ").append(toIndentedString(playbackFailure)).append("\n");
     sb.append("}");
     return sb.toString();
   }

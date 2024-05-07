@@ -32,12 +32,20 @@ import java.io.IOException;
 public class GenerateTrackSubtitlesResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private Track data;
+  private java.util.List<Track> data = null;
 
 
-  public GenerateTrackSubtitlesResponse data(Track data) {
+  public GenerateTrackSubtitlesResponse data(java.util.List<Track> data) {
     
     this.data = data;
+    return this;
+  }
+
+  public GenerateTrackSubtitlesResponse addDataItem(Track dataItem) {
+    if (this.data == null) {
+      this.data = new java.util.ArrayList<>();
+    }
+    this.data.add(dataItem);
     return this;
   }
 
@@ -48,12 +56,12 @@ public class GenerateTrackSubtitlesResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Track getData() {
+  public java.util.List<Track> getData() {
     return data;
   }
 
 
-  public void setData(Track data) {
+  public void setData(java.util.List<Track> data) {
     this.data = data;
   }
 

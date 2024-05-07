@@ -31,6 +31,7 @@ import com.mux.sdk.models.CreatePlaybackRestrictionRequest;
 import com.mux.sdk.models.ListPlaybackRestrictionsResponse;
 import com.mux.sdk.models.PlaybackRestrictionResponse;
 import com.mux.sdk.models.UpdateReferrerDomainRestrictionRequest;
+import com.mux.sdk.models.UpdateUserAgentRestrictionRequest;
 // TODO: due to import parsing issues for the RDR type; fix in spec in future
 import com.mux.sdk.models.ReferrerDomainRestriction;
 
@@ -808,5 +809,159 @@ public class PlaybackRestrictionsApi {
      */
     public APIupdateReferrerDomainRestrictionRequest updateReferrerDomainRestriction(String PLAYBACK_RESTRICTION_ID, UpdateReferrerDomainRestrictionRequest updateReferrerDomainRestrictionRequest) {
         return new APIupdateReferrerDomainRestrictionRequest(PLAYBACK_RESTRICTION_ID, updateReferrerDomainRestrictionRequest);
+    }
+    private okhttp3.Call updateUserAgentRestrictionCall(String PLAYBACK_RESTRICTION_ID, UpdateUserAgentRestrictionRequest updateUserAgentRestrictionRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateUserAgentRestrictionRequest;
+
+        // create path and map variables
+        String localVarPath = "/video/v1/playback-restrictions/{PLAYBACK_RESTRICTION_ID}/user_agent"
+            .replaceAll("\\{" + "PLAYBACK_RESTRICTION_ID" + "\\}", localVarApiClient.escapeString(PLAYBACK_RESTRICTION_ID.toString()));
+
+        java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
+        java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
+        java.util.Map<String, String> localVarHeaderParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, String> localVarCookieParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "accessToken" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateUserAgentRestrictionValidateBeforeCall(String PLAYBACK_RESTRICTION_ID, UpdateUserAgentRestrictionRequest updateUserAgentRestrictionRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'PLAYBACK_RESTRICTION_ID' is set
+        if (PLAYBACK_RESTRICTION_ID == null) {
+            throw new ApiException("Missing the required parameter 'PLAYBACK_RESTRICTION_ID' when calling updateUserAgentRestriction(Async)");
+        }
+        
+        // verify the required parameter 'updateUserAgentRestrictionRequest' is set
+        if (updateUserAgentRestrictionRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateUserAgentRestrictionRequest' when calling updateUserAgentRestriction(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateUserAgentRestrictionCall(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest, _callback);
+        return localVarCall;
+
+    }
+
+
+    private ApiResponse<PlaybackRestrictionResponse> updateUserAgentRestrictionWithHttpInfo(String PLAYBACK_RESTRICTION_ID, UpdateUserAgentRestrictionRequest updateUserAgentRestrictionRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateUserAgentRestrictionValidateBeforeCall(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest, null);
+        Type localVarReturnType = new TypeToken<PlaybackRestrictionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateUserAgentRestrictionAsync(String PLAYBACK_RESTRICTION_ID, UpdateUserAgentRestrictionRequest updateUserAgentRestrictionRequest, final ApiCallback<PlaybackRestrictionResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateUserAgentRestrictionValidateBeforeCall(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest, _callback);
+        Type localVarReturnType = new TypeToken<PlaybackRestrictionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateUserAgentRestrictionRequest {
+        private final String PLAYBACK_RESTRICTION_ID;
+        private final UpdateUserAgentRestrictionRequest updateUserAgentRestrictionRequest;
+
+        private APIupdateUserAgentRestrictionRequest(String PLAYBACK_RESTRICTION_ID, UpdateUserAgentRestrictionRequest updateUserAgentRestrictionRequest) {
+            this.PLAYBACK_RESTRICTION_ID = PLAYBACK_RESTRICTION_ID;
+            this.updateUserAgentRestrictionRequest = updateUserAgentRestrictionRequest;
+        }
+
+        /**
+         * Build call for updateUserAgentRestriction
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateUserAgentRestrictionCall(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest, _callback);
+        }
+
+        /**
+         * Execute updateUserAgentRestriction request
+         * @return PlaybackRestrictionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public PlaybackRestrictionResponse execute() throws ApiException {
+            ApiResponse<PlaybackRestrictionResponse> localVarResp = updateUserAgentRestrictionWithHttpInfo(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateUserAgentRestriction request with HTTP info returned
+         * @return ApiResponse&lt;PlaybackRestrictionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PlaybackRestrictionResponse> executeWithHttpInfo() throws ApiException {
+            return updateUserAgentRestrictionWithHttpInfo(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest);
+        }
+
+        /**
+         * Execute updateUserAgentRestriction request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PlaybackRestrictionResponse> _callback) throws ApiException {
+            return updateUserAgentRestrictionAsync(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest, _callback);
+        }
+    }
+
+    /**
+     * Update the User Agent Restriction
+     * Allows you to modify how Mux validates playback requests with different user agents.  Please see [Using User-Agent HTTP header for validation](https://docs.mux.com/guides/secure-video-playback#using-user-agent-http-header-for-validation) for more details on this feature.
+     * @param PLAYBACK_RESTRICTION_ID ID of the Playback Restriction. (required)
+     * @param updateUserAgentRestrictionRequest  (required)
+     * @return APIupdateUserAgentRestrictionRequest
+     * @http.response.details
+     <table border="1">
+        <caption>Response Summary</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateUserAgentRestrictionRequest updateUserAgentRestriction(String PLAYBACK_RESTRICTION_ID, UpdateUserAgentRestrictionRequest updateUserAgentRestrictionRequest) {
+        return new APIupdateUserAgentRestrictionRequest(PLAYBACK_RESTRICTION_ID, updateUserAgentRestrictionRequest);
     }
 }
