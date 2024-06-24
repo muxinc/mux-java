@@ -125,11 +125,11 @@ public class CreateUploadRequest {
   }
 
    /**
-   * Get test
+   * Indicates if this is a test Direct Upload, in which case the Asset that gets created will be a &#x60;test&#x60; Asset.
    * @return test
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Indicates if this is a test Direct Upload, in which case the Asset that gets created will be a `test` Asset.")
 
   public Boolean getTest() {
     return test;

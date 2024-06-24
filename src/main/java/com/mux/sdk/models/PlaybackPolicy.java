@@ -32,7 +32,9 @@ public enum PlaybackPolicy {
   
   PUBLIC("public"),
   
-  SIGNED("signed");
+  SIGNED("signed"),
+  
+  DRM("drm");
 
   private String value;
 

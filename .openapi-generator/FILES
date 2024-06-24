@@ -31,6 +31,8 @@ docs/CreateTrackResponse.md
 docs/CreateTranscriptionVocabularyRequest.md
 docs/CreateUploadRequest.md
 docs/CreateWebInputRequest.md
+docs/DRMConfiguration.md
+docs/DRMConfigurationResponse.md
 docs/DeliveryReport.md
 docs/DeliveryReportDeliveredSecondsByResolution.md
 docs/DeliveryUsageApi.md
@@ -38,6 +40,7 @@ docs/DimensionValue.md
 docs/DimensionsApi.md
 docs/DirectUploadsApi.md
 docs/DisableLiveStreamResponse.md
+docs/DrmConfigurationsApi.md
 docs/EnableLiveStreamResponse.md
 docs/Error.md
 docs/ErrorsApi.md
@@ -82,6 +85,7 @@ docs/ListAllMetricValuesResponse.md
 docs/ListAssetsResponse.md
 docs/ListBreakdownValuesResponse.md
 docs/ListBreakdownValuesResponseMeta.md
+docs/ListDRMConfigurationsResponse.md
 docs/ListDeliveryUsageResponse.md
 docs/ListDimensionValuesResponse.md
 docs/ListDimensionsResponse.md
@@ -209,6 +213,7 @@ src/main/java/com/mux/sdk/AssetsApi.java
 src/main/java/com/mux/sdk/DeliveryUsageApi.java
 src/main/java/com/mux/sdk/DimensionsApi.java
 src/main/java/com/mux/sdk/DirectUploadsApi.java
+src/main/java/com/mux/sdk/DrmConfigurationsApi.java
 src/main/java/com/mux/sdk/ErrorsApi.java
 src/main/java/com/mux/sdk/ExportsApi.java
 src/main/java/com/mux/sdk/FiltersApi.java
@@ -254,6 +259,8 @@ src/main/java/com/mux/sdk/models/CreateTrackResponse.java
 src/main/java/com/mux/sdk/models/CreateTranscriptionVocabularyRequest.java
 src/main/java/com/mux/sdk/models/CreateUploadRequest.java
 src/main/java/com/mux/sdk/models/CreateWebInputRequest.java
+src/main/java/com/mux/sdk/models/DRMConfiguration.java
+src/main/java/com/mux/sdk/models/DRMConfigurationResponse.java
 src/main/java/com/mux/sdk/models/DeliveryReport.java
 src/main/java/com/mux/sdk/models/DeliveryReportDeliveredSecondsByResolution.java
 src/main/java/com/mux/sdk/models/DimensionValue.java
@@ -298,6 +305,7 @@ src/main/java/com/mux/sdk/models/ListAllMetricValuesResponse.java
 src/main/java/com/mux/sdk/models/ListAssetsResponse.java
 src/main/java/com/mux/sdk/models/ListBreakdownValuesResponse.java
 src/main/java/com/mux/sdk/models/ListBreakdownValuesResponseMeta.java
+src/main/java/com/mux/sdk/models/ListDRMConfigurationsResponse.java
 src/main/java/com/mux/sdk/models/ListDeliveryUsageResponse.java
 src/main/java/com/mux/sdk/models/ListDimensionValuesResponse.java
 src/main/java/com/mux/sdk/models/ListDimensionsResponse.java

@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mux.sdk.models.CreateAssetRequest;
+import com.mux.sdk.models.CreatePlaybackIDRequest;
 import com.mux.sdk.models.CreateSimulcastTargetRequest;
 import com.mux.sdk.models.LiveStreamEmbeddedSubtitleSettings;
 import com.mux.sdk.models.LiveStreamGeneratedSubtitleSettings;
@@ -37,6 +38,10 @@ public class CreateLiveStreamRequest {
   public static final String SERIALIZED_NAME_PLAYBACK_POLICY = "playback_policy";
   @SerializedName(SERIALIZED_NAME_PLAYBACK_POLICY)
   private java.util.List<PlaybackPolicy> playbackPolicy = null;
+
+  public static final String SERIALIZED_NAME_ADVANCED_PLAYBACK_POLICIES = "advanced_playback_policies";
+  @SerializedName(SERIALIZED_NAME_ADVANCED_PLAYBACK_POLICIES)
+  private java.util.List<CreatePlaybackIDRequest> advancedPlaybackPolicies = null;
 
   public static final String SERIALIZED_NAME_NEW_ASSET_SETTINGS = "new_asset_settings";
   @SerializedName(SERIALIZED_NAME_NEW_ASSET_SETTINGS)
@@ -172,6 +177,37 @@ public class CreateLiveStreamRequest {
 
   public void setPlaybackPolicy(java.util.List<PlaybackPolicy> playbackPolicy) {
     this.playbackPolicy = playbackPolicy;
+  }
+
+
+  public CreateLiveStreamRequest advancedPlaybackPolicies(java.util.List<CreatePlaybackIDRequest> advancedPlaybackPolicies) {
+    
+    this.advancedPlaybackPolicies = advancedPlaybackPolicies;
+    return this;
+  }
+
+  public CreateLiveStreamRequest addAdvancedPlaybackPoliciesItem(CreatePlaybackIDRequest advancedPlaybackPoliciesItem) {
+    if (this.advancedPlaybackPolicies == null) {
+      this.advancedPlaybackPolicies = new java.util.ArrayList<>();
+    }
+    this.advancedPlaybackPolicies.add(advancedPlaybackPoliciesItem);
+    return this;
+  }
+
+   /**
+   * An array of playback policy objects that you want applied to this asset and available through &#x60;playback_ids&#x60;. &#x60;advanced_playback_policies&#x60; must be used instead of &#x60;playback_policy&#x60; when creating a DRM playback ID. 
+   * @return advancedPlaybackPolicies
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "An array of playback policy objects that you want applied to this asset and available through `playback_ids`. `advanced_playback_policies` must be used instead of `playback_policy` when creating a DRM playback ID. ")
+
+  public java.util.List<CreatePlaybackIDRequest> getAdvancedPlaybackPolicies() {
+    return advancedPlaybackPolicies;
+  }
+
+
+  public void setAdvancedPlaybackPolicies(java.util.List<CreatePlaybackIDRequest> advancedPlaybackPolicies) {
+    this.advancedPlaybackPolicies = advancedPlaybackPolicies;
   }
 
 
@@ -535,6 +571,7 @@ public class CreateLiveStreamRequest {
     }
     CreateLiveStreamRequest createLiveStreamRequest = (CreateLiveStreamRequest) o;
     return Objects.equals(this.playbackPolicy, createLiveStreamRequest.playbackPolicy) &&
+        Objects.equals(this.advancedPlaybackPolicies, createLiveStreamRequest.advancedPlaybackPolicies) &&
         Objects.equals(this.newAssetSettings, createLiveStreamRequest.newAssetSettings) &&
         Objects.equals(this.reconnectWindow, createLiveStreamRequest.reconnectWindow) &&
         Objects.equals(this.useSlateForStandardLatency, createLiveStreamRequest.useSlateForStandardLatency) &&
@@ -553,7 +590,7 @@ public class CreateLiveStreamRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(playbackPolicy, newAssetSettings, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reducedLatency, lowLatency, latencyMode, test, simulcastTargets, maxContinuousDuration);
+    return Objects.hash(playbackPolicy, advancedPlaybackPolicies, newAssetSettings, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reducedLatency, lowLatency, latencyMode, test, simulcastTargets, maxContinuousDuration);
   }
 
   @Override
@@ -561,6 +598,7 @@ public class CreateLiveStreamRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateLiveStreamRequest {\n");
     sb.append("    playbackPolicy: ").append(toIndentedString(playbackPolicy)).append("\n");
+    sb.append("    advancedPlaybackPolicies: ").append(toIndentedString(advancedPlaybackPolicies)).append("\n");
     sb.append("    newAssetSettings: ").append(toIndentedString(newAssetSettings)).append("\n");
     sb.append("    reconnectWindow: ").append(toIndentedString(reconnectWindow)).append("\n");
     sb.append("    useSlateForStandardLatency: ").append(toIndentedString(useSlateForStandardLatency)).append("\n");
