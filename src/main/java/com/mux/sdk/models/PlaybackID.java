@@ -38,6 +38,10 @@ public class PlaybackID {
   @SerializedName(SERIALIZED_NAME_POLICY)
   private PlaybackPolicy policy;
 
+  public static final String SERIALIZED_NAME_DRM_CONFIGURATION_ID = "drm_configuration_id";
+  @SerializedName(SERIALIZED_NAME_DRM_CONFIGURATION_ID)
+  private String drmConfigurationId;
+
 
   public PlaybackID id(String id) {
     
@@ -85,6 +89,29 @@ public class PlaybackID {
   }
 
 
+  public PlaybackID drmConfigurationId(String drmConfigurationId) {
+    
+    this.drmConfigurationId = drmConfigurationId;
+    return this;
+  }
+
+   /**
+   * The DRM configuration used by this playback ID. Must only be set when &#x60;policy&#x60; is set to &#x60;drm&#x60;.
+   * @return drmConfigurationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The DRM configuration used by this playback ID. Must only be set when `policy` is set to `drm`.")
+
+  public String getDrmConfigurationId() {
+    return drmConfigurationId;
+  }
+
+
+  public void setDrmConfigurationId(String drmConfigurationId) {
+    this.drmConfigurationId = drmConfigurationId;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,12 +122,13 @@ public class PlaybackID {
     }
     PlaybackID playbackID = (PlaybackID) o;
     return Objects.equals(this.id, playbackID.id) &&
-        Objects.equals(this.policy, playbackID.policy);
+        Objects.equals(this.policy, playbackID.policy) &&
+        Objects.equals(this.drmConfigurationId, playbackID.drmConfigurationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, policy);
+    return Objects.hash(id, policy, drmConfigurationId);
   }
 
   @Override
@@ -109,6 +137,7 @@ public class PlaybackID {
     sb.append("class PlaybackID {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
+    sb.append("    drmConfigurationId: ").append(toIndentedString(drmConfigurationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

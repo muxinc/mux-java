@@ -9,5 +9,7 @@
 
 * `SIGNED` (value: `"signed"`)
 
+* `DRM` (value: `"drm"`)
+
 
 

@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.12.0</version>
+  <version>0.13.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.12.0"
+compile "com.mux:mux-sdk-java:0.13.0"
 ```
 
 ### Others
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.12.0.jar`
+* `target/mux-sdk-java-0.13.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -143,6 +143,8 @@ Class | Method | HTTP request | Description
 *DirectUploadsApi* | [**createDirectUpload**](docs/DirectUploadsApi.md#createDirectUpload) | **POST** /video/v1/uploads | Create a new direct upload URL
 *DirectUploadsApi* | [**getDirectUpload**](docs/DirectUploadsApi.md#getDirectUpload) | **GET** /video/v1/uploads/{UPLOAD_ID} | Retrieve a single direct upload&#39;s info
 *DirectUploadsApi* | [**listDirectUploads**](docs/DirectUploadsApi.md#listDirectUploads) | **GET** /video/v1/uploads | List direct uploads
+*DrmConfigurationsApi* | [**getDrmConfiguration**](docs/DrmConfigurationsApi.md#getDrmConfiguration) | **GET** /video/v1/drm-configurations/{DRM_CONFIGURATION_ID} | Retrieve a DRM Configuration
+*DrmConfigurationsApi* | [**listDrmConfigurations**](docs/DrmConfigurationsApi.md#listDrmConfigurations) | **GET** /video/v1/drm-configurations | List DRM Configurations
 *ErrorsApi* | [**listErrors**](docs/ErrorsApi.md#listErrors) | **GET** /data/v1/errors | List Errors
 *ExportsApi* | [**listExports**](docs/ExportsApi.md#listExports) | **GET** /data/v1/exports | List property video view export links
 *ExportsApi* | [**listExportsViews**](docs/ExportsApi.md#listExportsViews) | **GET** /data/v1/exports/views | List available property view exports
@@ -256,6 +258,8 @@ Class | Method | HTTP request | Description
  - [CreateTranscriptionVocabularyRequest](docs/CreateTranscriptionVocabularyRequest.md)
  - [CreateUploadRequest](docs/CreateUploadRequest.md)
  - [CreateWebInputRequest](docs/CreateWebInputRequest.md)
+ - [DRMConfiguration](docs/DRMConfiguration.md)
+ - [DRMConfigurationResponse](docs/DRMConfigurationResponse.md)
  - [DeliveryReport](docs/DeliveryReport.md)
  - [DeliveryReportDeliveredSecondsByResolution](docs/DeliveryReportDeliveredSecondsByResolution.md)
  - [DimensionValue](docs/DimensionValue.md)
@@ -300,6 +304,7 @@ Class | Method | HTTP request | Description
  - [ListAssetsResponse](docs/ListAssetsResponse.md)
  - [ListBreakdownValuesResponse](docs/ListBreakdownValuesResponse.md)
  - [ListBreakdownValuesResponseMeta](docs/ListBreakdownValuesResponseMeta.md)
+ - [ListDRMConfigurationsResponse](docs/ListDRMConfigurationsResponse.md)
  - [ListDeliveryUsageResponse](docs/ListDeliveryUsageResponse.md)
  - [ListDimensionValuesResponse](docs/ListDimensionValuesResponse.md)
  - [ListDimensionsResponse](docs/ListDimensionsResponse.md)

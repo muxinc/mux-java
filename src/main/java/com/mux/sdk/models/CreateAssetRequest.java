@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mux.sdk.models.CreatePlaybackIDRequest;
 import com.mux.sdk.models.InputSettings;
 import com.mux.sdk.models.PlaybackPolicy;
 import io.swagger.annotations.ApiModel;
@@ -38,6 +39,10 @@ public class CreateAssetRequest {
   public static final String SERIALIZED_NAME_PLAYBACK_POLICY = "playback_policy";
   @SerializedName(SERIALIZED_NAME_PLAYBACK_POLICY)
   private java.util.List<PlaybackPolicy> playbackPolicy = null;
+
+  public static final String SERIALIZED_NAME_ADVANCED_PLAYBACK_POLICIES = "advanced_playback_policies";
+  @SerializedName(SERIALIZED_NAME_ADVANCED_PLAYBACK_POLICIES)
+  private java.util.List<CreatePlaybackIDRequest> advancedPlaybackPolicies = null;
 
   public static final String SERIALIZED_NAME_PER_TITLE_ENCODE = "per_title_encode";
   @SerializedName(SERIALIZED_NAME_PER_TITLE_ENCODE)
@@ -314,11 +319,11 @@ public class CreateAssetRequest {
   }
 
    /**
-   * An array of playback policy names that you want applied to this asset and available through &#x60;playback_ids&#x60;. Options include: &#x60;\&quot;public\&quot;&#x60; (anyone with the playback URL can stream the asset). And &#x60;\&quot;signed\&quot;&#x60; (an additional access token is required to play the asset). If no playback_policy is set, the asset will have no playback IDs and will therefore not be playable. For simplicity, a single string name can be used in place of the array in the case of only one playback policy.
+   * An array of playback policy names that you want applied to this asset and available through &#x60;playback_ids&#x60;. Options include:  * &#x60;\&quot;public\&quot;&#x60; (anyone with the playback URL can stream the asset). * &#x60;\&quot;signed\&quot;&#x60; (an additional access token is required to play the asset).  If no &#x60;playback_policy&#x60; is set, the asset will have no playback IDs and will therefore not be playable. For simplicity, a single string name can be used in place of the array in the case of only one playback policy. 
    * @return playbackPolicy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An array of playback policy names that you want applied to this asset and available through `playback_ids`. Options include: `\"public\"` (anyone with the playback URL can stream the asset). And `\"signed\"` (an additional access token is required to play the asset). If no playback_policy is set, the asset will have no playback IDs and will therefore not be playable. For simplicity, a single string name can be used in place of the array in the case of only one playback policy.")
+  @ApiModelProperty(value = "An array of playback policy names that you want applied to this asset and available through `playback_ids`. Options include:  * `\"public\"` (anyone with the playback URL can stream the asset). * `\"signed\"` (an additional access token is required to play the asset).  If no `playback_policy` is set, the asset will have no playback IDs and will therefore not be playable. For simplicity, a single string name can be used in place of the array in the case of only one playback policy. ")
 
   public java.util.List<PlaybackPolicy> getPlaybackPolicy() {
     return playbackPolicy;
@@ -327,6 +332,37 @@ public class CreateAssetRequest {
 
   public void setPlaybackPolicy(java.util.List<PlaybackPolicy> playbackPolicy) {
     this.playbackPolicy = playbackPolicy;
+  }
+
+
+  public CreateAssetRequest advancedPlaybackPolicies(java.util.List<CreatePlaybackIDRequest> advancedPlaybackPolicies) {
+    
+    this.advancedPlaybackPolicies = advancedPlaybackPolicies;
+    return this;
+  }
+
+  public CreateAssetRequest addAdvancedPlaybackPoliciesItem(CreatePlaybackIDRequest advancedPlaybackPoliciesItem) {
+    if (this.advancedPlaybackPolicies == null) {
+      this.advancedPlaybackPolicies = new java.util.ArrayList<>();
+    }
+    this.advancedPlaybackPolicies.add(advancedPlaybackPoliciesItem);
+    return this;
+  }
+
+   /**
+   * An array of playback policy objects that you want applied to this asset and available through &#x60;playback_ids&#x60;. &#x60;advanced_playback_policies&#x60; must be used instead of &#x60;playback_policy&#x60; when creating a DRM playback ID. 
+   * @return advancedPlaybackPolicies
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "An array of playback policy objects that you want applied to this asset and available through `playback_ids`. `advanced_playback_policies` must be used instead of `playback_policy` when creating a DRM playback ID. ")
+
+  public java.util.List<CreatePlaybackIDRequest> getAdvancedPlaybackPolicies() {
+    return advancedPlaybackPolicies;
+  }
+
+
+  public void setAdvancedPlaybackPolicies(java.util.List<CreatePlaybackIDRequest> advancedPlaybackPolicies) {
+    this.advancedPlaybackPolicies = advancedPlaybackPolicies;
   }
 
 
@@ -525,6 +561,7 @@ public class CreateAssetRequest {
     CreateAssetRequest createAssetRequest = (CreateAssetRequest) o;
     return Objects.equals(this.input, createAssetRequest.input) &&
         Objects.equals(this.playbackPolicy, createAssetRequest.playbackPolicy) &&
+        Objects.equals(this.advancedPlaybackPolicies, createAssetRequest.advancedPlaybackPolicies) &&
         Objects.equals(this.perTitleEncode, createAssetRequest.perTitleEncode) &&
         Objects.equals(this.passthrough, createAssetRequest.passthrough) &&
         Objects.equals(this.mp4Support, createAssetRequest.mp4Support) &&
@@ -537,7 +574,7 @@ public class CreateAssetRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(input, playbackPolicy, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test, maxResolutionTier, encodingTier);
+    return Objects.hash(input, playbackPolicy, advancedPlaybackPolicies, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test, maxResolutionTier, encodingTier);
   }
 
   @Override
@@ -546,6 +583,7 @@ public class CreateAssetRequest {
     sb.append("class CreateAssetRequest {\n");
     sb.append("    input: ").append(toIndentedString(input)).append("\n");
     sb.append("    playbackPolicy: ").append(toIndentedString(playbackPolicy)).append("\n");
+    sb.append("    advancedPlaybackPolicies: ").append(toIndentedString(advancedPlaybackPolicies)).append("\n");
     sb.append("    perTitleEncode: ").append(toIndentedString(perTitleEncode)).append("\n");
     sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
     sb.append("    mp4Support: ").append(toIndentedString(mp4Support)).append("\n");
