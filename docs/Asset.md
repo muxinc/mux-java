@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **maxStoredResolution** | [**MaxStoredResolutionEnum**](#MaxStoredResolutionEnum) | This field is deprecated. Please use &#x60;resolution_tier&#x60; instead. The maximum resolution that has been stored for the asset. The asset may be delivered at lower resolutions depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored. |  [optional]
 **resolutionTier** | [**ResolutionTierEnum**](#ResolutionTierEnum) | The resolution tier that the asset was ingested at, affecting billing for ingest &amp; storage. This field also represents the highest resolution tier that the content can be delivered at, however the actual resolution may be lower depending on the device, bandwidth, and exact resolution of the uploaded asset. |  [optional]
 **maxResolutionTier** | [**MaxResolutionTierEnum**](#MaxResolutionTierEnum) | Max resolution tier can be used to control the maximum &#x60;resolution_tier&#x60; your asset is encoded, stored, and streamed at. If not set, this defaults to &#x60;1080p&#x60;. |  [optional]
-**encodingTier** | [**EncodingTierEnum**](#EncodingTierEnum) | The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/use-encoding-tiers) |  [optional]
+**encodingTier** | [**EncodingTierEnum**](#EncodingTierEnum) | This field is deprecated. Please use &#x60;video_quality&#x60; instead. The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers) |  [optional]
+**videoQuality** | [**VideoQualityEnum**](#VideoQualityEnum) | The video quality controls the cost, quality, and available platform features for the asset. By default the &#x60;plus&#x60; video quality is used. This field replaces the deprecated &#x60;encoding_tier&#x60; value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers) |  [optional]
 **maxStoredFrameRate** | **Double** | The maximum frame rate that has been stored for the asset. The asset may be delivered at lower frame rates depending on the device and bandwidth, however it cannot be delivered at a higher value than is stored. This field may return -1 if the frame rate of the input cannot be reliably determined. |  [optional]
 **aspectRatio** | **String** | The aspect ratio of the asset in the form of &#x60;width:height&#x60;, for example &#x60;16:9&#x60;. |  [optional]
 **playbackIds** | [**java.util.List&lt;PlaybackID&gt;**](PlaybackID.md) | An array of Playback ID objects. Use these to create HLS playback URLs. See [Play your videos](https://docs.mux.com/guides/play-your-videos) for more details. |  [optional]
@@ -87,6 +88,15 @@ Name | Value
 ---- | -----
 SMART | &quot;smart&quot;
 BASELINE | &quot;baseline&quot;
+
+
+
+## Enum: VideoQualityEnum
+
+Name | Value
+---- | -----
+BASIC | &quot;basic&quot;
+PLUS | &quot;plus&quot;
 
 
 

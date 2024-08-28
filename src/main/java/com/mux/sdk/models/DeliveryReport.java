@@ -165,7 +165,7 @@ public class DeliveryReport {
   private AssetResolutionTierEnum assetResolutionTier;
 
   /**
-   * The encoding tier that the asset was ingested at. [See the encoding tiers guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * This field is deprecated. Please use &#x60;asset_video_quality&#x60; instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
    */
   @JsonAdapter(AssetEncodingTierEnum.Adapter.class)
   public enum AssetEncodingTierEnum {
@@ -214,6 +214,57 @@ public class DeliveryReport {
   public static final String SERIALIZED_NAME_ASSET_ENCODING_TIER = "asset_encoding_tier";
   @SerializedName(SERIALIZED_NAME_ASSET_ENCODING_TIER)
   private AssetEncodingTierEnum assetEncodingTier;
+
+  /**
+   * The video quality that the asset was ingested at. This field replaces &#x60;asset_encoding_tier&#x60;. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   */
+  @JsonAdapter(AssetVideoQualityEnum.Adapter.class)
+  public enum AssetVideoQualityEnum {
+    BASIC("basic"),
+    
+    PLUS("plus");
+
+    private String value;
+
+    AssetVideoQualityEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AssetVideoQualityEnum fromValue(String value) {
+      for (AssetVideoQualityEnum b : AssetVideoQualityEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AssetVideoQualityEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AssetVideoQualityEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AssetVideoQualityEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AssetVideoQualityEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ASSET_VIDEO_QUALITY = "asset_video_quality";
+  @SerializedName(SERIALIZED_NAME_ASSET_VIDEO_QUALITY)
+  private AssetVideoQualityEnum assetVideoQuality;
 
   public static final String SERIALIZED_NAME_DELIVERED_SECONDS = "delivered_seconds";
   @SerializedName(SERIALIZED_NAME_DELIVERED_SECONDS)
@@ -415,11 +466,11 @@ public class DeliveryReport {
   }
 
    /**
-   * The encoding tier that the asset was ingested at. [See the encoding tiers guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * This field is deprecated. Please use &#x60;asset_video_quality&#x60; instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
    * @return assetEncodingTier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The encoding tier that the asset was ingested at. [See the encoding tiers guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
+  @ApiModelProperty(value = "This field is deprecated. Please use `asset_video_quality` instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
 
   public AssetEncodingTierEnum getAssetEncodingTier() {
     return assetEncodingTier;
@@ -428,6 +479,29 @@ public class DeliveryReport {
 
   public void setAssetEncodingTier(AssetEncodingTierEnum assetEncodingTier) {
     this.assetEncodingTier = assetEncodingTier;
+  }
+
+
+  public DeliveryReport assetVideoQuality(AssetVideoQualityEnum assetVideoQuality) {
+    
+    this.assetVideoQuality = assetVideoQuality;
+    return this;
+  }
+
+   /**
+   * The video quality that the asset was ingested at. This field replaces &#x60;asset_encoding_tier&#x60;. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * @return assetVideoQuality
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The video quality that the asset was ingested at. This field replaces `asset_encoding_tier`. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
+
+  public AssetVideoQualityEnum getAssetVideoQuality() {
+    return assetVideoQuality;
+  }
+
+
+  public void setAssetVideoQuality(AssetVideoQualityEnum assetVideoQuality) {
+    this.assetVideoQuality = assetVideoQuality;
   }
 
 
@@ -495,13 +569,14 @@ public class DeliveryReport {
         Objects.equals(this.assetDuration, deliveryReport.assetDuration) &&
         Objects.equals(this.assetResolutionTier, deliveryReport.assetResolutionTier) &&
         Objects.equals(this.assetEncodingTier, deliveryReport.assetEncodingTier) &&
+        Objects.equals(this.assetVideoQuality, deliveryReport.assetVideoQuality) &&
         Objects.equals(this.deliveredSeconds, deliveryReport.deliveredSeconds) &&
         Objects.equals(this.deliveredSecondsByResolution, deliveryReport.deliveredSecondsByResolution);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(liveStreamId, assetId, passthrough, createdAt, deletedAt, assetState, assetDuration, assetResolutionTier, assetEncodingTier, deliveredSeconds, deliveredSecondsByResolution);
+    return Objects.hash(liveStreamId, assetId, passthrough, createdAt, deletedAt, assetState, assetDuration, assetResolutionTier, assetEncodingTier, assetVideoQuality, deliveredSeconds, deliveredSecondsByResolution);
   }
 
   @Override
@@ -517,6 +592,7 @@ public class DeliveryReport {
     sb.append("    assetDuration: ").append(toIndentedString(assetDuration)).append("\n");
     sb.append("    assetResolutionTier: ").append(toIndentedString(assetResolutionTier)).append("\n");
     sb.append("    assetEncodingTier: ").append(toIndentedString(assetEncodingTier)).append("\n");
+    sb.append("    assetVideoQuality: ").append(toIndentedString(assetVideoQuality)).append("\n");
     sb.append("    deliveredSeconds: ").append(toIndentedString(deliveredSeconds)).append("\n");
     sb.append("    deliveredSecondsByResolution: ").append(toIndentedString(deliveredSecondsByResolution)).append("\n");
     sb.append("}");

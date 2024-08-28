@@ -222,7 +222,7 @@ public class CreateAssetRequest {
   private MaxResolutionTierEnum maxResolutionTier;
 
   /**
-   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * This field is deprecated. Please use &#x60;video_quality&#x60; instead. The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
    */
   @JsonAdapter(EncodingTierEnum.Adapter.class)
   public enum EncodingTierEnum {
@@ -271,6 +271,57 @@ public class CreateAssetRequest {
   public static final String SERIALIZED_NAME_ENCODING_TIER = "encoding_tier";
   @SerializedName(SERIALIZED_NAME_ENCODING_TIER)
   private EncodingTierEnum encodingTier;
+
+  /**
+   * The video quality controls the cost, quality, and available platform features for the asset. By default the &#x60;plus&#x60; video quality is used. This field replaces the deprecated &#x60;encoding_tier&#x60; value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   */
+  @JsonAdapter(VideoQualityEnum.Adapter.class)
+  public enum VideoQualityEnum {
+    BASIC("basic"),
+    
+    PLUS("plus");
+
+    private String value;
+
+    VideoQualityEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static VideoQualityEnum fromValue(String value) {
+      for (VideoQualityEnum b : VideoQualityEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<VideoQualityEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final VideoQualityEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public VideoQualityEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return VideoQualityEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VIDEO_QUALITY = "video_quality";
+  @SerializedName(SERIALIZED_NAME_VIDEO_QUALITY)
+  private VideoQualityEnum videoQuality;
 
 
   public CreateAssetRequest input(java.util.List<InputSettings> input) {
@@ -534,11 +585,11 @@ public class CreateAssetRequest {
   }
 
    /**
-   * The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * This field is deprecated. Please use &#x60;video_quality&#x60; instead. The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
    * @return encodingTier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The encoding tier informs the cost, quality, and available platform features for the asset. By default the `smart` encoding tier is used. [See the guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
+  @ApiModelProperty(value = "This field is deprecated. Please use `video_quality` instead. The encoding tier informs the cost, quality, and available platform features for the asset. By default the `smart` encoding tier is used. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
 
   public EncodingTierEnum getEncodingTier() {
     return encodingTier;
@@ -547,6 +598,29 @@ public class CreateAssetRequest {
 
   public void setEncodingTier(EncodingTierEnum encodingTier) {
     this.encodingTier = encodingTier;
+  }
+
+
+  public CreateAssetRequest videoQuality(VideoQualityEnum videoQuality) {
+    
+    this.videoQuality = videoQuality;
+    return this;
+  }
+
+   /**
+   * The video quality controls the cost, quality, and available platform features for the asset. By default the &#x60;plus&#x60; video quality is used. This field replaces the deprecated &#x60;encoding_tier&#x60; value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * @return videoQuality
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The video quality controls the cost, quality, and available platform features for the asset. By default the `plus` video quality is used. This field replaces the deprecated `encoding_tier` value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
+
+  public VideoQualityEnum getVideoQuality() {
+    return videoQuality;
+  }
+
+
+  public void setVideoQuality(VideoQualityEnum videoQuality) {
+    this.videoQuality = videoQuality;
   }
 
 
@@ -569,12 +643,13 @@ public class CreateAssetRequest {
         Objects.equals(this.masterAccess, createAssetRequest.masterAccess) &&
         Objects.equals(this.test, createAssetRequest.test) &&
         Objects.equals(this.maxResolutionTier, createAssetRequest.maxResolutionTier) &&
-        Objects.equals(this.encodingTier, createAssetRequest.encodingTier);
+        Objects.equals(this.encodingTier, createAssetRequest.encodingTier) &&
+        Objects.equals(this.videoQuality, createAssetRequest.videoQuality);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(input, playbackPolicy, advancedPlaybackPolicies, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test, maxResolutionTier, encodingTier);
+    return Objects.hash(input, playbackPolicy, advancedPlaybackPolicies, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test, maxResolutionTier, encodingTier, videoQuality);
   }
 
   @Override
@@ -592,6 +667,7 @@ public class CreateAssetRequest {
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("    maxResolutionTier: ").append(toIndentedString(maxResolutionTier)).append("\n");
     sb.append("    encodingTier: ").append(toIndentedString(encodingTier)).append("\n");
+    sb.append("    videoQuality: ").append(toIndentedString(videoQuality)).append("\n");
     sb.append("}");
     return sb.toString();
   }
