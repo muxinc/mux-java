@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **assetState** | [**AssetStateEnum**](#AssetStateEnum) | The state of the asset. |  [optional]
 **assetDuration** | **Double** | The duration of the asset in seconds. |  [optional]
 **assetResolutionTier** | [**AssetResolutionTierEnum**](#AssetResolutionTierEnum) | The resolution tier that the asset was ingested at, affecting billing for ingest &amp; storage |  [optional]
-**assetEncodingTier** | [**AssetEncodingTierEnum**](#AssetEncodingTierEnum) | This field is deprecated. Please use &#x60;asset_video_quality&#x60; instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers) |  [optional]
-**assetVideoQuality** | [**AssetVideoQualityEnum**](#AssetVideoQualityEnum) | The video quality that the asset was ingested at. This field replaces &#x60;asset_encoding_tier&#x60;. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers) |  [optional]
+**assetEncodingTier** | [**AssetEncodingTierEnum**](#AssetEncodingTierEnum) | This field is deprecated. Please use &#x60;asset_video_quality&#x60; instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels) |  [optional]
+**assetVideoQuality** | [**AssetVideoQualityEnum**](#AssetVideoQualityEnum) | The video quality that the asset was ingested at. This field replaces &#x60;asset_encoding_tier&#x60;. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels) |  [optional]
 **deliveredSeconds** | **Double** | Total number of delivered seconds during this time window. |  [optional]
 **deliveredSecondsByResolution** | [**DeliveryReportDeliveredSecondsByResolution**](DeliveryReportDeliveredSecondsByResolution.md) |  |  [optional]
 
@@ -49,6 +49,7 @@ Name | Value
 ---- | -----
 SMART | &quot;smart&quot;
 BASELINE | &quot;baseline&quot;
+PREMIUM | &quot;premium&quot;
 
 
 
@@ -58,6 +59,7 @@ Name | Value
 ---- | -----
 BASIC | &quot;basic&quot;
 PLUS | &quot;plus&quot;
+PREMIUM | &quot;premium&quot;
 
 
 

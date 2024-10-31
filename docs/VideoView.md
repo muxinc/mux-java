@@ -169,6 +169,7 @@ Name | Type | Description | Notes
 **adPrerollStartupTime** | **Integer** |  |  [optional]
 **adWatchTime** | **Integer** |  |  [optional]
 **viewContentWatchTime** | **Integer** |  |  [optional]
+**viewDropped** | **Boolean** |  |  [optional]
 
 
 

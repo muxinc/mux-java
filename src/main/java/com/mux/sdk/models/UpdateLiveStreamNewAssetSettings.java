@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Updates the new asset settings to use to generate a new asset for this live stream. Only the &#x60;mp4_support&#x60; setting may be updated. 
+ * Updates the new asset settings to use to generate a new asset for this live stream. Only the &#x60;mp4_support&#x60; and &#x60;master_access&#x60; settings may be updated. 
  */
-@ApiModel(description = "Updates the new asset settings to use to generate a new asset for this live stream. Only the `mp4_support` setting may be updated. ")
+@ApiModel(description = "Updates the new asset settings to use to generate a new asset for this live stream. Only the `mp4_support` and `master_access` settings may be updated. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateLiveStreamNewAssetSettings {
   /**
@@ -87,6 +87,57 @@ public class UpdateLiveStreamNewAssetSettings {
   @SerializedName(SERIALIZED_NAME_MP4_SUPPORT)
   private Mp4SupportEnum mp4Support;
 
+  /**
+   * Add or remove access to the master version of the video.
+   */
+  @JsonAdapter(MasterAccessEnum.Adapter.class)
+  public enum MasterAccessEnum {
+    TEMPORARY("temporary"),
+    
+    NONE("none");
+
+    private String value;
+
+    MasterAccessEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MasterAccessEnum fromValue(String value) {
+      for (MasterAccessEnum b : MasterAccessEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MasterAccessEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MasterAccessEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MasterAccessEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MasterAccessEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MASTER_ACCESS = "master_access";
+  @SerializedName(SERIALIZED_NAME_MASTER_ACCESS)
+  private MasterAccessEnum masterAccess;
+
 
   public UpdateLiveStreamNewAssetSettings mp4Support(Mp4SupportEnum mp4Support) {
     
@@ -111,6 +162,29 @@ public class UpdateLiveStreamNewAssetSettings {
   }
 
 
+  public UpdateLiveStreamNewAssetSettings masterAccess(MasterAccessEnum masterAccess) {
+    
+    this.masterAccess = masterAccess;
+    return this;
+  }
+
+   /**
+   * Add or remove access to the master version of the video.
+   * @return masterAccess
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Add or remove access to the master version of the video.")
+
+  public MasterAccessEnum getMasterAccess() {
+    return masterAccess;
+  }
+
+
+  public void setMasterAccess(MasterAccessEnum masterAccess) {
+    this.masterAccess = masterAccess;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -120,12 +194,13 @@ public class UpdateLiveStreamNewAssetSettings {
       return false;
     }
     UpdateLiveStreamNewAssetSettings updateLiveStreamNewAssetSettings = (UpdateLiveStreamNewAssetSettings) o;
-    return Objects.equals(this.mp4Support, updateLiveStreamNewAssetSettings.mp4Support);
+    return Objects.equals(this.mp4Support, updateLiveStreamNewAssetSettings.mp4Support) &&
+        Objects.equals(this.masterAccess, updateLiveStreamNewAssetSettings.masterAccess);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mp4Support);
+    return Objects.hash(mp4Support, masterAccess);
   }
 
   @Override
@@ -133,6 +208,7 @@ public class UpdateLiveStreamNewAssetSettings {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateLiveStreamNewAssetSettings {\n");
     sb.append("    mp4Support: ").append(toIndentedString(mp4Support)).append("\n");
+    sb.append("    masterAccess: ").append(toIndentedString(masterAccess)).append("\n");
     sb.append("}");
     return sb.toString();
   }

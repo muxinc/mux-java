@@ -165,13 +165,15 @@ public class DeliveryReport {
   private AssetResolutionTierEnum assetResolutionTier;
 
   /**
-   * This field is deprecated. Please use &#x60;asset_video_quality&#x60; instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * This field is deprecated. Please use &#x60;asset_video_quality&#x60; instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
    */
   @JsonAdapter(AssetEncodingTierEnum.Adapter.class)
   public enum AssetEncodingTierEnum {
     SMART("smart"),
     
-    BASELINE("baseline");
+    BASELINE("baseline"),
+    
+    PREMIUM("premium");
 
     private String value;
 
@@ -216,13 +218,15 @@ public class DeliveryReport {
   private AssetEncodingTierEnum assetEncodingTier;
 
   /**
-   * The video quality that the asset was ingested at. This field replaces &#x60;asset_encoding_tier&#x60;. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * The video quality that the asset was ingested at. This field replaces &#x60;asset_encoding_tier&#x60;. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
    */
   @JsonAdapter(AssetVideoQualityEnum.Adapter.class)
   public enum AssetVideoQualityEnum {
     BASIC("basic"),
     
-    PLUS("plus");
+    PLUS("plus"),
+    
+    PREMIUM("premium");
 
     private String value;
 
@@ -466,11 +470,11 @@ public class DeliveryReport {
   }
 
    /**
-   * This field is deprecated. Please use &#x60;asset_video_quality&#x60; instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * This field is deprecated. Please use &#x60;asset_video_quality&#x60; instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
    * @return assetEncodingTier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This field is deprecated. Please use `asset_video_quality` instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
+  @ApiModelProperty(value = "This field is deprecated. Please use `asset_video_quality` instead. The encoding tier that the asset was ingested at. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)")
 
   public AssetEncodingTierEnum getAssetEncodingTier() {
     return assetEncodingTier;
@@ -489,11 +493,11 @@ public class DeliveryReport {
   }
 
    /**
-   * The video quality that the asset was ingested at. This field replaces &#x60;asset_encoding_tier&#x60;. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * The video quality that the asset was ingested at. This field replaces &#x60;asset_encoding_tier&#x60;. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
    * @return assetVideoQuality
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The video quality that the asset was ingested at. This field replaces `asset_encoding_tier`. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
+  @ApiModelProperty(value = "The video quality that the asset was ingested at. This field replaces `asset_encoding_tier`. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)")
 
   public AssetVideoQualityEnum getAssetVideoQuality() {
     return assetVideoQuality;
