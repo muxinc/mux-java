@@ -222,13 +222,15 @@ public class CreateAssetRequest {
   private MaxResolutionTierEnum maxResolutionTier;
 
   /**
-   * This field is deprecated. Please use &#x60;video_quality&#x60; instead. The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * This field is deprecated. Please use &#x60;video_quality&#x60; instead. The encoding tier informs the cost, quality, and available platform features for the asset. The default encoding tier for an account can be set in the Mux Dashboard. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
    */
   @JsonAdapter(EncodingTierEnum.Adapter.class)
   public enum EncodingTierEnum {
     SMART("smart"),
     
-    BASELINE("baseline");
+    BASELINE("baseline"),
+    
+    PREMIUM("premium");
 
     private String value;
 
@@ -273,13 +275,15 @@ public class CreateAssetRequest {
   private EncodingTierEnum encodingTier;
 
   /**
-   * The video quality controls the cost, quality, and available platform features for the asset. By default the &#x60;plus&#x60; video quality is used. This field replaces the deprecated &#x60;encoding_tier&#x60; value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * The video quality controls the cost, quality, and available platform features for the asset. The default video quality for an account can be set in the Mux Dashboard. This field replaces the deprecated &#x60;encoding_tier&#x60; value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
    */
   @JsonAdapter(VideoQualityEnum.Adapter.class)
   public enum VideoQualityEnum {
     BASIC("basic"),
     
-    PLUS("plus");
+    PLUS("plus"),
+    
+    PREMIUM("premium");
 
     private String value;
 
@@ -585,11 +589,11 @@ public class CreateAssetRequest {
   }
 
    /**
-   * This field is deprecated. Please use &#x60;video_quality&#x60; instead. The encoding tier informs the cost, quality, and available platform features for the asset. By default the &#x60;smart&#x60; encoding tier is used. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * This field is deprecated. Please use &#x60;video_quality&#x60; instead. The encoding tier informs the cost, quality, and available platform features for the asset. The default encoding tier for an account can be set in the Mux Dashboard. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
    * @return encodingTier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This field is deprecated. Please use `video_quality` instead. The encoding tier informs the cost, quality, and available platform features for the asset. By default the `smart` encoding tier is used. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
+  @ApiModelProperty(value = "This field is deprecated. Please use `video_quality` instead. The encoding tier informs the cost, quality, and available platform features for the asset. The default encoding tier for an account can be set in the Mux Dashboard. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)")
 
   public EncodingTierEnum getEncodingTier() {
     return encodingTier;
@@ -608,11 +612,11 @@ public class CreateAssetRequest {
   }
 
    /**
-   * The video quality controls the cost, quality, and available platform features for the asset. By default the &#x60;plus&#x60; video quality is used. This field replaces the deprecated &#x60;encoding_tier&#x60; value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)
+   * The video quality controls the cost, quality, and available platform features for the asset. The default video quality for an account can be set in the Mux Dashboard. This field replaces the deprecated &#x60;encoding_tier&#x60; value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
    * @return videoQuality
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The video quality controls the cost, quality, and available platform features for the asset. By default the `plus` video quality is used. This field replaces the deprecated `encoding_tier` value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-encoding-tiers)")
+  @ApiModelProperty(value = "The video quality controls the cost, quality, and available platform features for the asset. The default video quality for an account can be set in the Mux Dashboard. This field replaces the deprecated `encoding_tier` value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)")
 
   public VideoQualityEnum getVideoQuality() {
     return videoQuality;
