@@ -167,8 +167,6 @@ Name | Type | Description | Notes
 **adPlaybackFailureErrorTypeId** | **Integer** |  |  [optional]
 **viewContentStartupTime** | **Integer** |  |  [optional]
 **adPrerollStartupTime** | **Integer** |  |  [optional]
-**adWatchTime** | **Integer** |  |  [optional]
-**viewContentWatchTime** | **Integer** |  |  [optional]
 **viewDropped** | **Boolean** |  |  [optional]
 
 
