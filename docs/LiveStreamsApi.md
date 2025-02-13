@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deleteLiveStream**](LiveStreamsApi.md#deleteLiveStream) | **DELETE** /video/v1/live-streams/{LIVE_STREAM_ID} | Delete a live stream
 [**deleteLiveStreamPlaybackId**](LiveStreamsApi.md#deleteLiveStreamPlaybackId) | **DELETE** /video/v1/live-streams/{LIVE_STREAM_ID}/playback-ids/{PLAYBACK_ID} | Delete a live stream playback ID
 [**deleteLiveStreamSimulcastTarget**](LiveStreamsApi.md#deleteLiveStreamSimulcastTarget) | **DELETE** /video/v1/live-streams/{LIVE_STREAM_ID}/simulcast-targets/{SIMULCAST_TARGET_ID} | Delete a live stream simulcast target
+[**deleteLiveStreamStaticRenditions**](LiveStreamsApi.md#deleteLiveStreamStaticRenditions) | **DELETE** /video/v1/live-streams/{LIVE_STREAM_ID}/new-asset-settings/static-renditions | Delete a live stream&#39;s static renditions setting for new assets
 [**disableLiveStream**](LiveStreamsApi.md#disableLiveStream) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/disable | Disable a live stream
 [**enableLiveStream**](LiveStreamsApi.md#enableLiveStream) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/enable | Enable a live stream
 [**getLiveStream**](LiveStreamsApi.md#getLiveStream) | **GET** /video/v1/live-streams/{LIVE_STREAM_ID} | Retrieve a live stream
@@ -21,6 +22,7 @@ Method | HTTP request | Description
 [**updateLiveStream**](LiveStreamsApi.md#updateLiveStream) | **PATCH** /video/v1/live-streams/{LIVE_STREAM_ID} | Update a live stream
 [**updateLiveStreamEmbeddedSubtitles**](LiveStreamsApi.md#updateLiveStreamEmbeddedSubtitles) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/embedded-subtitles | Update a live stream&#39;s embedded subtitles
 [**updateLiveStreamGeneratedSubtitles**](LiveStreamsApi.md#updateLiveStreamGeneratedSubtitles) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/generated-subtitles | Update a live stream&#39;s generated subtitles
+[**updateLiveStreamStaticRenditions**](LiveStreamsApi.md#updateLiveStreamStaticRenditions) | **PUT** /video/v1/live-streams/{LIVE_STREAM_ID}/new-asset-settings/static-renditions | Update live stream static renditions for new assets
 
 
 <a name="createLiveStream"></a>
@@ -423,6 +425,74 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **LIVE_STREAM_ID** | **String**| The live stream ID |
  **SIMULCAST_TARGET_ID** | **String**| The ID of the simulcast target. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
+<a name="deleteLiveStreamStaticRenditions"></a>
+# **deleteLiveStreamStaticRenditions**
+> deleteLiveStreamStaticRenditions(LIVE_STREAM_ID).execute();
+
+Delete a live stream&#39;s static renditions setting for new assets
+
+Deletes a live stream&#39;s static renditions settings for new assets. Further assets made via this live stream will not create static renditions unless re-added.
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.LiveStreamsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
+    String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
+    try {
+      apiInstance.deleteLiveStreamStaticRenditions(LIVE_STREAM_ID)
+            .execute();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#deleteLiveStreamStaticRenditions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **LIVE_STREAM_ID** | **String**| The live stream ID |
 
 ### Return type
 
@@ -1202,6 +1272,77 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **LIVE_STREAM_ID** | **String**| The live stream ID |
  **updateLiveStreamGeneratedSubtitlesRequest** | [**UpdateLiveStreamGeneratedSubtitlesRequest**](UpdateLiveStreamGeneratedSubtitlesRequest.md)|  |
+
+### Return type
+
+[**LiveStreamResponse**](LiveStreamResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="updateLiveStreamStaticRenditions"></a>
+# **updateLiveStreamStaticRenditions**
+> LiveStreamResponse updateLiveStreamStaticRenditions(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest).execute();
+
+Update live stream static renditions for new assets
+
+Updates a live stream&#39;s static renditions settings for new assets. Further assets made via this live stream will create static renditions per the settings provided. You must provide all static renditions desired.
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.LiveStreamsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
+    String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
+    UpdateLiveStreamNewAssetSettingsStaticRenditionRequest updateLiveStreamNewAssetSettingsStaticRenditionRequest = {"static_renditions":[{"resolution":"audio-only"},{"resolution":"1080p"}]}; // UpdateLiveStreamNewAssetSettingsStaticRenditionRequest | 
+    try {
+      LiveStreamResponse result = apiInstance.updateLiveStreamStaticRenditions(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#updateLiveStreamStaticRenditions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **LIVE_STREAM_ID** | **String**| The live stream ID |
+ **updateLiveStreamNewAssetSettingsStaticRenditionRequest** | [**UpdateLiveStreamNewAssetSettingsStaticRenditionRequest**](UpdateLiveStreamNewAssetSettingsStaticRenditionRequest.md)|  |
 
 ### Return type
 

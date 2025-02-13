@@ -7,8 +7,8 @@ An object containing the current status of any static renditions (mp4s). The obj
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**StatusEnum**](#StatusEnum) | Indicates the status of downloadable MP4 versions of this asset. |  [optional]
-**files** | [**java.util.List&lt;AssetStaticRenditionsFiles&gt;**](AssetStaticRenditionsFiles.md) | Array of file objects. |  [optional]
+**status** | [**StatusEnum**](#StatusEnum) | Indicates the status of downloadable MP4 version of this asset. This field is only valid when the &#x60;mp4_support&#x60; option is enabled |  [optional]
+**files** | [**java.util.List&lt;StaticRendition&gt;**](StaticRendition.md) | Array of file objects. |  [optional]
 
 
 

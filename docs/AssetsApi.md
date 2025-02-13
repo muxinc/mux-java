@@ -6,9 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAsset**](AssetsApi.md#createAsset) | **POST** /video/v1/assets | Create an asset
 [**createAssetPlaybackId**](AssetsApi.md#createAssetPlaybackId) | **POST** /video/v1/assets/{ASSET_ID}/playback-ids | Create a playback ID
+[**createAssetStaticRendition**](AssetsApi.md#createAssetStaticRendition) | **POST** /video/v1/assets/{ASSET_ID}/static-renditions | Create a static rendition for an asset
 [**createAssetTrack**](AssetsApi.md#createAssetTrack) | **POST** /video/v1/assets/{ASSET_ID}/tracks | Create an asset track
 [**deleteAsset**](AssetsApi.md#deleteAsset) | **DELETE** /video/v1/assets/{ASSET_ID} | Delete an asset
 [**deleteAssetPlaybackId**](AssetsApi.md#deleteAssetPlaybackId) | **DELETE** /video/v1/assets/{ASSET_ID}/playback-ids/{PLAYBACK_ID} | Delete a playback ID
+[**deleteAssetStaticRendition**](AssetsApi.md#deleteAssetStaticRendition) | **DELETE** /video/v1/assets/{ASSET_ID}/static-renditions/{STATIC_RENDITION_ID} | Delete a single static rendition for an asset
 [**deleteAssetTrack**](AssetsApi.md#deleteAssetTrack) | **DELETE** /video/v1/assets/{ASSET_ID}/tracks/{TRACK_ID} | Delete an asset track
 [**generateAssetTrackSubtitles**](AssetsApi.md#generateAssetTrackSubtitles) | **POST** /video/v1/assets/{ASSET_ID}/tracks/{TRACK_ID}/generate-subtitles | Generate track subtitles
 [**getAsset**](AssetsApi.md#getAsset) | **GET** /video/v1/assets/{ASSET_ID} | Retrieve an asset
@@ -145,6 +147,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreatePlaybackIDResponse**](CreatePlaybackIDResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
+<a name="createAssetStaticRendition"></a>
+# **createAssetStaticRendition**
+> CreateStaticRenditionResponse createAssetStaticRendition(ASSET_ID, createStaticRenditionRequest).execute();
+
+Create a static rendition for an asset
+
+Creates a static rendition (i.e. MP4s) for an asset
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.AssetsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    AssetsApi apiInstance = new AssetsApi(defaultClient);
+    String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
+    CreateStaticRenditionRequest createStaticRenditionRequest = {"resolution":"highest"}; // CreateStaticRenditionRequest | 
+    try {
+      CreateStaticRenditionResponse result = apiInstance.createAssetStaticRendition(ASSET_ID, createStaticRenditionRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AssetsApi#createAssetStaticRendition");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ASSET_ID** | **String**| The asset ID. |
+ **createStaticRenditionRequest** | [**CreateStaticRenditionRequest**](CreateStaticRenditionRequest.md)|  |
+
+### Return type
+
+[**CreateStaticRenditionResponse**](CreateStaticRenditionResponse.md)
 
 ### Authorization
 
@@ -350,6 +423,76 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ASSET_ID** | **String**| The asset ID. |
  **PLAYBACK_ID** | **String**| The live stream&#39;s playback ID. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[accessToken](../README.md#accessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
+<a name="deleteAssetStaticRendition"></a>
+# **deleteAssetStaticRendition**
+> deleteAssetStaticRendition(ASSET_ID, STATIC_RENDITION_ID).execute();
+
+Delete a single static rendition for an asset
+
+Deletes a single static rendition for an asset
+
+### Example
+```java
+// Import classes:
+import com.mux.ApiClient;
+import com.mux.ApiException;
+import com.mux.Configuration;
+import com.mux.auth.*;
+import com.mux.models.*;
+import com.mux.sdk.AssetsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.mux.com");
+    
+    // Configure HTTP basic authorization: accessToken
+    HttpBasicAuth accessToken = (HttpBasicAuth) defaultClient.getAuthentication("accessToken");
+    accessToken.setUsername("YOUR USERNAME");
+    accessToken.setPassword("YOUR PASSWORD");
+
+    AssetsApi apiInstance = new AssetsApi(defaultClient);
+    String ASSET_ID = "ASSET_ID_example"; // String | The asset ID.
+    String STATIC_RENDITION_ID = "STATIC_RENDITION_ID_example"; // String | The static rendition ID.
+    try {
+      apiInstance.deleteAssetStaticRendition(ASSET_ID, STATIC_RENDITION_ID)
+            .execute();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AssetsApi#deleteAssetStaticRendition");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ASSET_ID** | **String**| The asset ID. |
+ **STATIC_RENDITION_ID** | **String**| The static rendition ID. |
 
 ### Return type
 

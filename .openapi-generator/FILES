@@ -10,7 +10,6 @@ docs/AssetNonStandardInputReasons.md
 docs/AssetRecordingTimes.md
 docs/AssetResponse.md
 docs/AssetStaticRenditions.md
-docs/AssetStaticRenditionsFiles.md
 docs/AssetsApi.md
 docs/BreakdownValue.md
 docs/Broadcast.md
@@ -26,6 +25,8 @@ docs/CreatePlaybackIDResponse.md
 docs/CreatePlaybackRestrictionRequest.md
 docs/CreateSimulcastTargetRequest.md
 docs/CreateSpaceRequest.md
+docs/CreateStaticRenditionRequest.md
+docs/CreateStaticRenditionResponse.md
 docs/CreateTrackRequest.md
 docs/CreateTrackResponse.md
 docs/CreateTranscriptionVocabularyRequest.md
@@ -157,6 +158,7 @@ docs/SpaceStatus.md
 docs/SpaceType.md
 docs/SpacesApi.md
 docs/StartSpaceBroadcastResponse.md
+docs/StaticRendition.md
 docs/StopSpaceBroadcastResponse.md
 docs/Track.md
 docs/TranscriptionVocabulariesApi.md
@@ -168,6 +170,7 @@ docs/UpdateAssetRequest.md
 docs/UpdateLiveStreamEmbeddedSubtitlesRequest.md
 docs/UpdateLiveStreamGeneratedSubtitlesRequest.md
 docs/UpdateLiveStreamNewAssetSettings.md
+docs/UpdateLiveStreamNewAssetSettingsStaticRenditionRequest.md
 docs/UpdateLiveStreamRequest.md
 docs/UpdateReferrerDomainRestrictionRequest.md
 docs/UpdateTranscriptionVocabularyRequest.md
@@ -239,7 +242,6 @@ src/main/java/com/mux/sdk/models/AssetNonStandardInputReasons.java
 src/main/java/com/mux/sdk/models/AssetRecordingTimes.java
 src/main/java/com/mux/sdk/models/AssetResponse.java
 src/main/java/com/mux/sdk/models/AssetStaticRenditions.java
-src/main/java/com/mux/sdk/models/AssetStaticRenditionsFiles.java
 src/main/java/com/mux/sdk/models/BreakdownValue.java
 src/main/java/com/mux/sdk/models/Broadcast.java
 src/main/java/com/mux/sdk/models/BroadcastLayout.java
@@ -254,6 +256,8 @@ src/main/java/com/mux/sdk/models/CreatePlaybackIDResponse.java
 src/main/java/com/mux/sdk/models/CreatePlaybackRestrictionRequest.java
 src/main/java/com/mux/sdk/models/CreateSimulcastTargetRequest.java
 src/main/java/com/mux/sdk/models/CreateSpaceRequest.java
+src/main/java/com/mux/sdk/models/CreateStaticRenditionRequest.java
+src/main/java/com/mux/sdk/models/CreateStaticRenditionResponse.java
 src/main/java/com/mux/sdk/models/CreateTrackRequest.java
 src/main/java/com/mux/sdk/models/CreateTrackResponse.java
 src/main/java/com/mux/sdk/models/CreateTranscriptionVocabularyRequest.java
@@ -369,6 +373,7 @@ src/main/java/com/mux/sdk/models/SpaceResponse.java
 src/main/java/com/mux/sdk/models/SpaceStatus.java
 src/main/java/com/mux/sdk/models/SpaceType.java
 src/main/java/com/mux/sdk/models/StartSpaceBroadcastResponse.java
+src/main/java/com/mux/sdk/models/StaticRendition.java
 src/main/java/com/mux/sdk/models/StopSpaceBroadcastResponse.java
 src/main/java/com/mux/sdk/models/Track.java
 src/main/java/com/mux/sdk/models/TranscriptionVocabulary.java
@@ -379,6 +384,7 @@ src/main/java/com/mux/sdk/models/UpdateAssetRequest.java
 src/main/java/com/mux/sdk/models/UpdateLiveStreamEmbeddedSubtitlesRequest.java
 src/main/java/com/mux/sdk/models/UpdateLiveStreamGeneratedSubtitlesRequest.java
 src/main/java/com/mux/sdk/models/UpdateLiveStreamNewAssetSettings.java
+src/main/java/com/mux/sdk/models/UpdateLiveStreamNewAssetSettingsStaticRenditionRequest.java
 src/main/java/com/mux/sdk/models/UpdateLiveStreamRequest.java
 src/main/java/com/mux/sdk/models/UpdateReferrerDomainRestrictionRequest.java
 src/main/java/com/mux/sdk/models/UpdateTranscriptionVocabularyRequest.java

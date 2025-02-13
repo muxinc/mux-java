@@ -31,6 +31,8 @@ import com.mux.sdk.models.AssetResponse;
 import com.mux.sdk.models.CreateAssetRequest;
 import com.mux.sdk.models.CreatePlaybackIDRequest;
 import com.mux.sdk.models.CreatePlaybackIDResponse;
+import com.mux.sdk.models.CreateStaticRenditionRequest;
+import com.mux.sdk.models.CreateStaticRenditionResponse;
 import com.mux.sdk.models.CreateTrackRequest;
 import com.mux.sdk.models.CreateTrackResponse;
 import com.mux.sdk.models.GenerateTrackSubtitlesRequest;
@@ -363,6 +365,160 @@ public class AssetsApi {
      */
     public APIcreateAssetPlaybackIdRequest createAssetPlaybackId(String ASSET_ID, CreatePlaybackIDRequest createPlaybackIDRequest) {
         return new APIcreateAssetPlaybackIdRequest(ASSET_ID, createPlaybackIDRequest);
+    }
+    private okhttp3.Call createAssetStaticRenditionCall(String ASSET_ID, CreateStaticRenditionRequest createStaticRenditionRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createStaticRenditionRequest;
+
+        // create path and map variables
+        String localVarPath = "/video/v1/assets/{ASSET_ID}/static-renditions"
+            .replaceAll("\\{" + "ASSET_ID" + "\\}", localVarApiClient.escapeString(ASSET_ID.toString()));
+
+        java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
+        java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
+        java.util.Map<String, String> localVarHeaderParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, String> localVarCookieParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "accessToken" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAssetStaticRenditionValidateBeforeCall(String ASSET_ID, CreateStaticRenditionRequest createStaticRenditionRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'ASSET_ID' is set
+        if (ASSET_ID == null) {
+            throw new ApiException("Missing the required parameter 'ASSET_ID' when calling createAssetStaticRendition(Async)");
+        }
+        
+        // verify the required parameter 'createStaticRenditionRequest' is set
+        if (createStaticRenditionRequest == null) {
+            throw new ApiException("Missing the required parameter 'createStaticRenditionRequest' when calling createAssetStaticRendition(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createAssetStaticRenditionCall(ASSET_ID, createStaticRenditionRequest, _callback);
+        return localVarCall;
+
+    }
+
+
+    private ApiResponse<CreateStaticRenditionResponse> createAssetStaticRenditionWithHttpInfo(String ASSET_ID, CreateStaticRenditionRequest createStaticRenditionRequest) throws ApiException {
+        okhttp3.Call localVarCall = createAssetStaticRenditionValidateBeforeCall(ASSET_ID, createStaticRenditionRequest, null);
+        Type localVarReturnType = new TypeToken<CreateStaticRenditionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call createAssetStaticRenditionAsync(String ASSET_ID, CreateStaticRenditionRequest createStaticRenditionRequest, final ApiCallback<CreateStaticRenditionResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAssetStaticRenditionValidateBeforeCall(ASSET_ID, createStaticRenditionRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateStaticRenditionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcreateAssetStaticRenditionRequest {
+        private final String ASSET_ID;
+        private final CreateStaticRenditionRequest createStaticRenditionRequest;
+
+        private APIcreateAssetStaticRenditionRequest(String ASSET_ID, CreateStaticRenditionRequest createStaticRenditionRequest) {
+            this.ASSET_ID = ASSET_ID;
+            this.createStaticRenditionRequest = createStaticRenditionRequest;
+        }
+
+        /**
+         * Build call for createAssetStaticRendition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createAssetStaticRenditionCall(ASSET_ID, createStaticRenditionRequest, _callback);
+        }
+
+        /**
+         * Execute createAssetStaticRendition request
+         * @return CreateStaticRenditionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+         </table>
+         */
+        public CreateStaticRenditionResponse execute() throws ApiException {
+            ApiResponse<CreateStaticRenditionResponse> localVarResp = createAssetStaticRenditionWithHttpInfo(ASSET_ID, createStaticRenditionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createAssetStaticRendition request with HTTP info returned
+         * @return ApiResponse&lt;CreateStaticRenditionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CreateStaticRenditionResponse> executeWithHttpInfo() throws ApiException {
+            return createAssetStaticRenditionWithHttpInfo(ASSET_ID, createStaticRenditionRequest);
+        }
+
+        /**
+         * Execute createAssetStaticRendition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CreateStaticRenditionResponse> _callback) throws ApiException {
+            return createAssetStaticRenditionAsync(ASSET_ID, createStaticRenditionRequest, _callback);
+        }
+    }
+
+    /**
+     * Create a static rendition for an asset
+     * Creates a static rendition (i.e. MP4s) for an asset
+     * @param ASSET_ID The asset ID. (required)
+     * @param createStaticRenditionRequest  (required)
+     * @return APIcreateAssetStaticRenditionRequest
+     * @http.response.details
+     <table border="1">
+        <caption>Response Summary</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcreateAssetStaticRenditionRequest createAssetStaticRendition(String ASSET_ID, CreateStaticRenditionRequest createStaticRenditionRequest) {
+        return new APIcreateAssetStaticRenditionRequest(ASSET_ID, createStaticRenditionRequest);
     }
     private okhttp3.Call createAssetTrackCall(String ASSET_ID, CreateTrackRequest createTrackRequest, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = createTrackRequest;
@@ -810,6 +966,157 @@ public class AssetsApi {
      */
     public APIdeleteAssetPlaybackIdRequest deleteAssetPlaybackId(String ASSET_ID, String PLAYBACK_ID) {
         return new APIdeleteAssetPlaybackIdRequest(ASSET_ID, PLAYBACK_ID);
+    }
+    private okhttp3.Call deleteAssetStaticRenditionCall(String ASSET_ID, String STATIC_RENDITION_ID, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/video/v1/assets/{ASSET_ID}/static-renditions/{STATIC_RENDITION_ID}"
+            .replaceAll("\\{" + "ASSET_ID" + "\\}", localVarApiClient.escapeString(ASSET_ID.toString()))
+            .replaceAll("\\{" + "STATIC_RENDITION_ID" + "\\}", localVarApiClient.escapeString(STATIC_RENDITION_ID.toString()));
+
+        java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
+        java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
+        java.util.Map<String, String> localVarHeaderParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, String> localVarCookieParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "accessToken" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAssetStaticRenditionValidateBeforeCall(String ASSET_ID, String STATIC_RENDITION_ID, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'ASSET_ID' is set
+        if (ASSET_ID == null) {
+            throw new ApiException("Missing the required parameter 'ASSET_ID' when calling deleteAssetStaticRendition(Async)");
+        }
+        
+        // verify the required parameter 'STATIC_RENDITION_ID' is set
+        if (STATIC_RENDITION_ID == null) {
+            throw new ApiException("Missing the required parameter 'STATIC_RENDITION_ID' when calling deleteAssetStaticRendition(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteAssetStaticRenditionCall(ASSET_ID, STATIC_RENDITION_ID, _callback);
+        return localVarCall;
+
+    }
+
+
+    private ApiResponse<Void> deleteAssetStaticRenditionWithHttpInfo(String ASSET_ID, String STATIC_RENDITION_ID) throws ApiException {
+        okhttp3.Call localVarCall = deleteAssetStaticRenditionValidateBeforeCall(ASSET_ID, STATIC_RENDITION_ID, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    private okhttp3.Call deleteAssetStaticRenditionAsync(String ASSET_ID, String STATIC_RENDITION_ID, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAssetStaticRenditionValidateBeforeCall(ASSET_ID, STATIC_RENDITION_ID, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteAssetStaticRenditionRequest {
+        private final String ASSET_ID;
+        private final String STATIC_RENDITION_ID;
+
+        private APIdeleteAssetStaticRenditionRequest(String ASSET_ID, String STATIC_RENDITION_ID) {
+            this.ASSET_ID = ASSET_ID;
+            this.STATIC_RENDITION_ID = STATIC_RENDITION_ID;
+        }
+
+        /**
+         * Build call for deleteAssetStaticRendition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteAssetStaticRenditionCall(ASSET_ID, STATIC_RENDITION_ID, _callback);
+        }
+
+        /**
+         * Execute deleteAssetStaticRendition request
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+         </table>
+         */
+        public void execute() throws ApiException {
+            deleteAssetStaticRenditionWithHttpInfo(ASSET_ID, STATIC_RENDITION_ID);
+        }
+
+        /**
+         * Execute deleteAssetStaticRendition request with HTTP info returned
+         * @return ApiResponse&lt;Void&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
+            return deleteAssetStaticRenditionWithHttpInfo(ASSET_ID, STATIC_RENDITION_ID);
+        }
+
+        /**
+         * Execute deleteAssetStaticRendition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
+            return deleteAssetStaticRenditionAsync(ASSET_ID, STATIC_RENDITION_ID, _callback);
+        }
+    }
+
+    /**
+     * Delete a single static rendition for an asset
+     * Deletes a single static rendition for an asset
+     * @param ASSET_ID The asset ID. (required)
+     * @param STATIC_RENDITION_ID The static rendition ID. (required)
+     * @return APIdeleteAssetStaticRenditionRequest
+     * @http.response.details
+     <table border="1">
+        <caption>Response Summary</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteAssetStaticRenditionRequest deleteAssetStaticRendition(String ASSET_ID, String STATIC_RENDITION_ID) {
+        return new APIdeleteAssetStaticRenditionRequest(ASSET_ID, STATIC_RENDITION_ID);
     }
     private okhttp3.Call deleteAssetTrackCall(String ASSET_ID, String TRACK_ID, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;

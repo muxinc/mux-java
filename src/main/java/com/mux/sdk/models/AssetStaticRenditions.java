@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mux.sdk.models.AssetStaticRenditionsFiles;
+import com.mux.sdk.models.StaticRendition;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -32,7 +32,7 @@ import java.io.IOException;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AssetStaticRenditions {
   /**
-   * Indicates the status of downloadable MP4 versions of this asset.
+   * Indicates the status of downloadable MP4 version of this asset. This field is only valid when the &#x60;mp4_support&#x60; option is enabled
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -88,7 +88,7 @@ public class AssetStaticRenditions {
 
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
-  private java.util.List<AssetStaticRenditionsFiles> files = null;
+  private java.util.List<StaticRendition> files = null;
 
 
   public AssetStaticRenditions status(StatusEnum status) {
@@ -98,11 +98,11 @@ public class AssetStaticRenditions {
   }
 
    /**
-   * Indicates the status of downloadable MP4 versions of this asset.
+   * Indicates the status of downloadable MP4 version of this asset. This field is only valid when the &#x60;mp4_support&#x60; option is enabled
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates the status of downloadable MP4 versions of this asset.")
+  @ApiModelProperty(value = "Indicates the status of downloadable MP4 version of this asset. This field is only valid when the `mp4_support` option is enabled")
 
   public StatusEnum getStatus() {
     return status;
@@ -114,13 +114,13 @@ public class AssetStaticRenditions {
   }
 
 
-  public AssetStaticRenditions files(java.util.List<AssetStaticRenditionsFiles> files) {
+  public AssetStaticRenditions files(java.util.List<StaticRendition> files) {
     
     this.files = files;
     return this;
   }
 
-  public AssetStaticRenditions addFilesItem(AssetStaticRenditionsFiles filesItem) {
+  public AssetStaticRenditions addFilesItem(StaticRendition filesItem) {
     if (this.files == null) {
       this.files = new java.util.ArrayList<>();
     }
@@ -135,12 +135,12 @@ public class AssetStaticRenditions {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Array of file objects.")
 
-  public java.util.List<AssetStaticRenditionsFiles> getFiles() {
+  public java.util.List<StaticRendition> getFiles() {
     return files;
   }
 
 
-  public void setFiles(java.util.List<AssetStaticRenditionsFiles> files) {
+  public void setFiles(java.util.List<StaticRendition> files) {
     this.files = files;
   }
 
