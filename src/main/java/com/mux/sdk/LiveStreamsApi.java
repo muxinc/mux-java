@@ -41,6 +41,7 @@ import com.mux.sdk.models.SignalLiveStreamCompleteResponse;
 import com.mux.sdk.models.SimulcastTargetResponse;
 import com.mux.sdk.models.UpdateLiveStreamEmbeddedSubtitlesRequest;
 import com.mux.sdk.models.UpdateLiveStreamGeneratedSubtitlesRequest;
+import com.mux.sdk.models.UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest;
 import com.mux.sdk.models.UpdateLiveStreamRequest;
 // TODO: due to import parsing issues for the RDR type; fix in spec in future
 import com.mux.sdk.models.ReferrerDomainRestriction;
@@ -962,6 +963,148 @@ public class LiveStreamsApi {
      */
     public APIdeleteLiveStreamSimulcastTargetRequest deleteLiveStreamSimulcastTarget(String LIVE_STREAM_ID, String SIMULCAST_TARGET_ID) {
         return new APIdeleteLiveStreamSimulcastTargetRequest(LIVE_STREAM_ID, SIMULCAST_TARGET_ID);
+    }
+    private okhttp3.Call deleteLiveStreamStaticRenditionsCall(String LIVE_STREAM_ID, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/video/v1/live-streams/{LIVE_STREAM_ID}/new-asset-settings/static-renditions"
+            .replaceAll("\\{" + "LIVE_STREAM_ID" + "\\}", localVarApiClient.escapeString(LIVE_STREAM_ID.toString()));
+
+        java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
+        java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
+        java.util.Map<String, String> localVarHeaderParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, String> localVarCookieParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "accessToken" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteLiveStreamStaticRenditionsValidateBeforeCall(String LIVE_STREAM_ID, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'LIVE_STREAM_ID' is set
+        if (LIVE_STREAM_ID == null) {
+            throw new ApiException("Missing the required parameter 'LIVE_STREAM_ID' when calling deleteLiveStreamStaticRenditions(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteLiveStreamStaticRenditionsCall(LIVE_STREAM_ID, _callback);
+        return localVarCall;
+
+    }
+
+
+    private ApiResponse<Void> deleteLiveStreamStaticRenditionsWithHttpInfo(String LIVE_STREAM_ID) throws ApiException {
+        okhttp3.Call localVarCall = deleteLiveStreamStaticRenditionsValidateBeforeCall(LIVE_STREAM_ID, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    private okhttp3.Call deleteLiveStreamStaticRenditionsAsync(String LIVE_STREAM_ID, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteLiveStreamStaticRenditionsValidateBeforeCall(LIVE_STREAM_ID, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteLiveStreamStaticRenditionsRequest {
+        private final String LIVE_STREAM_ID;
+
+        private APIdeleteLiveStreamStaticRenditionsRequest(String LIVE_STREAM_ID) {
+            this.LIVE_STREAM_ID = LIVE_STREAM_ID;
+        }
+
+        /**
+         * Build call for deleteLiveStreamStaticRenditions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteLiveStreamStaticRenditionsCall(LIVE_STREAM_ID, _callback);
+        }
+
+        /**
+         * Execute deleteLiveStreamStaticRenditions request
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+         </table>
+         */
+        public void execute() throws ApiException {
+            deleteLiveStreamStaticRenditionsWithHttpInfo(LIVE_STREAM_ID);
+        }
+
+        /**
+         * Execute deleteLiveStreamStaticRenditions request with HTTP info returned
+         * @return ApiResponse&lt;Void&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
+            return deleteLiveStreamStaticRenditionsWithHttpInfo(LIVE_STREAM_ID);
+        }
+
+        /**
+         * Execute deleteLiveStreamStaticRenditions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
+            return deleteLiveStreamStaticRenditionsAsync(LIVE_STREAM_ID, _callback);
+        }
+    }
+
+    /**
+     * Delete a live stream&#39;s static renditions setting for new assets
+     * Deletes a live stream&#39;s static renditions settings for new assets. Further assets made via this live stream will not create static renditions unless re-added.
+     * @param LIVE_STREAM_ID The live stream ID (required)
+     * @return APIdeleteLiveStreamStaticRenditionsRequest
+     * @http.response.details
+     <table border="1">
+        <caption>Response Summary</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteLiveStreamStaticRenditionsRequest deleteLiveStreamStaticRenditions(String LIVE_STREAM_ID) {
+        return new APIdeleteLiveStreamStaticRenditionsRequest(LIVE_STREAM_ID);
     }
     private okhttp3.Call disableLiveStreamCall(String LIVE_STREAM_ID, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
@@ -2661,5 +2804,159 @@ public class LiveStreamsApi {
      */
     public APIupdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitles(String LIVE_STREAM_ID, UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest) {
         return new APIupdateLiveStreamGeneratedSubtitlesRequest(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest);
+    }
+    private okhttp3.Call updateLiveStreamStaticRenditionsCall(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateLiveStreamNewAssetSettingsStaticRenditionsRequest;
+
+        // create path and map variables
+        String localVarPath = "/video/v1/live-streams/{LIVE_STREAM_ID}/new-asset-settings/static-renditions"
+            .replaceAll("\\{" + "LIVE_STREAM_ID" + "\\}", localVarApiClient.escapeString(LIVE_STREAM_ID.toString()));
+
+        java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
+        java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
+        java.util.Map<String, String> localVarHeaderParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, String> localVarCookieParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "accessToken" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateLiveStreamStaticRenditionsValidateBeforeCall(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'LIVE_STREAM_ID' is set
+        if (LIVE_STREAM_ID == null) {
+            throw new ApiException("Missing the required parameter 'LIVE_STREAM_ID' when calling updateLiveStreamStaticRenditions(Async)");
+        }
+        
+        // verify the required parameter 'updateLiveStreamNewAssetSettingsStaticRenditionsRequest' is set
+        if (updateLiveStreamNewAssetSettingsStaticRenditionsRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateLiveStreamNewAssetSettingsStaticRenditionsRequest' when calling updateLiveStreamStaticRenditions(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateLiveStreamStaticRenditionsCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, _callback);
+        return localVarCall;
+
+    }
+
+
+    private ApiResponse<LiveStreamResponse> updateLiveStreamStaticRenditionsWithHttpInfo(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateLiveStreamStaticRenditionsValidateBeforeCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, null);
+        Type localVarReturnType = new TypeToken<LiveStreamResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateLiveStreamStaticRenditionsAsync(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest, final ApiCallback<LiveStreamResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateLiveStreamStaticRenditionsValidateBeforeCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, _callback);
+        Type localVarReturnType = new TypeToken<LiveStreamResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateLiveStreamStaticRenditionsRequest {
+        private final String LIVE_STREAM_ID;
+        private final UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest;
+
+        private APIupdateLiveStreamStaticRenditionsRequest(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest) {
+            this.LIVE_STREAM_ID = LIVE_STREAM_ID;
+            this.updateLiveStreamNewAssetSettingsStaticRenditionsRequest = updateLiveStreamNewAssetSettingsStaticRenditionsRequest;
+        }
+
+        /**
+         * Build call for updateLiveStreamStaticRenditions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateLiveStreamStaticRenditionsCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, _callback);
+        }
+
+        /**
+         * Execute updateLiveStreamStaticRenditions request
+         * @return LiveStreamResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public LiveStreamResponse execute() throws ApiException {
+            ApiResponse<LiveStreamResponse> localVarResp = updateLiveStreamStaticRenditionsWithHttpInfo(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateLiveStreamStaticRenditions request with HTTP info returned
+         * @return ApiResponse&lt;LiveStreamResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LiveStreamResponse> executeWithHttpInfo() throws ApiException {
+            return updateLiveStreamStaticRenditionsWithHttpInfo(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest);
+        }
+
+        /**
+         * Execute updateLiveStreamStaticRenditions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LiveStreamResponse> _callback) throws ApiException {
+            return updateLiveStreamStaticRenditionsAsync(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, _callback);
+        }
+    }
+
+    /**
+     * Update live stream static renditions for new assets
+     * Updates a live stream&#39;s static renditions settings for new assets. Further assets made via this live stream will create static renditions per the settings provided. You must provide all static renditions desired.
+     * @param LIVE_STREAM_ID The live stream ID (required)
+     * @param updateLiveStreamNewAssetSettingsStaticRenditionsRequest  (required)
+     * @return APIupdateLiveStreamStaticRenditionsRequest
+     * @http.response.details
+     <table border="1">
+        <caption>Response Summary</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateLiveStreamStaticRenditionsRequest updateLiveStreamStaticRenditions(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest) {
+        return new APIupdateLiveStreamStaticRenditionsRequest(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest);
     }
 }

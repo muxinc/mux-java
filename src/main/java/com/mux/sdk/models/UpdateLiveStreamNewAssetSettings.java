@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Updates the new asset settings to use to generate a new asset for this live stream. Only the &#x60;mp4_support&#x60; and &#x60;master_access&#x60; settings may be updated. 
+ * Updates the new asset settings to use to generate a new asset for this live stream. Only the &#x60;mp4_support&#x60;, &#x60;master_access&#x60;, and &#x60;video_quality&#x60; settings may be updated. 
  */
-@ApiModel(description = "Updates the new asset settings to use to generate a new asset for this live stream. Only the `mp4_support` and `master_access` settings may be updated. ")
+@ApiModel(description = "Updates the new asset settings to use to generate a new asset for this live stream. Only the `mp4_support`, `master_access`, and `video_quality` settings may be updated. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateLiveStreamNewAssetSettings {
   /**
@@ -138,6 +138,57 @@ public class UpdateLiveStreamNewAssetSettings {
   @SerializedName(SERIALIZED_NAME_MASTER_ACCESS)
   private MasterAccessEnum masterAccess;
 
+  /**
+   * The video quality controls the cost, quality, and available platform features for the asset. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
+   */
+  @JsonAdapter(VideoQualityEnum.Adapter.class)
+  public enum VideoQualityEnum {
+    PLUS("plus"),
+    
+    PREMIUM("premium");
+
+    private String value;
+
+    VideoQualityEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static VideoQualityEnum fromValue(String value) {
+      for (VideoQualityEnum b : VideoQualityEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<VideoQualityEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final VideoQualityEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public VideoQualityEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return VideoQualityEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VIDEO_QUALITY = "video_quality";
+  @SerializedName(SERIALIZED_NAME_VIDEO_QUALITY)
+  private VideoQualityEnum videoQuality;
+
 
   public UpdateLiveStreamNewAssetSettings mp4Support(Mp4SupportEnum mp4Support) {
     
@@ -185,6 +236,29 @@ public class UpdateLiveStreamNewAssetSettings {
   }
 
 
+  public UpdateLiveStreamNewAssetSettings videoQuality(VideoQualityEnum videoQuality) {
+    
+    this.videoQuality = videoQuality;
+    return this;
+  }
+
+   /**
+   * The video quality controls the cost, quality, and available platform features for the asset. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)
+   * @return videoQuality
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The video quality controls the cost, quality, and available platform features for the asset. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels)")
+
+  public VideoQualityEnum getVideoQuality() {
+    return videoQuality;
+  }
+
+
+  public void setVideoQuality(VideoQualityEnum videoQuality) {
+    this.videoQuality = videoQuality;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -195,12 +269,13 @@ public class UpdateLiveStreamNewAssetSettings {
     }
     UpdateLiveStreamNewAssetSettings updateLiveStreamNewAssetSettings = (UpdateLiveStreamNewAssetSettings) o;
     return Objects.equals(this.mp4Support, updateLiveStreamNewAssetSettings.mp4Support) &&
-        Objects.equals(this.masterAccess, updateLiveStreamNewAssetSettings.masterAccess);
+        Objects.equals(this.masterAccess, updateLiveStreamNewAssetSettings.masterAccess) &&
+        Objects.equals(this.videoQuality, updateLiveStreamNewAssetSettings.videoQuality);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mp4Support, masterAccess);
+    return Objects.hash(mp4Support, masterAccess, videoQuality);
   }
 
   @Override
@@ -209,6 +284,7 @@ public class UpdateLiveStreamNewAssetSettings {
     sb.append("class UpdateLiveStreamNewAssetSettings {\n");
     sb.append("    mp4Support: ").append(toIndentedString(mp4Support)).append("\n");
     sb.append("    masterAccess: ").append(toIndentedString(masterAccess)).append("\n");
+    sb.append("    videoQuality: ").append(toIndentedString(videoQuality)).append("\n");
     sb.append("}");
     return sb.toString();
   }

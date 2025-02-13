@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mux.sdk.models.CreatePlaybackIDRequest;
+import com.mux.sdk.models.CreateStaticRenditionRequest;
 import com.mux.sdk.models.InputSettings;
 import com.mux.sdk.models.PlaybackPolicy;
 import io.swagger.annotations.ApiModel;
@@ -53,7 +54,7 @@ public class CreateAssetRequest {
   private String passthrough;
 
   /**
-   * Specify what level of support for mp4 playback.  * The &#x60;capped-1080p&#x60; option produces a single MP4 file, called &#x60;capped-1080p.mp4&#x60;, with the video resolution capped at 1080p. This option produces an &#x60;audio.m4a&#x60; file for an audio-only asset. * The &#x60;audio-only&#x60; option produces a single M4A file, called &#x60;audio.m4a&#x60; for a video or an audio-only asset. MP4 generation will error when this option is specified for a video-only asset. * The &#x60;audio-only,capped-1080p&#x60; option produces both the &#x60;audio.m4a&#x60; and &#x60;capped-1080p.mp4&#x60; files. Only the &#x60;capped-1080p.mp4&#x60; file is produced for a video-only asset, while only the &#x60;audio.m4a&#x60; file is produced for an audio-only asset.  The &#x60;standard&#x60;(deprecated) option produces up to three MP4 files with different levels of resolution (&#x60;high.mp4&#x60;, &#x60;medium.mp4&#x60;, &#x60;low.mp4&#x60;, or &#x60;audio.m4a&#x60; for an audio-only asset).  MP4 files are not produced for &#x60;none&#x60; (default).  In most cases you should use our default HLS-based streaming playback (&#x60;{playback_id}.m3u8&#x60;) which can automatically adjust to viewers&#39; connection speeds, but an mp4 can be useful for some legacy devices or downloading for offline playback. See the [Download your videos guide](https://docs.mux.com/guides/enable-static-mp4-renditions) for more information. 
+   * Specify what level of support for mp4 playback. You may not enable both &#x60;mp4_support&#x60; and  &#x60;static_renditions&#x60;.  * The &#x60;capped-1080p&#x60; option produces a single MP4 file, called &#x60;capped-1080p.mp4&#x60;, with the video resolution capped at 1080p. This option produces an &#x60;audio.m4a&#x60; file for an audio-only asset. * The &#x60;audio-only&#x60; option produces a single M4A file, called &#x60;audio.m4a&#x60; for a video or an audio-only asset. MP4 generation will error when this option is specified for a video-only asset. * The &#x60;audio-only,capped-1080p&#x60; option produces both the &#x60;audio.m4a&#x60; and &#x60;capped-1080p.mp4&#x60; files. Only the &#x60;capped-1080p.mp4&#x60; file is produced for a video-only asset, while only the &#x60;audio.m4a&#x60; file is produced for an audio-only asset.  The &#x60;standard&#x60;(deprecated) option produces up to three MP4 files with different levels of resolution (&#x60;high.mp4&#x60;, &#x60;medium.mp4&#x60;, &#x60;low.mp4&#x60;, or &#x60;audio.m4a&#x60; for an audio-only asset).  MP4 files are not produced for &#x60;none&#x60; (default).  In most cases you should use our default HLS-based streaming playback (&#x60;{playback_id}.m3u8&#x60;) which can automatically adjust to viewers&#39; connection speeds, but an mp4 can be useful for some legacy devices or downloading for offline playback. See the [Download your videos guide](https://docs.mux.com/guides/enable-static-mp4-renditions) for more information. 
    */
   @JsonAdapter(Mp4SupportEnum.Adapter.class)
   public enum Mp4SupportEnum {
@@ -327,6 +328,10 @@ public class CreateAssetRequest {
   @SerializedName(SERIALIZED_NAME_VIDEO_QUALITY)
   private VideoQualityEnum videoQuality;
 
+  public static final String SERIALIZED_NAME_STATIC_RENDITIONS = "static_renditions";
+  @SerializedName(SERIALIZED_NAME_STATIC_RENDITIONS)
+  private java.util.List<CreateStaticRenditionRequest> staticRenditions = null;
+
 
   public CreateAssetRequest input(java.util.List<InputSettings> input) {
     
@@ -474,11 +479,11 @@ public class CreateAssetRequest {
   }
 
    /**
-   * Specify what level of support for mp4 playback.  * The &#x60;capped-1080p&#x60; option produces a single MP4 file, called &#x60;capped-1080p.mp4&#x60;, with the video resolution capped at 1080p. This option produces an &#x60;audio.m4a&#x60; file for an audio-only asset. * The &#x60;audio-only&#x60; option produces a single M4A file, called &#x60;audio.m4a&#x60; for a video or an audio-only asset. MP4 generation will error when this option is specified for a video-only asset. * The &#x60;audio-only,capped-1080p&#x60; option produces both the &#x60;audio.m4a&#x60; and &#x60;capped-1080p.mp4&#x60; files. Only the &#x60;capped-1080p.mp4&#x60; file is produced for a video-only asset, while only the &#x60;audio.m4a&#x60; file is produced for an audio-only asset.  The &#x60;standard&#x60;(deprecated) option produces up to three MP4 files with different levels of resolution (&#x60;high.mp4&#x60;, &#x60;medium.mp4&#x60;, &#x60;low.mp4&#x60;, or &#x60;audio.m4a&#x60; for an audio-only asset).  MP4 files are not produced for &#x60;none&#x60; (default).  In most cases you should use our default HLS-based streaming playback (&#x60;{playback_id}.m3u8&#x60;) which can automatically adjust to viewers&#39; connection speeds, but an mp4 can be useful for some legacy devices or downloading for offline playback. See the [Download your videos guide](https://docs.mux.com/guides/enable-static-mp4-renditions) for more information. 
+   * Specify what level of support for mp4 playback. You may not enable both &#x60;mp4_support&#x60; and  &#x60;static_renditions&#x60;.  * The &#x60;capped-1080p&#x60; option produces a single MP4 file, called &#x60;capped-1080p.mp4&#x60;, with the video resolution capped at 1080p. This option produces an &#x60;audio.m4a&#x60; file for an audio-only asset. * The &#x60;audio-only&#x60; option produces a single M4A file, called &#x60;audio.m4a&#x60; for a video or an audio-only asset. MP4 generation will error when this option is specified for a video-only asset. * The &#x60;audio-only,capped-1080p&#x60; option produces both the &#x60;audio.m4a&#x60; and &#x60;capped-1080p.mp4&#x60; files. Only the &#x60;capped-1080p.mp4&#x60; file is produced for a video-only asset, while only the &#x60;audio.m4a&#x60; file is produced for an audio-only asset.  The &#x60;standard&#x60;(deprecated) option produces up to three MP4 files with different levels of resolution (&#x60;high.mp4&#x60;, &#x60;medium.mp4&#x60;, &#x60;low.mp4&#x60;, or &#x60;audio.m4a&#x60; for an audio-only asset).  MP4 files are not produced for &#x60;none&#x60; (default).  In most cases you should use our default HLS-based streaming playback (&#x60;{playback_id}.m3u8&#x60;) which can automatically adjust to viewers&#39; connection speeds, but an mp4 can be useful for some legacy devices or downloading for offline playback. See the [Download your videos guide](https://docs.mux.com/guides/enable-static-mp4-renditions) for more information. 
    * @return mp4Support
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Specify what level of support for mp4 playback.  * The `capped-1080p` option produces a single MP4 file, called `capped-1080p.mp4`, with the video resolution capped at 1080p. This option produces an `audio.m4a` file for an audio-only asset. * The `audio-only` option produces a single M4A file, called `audio.m4a` for a video or an audio-only asset. MP4 generation will error when this option is specified for a video-only asset. * The `audio-only,capped-1080p` option produces both the `audio.m4a` and `capped-1080p.mp4` files. Only the `capped-1080p.mp4` file is produced for a video-only asset, while only the `audio.m4a` file is produced for an audio-only asset.  The `standard`(deprecated) option produces up to three MP4 files with different levels of resolution (`high.mp4`, `medium.mp4`, `low.mp4`, or `audio.m4a` for an audio-only asset).  MP4 files are not produced for `none` (default).  In most cases you should use our default HLS-based streaming playback (`{playback_id}.m3u8`) which can automatically adjust to viewers' connection speeds, but an mp4 can be useful for some legacy devices or downloading for offline playback. See the [Download your videos guide](https://docs.mux.com/guides/enable-static-mp4-renditions) for more information. ")
+  @ApiModelProperty(value = "Specify what level of support for mp4 playback. You may not enable both `mp4_support` and  `static_renditions`.  * The `capped-1080p` option produces a single MP4 file, called `capped-1080p.mp4`, with the video resolution capped at 1080p. This option produces an `audio.m4a` file for an audio-only asset. * The `audio-only` option produces a single M4A file, called `audio.m4a` for a video or an audio-only asset. MP4 generation will error when this option is specified for a video-only asset. * The `audio-only,capped-1080p` option produces both the `audio.m4a` and `capped-1080p.mp4` files. Only the `capped-1080p.mp4` file is produced for a video-only asset, while only the `audio.m4a` file is produced for an audio-only asset.  The `standard`(deprecated) option produces up to three MP4 files with different levels of resolution (`high.mp4`, `medium.mp4`, `low.mp4`, or `audio.m4a` for an audio-only asset).  MP4 files are not produced for `none` (default).  In most cases you should use our default HLS-based streaming playback (`{playback_id}.m3u8`) which can automatically adjust to viewers' connection speeds, but an mp4 can be useful for some legacy devices or downloading for offline playback. See the [Download your videos guide](https://docs.mux.com/guides/enable-static-mp4-renditions) for more information. ")
 
   public Mp4SupportEnum getMp4Support() {
     return mp4Support;
@@ -628,6 +633,37 @@ public class CreateAssetRequest {
   }
 
 
+  public CreateAssetRequest staticRenditions(java.util.List<CreateStaticRenditionRequest> staticRenditions) {
+    
+    this.staticRenditions = staticRenditions;
+    return this;
+  }
+
+  public CreateAssetRequest addStaticRenditionsItem(CreateStaticRenditionRequest staticRenditionsItem) {
+    if (this.staticRenditions == null) {
+      this.staticRenditions = new java.util.ArrayList<>();
+    }
+    this.staticRenditions.add(staticRenditionsItem);
+    return this;
+  }
+
+   /**
+   * An array of static renditions to create for this asset. You may not enable both &#x60;static_renditions&#x60; and &#x60;mp4_support&#x60;
+   * @return staticRenditions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "An array of static renditions to create for this asset. You may not enable both `static_renditions` and `mp4_support`")
+
+  public java.util.List<CreateStaticRenditionRequest> getStaticRenditions() {
+    return staticRenditions;
+  }
+
+
+  public void setStaticRenditions(java.util.List<CreateStaticRenditionRequest> staticRenditions) {
+    this.staticRenditions = staticRenditions;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -648,12 +684,13 @@ public class CreateAssetRequest {
         Objects.equals(this.test, createAssetRequest.test) &&
         Objects.equals(this.maxResolutionTier, createAssetRequest.maxResolutionTier) &&
         Objects.equals(this.encodingTier, createAssetRequest.encodingTier) &&
-        Objects.equals(this.videoQuality, createAssetRequest.videoQuality);
+        Objects.equals(this.videoQuality, createAssetRequest.videoQuality) &&
+        Objects.equals(this.staticRenditions, createAssetRequest.staticRenditions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(input, playbackPolicy, advancedPlaybackPolicies, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test, maxResolutionTier, encodingTier, videoQuality);
+    return Objects.hash(input, playbackPolicy, advancedPlaybackPolicies, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test, maxResolutionTier, encodingTier, videoQuality, staticRenditions);
   }
 
   @Override
@@ -672,6 +709,7 @@ public class CreateAssetRequest {
     sb.append("    maxResolutionTier: ").append(toIndentedString(maxResolutionTier)).append("\n");
     sb.append("    encodingTier: ").append(toIndentedString(encodingTier)).append("\n");
     sb.append("    videoQuality: ").append(toIndentedString(videoQuality)).append("\n");
+    sb.append("    staticRenditions: ").append(toIndentedString(staticRenditions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
