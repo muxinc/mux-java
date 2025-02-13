@@ -1293,7 +1293,7 @@ Name | Type | Description  | Notes
 
 <a name="updateLiveStreamStaticRenditions"></a>
 # **updateLiveStreamStaticRenditions**
-> LiveStreamResponse updateLiveStreamStaticRenditions(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest).execute();
+> LiveStreamResponse updateLiveStreamStaticRenditions(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest).execute();
 
 Update live stream static renditions for new assets
 
@@ -1321,9 +1321,9 @@ public class Example {
 
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
     String LIVE_STREAM_ID = "LIVE_STREAM_ID_example"; // String | The live stream ID
-    UpdateLiveStreamNewAssetSettingsStaticRenditionRequest updateLiveStreamNewAssetSettingsStaticRenditionRequest = {"static_renditions":[{"resolution":"audio-only"},{"resolution":"1080p"}]}; // UpdateLiveStreamNewAssetSettingsStaticRenditionRequest | 
+    UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest = {"static_renditions":[{"resolution":"audio-only"},{"resolution":"highest"}]}; // UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest | 
     try {
-      LiveStreamResponse result = apiInstance.updateLiveStreamStaticRenditions(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest)
+      LiveStreamResponse result = apiInstance.updateLiveStreamStaticRenditions(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -1342,7 +1342,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **LIVE_STREAM_ID** | **String**| The live stream ID |
- **updateLiveStreamNewAssetSettingsStaticRenditionRequest** | [**UpdateLiveStreamNewAssetSettingsStaticRenditionRequest**](UpdateLiveStreamNewAssetSettingsStaticRenditionRequest.md)|  |
+ **updateLiveStreamNewAssetSettingsStaticRenditionsRequest** | [**UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest**](UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest.md)|  |
 
 ### Return type
 

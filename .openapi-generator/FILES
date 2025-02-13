@@ -170,7 +170,7 @@ docs/UpdateAssetRequest.md
 docs/UpdateLiveStreamEmbeddedSubtitlesRequest.md
 docs/UpdateLiveStreamGeneratedSubtitlesRequest.md
 docs/UpdateLiveStreamNewAssetSettings.md
-docs/UpdateLiveStreamNewAssetSettingsStaticRenditionRequest.md
+docs/UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest.md
 docs/UpdateLiveStreamRequest.md
 docs/UpdateReferrerDomainRestrictionRequest.md
 docs/UpdateTranscriptionVocabularyRequest.md
@@ -384,7 +384,7 @@ src/main/java/com/mux/sdk/models/UpdateAssetRequest.java
 src/main/java/com/mux/sdk/models/UpdateLiveStreamEmbeddedSubtitlesRequest.java
 src/main/java/com/mux/sdk/models/UpdateLiveStreamGeneratedSubtitlesRequest.java
 src/main/java/com/mux/sdk/models/UpdateLiveStreamNewAssetSettings.java
-src/main/java/com/mux/sdk/models/UpdateLiveStreamNewAssetSettingsStaticRenditionRequest.java
+src/main/java/com/mux/sdk/models/UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest.java
 src/main/java/com/mux/sdk/models/UpdateLiveStreamRequest.java
 src/main/java/com/mux/sdk/models/UpdateReferrerDomainRestrictionRequest.java
 src/main/java/com/mux/sdk/models/UpdateTranscriptionVocabularyRequest.java

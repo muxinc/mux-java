@@ -41,7 +41,7 @@ import com.mux.sdk.models.SignalLiveStreamCompleteResponse;
 import com.mux.sdk.models.SimulcastTargetResponse;
 import com.mux.sdk.models.UpdateLiveStreamEmbeddedSubtitlesRequest;
 import com.mux.sdk.models.UpdateLiveStreamGeneratedSubtitlesRequest;
-import com.mux.sdk.models.UpdateLiveStreamNewAssetSettingsStaticRenditionRequest;
+import com.mux.sdk.models.UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest;
 import com.mux.sdk.models.UpdateLiveStreamRequest;
 // TODO: due to import parsing issues for the RDR type; fix in spec in future
 import com.mux.sdk.models.ReferrerDomainRestriction;
@@ -2805,8 +2805,8 @@ public class LiveStreamsApi {
     public APIupdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitles(String LIVE_STREAM_ID, UpdateLiveStreamGeneratedSubtitlesRequest updateLiveStreamGeneratedSubtitlesRequest) {
         return new APIupdateLiveStreamGeneratedSubtitlesRequest(LIVE_STREAM_ID, updateLiveStreamGeneratedSubtitlesRequest);
     }
-    private okhttp3.Call updateLiveStreamStaticRenditionsCall(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionRequest updateLiveStreamNewAssetSettingsStaticRenditionRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = updateLiveStreamNewAssetSettingsStaticRenditionRequest;
+    private okhttp3.Call updateLiveStreamStaticRenditionsCall(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateLiveStreamNewAssetSettingsStaticRenditionsRequest;
 
         // create path and map variables
         String localVarPath = "/video/v1/live-streams/{LIVE_STREAM_ID}/new-asset-settings/static-renditions"
@@ -2837,34 +2837,34 @@ public class LiveStreamsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateLiveStreamStaticRenditionsValidateBeforeCall(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionRequest updateLiveStreamNewAssetSettingsStaticRenditionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateLiveStreamStaticRenditionsValidateBeforeCall(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'LIVE_STREAM_ID' is set
         if (LIVE_STREAM_ID == null) {
             throw new ApiException("Missing the required parameter 'LIVE_STREAM_ID' when calling updateLiveStreamStaticRenditions(Async)");
         }
         
-        // verify the required parameter 'updateLiveStreamNewAssetSettingsStaticRenditionRequest' is set
-        if (updateLiveStreamNewAssetSettingsStaticRenditionRequest == null) {
-            throw new ApiException("Missing the required parameter 'updateLiveStreamNewAssetSettingsStaticRenditionRequest' when calling updateLiveStreamStaticRenditions(Async)");
+        // verify the required parameter 'updateLiveStreamNewAssetSettingsStaticRenditionsRequest' is set
+        if (updateLiveStreamNewAssetSettingsStaticRenditionsRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateLiveStreamNewAssetSettingsStaticRenditionsRequest' when calling updateLiveStreamStaticRenditions(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateLiveStreamStaticRenditionsCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest, _callback);
+        okhttp3.Call localVarCall = updateLiveStreamStaticRenditionsCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<LiveStreamResponse> updateLiveStreamStaticRenditionsWithHttpInfo(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionRequest updateLiveStreamNewAssetSettingsStaticRenditionRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateLiveStreamStaticRenditionsValidateBeforeCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest, null);
+    private ApiResponse<LiveStreamResponse> updateLiveStreamStaticRenditionsWithHttpInfo(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateLiveStreamStaticRenditionsValidateBeforeCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, null);
         Type localVarReturnType = new TypeToken<LiveStreamResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updateLiveStreamStaticRenditionsAsync(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionRequest updateLiveStreamNewAssetSettingsStaticRenditionRequest, final ApiCallback<LiveStreamResponse> _callback) throws ApiException {
+    private okhttp3.Call updateLiveStreamStaticRenditionsAsync(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest, final ApiCallback<LiveStreamResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateLiveStreamStaticRenditionsValidateBeforeCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest, _callback);
+        okhttp3.Call localVarCall = updateLiveStreamStaticRenditionsValidateBeforeCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, _callback);
         Type localVarReturnType = new TypeToken<LiveStreamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2872,11 +2872,11 @@ public class LiveStreamsApi {
 
     public class APIupdateLiveStreamStaticRenditionsRequest {
         private final String LIVE_STREAM_ID;
-        private final UpdateLiveStreamNewAssetSettingsStaticRenditionRequest updateLiveStreamNewAssetSettingsStaticRenditionRequest;
+        private final UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest;
 
-        private APIupdateLiveStreamStaticRenditionsRequest(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionRequest updateLiveStreamNewAssetSettingsStaticRenditionRequest) {
+        private APIupdateLiveStreamStaticRenditionsRequest(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest) {
             this.LIVE_STREAM_ID = LIVE_STREAM_ID;
-            this.updateLiveStreamNewAssetSettingsStaticRenditionRequest = updateLiveStreamNewAssetSettingsStaticRenditionRequest;
+            this.updateLiveStreamNewAssetSettingsStaticRenditionsRequest = updateLiveStreamNewAssetSettingsStaticRenditionsRequest;
         }
 
         /**
@@ -2892,7 +2892,7 @@ public class LiveStreamsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateLiveStreamStaticRenditionsCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest, _callback);
+            return updateLiveStreamStaticRenditionsCall(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, _callback);
         }
 
         /**
@@ -2907,7 +2907,7 @@ public class LiveStreamsApi {
          </table>
          */
         public LiveStreamResponse execute() throws ApiException {
-            ApiResponse<LiveStreamResponse> localVarResp = updateLiveStreamStaticRenditionsWithHttpInfo(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest);
+            ApiResponse<LiveStreamResponse> localVarResp = updateLiveStreamStaticRenditionsWithHttpInfo(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest);
             return localVarResp.getData();
         }
 
@@ -2923,7 +2923,7 @@ public class LiveStreamsApi {
          </table>
          */
         public ApiResponse<LiveStreamResponse> executeWithHttpInfo() throws ApiException {
-            return updateLiveStreamStaticRenditionsWithHttpInfo(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest);
+            return updateLiveStreamStaticRenditionsWithHttpInfo(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest);
         }
 
         /**
@@ -2939,7 +2939,7 @@ public class LiveStreamsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<LiveStreamResponse> _callback) throws ApiException {
-            return updateLiveStreamStaticRenditionsAsync(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest, _callback);
+            return updateLiveStreamStaticRenditionsAsync(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest, _callback);
         }
     }
 
@@ -2947,7 +2947,7 @@ public class LiveStreamsApi {
      * Update live stream static renditions for new assets
      * Updates a live stream&#39;s static renditions settings for new assets. Further assets made via this live stream will create static renditions per the settings provided. You must provide all static renditions desired.
      * @param LIVE_STREAM_ID The live stream ID (required)
-     * @param updateLiveStreamNewAssetSettingsStaticRenditionRequest  (required)
+     * @param updateLiveStreamNewAssetSettingsStaticRenditionsRequest  (required)
      * @return APIupdateLiveStreamStaticRenditionsRequest
      * @http.response.details
      <table border="1">
@@ -2956,7 +2956,7 @@ public class LiveStreamsApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdateLiveStreamStaticRenditionsRequest updateLiveStreamStaticRenditions(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionRequest updateLiveStreamNewAssetSettingsStaticRenditionRequest) {
-        return new APIupdateLiveStreamStaticRenditionsRequest(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionRequest);
+    public APIupdateLiveStreamStaticRenditionsRequest updateLiveStreamStaticRenditions(String LIVE_STREAM_ID, UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest updateLiveStreamNewAssetSettingsStaticRenditionsRequest) {
+        return new APIupdateLiveStreamStaticRenditionsRequest(LIVE_STREAM_ID, updateLiveStreamNewAssetSettingsStaticRenditionsRequest);
     }
 }

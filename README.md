@@ -52,7 +52,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>0.17.0-beta.1</version>
+  <version>0.17.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -62,7 +62,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:0.17.0-beta.1"
+compile "com.mux:mux-sdk-java:0.17.0"
 ```
 
 ### Others
@@ -75,7 +75,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-0.17.0-beta.1.jar`
+* `target/mux-sdk-java-0.17.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -388,7 +388,7 @@ Class | Method | HTTP request | Description
  - [UpdateLiveStreamEmbeddedSubtitlesRequest](docs/UpdateLiveStreamEmbeddedSubtitlesRequest.md)
  - [UpdateLiveStreamGeneratedSubtitlesRequest](docs/UpdateLiveStreamGeneratedSubtitlesRequest.md)
  - [UpdateLiveStreamNewAssetSettings](docs/UpdateLiveStreamNewAssetSettings.md)
- - [UpdateLiveStreamNewAssetSettingsStaticRenditionRequest](docs/UpdateLiveStreamNewAssetSettingsStaticRenditionRequest.md)
+ - [UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest](docs/UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest.md)
  - [UpdateLiveStreamRequest](docs/UpdateLiveStreamRequest.md)
  - [UpdateReferrerDomainRestrictionRequest](docs/UpdateReferrerDomainRestrictionRequest.md)
  - [UpdateTranscriptionVocabularyRequest](docs/UpdateTranscriptionVocabularyRequest.md)

@@ -1,6 +1,6 @@
 
 
-# UpdateLiveStreamNewAssetSettingsStaticRenditionRequest
+# UpdateLiveStreamNewAssetSettingsStaticRenditionsRequest
 
 ## Properties
 

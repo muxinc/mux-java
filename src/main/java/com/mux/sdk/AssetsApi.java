@@ -506,7 +506,7 @@ public class AssetsApi {
 
     /**
      * Create a static rendition for an asset
-     * Creates a static rendition (i.e. MP4s) for an asset
+     * Creates a static rendition (i.e. MP4) for an asset
      * @param ASSET_ID The asset ID. (required)
      * @param createStaticRenditionRequest  (required)
      * @return APIcreateAssetStaticRenditionRequest

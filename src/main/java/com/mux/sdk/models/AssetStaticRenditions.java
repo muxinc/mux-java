@@ -32,7 +32,7 @@ import java.io.IOException;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AssetStaticRenditions {
   /**
-   * Indicates the status of downloadable MP4 version of this asset. This field is only valid when the &#x60;mp4_support&#x60; option is enabled
+   * Indicates the status of downloadable MP4 versions of this asset. This field is only valid when &#x60;mp4_support&#x60; is enabled
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -98,11 +98,11 @@ public class AssetStaticRenditions {
   }
 
    /**
-   * Indicates the status of downloadable MP4 version of this asset. This field is only valid when the &#x60;mp4_support&#x60; option is enabled
+   * Indicates the status of downloadable MP4 versions of this asset. This field is only valid when &#x60;mp4_support&#x60; is enabled
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates the status of downloadable MP4 version of this asset. This field is only valid when the `mp4_support` option is enabled")
+  @ApiModelProperty(value = "Indicates the status of downloadable MP4 versions of this asset. This field is only valid when `mp4_support` is enabled")
 
   public StatusEnum getStatus() {
     return status;

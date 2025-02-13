@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 Create a static rendition for an asset
 
-Creates a static rendition (i.e. MP4s) for an asset
+Creates a static rendition (i.e. MP4) for an asset
 
 ### Example
 ```java
