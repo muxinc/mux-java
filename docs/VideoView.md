@@ -168,6 +168,22 @@ Name | Type | Description | Notes
 **viewContentStartupTime** | **Integer** |  |  [optional]
 **adPrerollStartupTime** | **Integer** |  |  [optional]
 **viewDropped** | **Boolean** |  |  [optional]
+**clientApplicationName** | **String** |  |  [optional]
+**clientApplicationVersion** | **String** |  |  [optional]
+**videoAffiliate** | **String** |  |  [optional]
+**viewerPlan** | **String** |  |  [optional]
+**viewerPlanStatus** | **String** |  |  [optional]
+**viewerPlanCategory** | **String** |  |  [optional]
+**viewDrmLevel** | **String** |  |  [optional]
+**videoBrand** | **String** |  |  [optional]
+**usedPip** | **Boolean** |  |  [optional]
+**timeShiftEnabled** | **Boolean** |  |  [optional]
+**usedCaptions** | **Boolean** |  |  [optional]
+**videoCodec** | **String** |  |  [optional]
+**audioCodec** | **String** |  |  [optional]
+**videoDynamicRangeType** | **String** |  |  [optional]
+**viewCdnEdgePop** | **String** |  |  [optional]
+**viewCdnOrigin** | **String** |  |  [optional]
 
 
 

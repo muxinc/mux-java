@@ -96,6 +96,10 @@ public class CreateStaticRenditionRequest {
   @SerializedName(SERIALIZED_NAME_RESOLUTION)
   private ResolutionEnum resolution;
 
+  public static final String SERIALIZED_NAME_PASSTHROUGH = "passthrough";
+  @SerializedName(SERIALIZED_NAME_PASSTHROUGH)
+  private String passthrough;
+
 
   public CreateStaticRenditionRequest resolution(ResolutionEnum resolution) {
     
@@ -120,6 +124,29 @@ public class CreateStaticRenditionRequest {
   }
 
 
+  public CreateStaticRenditionRequest passthrough(String passthrough) {
+    
+    this.passthrough = passthrough;
+    return this;
+  }
+
+   /**
+   * Arbitrary user-supplied metadata set for the static rendition. Max 255 characters.
+   * @return passthrough
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Arbitrary user-supplied metadata set for the static rendition. Max 255 characters.")
+
+  public String getPassthrough() {
+    return passthrough;
+  }
+
+
+  public void setPassthrough(String passthrough) {
+    this.passthrough = passthrough;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -129,12 +156,13 @@ public class CreateStaticRenditionRequest {
       return false;
     }
     CreateStaticRenditionRequest createStaticRenditionRequest = (CreateStaticRenditionRequest) o;
-    return Objects.equals(this.resolution, createStaticRenditionRequest.resolution);
+    return Objects.equals(this.resolution, createStaticRenditionRequest.resolution) &&
+        Objects.equals(this.passthrough, createStaticRenditionRequest.passthrough);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resolution);
+    return Objects.hash(resolution, passthrough);
   }
 
   @Override
@@ -142,6 +170,7 @@ public class CreateStaticRenditionRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateStaticRenditionRequest {\n");
     sb.append("    resolution: ").append(toIndentedString(resolution)).append("\n");
+    sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
     sb.append("}");
     return sb.toString();
   }
