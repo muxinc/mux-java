@@ -416,11 +416,11 @@ public class InputSettings {
   }
 
    /**
-   * This optional parameter should be used tracks with &#x60;type&#x60; of &#x60;text&#x60; and &#x60;text_type&#x60; set to &#x60;subtitles&#x60;.
+   * This optional parameter should be used for tracks with &#x60;type&#x60; of &#x60;text&#x60; and &#x60;text_type&#x60; set to &#x60;subtitles&#x60;.
    * @return passthrough
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This optional parameter should be used tracks with `type` of `text` and `text_type` set to `subtitles`.")
+  @ApiModelProperty(value = "This optional parameter should be used for tracks with `type` of `text` and `text_type` set to `subtitles`.")
 
   public String getPassthrough() {
     return passthrough;

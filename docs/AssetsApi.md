@@ -1091,7 +1091,7 @@ Name | Type | Description  | Notes
 
 Update MP4 support
 
-Allows you to add or remove mp4 support for assets that were created without it. The values supported are &#x60;capped-1080p&#x60;, &#x60;audio-only&#x60;, &#x60;audio-only,capped-1080p&#x60;, &#x60;standard&#x60;(deprecated),  and &#x60;none&#x60;. &#x60;none&#x60; means that an asset *does not* have mp4 support, so submitting a request with &#x60;mp4_support&#x60; set to &#x60;none&#x60; will delete the mp4 assets from the asset in question.
+This method has been deprecated. Please see the [Static Rendition API](https://www.mux.com/docs/guides/enable-static-mp4-renditions#after-asset-creation). Allows you to add or remove mp4 support for assets that were created without it. The values supported are &#x60;capped-1080p&#x60;, &#x60;audio-only&#x60;, &#x60;audio-only,capped-1080p&#x60;, &#x60;standard&#x60;(deprecated),  and &#x60;none&#x60;. &#x60;none&#x60; means that an asset *does not* have mp4 support, so submitting a request with &#x60;mp4_support&#x60; set to &#x60;none&#x60; will delete the mp4 assets from the asset in question. 
 
 ### Example
 ```java

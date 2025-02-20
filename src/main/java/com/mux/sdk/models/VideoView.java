@@ -678,6 +678,70 @@ public class VideoView {
   @SerializedName(SERIALIZED_NAME_VIEW_DROPPED)
   private Boolean viewDropped;
 
+  public static final String SERIALIZED_NAME_CLIENT_APPLICATION_NAME = "client_application_name";
+  @SerializedName(SERIALIZED_NAME_CLIENT_APPLICATION_NAME)
+  private String clientApplicationName;
+
+  public static final String SERIALIZED_NAME_CLIENT_APPLICATION_VERSION = "client_application_version";
+  @SerializedName(SERIALIZED_NAME_CLIENT_APPLICATION_VERSION)
+  private String clientApplicationVersion;
+
+  public static final String SERIALIZED_NAME_VIDEO_AFFILIATE = "video_affiliate";
+  @SerializedName(SERIALIZED_NAME_VIDEO_AFFILIATE)
+  private String videoAffiliate;
+
+  public static final String SERIALIZED_NAME_VIEWER_PLAN = "viewer_plan";
+  @SerializedName(SERIALIZED_NAME_VIEWER_PLAN)
+  private String viewerPlan;
+
+  public static final String SERIALIZED_NAME_VIEWER_PLAN_STATUS = "viewer_plan_status";
+  @SerializedName(SERIALIZED_NAME_VIEWER_PLAN_STATUS)
+  private String viewerPlanStatus;
+
+  public static final String SERIALIZED_NAME_VIEWER_PLAN_CATEGORY = "viewer_plan_category";
+  @SerializedName(SERIALIZED_NAME_VIEWER_PLAN_CATEGORY)
+  private String viewerPlanCategory;
+
+  public static final String SERIALIZED_NAME_VIEW_DRM_LEVEL = "view_drm_level";
+  @SerializedName(SERIALIZED_NAME_VIEW_DRM_LEVEL)
+  private String viewDrmLevel;
+
+  public static final String SERIALIZED_NAME_VIDEO_BRAND = "video_brand";
+  @SerializedName(SERIALIZED_NAME_VIDEO_BRAND)
+  private String videoBrand;
+
+  public static final String SERIALIZED_NAME_USED_PIP = "used_pip";
+  @SerializedName(SERIALIZED_NAME_USED_PIP)
+  private Boolean usedPip;
+
+  public static final String SERIALIZED_NAME_TIME_SHIFT_ENABLED = "time_shift_enabled";
+  @SerializedName(SERIALIZED_NAME_TIME_SHIFT_ENABLED)
+  private Boolean timeShiftEnabled;
+
+  public static final String SERIALIZED_NAME_USED_CAPTIONS = "used_captions";
+  @SerializedName(SERIALIZED_NAME_USED_CAPTIONS)
+  private Boolean usedCaptions;
+
+  public static final String SERIALIZED_NAME_VIDEO_CODEC = "video_codec";
+  @SerializedName(SERIALIZED_NAME_VIDEO_CODEC)
+  private String videoCodec;
+
+  public static final String SERIALIZED_NAME_AUDIO_CODEC = "audio_codec";
+  @SerializedName(SERIALIZED_NAME_AUDIO_CODEC)
+  private String audioCodec;
+
+  public static final String SERIALIZED_NAME_VIDEO_DYNAMIC_RANGE_TYPE = "video_dynamic_range_type";
+  @SerializedName(SERIALIZED_NAME_VIDEO_DYNAMIC_RANGE_TYPE)
+  private String videoDynamicRangeType;
+
+  public static final String SERIALIZED_NAME_VIEW_CDN_EDGE_POP = "view_cdn_edge_pop";
+  @SerializedName(SERIALIZED_NAME_VIEW_CDN_EDGE_POP)
+  private String viewCdnEdgePop;
+
+  public static final String SERIALIZED_NAME_VIEW_CDN_ORIGIN = "view_cdn_origin";
+  @SerializedName(SERIALIZED_NAME_VIEW_CDN_ORIGIN)
+  private String viewCdnOrigin;
+
 
   public VideoView viewTotalUpscaling(String viewTotalUpscaling) {
     
@@ -4413,6 +4477,374 @@ public class VideoView {
   }
 
 
+  public VideoView clientApplicationName(String clientApplicationName) {
+    
+    this.clientApplicationName = clientApplicationName;
+    return this;
+  }
+
+   /**
+   * Get clientApplicationName
+   * @return clientApplicationName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getClientApplicationName() {
+    return clientApplicationName;
+  }
+
+
+  public void setClientApplicationName(String clientApplicationName) {
+    this.clientApplicationName = clientApplicationName;
+  }
+
+
+  public VideoView clientApplicationVersion(String clientApplicationVersion) {
+    
+    this.clientApplicationVersion = clientApplicationVersion;
+    return this;
+  }
+
+   /**
+   * Get clientApplicationVersion
+   * @return clientApplicationVersion
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getClientApplicationVersion() {
+    return clientApplicationVersion;
+  }
+
+
+  public void setClientApplicationVersion(String clientApplicationVersion) {
+    this.clientApplicationVersion = clientApplicationVersion;
+  }
+
+
+  public VideoView videoAffiliate(String videoAffiliate) {
+    
+    this.videoAffiliate = videoAffiliate;
+    return this;
+  }
+
+   /**
+   * Get videoAffiliate
+   * @return videoAffiliate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVideoAffiliate() {
+    return videoAffiliate;
+  }
+
+
+  public void setVideoAffiliate(String videoAffiliate) {
+    this.videoAffiliate = videoAffiliate;
+  }
+
+
+  public VideoView viewerPlan(String viewerPlan) {
+    
+    this.viewerPlan = viewerPlan;
+    return this;
+  }
+
+   /**
+   * Get viewerPlan
+   * @return viewerPlan
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getViewerPlan() {
+    return viewerPlan;
+  }
+
+
+  public void setViewerPlan(String viewerPlan) {
+    this.viewerPlan = viewerPlan;
+  }
+
+
+  public VideoView viewerPlanStatus(String viewerPlanStatus) {
+    
+    this.viewerPlanStatus = viewerPlanStatus;
+    return this;
+  }
+
+   /**
+   * Get viewerPlanStatus
+   * @return viewerPlanStatus
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getViewerPlanStatus() {
+    return viewerPlanStatus;
+  }
+
+
+  public void setViewerPlanStatus(String viewerPlanStatus) {
+    this.viewerPlanStatus = viewerPlanStatus;
+  }
+
+
+  public VideoView viewerPlanCategory(String viewerPlanCategory) {
+    
+    this.viewerPlanCategory = viewerPlanCategory;
+    return this;
+  }
+
+   /**
+   * Get viewerPlanCategory
+   * @return viewerPlanCategory
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getViewerPlanCategory() {
+    return viewerPlanCategory;
+  }
+
+
+  public void setViewerPlanCategory(String viewerPlanCategory) {
+    this.viewerPlanCategory = viewerPlanCategory;
+  }
+
+
+  public VideoView viewDrmLevel(String viewDrmLevel) {
+    
+    this.viewDrmLevel = viewDrmLevel;
+    return this;
+  }
+
+   /**
+   * Get viewDrmLevel
+   * @return viewDrmLevel
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getViewDrmLevel() {
+    return viewDrmLevel;
+  }
+
+
+  public void setViewDrmLevel(String viewDrmLevel) {
+    this.viewDrmLevel = viewDrmLevel;
+  }
+
+
+  public VideoView videoBrand(String videoBrand) {
+    
+    this.videoBrand = videoBrand;
+    return this;
+  }
+
+   /**
+   * Get videoBrand
+   * @return videoBrand
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVideoBrand() {
+    return videoBrand;
+  }
+
+
+  public void setVideoBrand(String videoBrand) {
+    this.videoBrand = videoBrand;
+  }
+
+
+  public VideoView usedPip(Boolean usedPip) {
+    
+    this.usedPip = usedPip;
+    return this;
+  }
+
+   /**
+   * Get usedPip
+   * @return usedPip
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getUsedPip() {
+    return usedPip;
+  }
+
+
+  public void setUsedPip(Boolean usedPip) {
+    this.usedPip = usedPip;
+  }
+
+
+  public VideoView timeShiftEnabled(Boolean timeShiftEnabled) {
+    
+    this.timeShiftEnabled = timeShiftEnabled;
+    return this;
+  }
+
+   /**
+   * Get timeShiftEnabled
+   * @return timeShiftEnabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getTimeShiftEnabled() {
+    return timeShiftEnabled;
+  }
+
+
+  public void setTimeShiftEnabled(Boolean timeShiftEnabled) {
+    this.timeShiftEnabled = timeShiftEnabled;
+  }
+
+
+  public VideoView usedCaptions(Boolean usedCaptions) {
+    
+    this.usedCaptions = usedCaptions;
+    return this;
+  }
+
+   /**
+   * Get usedCaptions
+   * @return usedCaptions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getUsedCaptions() {
+    return usedCaptions;
+  }
+
+
+  public void setUsedCaptions(Boolean usedCaptions) {
+    this.usedCaptions = usedCaptions;
+  }
+
+
+  public VideoView videoCodec(String videoCodec) {
+    
+    this.videoCodec = videoCodec;
+    return this;
+  }
+
+   /**
+   * Get videoCodec
+   * @return videoCodec
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVideoCodec() {
+    return videoCodec;
+  }
+
+
+  public void setVideoCodec(String videoCodec) {
+    this.videoCodec = videoCodec;
+  }
+
+
+  public VideoView audioCodec(String audioCodec) {
+    
+    this.audioCodec = audioCodec;
+    return this;
+  }
+
+   /**
+   * Get audioCodec
+   * @return audioCodec
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAudioCodec() {
+    return audioCodec;
+  }
+
+
+  public void setAudioCodec(String audioCodec) {
+    this.audioCodec = audioCodec;
+  }
+
+
+  public VideoView videoDynamicRangeType(String videoDynamicRangeType) {
+    
+    this.videoDynamicRangeType = videoDynamicRangeType;
+    return this;
+  }
+
+   /**
+   * Get videoDynamicRangeType
+   * @return videoDynamicRangeType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVideoDynamicRangeType() {
+    return videoDynamicRangeType;
+  }
+
+
+  public void setVideoDynamicRangeType(String videoDynamicRangeType) {
+    this.videoDynamicRangeType = videoDynamicRangeType;
+  }
+
+
+  public VideoView viewCdnEdgePop(String viewCdnEdgePop) {
+    
+    this.viewCdnEdgePop = viewCdnEdgePop;
+    return this;
+  }
+
+   /**
+   * Get viewCdnEdgePop
+   * @return viewCdnEdgePop
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getViewCdnEdgePop() {
+    return viewCdnEdgePop;
+  }
+
+
+  public void setViewCdnEdgePop(String viewCdnEdgePop) {
+    this.viewCdnEdgePop = viewCdnEdgePop;
+  }
+
+
+  public VideoView viewCdnOrigin(String viewCdnOrigin) {
+    
+    this.viewCdnOrigin = viewCdnOrigin;
+    return this;
+  }
+
+   /**
+   * Get viewCdnOrigin
+   * @return viewCdnOrigin
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getViewCdnOrigin() {
+    return viewCdnOrigin;
+  }
+
+
+  public void setViewCdnOrigin(String viewCdnOrigin) {
+    this.viewCdnOrigin = viewCdnOrigin;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -4583,12 +5015,28 @@ public class VideoView {
         Objects.equals(this.adPlaybackFailureErrorTypeId, videoView.adPlaybackFailureErrorTypeId) &&
         Objects.equals(this.viewContentStartupTime, videoView.viewContentStartupTime) &&
         Objects.equals(this.adPrerollStartupTime, videoView.adPrerollStartupTime) &&
-        Objects.equals(this.viewDropped, videoView.viewDropped);
+        Objects.equals(this.viewDropped, videoView.viewDropped) &&
+        Objects.equals(this.clientApplicationName, videoView.clientApplicationName) &&
+        Objects.equals(this.clientApplicationVersion, videoView.clientApplicationVersion) &&
+        Objects.equals(this.videoAffiliate, videoView.videoAffiliate) &&
+        Objects.equals(this.viewerPlan, videoView.viewerPlan) &&
+        Objects.equals(this.viewerPlanStatus, videoView.viewerPlanStatus) &&
+        Objects.equals(this.viewerPlanCategory, videoView.viewerPlanCategory) &&
+        Objects.equals(this.viewDrmLevel, videoView.viewDrmLevel) &&
+        Objects.equals(this.videoBrand, videoView.videoBrand) &&
+        Objects.equals(this.usedPip, videoView.usedPip) &&
+        Objects.equals(this.timeShiftEnabled, videoView.timeShiftEnabled) &&
+        Objects.equals(this.usedCaptions, videoView.usedCaptions) &&
+        Objects.equals(this.videoCodec, videoView.videoCodec) &&
+        Objects.equals(this.audioCodec, videoView.audioCodec) &&
+        Objects.equals(this.videoDynamicRangeType, videoView.videoDynamicRangeType) &&
+        Objects.equals(this.viewCdnEdgePop, videoView.viewCdnEdgePop) &&
+        Objects.equals(this.viewCdnOrigin, videoView.viewCdnOrigin);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, adAttemptCount, adBreakCount, adBreakErrorCount, adBreakErrorPercentage, adErrorCount, adErrorPercentage, adImpressionCount, adStartupErrorCount, adStartupErrorPercentage, adExitBeforeStartCount, adExitBeforeStartPercentage, longResume, longRebuffering, playbackFailureErrorTypeId, playbackBusinessExceptionErrorTypeId, videoStartupBusinessExceptionErrorTypeId, playbackFailure, adPlaybackFailureErrorTypeId, viewContentStartupTime, adPrerollStartupTime, viewDropped);
+    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, adAttemptCount, adBreakCount, adBreakErrorCount, adBreakErrorPercentage, adErrorCount, adErrorPercentage, adImpressionCount, adStartupErrorCount, adStartupErrorPercentage, adExitBeforeStartCount, adExitBeforeStartPercentage, longResume, longRebuffering, playbackFailureErrorTypeId, playbackBusinessExceptionErrorTypeId, videoStartupBusinessExceptionErrorTypeId, playbackFailure, adPlaybackFailureErrorTypeId, viewContentStartupTime, adPrerollStartupTime, viewDropped, clientApplicationName, clientApplicationVersion, videoAffiliate, viewerPlan, viewerPlanStatus, viewerPlanCategory, viewDrmLevel, videoBrand, usedPip, timeShiftEnabled, usedCaptions, videoCodec, audioCodec, videoDynamicRangeType, viewCdnEdgePop, viewCdnOrigin);
   }
 
   @Override
@@ -4757,6 +5205,22 @@ public class VideoView {
     sb.append("    viewContentStartupTime: ").append(toIndentedString(viewContentStartupTime)).append("\n");
     sb.append("    adPrerollStartupTime: ").append(toIndentedString(adPrerollStartupTime)).append("\n");
     sb.append("    viewDropped: ").append(toIndentedString(viewDropped)).append("\n");
+    sb.append("    clientApplicationName: ").append(toIndentedString(clientApplicationName)).append("\n");
+    sb.append("    clientApplicationVersion: ").append(toIndentedString(clientApplicationVersion)).append("\n");
+    sb.append("    videoAffiliate: ").append(toIndentedString(videoAffiliate)).append("\n");
+    sb.append("    viewerPlan: ").append(toIndentedString(viewerPlan)).append("\n");
+    sb.append("    viewerPlanStatus: ").append(toIndentedString(viewerPlanStatus)).append("\n");
+    sb.append("    viewerPlanCategory: ").append(toIndentedString(viewerPlanCategory)).append("\n");
+    sb.append("    viewDrmLevel: ").append(toIndentedString(viewDrmLevel)).append("\n");
+    sb.append("    videoBrand: ").append(toIndentedString(videoBrand)).append("\n");
+    sb.append("    usedPip: ").append(toIndentedString(usedPip)).append("\n");
+    sb.append("    timeShiftEnabled: ").append(toIndentedString(timeShiftEnabled)).append("\n");
+    sb.append("    usedCaptions: ").append(toIndentedString(usedCaptions)).append("\n");
+    sb.append("    videoCodec: ").append(toIndentedString(videoCodec)).append("\n");
+    sb.append("    audioCodec: ").append(toIndentedString(audioCodec)).append("\n");
+    sb.append("    videoDynamicRangeType: ").append(toIndentedString(videoDynamicRangeType)).append("\n");
+    sb.append("    viewCdnEdgePop: ").append(toIndentedString(viewCdnEdgePop)).append("\n");
+    sb.append("    viewCdnOrigin: ").append(toIndentedString(viewCdnOrigin)).append("\n");
     sb.append("}");
     return sb.toString();
   }
