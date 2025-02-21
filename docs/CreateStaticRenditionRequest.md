@@ -7,6 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **resolution** | [**ResolutionEnum**](#ResolutionEnum) |  |  [optional]
+**passthrough** | **String** | Arbitrary user-supplied metadata set for the static rendition. Max 255 characters. |  [optional]
 
 
 

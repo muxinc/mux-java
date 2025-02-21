@@ -2415,6 +2415,7 @@ public class AssetsApi {
         return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateAssetMp4SupportValidateBeforeCall(String ASSET_ID, UpdateAssetMP4SupportRequest updateAssetMP4SupportRequest, final ApiCallback _callback) throws ApiException {
         
@@ -2469,7 +2470,9 @@ public class AssetsApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return updateAssetMp4SupportCall(ASSET_ID, updateAssetMP4SupportRequest, _callback);
         }
@@ -2484,7 +2487,9 @@ public class AssetsApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public AssetResponse execute() throws ApiException {
             ApiResponse<AssetResponse> localVarResp = updateAssetMp4SupportWithHttpInfo(ASSET_ID, updateAssetMP4SupportRequest);
             return localVarResp.getData();
@@ -2500,7 +2505,9 @@ public class AssetsApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<AssetResponse> executeWithHttpInfo() throws ApiException {
             return updateAssetMp4SupportWithHttpInfo(ASSET_ID, updateAssetMP4SupportRequest);
         }
@@ -2516,7 +2523,9 @@ public class AssetsApi {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<AssetResponse> _callback) throws ApiException {
             return updateAssetMp4SupportAsync(ASSET_ID, updateAssetMP4SupportRequest, _callback);
         }
@@ -2524,7 +2533,7 @@ public class AssetsApi {
 
     /**
      * Update MP4 support
-     * Allows you to add or remove mp4 support for assets that were created without it. The values supported are &#x60;capped-1080p&#x60;, &#x60;audio-only&#x60;, &#x60;audio-only,capped-1080p&#x60;, &#x60;standard&#x60;(deprecated),  and &#x60;none&#x60;. &#x60;none&#x60; means that an asset *does not* have mp4 support, so submitting a request with &#x60;mp4_support&#x60; set to &#x60;none&#x60; will delete the mp4 assets from the asset in question.
+     * This method has been deprecated. Please see the [Static Rendition API](https://www.mux.com/docs/guides/enable-static-mp4-renditions#after-asset-creation). Allows you to add or remove mp4 support for assets that were created without it. The values supported are &#x60;capped-1080p&#x60;, &#x60;audio-only&#x60;, &#x60;audio-only,capped-1080p&#x60;, &#x60;standard&#x60;(deprecated),  and &#x60;none&#x60;. &#x60;none&#x60; means that an asset *does not* have mp4 support, so submitting a request with &#x60;mp4_support&#x60; set to &#x60;none&#x60; will delete the mp4 assets from the asset in question. 
      * @param ASSET_ID The asset ID. (required)
      * @param updateAssetMP4SupportRequest  (required)
      * @return APIupdateAssetMp4SupportRequest
@@ -2534,7 +2543,9 @@ public class AssetsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public APIupdateAssetMp4SupportRequest updateAssetMp4Support(String ASSET_ID, UpdateAssetMP4SupportRequest updateAssetMP4SupportRequest) {
         return new APIupdateAssetMp4SupportRequest(ASSET_ID, updateAssetMP4SupportRequest);
     }

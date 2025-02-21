@@ -403,6 +403,10 @@ public class StaticRendition {
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_PASSTHROUGH = "passthrough";
+  @SerializedName(SERIALIZED_NAME_PASSTHROUGH)
+  private String passthrough;
+
 
   public StaticRendition name(NameEnum name) {
     
@@ -657,6 +661,29 @@ public class StaticRendition {
   }
 
 
+  public StaticRendition passthrough(String passthrough) {
+    
+    this.passthrough = passthrough;
+    return this;
+  }
+
+   /**
+   * Arbitrary user-supplied metadata set for the static rendition. Max 255 characters.
+   * @return passthrough
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Arbitrary user-supplied metadata set for the static rendition. Max 255 characters.")
+
+  public String getPassthrough() {
+    return passthrough;
+  }
+
+
+  public void setPassthrough(String passthrough) {
+    this.passthrough = passthrough;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -676,12 +703,13 @@ public class StaticRendition {
         Objects.equals(this.status, staticRendition.status) &&
         Objects.equals(this.resolutionTier, staticRendition.resolutionTier) &&
         Objects.equals(this.resolution, staticRendition.resolution) &&
-        Objects.equals(this.id, staticRendition.id);
+        Objects.equals(this.id, staticRendition.id) &&
+        Objects.equals(this.passthrough, staticRendition.passthrough);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, ext, height, width, bitrate, filesize, type, status, resolutionTier, resolution, id);
+    return Objects.hash(name, ext, height, width, bitrate, filesize, type, status, resolutionTier, resolution, id, passthrough);
   }
 
   @Override
@@ -699,6 +727,7 @@ public class StaticRendition {
     sb.append("    resolutionTier: ").append(toIndentedString(resolutionTier)).append("\n");
     sb.append("    resolution: ").append(toIndentedString(resolution)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
     sb.append("}");
     return sb.toString();
   }
