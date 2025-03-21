@@ -12,8 +12,6 @@
   <a href="https://docs.mux.com/api-reference">Mux API Reference </a>
 </p>
 
-**PLEASE NOTE:** This is an early build of the Mux Java SDK, as evidenced by its pre-1.0 status, but we're reasonably certain of its stability and usability against the Mux API. Documentation is currently best-effort, but it'll improve over time! Instead of contacting Mux Support, please file an issue on this repository or email [Mux DevEx](devex@mux.com) for assistance.
-
 ## Usage With Webhooks
 
 At this moment, this SDK is not suitable for parsing or modeling webhook payloads, due to some incompatibilities in our API spec and our SDK generation tooling. We are working on resolving these issues, but for now you should only use this SDK for Mux's REST APIs.
