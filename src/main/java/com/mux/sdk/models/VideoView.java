@@ -742,6 +742,10 @@ public class VideoView {
   @SerializedName(SERIALIZED_NAME_VIEW_CDN_ORIGIN)
   private String viewCdnOrigin;
 
+  public static final String SERIALIZED_NAME_VIDEO_CREATOR_ID = "video_creator_id";
+  @SerializedName(SERIALIZED_NAME_VIDEO_CREATOR_ID)
+  private String videoCreatorId;
+
 
   public VideoView viewTotalUpscaling(String viewTotalUpscaling) {
     
@@ -4845,6 +4849,29 @@ public class VideoView {
   }
 
 
+  public VideoView videoCreatorId(String videoCreatorId) {
+    
+    this.videoCreatorId = videoCreatorId;
+    return this;
+  }
+
+   /**
+   * Get videoCreatorId
+   * @return videoCreatorId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getVideoCreatorId() {
+    return videoCreatorId;
+  }
+
+
+  public void setVideoCreatorId(String videoCreatorId) {
+    this.videoCreatorId = videoCreatorId;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -5031,12 +5058,13 @@ public class VideoView {
         Objects.equals(this.audioCodec, videoView.audioCodec) &&
         Objects.equals(this.videoDynamicRangeType, videoView.videoDynamicRangeType) &&
         Objects.equals(this.viewCdnEdgePop, videoView.viewCdnEdgePop) &&
-        Objects.equals(this.viewCdnOrigin, videoView.viewCdnOrigin);
+        Objects.equals(this.viewCdnOrigin, videoView.viewCdnOrigin) &&
+        Objects.equals(this.videoCreatorId, videoView.videoCreatorId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, adAttemptCount, adBreakCount, adBreakErrorCount, adBreakErrorPercentage, adErrorCount, adErrorPercentage, adImpressionCount, adStartupErrorCount, adStartupErrorPercentage, adExitBeforeStartCount, adExitBeforeStartPercentage, longResume, longRebuffering, playbackFailureErrorTypeId, playbackBusinessExceptionErrorTypeId, videoStartupBusinessExceptionErrorTypeId, playbackFailure, adPlaybackFailureErrorTypeId, viewContentStartupTime, adPrerollStartupTime, viewDropped, clientApplicationName, clientApplicationVersion, videoAffiliate, viewerPlan, viewerPlanStatus, viewerPlanCategory, viewDrmLevel, videoBrand, usedPip, timeShiftEnabled, usedCaptions, videoCodec, audioCodec, videoDynamicRangeType, viewCdnEdgePop, viewCdnOrigin);
+    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, adAttemptCount, adBreakCount, adBreakErrorCount, adBreakErrorPercentage, adErrorCount, adErrorPercentage, adImpressionCount, adStartupErrorCount, adStartupErrorPercentage, adExitBeforeStartCount, adExitBeforeStartPercentage, longResume, longRebuffering, playbackFailureErrorTypeId, playbackBusinessExceptionErrorTypeId, videoStartupBusinessExceptionErrorTypeId, playbackFailure, adPlaybackFailureErrorTypeId, viewContentStartupTime, adPrerollStartupTime, viewDropped, clientApplicationName, clientApplicationVersion, videoAffiliate, viewerPlan, viewerPlanStatus, viewerPlanCategory, viewDrmLevel, videoBrand, usedPip, timeShiftEnabled, usedCaptions, videoCodec, audioCodec, videoDynamicRangeType, viewCdnEdgePop, viewCdnOrigin, videoCreatorId);
   }
 
   @Override
@@ -5221,6 +5249,7 @@ public class VideoView {
     sb.append("    videoDynamicRangeType: ").append(toIndentedString(videoDynamicRangeType)).append("\n");
     sb.append("    viewCdnEdgePop: ").append(toIndentedString(viewCdnEdgePop)).append("\n");
     sb.append("    viewCdnOrigin: ").append(toIndentedString(viewCdnOrigin)).append("\n");
+    sb.append("    videoCreatorId: ").append(toIndentedString(videoCreatorId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

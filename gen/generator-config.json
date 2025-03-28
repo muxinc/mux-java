@@ -1,6 +1,6 @@
 {
   "!!source": "https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/java.md",
-    "artifactVersion": "1.0.0",
+  "artifactVersion": "2.0.0",
   "apiPackage": "com.mux.sdk",
   "artifactDescription": "Mux SDK for Java",
   "artifactId": "mux-sdk-java",

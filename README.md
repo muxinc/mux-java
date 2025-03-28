@@ -12,6 +12,8 @@
   <a href="https://docs.mux.com/api-reference">Mux API Reference </a>
 </p>
 
+**PLEASE NOTE:** This is an early build of the Mux Java SDK, as evidenced by its pre-1.0 status, but we're reasonably certain of its stability and usability against the Mux API. Documentation is currently best-effort, but it'll improve over time! Instead of contacting Mux Support, please file an issue on this repository or email [Mux DevEx](devex@mux.com) for assistance.
+
 ## Usage With Webhooks
 
 At this moment, this SDK is not suitable for parsing or modeling webhook payloads, due to some incompatibilities in our API spec and our SDK generation tooling. We are working on resolving these issues, but for now you should only use this SDK for Mux's REST APIs.
@@ -50,7 +52,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -60,7 +62,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:1.0.0"
+compile "com.mux:mux-sdk-java:2.0.0"
 ```
 
 ### Others
@@ -73,7 +75,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-1.0.0.jar`
+* `target/mux-sdk-java-2.0.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -101,7 +103,7 @@ public class Example {
     accessToken.setPassword("YOUR PASSWORD");
 
     AssetsApi apiInstance = new AssetsApi(defaultClient);
-    CreateAssetRequest createAssetRequest = {"input":[{"url":"https://muxed.s3.amazonaws.com/leds.mp4"}],"playback_policy":["public"],"video_quality":"basic"}; // CreateAssetRequest | 
+    CreateAssetRequest createAssetRequest = {"inputs":[{"url":"https://muxed.s3.amazonaws.com/leds.mp4"}],"playback_policies":["public"],"video_quality":"basic"}; // CreateAssetRequest | 
     try {
       AssetResponse result = apiInstance.createAsset(createAssetRequest)
             .execute();
@@ -231,6 +233,7 @@ Class | Method | HTTP request | Description
  - [AssetErrors](docs/AssetErrors.md)
  - [AssetGeneratedSubtitleSettings](docs/AssetGeneratedSubtitleSettings.md)
  - [AssetMaster](docs/AssetMaster.md)
+ - [AssetMetadata](docs/AssetMetadata.md)
  - [AssetNonStandardInputReasons](docs/AssetNonStandardInputReasons.md)
  - [AssetRecordingTimes](docs/AssetRecordingTimes.md)
  - [AssetResponse](docs/AssetResponse.md)

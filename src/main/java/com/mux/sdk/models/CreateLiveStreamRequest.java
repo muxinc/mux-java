@@ -39,6 +39,10 @@ public class CreateLiveStreamRequest {
   @SerializedName(SERIALIZED_NAME_PLAYBACK_POLICY)
   private java.util.List<PlaybackPolicy> playbackPolicy = null;
 
+  public static final String SERIALIZED_NAME_PLAYBACK_POLICIES = "playback_policies";
+  @SerializedName(SERIALIZED_NAME_PLAYBACK_POLICIES)
+  private java.util.List<PlaybackPolicy> playbackPolicies = null;
+
   public static final String SERIALIZED_NAME_ADVANCED_PLAYBACK_POLICIES = "advanced_playback_policies";
   @SerializedName(SERIALIZED_NAME_ADVANCED_PLAYBACK_POLICIES)
   private java.util.List<CreatePlaybackIDRequest> advancedPlaybackPolicies = null;
@@ -164,11 +168,11 @@ public class CreateLiveStreamRequest {
   }
 
    /**
-   * Get playbackPolicy
+   * Deprecated. Use &#x60;playback_policies&#x60; instead, which accepts an identical type.
    * @return playbackPolicy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Deprecated. Use `playback_policies` instead, which accepts an identical type.")
 
   public java.util.List<PlaybackPolicy> getPlaybackPolicy() {
     return playbackPolicy;
@@ -177,6 +181,37 @@ public class CreateLiveStreamRequest {
 
   public void setPlaybackPolicy(java.util.List<PlaybackPolicy> playbackPolicy) {
     this.playbackPolicy = playbackPolicy;
+  }
+
+
+  public CreateLiveStreamRequest playbackPolicies(java.util.List<PlaybackPolicy> playbackPolicies) {
+    
+    this.playbackPolicies = playbackPolicies;
+    return this;
+  }
+
+  public CreateLiveStreamRequest addPlaybackPoliciesItem(PlaybackPolicy playbackPoliciesItem) {
+    if (this.playbackPolicies == null) {
+      this.playbackPolicies = new java.util.ArrayList<>();
+    }
+    this.playbackPolicies.add(playbackPoliciesItem);
+    return this;
+  }
+
+   /**
+   * An array of playback policy names that you want applied to this live stream and available through &#x60;playback_ids&#x60;. Options include:  * &#x60;\&quot;public\&quot;&#x60; (anyone with the playback URL can stream the live stream). * &#x60;\&quot;signed\&quot;&#x60; (an additional access token is required to play the live stream).  If no &#x60;playback_policies&#x60; is set, the live stream will have no playback IDs and will therefore not be playable. For simplicity, a single string name can be used in place of the array in the case of only one playback policy. 
+   * @return playbackPolicies
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "An array of playback policy names that you want applied to this live stream and available through `playback_ids`. Options include:  * `\"public\"` (anyone with the playback URL can stream the live stream). * `\"signed\"` (an additional access token is required to play the live stream).  If no `playback_policies` is set, the live stream will have no playback IDs and will therefore not be playable. For simplicity, a single string name can be used in place of the array in the case of only one playback policy. ")
+
+  public java.util.List<PlaybackPolicy> getPlaybackPolicies() {
+    return playbackPolicies;
+  }
+
+
+  public void setPlaybackPolicies(java.util.List<PlaybackPolicy> playbackPolicies) {
+    this.playbackPolicies = playbackPolicies;
   }
 
 
@@ -195,11 +230,11 @@ public class CreateLiveStreamRequest {
   }
 
    /**
-   * An array of playback policy objects that you want applied to this asset and available through &#x60;playback_ids&#x60;. &#x60;advanced_playback_policies&#x60; must be used instead of &#x60;playback_policy&#x60; when creating a DRM playback ID. 
+   * An array of playback policy objects that you want applied on this live stream and available through &#x60;playback_ids&#x60;. &#x60;advanced_playback_policies&#x60; must be used instead of &#x60;playback_policies&#x60; when creating a DRM playback ID. 
    * @return advancedPlaybackPolicies
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An array of playback policy objects that you want applied to this asset and available through `playback_ids`. `advanced_playback_policies` must be used instead of `playback_policy` when creating a DRM playback ID. ")
+  @ApiModelProperty(value = "An array of playback policy objects that you want applied on this live stream and available through `playback_ids`. `advanced_playback_policies` must be used instead of `playback_policies` when creating a DRM playback ID. ")
 
   public java.util.List<CreatePlaybackIDRequest> getAdvancedPlaybackPolicies() {
     return advancedPlaybackPolicies;
@@ -571,6 +606,7 @@ public class CreateLiveStreamRequest {
     }
     CreateLiveStreamRequest createLiveStreamRequest = (CreateLiveStreamRequest) o;
     return Objects.equals(this.playbackPolicy, createLiveStreamRequest.playbackPolicy) &&
+        Objects.equals(this.playbackPolicies, createLiveStreamRequest.playbackPolicies) &&
         Objects.equals(this.advancedPlaybackPolicies, createLiveStreamRequest.advancedPlaybackPolicies) &&
         Objects.equals(this.newAssetSettings, createLiveStreamRequest.newAssetSettings) &&
         Objects.equals(this.reconnectWindow, createLiveStreamRequest.reconnectWindow) &&
@@ -590,7 +626,7 @@ public class CreateLiveStreamRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(playbackPolicy, advancedPlaybackPolicies, newAssetSettings, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reducedLatency, lowLatency, latencyMode, test, simulcastTargets, maxContinuousDuration);
+    return Objects.hash(playbackPolicy, playbackPolicies, advancedPlaybackPolicies, newAssetSettings, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reducedLatency, lowLatency, latencyMode, test, simulcastTargets, maxContinuousDuration);
   }
 
   @Override
@@ -598,6 +634,7 @@ public class CreateLiveStreamRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateLiveStreamRequest {\n");
     sb.append("    playbackPolicy: ").append(toIndentedString(playbackPolicy)).append("\n");
+    sb.append("    playbackPolicies: ").append(toIndentedString(playbackPolicies)).append("\n");
     sb.append("    advancedPlaybackPolicies: ").append(toIndentedString(advancedPlaybackPolicies)).append("\n");
     sb.append("    newAssetSettings: ").append(toIndentedString(newAssetSettings)).append("\n");
     sb.append("    reconnectWindow: ").append(toIndentedString(reconnectWindow)).append("\n");

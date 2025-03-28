@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mux.sdk.models.AssetMetadata;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -33,6 +34,10 @@ public class UpdateAssetRequest {
   @SerializedName(SERIALIZED_NAME_PASSTHROUGH)
   private String passthrough;
 
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private AssetMetadata meta;
+
 
   public UpdateAssetRequest passthrough(String passthrough) {
     
@@ -41,11 +46,11 @@ public class UpdateAssetRequest {
   }
 
    /**
-   * Arbitrary metadata set for the Asset. Max 255 characters. In order to clear this value, the field should be included with an empty string value.
+   * You can set this field to anything you want. It will be included in the asset details and related webhooks. If you&#39;re looking for more structured metadata, such as &#x60;title&#x60; or &#x60;external_id&#x60; , you can use the &#x60;meta&#x60; object instead. **Max: 255 characters**. In order to clear this value, the field should be included with an empty string value.
    * @return passthrough
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Arbitrary metadata set for the Asset. Max 255 characters. In order to clear this value, the field should be included with an empty string value.")
+  @ApiModelProperty(value = "You can set this field to anything you want. It will be included in the asset details and related webhooks. If you're looking for more structured metadata, such as `title` or `external_id` , you can use the `meta` object instead. **Max: 255 characters**. In order to clear this value, the field should be included with an empty string value.")
 
   public String getPassthrough() {
     return passthrough;
@@ -54,6 +59,29 @@ public class UpdateAssetRequest {
 
   public void setPassthrough(String passthrough) {
     this.passthrough = passthrough;
+  }
+
+
+  public UpdateAssetRequest meta(AssetMetadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AssetMetadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(AssetMetadata meta) {
+    this.meta = meta;
   }
 
 
@@ -66,12 +94,13 @@ public class UpdateAssetRequest {
       return false;
     }
     UpdateAssetRequest updateAssetRequest = (UpdateAssetRequest) o;
-    return Objects.equals(this.passthrough, updateAssetRequest.passthrough);
+    return Objects.equals(this.passthrough, updateAssetRequest.passthrough) &&
+        Objects.equals(this.meta, updateAssetRequest.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(passthrough);
+    return Objects.hash(passthrough, meta);
   }
 
   @Override
@@ -79,6 +108,7 @@ public class UpdateAssetRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAssetRequest {\n");
     sb.append("    passthrough: ").append(toIndentedString(passthrough)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

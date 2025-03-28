@@ -6,6 +6,7 @@ docs/Asset.md
 docs/AssetErrors.md
 docs/AssetGeneratedSubtitleSettings.md
 docs/AssetMaster.md
+docs/AssetMetadata.md
 docs/AssetNonStandardInputReasons.md
 docs/AssetRecordingTimes.md
 docs/AssetResponse.md
@@ -222,6 +223,7 @@ src/main/java/com/mux/sdk/models/Asset.java
 src/main/java/com/mux/sdk/models/AssetErrors.java
 src/main/java/com/mux/sdk/models/AssetGeneratedSubtitleSettings.java
 src/main/java/com/mux/sdk/models/AssetMaster.java
+src/main/java/com/mux/sdk/models/AssetMetadata.java
 src/main/java/com/mux/sdk/models/AssetNonStandardInputReasons.java
 src/main/java/com/mux/sdk/models/AssetRecordingTimes.java
 src/main/java/com/mux/sdk/models/AssetResponse.java
