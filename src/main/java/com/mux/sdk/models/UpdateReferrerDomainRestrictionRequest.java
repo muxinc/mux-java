@@ -20,14 +20,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mux.sdk.models.ReferrerDomainRestriction;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * UpdateReferrerDomainRestrictionRequest
+ * A list of domains allowed to play your videos.
  */
+@ApiModel(description = "A list of domains allowed to play your videos.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateReferrerDomainRestrictionRequest {
   public static final String SERIALIZED_NAME_ALLOWED_DOMAINS = "allowed_domains";

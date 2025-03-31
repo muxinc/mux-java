@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **perTitleEncode** | **Boolean** |  |  [optional]
 **uploadId** | **String** | Unique identifier for the Direct Upload. This is an optional parameter added when the asset is created from a direct upload. |  [optional]
 **isLive** | **Boolean** | Indicates whether the live stream that created this asset is currently &#x60;active&#x60; and not in &#x60;idle&#x60; state. This is an optional parameter added when the asset is created from a live stream. |  [optional]
-**passthrough** | **String** | Arbitrary user-supplied metadata set for the asset. Max 255 characters. |  [optional]
+**passthrough** | **String** | You can set this field to anything you want. It will be included in the asset details and related webhooks. If you&#39;re looking for more structured metadata, such as &#x60;title&#x60; or &#x60;external_id&#x60; , you can use the &#x60;meta&#x60; object instead. **Max: 255 characters**. |  [optional]
 **liveStreamId** | **String** | Unique identifier for the live stream. This is an optional parameter added when the asset is created from a live stream. |  [optional]
 **master** | [**AssetMaster**](AssetMaster.md) |  |  [optional]
 **masterAccess** | [**MasterAccessEnum**](#MasterAccessEnum) |  |  [optional]
@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **nonStandardInputReasons** | [**AssetNonStandardInputReasons**](AssetNonStandardInputReasons.md) |  |  [optional]
 **test** | **Boolean** | True means this live stream is a test asset. A test asset can help evaluate the Mux Video APIs without incurring any cost. There is no limit on number of test assets created. Test assets are watermarked with the Mux logo, limited to 10 seconds, and deleted after 24 hrs. |  [optional]
 **ingestType** | [**IngestTypeEnum**](#IngestTypeEnum) | The type of ingest used to create the asset. |  [optional]
+**meta** | [**AssetMetadata**](AssetMetadata.md) |  |  [optional]
 
 
 

@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mux.sdk.models.Asset;
+import com.mux.sdk.models.CreateAssetRequest;
 import com.mux.sdk.models.UploadError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -98,7 +98,7 @@ public class Upload {
 
   public static final String SERIALIZED_NAME_NEW_ASSET_SETTINGS = "new_asset_settings";
   @SerializedName(SERIALIZED_NAME_NEW_ASSET_SETTINGS)
-  private Asset newAssetSettings;
+  private CreateAssetRequest newAssetSettings;
 
   public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
@@ -192,7 +192,7 @@ public class Upload {
   }
 
 
-  public Upload newAssetSettings(Asset newAssetSettings) {
+  public Upload newAssetSettings(CreateAssetRequest newAssetSettings) {
     
     this.newAssetSettings = newAssetSettings;
     return this;
@@ -205,12 +205,12 @@ public class Upload {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Asset getNewAssetSettings() {
+  public CreateAssetRequest getNewAssetSettings() {
     return newAssetSettings;
   }
 
 
-  public void setNewAssetSettings(Asset newAssetSettings) {
+  public void setNewAssetSettings(CreateAssetRequest newAssetSettings) {
     this.newAssetSettings = newAssetSettings;
   }
 

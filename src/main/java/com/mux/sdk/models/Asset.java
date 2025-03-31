@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mux.sdk.models.AssetErrors;
 import com.mux.sdk.models.AssetMaster;
+import com.mux.sdk.models.AssetMetadata;
 import com.mux.sdk.models.AssetNonStandardInputReasons;
 import com.mux.sdk.models.AssetRecordingTimes;
 import com.mux.sdk.models.AssetStaticRenditions;
@@ -607,6 +608,10 @@ public class Asset {
   @SerializedName(SERIALIZED_NAME_INGEST_TYPE)
   private IngestTypeEnum ingestType;
 
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private AssetMetadata meta;
+
 
   public Asset id(String id) {
     
@@ -1022,11 +1027,11 @@ public class Asset {
   }
 
    /**
-   * Arbitrary user-supplied metadata set for the asset. Max 255 characters.
+   * You can set this field to anything you want. It will be included in the asset details and related webhooks. If you&#39;re looking for more structured metadata, such as &#x60;title&#x60; or &#x60;external_id&#x60; , you can use the &#x60;meta&#x60; object instead. **Max: 255 characters**.
    * @return passthrough
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Arbitrary user-supplied metadata set for the asset. Max 255 characters.")
+  @ApiModelProperty(value = "You can set this field to anything you want. It will be included in the asset details and related webhooks. If you're looking for more structured metadata, such as `title` or `external_id` , you can use the `meta` object instead. **Max: 255 characters**.")
 
   public String getPassthrough() {
     return passthrough;
@@ -1299,6 +1304,29 @@ public class Asset {
   }
 
 
+  public Asset meta(AssetMetadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AssetMetadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(AssetMetadata meta) {
+    this.meta = meta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -1336,12 +1364,13 @@ public class Asset {
         Objects.equals(this.recordingTimes, asset.recordingTimes) &&
         Objects.equals(this.nonStandardInputReasons, asset.nonStandardInputReasons) &&
         Objects.equals(this.test, asset.test) &&
-        Objects.equals(this.ingestType, asset.ingestType);
+        Objects.equals(this.ingestType, asset.ingestType) &&
+        Objects.equals(this.meta, asset.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, duration, maxStoredResolution, resolutionTier, maxResolutionTier, encodingTier, videoQuality, maxStoredFrameRate, aspectRatio, playbackIds, tracks, errors, perTitleEncode, uploadId, isLive, passthrough, liveStreamId, master, masterAccess, mp4Support, sourceAssetId, normalizeAudio, staticRenditions, recordingTimes, nonStandardInputReasons, test, ingestType);
+    return Objects.hash(id, createdAt, status, duration, maxStoredResolution, resolutionTier, maxResolutionTier, encodingTier, videoQuality, maxStoredFrameRate, aspectRatio, playbackIds, tracks, errors, perTitleEncode, uploadId, isLive, passthrough, liveStreamId, master, masterAccess, mp4Support, sourceAssetId, normalizeAudio, staticRenditions, recordingTimes, nonStandardInputReasons, test, ingestType, meta);
   }
 
   @Override
@@ -1377,6 +1406,7 @@ public class Asset {
     sb.append("    nonStandardInputReasons: ").append(toIndentedString(nonStandardInputReasons)).append("\n");
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("    ingestType: ").append(toIndentedString(ingestType)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

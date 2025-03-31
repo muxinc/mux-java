@@ -184,6 +184,7 @@ Name | Type | Description | Notes
 **videoDynamicRangeType** | **String** |  |  [optional]
 **viewCdnEdgePop** | **String** |  |  [optional]
 **viewCdnOrigin** | **String** |  |  [optional]
+**videoCreatorId** | **String** |  |  [optional]
 
 
 

@@ -54,7 +54,7 @@ public class Example {
     accessToken.setPassword("YOUR PASSWORD");
 
     LiveStreamsApi apiInstance = new LiveStreamsApi(defaultClient);
-    CreateLiveStreamRequest createLiveStreamRequest = {"playback_policy":["public"],"new_asset_settings":{"playback_policy":["public"]}}; // CreateLiveStreamRequest | 
+    CreateLiveStreamRequest createLiveStreamRequest = {"playback_policies":["public"],"new_asset_settings":{"playback_policies":["public"]}}; // CreateLiveStreamRequest | 
     try {
       LiveStreamResponse result = apiInstance.createLiveStream(createLiveStreamRequest)
             .execute();

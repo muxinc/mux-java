@@ -2,6 +2,7 @@
 
 # UpdateReferrerDomainRestrictionRequest
 
+A list of domains allowed to play your videos.
 ## Properties
 
 Name | Type | Description | Notes

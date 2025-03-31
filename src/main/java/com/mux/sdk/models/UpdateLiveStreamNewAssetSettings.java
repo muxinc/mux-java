@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mux.sdk.models.AssetMetadata;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -189,6 +190,10 @@ public class UpdateLiveStreamNewAssetSettings {
   @SerializedName(SERIALIZED_NAME_VIDEO_QUALITY)
   private VideoQualityEnum videoQuality;
 
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private AssetMetadata meta;
+
 
   public UpdateLiveStreamNewAssetSettings mp4Support(Mp4SupportEnum mp4Support) {
     
@@ -259,6 +264,29 @@ public class UpdateLiveStreamNewAssetSettings {
   }
 
 
+  public UpdateLiveStreamNewAssetSettings meta(AssetMetadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AssetMetadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(AssetMetadata meta) {
+    this.meta = meta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -270,12 +298,13 @@ public class UpdateLiveStreamNewAssetSettings {
     UpdateLiveStreamNewAssetSettings updateLiveStreamNewAssetSettings = (UpdateLiveStreamNewAssetSettings) o;
     return Objects.equals(this.mp4Support, updateLiveStreamNewAssetSettings.mp4Support) &&
         Objects.equals(this.masterAccess, updateLiveStreamNewAssetSettings.masterAccess) &&
-        Objects.equals(this.videoQuality, updateLiveStreamNewAssetSettings.videoQuality);
+        Objects.equals(this.videoQuality, updateLiveStreamNewAssetSettings.videoQuality) &&
+        Objects.equals(this.meta, updateLiveStreamNewAssetSettings.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mp4Support, masterAccess, videoQuality);
+    return Objects.hash(mp4Support, masterAccess, videoQuality, meta);
   }
 
   @Override
@@ -285,6 +314,7 @@ public class UpdateLiveStreamNewAssetSettings {
     sb.append("    mp4Support: ").append(toIndentedString(mp4Support)).append("\n");
     sb.append("    masterAccess: ").append(toIndentedString(masterAccess)).append("\n");
     sb.append("    videoQuality: ").append(toIndentedString(videoQuality)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }
