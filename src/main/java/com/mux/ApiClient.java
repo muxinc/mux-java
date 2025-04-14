@@ -123,7 +123,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Mux Java | 2.0.0");
+        setUserAgent("Mux Java | 2.0.1");
 
         authentications = new HashMap<String, Authentication>();
     }
