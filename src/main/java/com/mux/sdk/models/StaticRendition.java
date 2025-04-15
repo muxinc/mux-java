@@ -288,7 +288,9 @@ public class StaticRendition {
     
     _1080P("1080p"),
     
-    _720P("720p");
+    _720P("720p"),
+    
+    AUDIO_ONLY("audio-only");
 
     private String value;
 

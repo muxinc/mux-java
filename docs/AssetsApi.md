@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 Create an asset track
 
-Adds an asset track (for example, subtitles, or an alternate audio track) to an asset.
+Adds an asset track (for example, subtitles, or an alternate audio track) to an asset. Assets must be in the &#x60;ready&#x60; state before tracks can be added.
 
 ### Example
 ```java
