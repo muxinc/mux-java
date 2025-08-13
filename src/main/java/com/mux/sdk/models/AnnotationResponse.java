@@ -20,59 +20,24 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mux.sdk.models.Asset;
+import com.mux.sdk.models.Annotation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ListAssetsResponse
+ * AnnotationResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ListAssetsResponse {
-  public static final String SERIALIZED_NAME_NEXT_CURSOR = "next_cursor";
-  @SerializedName(SERIALIZED_NAME_NEXT_CURSOR)
-  private String nextCursor;
-
+public class AnnotationResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private java.util.List<Asset> data = null;
+  private Annotation data;
 
 
-  public ListAssetsResponse nextCursor(String nextCursor) {
-    
-    this.nextCursor = nextCursor;
-    return this;
-  }
-
-   /**
-   * If there are more pages of data, this field will contain a string that can be used with the &#x60;cursor&#x60; querystring parameter to fetch the next page of data.
-   * @return nextCursor
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "If there are more pages of data, this field will contain a string that can be used with the `cursor` querystring parameter to fetch the next page of data.")
-
-  public String getNextCursor() {
-    return nextCursor;
-  }
-
-
-  public void setNextCursor(String nextCursor) {
-    this.nextCursor = nextCursor;
-  }
-
-
-  public ListAssetsResponse data(java.util.List<Asset> data) {
+  public AnnotationResponse data(Annotation data) {
     
     this.data = data;
-    return this;
-  }
-
-  public ListAssetsResponse addDataItem(Asset dataItem) {
-    if (this.data == null) {
-      this.data = new java.util.ArrayList<>();
-    }
-    this.data.add(dataItem);
     return this;
   }
 
@@ -83,12 +48,12 @@ public class ListAssetsResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public java.util.List<Asset> getData() {
+  public Annotation getData() {
     return data;
   }
 
 
-  public void setData(java.util.List<Asset> data) {
+  public void setData(Annotation data) {
     this.data = data;
   }
 
@@ -101,21 +66,19 @@ public class ListAssetsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListAssetsResponse listAssetsResponse = (ListAssetsResponse) o;
-    return Objects.equals(this.nextCursor, listAssetsResponse.nextCursor) &&
-        Objects.equals(this.data, listAssetsResponse.data);
+    AnnotationResponse annotationResponse = (AnnotationResponse) o;
+    return Objects.equals(this.data, annotationResponse.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nextCursor, data);
+    return Objects.hash(data);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListAssetsResponse {\n");
-    sb.append("    nextCursor: ").append(toIndentedString(nextCursor)).append("\n");
+    sb.append("class AnnotationResponse {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

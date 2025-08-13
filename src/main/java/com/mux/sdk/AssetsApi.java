@@ -1255,7 +1255,7 @@ public class AssetsApi {
 
     /**
      * Delete an asset track
-     * Removes a text track from an asset. Audio and video tracks on assets cannot be removed.
+     * Removes a text or additional audio track from an asset. Neither video nor the primary audio track can be removed.
      * @param ASSET_ID The asset ID. (required)
      * @param TRACK_ID The track ID. (required)
      * @return APIdeleteAssetTrackRequest
@@ -1879,7 +1879,7 @@ public class AssetsApi {
     public APIgetAssetPlaybackIdRequest getAssetPlaybackId(String ASSET_ID, String PLAYBACK_ID) {
         return new APIgetAssetPlaybackIdRequest(ASSET_ID, PLAYBACK_ID);
     }
-    private okhttp3.Call listAssetsCall(Integer limit, Integer page, String liveStreamId, String uploadId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listAssetsCall(Integer limit, Integer page, String cursor, String liveStreamId, String uploadId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1897,6 +1897,10 @@ public class AssetsApi {
 
         if (page != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
         }
 
         if (liveStreamId != null) {
@@ -1926,24 +1930,24 @@ public class AssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAssetsValidateBeforeCall(Integer limit, Integer page, String liveStreamId, String uploadId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listAssetsValidateBeforeCall(Integer limit, Integer page, String cursor, String liveStreamId, String uploadId, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listAssetsCall(limit, page, liveStreamId, uploadId, _callback);
+        okhttp3.Call localVarCall = listAssetsCall(limit, page, cursor, liveStreamId, uploadId, _callback);
         return localVarCall;
 
     }
 
 
-    private ApiResponse<ListAssetsResponse> listAssetsWithHttpInfo(Integer limit, Integer page, String liveStreamId, String uploadId) throws ApiException {
-        okhttp3.Call localVarCall = listAssetsValidateBeforeCall(limit, page, liveStreamId, uploadId, null);
+    private ApiResponse<ListAssetsResponse> listAssetsWithHttpInfo(Integer limit, Integer page, String cursor, String liveStreamId, String uploadId) throws ApiException {
+        okhttp3.Call localVarCall = listAssetsValidateBeforeCall(limit, page, cursor, liveStreamId, uploadId, null);
         Type localVarReturnType = new TypeToken<ListAssetsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listAssetsAsync(Integer limit, Integer page, String liveStreamId, String uploadId, final ApiCallback<ListAssetsResponse> _callback) throws ApiException {
+    private okhttp3.Call listAssetsAsync(Integer limit, Integer page, String cursor, String liveStreamId, String uploadId, final ApiCallback<ListAssetsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAssetsValidateBeforeCall(limit, page, liveStreamId, uploadId, _callback);
+        okhttp3.Call localVarCall = listAssetsValidateBeforeCall(limit, page, cursor, liveStreamId, uploadId, _callback);
         Type localVarReturnType = new TypeToken<ListAssetsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1952,6 +1956,7 @@ public class AssetsApi {
     public class APIlistAssetsRequest {
         private Integer limit;
         private Integer page;
+        private String cursor;
         private String liveStreamId;
         private String uploadId;
 
@@ -1975,6 +1980,16 @@ public class AssetsApi {
          */
         public APIlistAssetsRequest page(Integer page) {
             this.page = page;
+            return this;
+        }
+
+        /**
+         * Set cursor
+         * @param cursor This parameter is used to request pages beyond the first. You can find the cursor value in the &#x60;next_cursor&#x60; field of paginated responses. (optional)
+         * @return APIlistAssetsRequest
+         */
+        public APIlistAssetsRequest cursor(String cursor) {
+            this.cursor = cursor;
             return this;
         }
 
@@ -2011,7 +2026,7 @@ public class AssetsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listAssetsCall(limit, page, liveStreamId, uploadId, _callback);
+            return listAssetsCall(limit, page, cursor, liveStreamId, uploadId, _callback);
         }
 
         /**
@@ -2026,7 +2041,7 @@ public class AssetsApi {
          </table>
          */
         public ListAssetsResponse execute() throws ApiException {
-            ApiResponse<ListAssetsResponse> localVarResp = listAssetsWithHttpInfo(limit, page, liveStreamId, uploadId);
+            ApiResponse<ListAssetsResponse> localVarResp = listAssetsWithHttpInfo(limit, page, cursor, liveStreamId, uploadId);
             return localVarResp.getData();
         }
 
@@ -2042,7 +2057,7 @@ public class AssetsApi {
          </table>
          */
         public ApiResponse<ListAssetsResponse> executeWithHttpInfo() throws ApiException {
-            return listAssetsWithHttpInfo(limit, page, liveStreamId, uploadId);
+            return listAssetsWithHttpInfo(limit, page, cursor, liveStreamId, uploadId);
         }
 
         /**
@@ -2058,7 +2073,7 @@ public class AssetsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListAssetsResponse> _callback) throws ApiException {
-            return listAssetsAsync(limit, page, liveStreamId, uploadId, _callback);
+            return listAssetsAsync(limit, page, cursor, liveStreamId, uploadId, _callback);
         }
     }
 

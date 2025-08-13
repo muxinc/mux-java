@@ -44,7 +44,17 @@ public class LiveStreamGeneratedSubtitleSettings {
   public enum LanguageCodeEnum {
     EN("en"),
     
-    EN_US("en-US");
+    EN_US("en-US"),
+    
+    ES("es"),
+    
+    FR("fr"),
+    
+    DE("de"),
+    
+    PT("pt"),
+    
+    IT("it");
 
     private String value;
 

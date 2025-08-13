@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.mux</groupId>
   <artifactId>mux-sdk-java</artifactId>
-  <version>2.0.1</version>
+  <version>2.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -60,7 +60,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.mux:mux-sdk-java:2.0.1"
+compile "com.mux:mux-sdk-java:2.1.0"
 ```
 
 ### Others
@@ -73,7 +73,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/mux-sdk-java-2.0.1.jar`
+* `target/mux-sdk-java-2.1.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -88,7 +88,7 @@ import com.mux.ApiException;
 import com.mux.Configuration;
 import com.mux.auth.*;
 import com.mux.models.*;
-import com.mux.sdk.AssetsApi;
+import com.mux.sdk.AnnotationsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -100,14 +100,14 @@ public class Example {
     accessToken.setUsername("YOUR USERNAME");
     accessToken.setPassword("YOUR PASSWORD");
 
-    AssetsApi apiInstance = new AssetsApi(defaultClient);
-    CreateAssetRequest createAssetRequest = {"inputs":[{"url":"https://muxed.s3.amazonaws.com/leds.mp4"}],"playback_policies":["public"],"video_quality":"basic"}; // CreateAssetRequest | 
+    AnnotationsApi apiInstance = new AnnotationsApi(defaultClient);
+    AnnotationInput annotationInput = {"note":"This is a note","date":1745438400,"sub_property_id":"123456"}; // AnnotationInput | 
     try {
-      AssetResponse result = apiInstance.createAsset(createAssetRequest)
+      AnnotationResponse result = apiInstance.createAnnotation(annotationInput)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AssetsApi#createAsset");
+      System.err.println("Exception when calling AnnotationsApi#createAnnotation");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -124,6 +124,11 @@ All URIs are relative to *https://api.mux.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AnnotationsApi* | [**createAnnotation**](docs/AnnotationsApi.md#createAnnotation) | **POST** /data/v1/annotations | Create Annotation
+*AnnotationsApi* | [**deleteAnnotation**](docs/AnnotationsApi.md#deleteAnnotation) | **DELETE** /data/v1/annotations/{ANNOTATION_ID} | Delete Annotation
+*AnnotationsApi* | [**getAnnotation**](docs/AnnotationsApi.md#getAnnotation) | **GET** /data/v1/annotations/{ANNOTATION_ID} | Get Annotation
+*AnnotationsApi* | [**listAnnotations**](docs/AnnotationsApi.md#listAnnotations) | **GET** /data/v1/annotations | List Annotations
+*AnnotationsApi* | [**updateAnnotation**](docs/AnnotationsApi.md#updateAnnotation) | **PATCH** /data/v1/annotations/{ANNOTATION_ID} | Update Annotation
 *AssetsApi* | [**createAsset**](docs/AssetsApi.md#createAsset) | **POST** /video/v1/assets | Create an asset
 *AssetsApi* | [**createAssetPlaybackId**](docs/AssetsApi.md#createAssetPlaybackId) | **POST** /video/v1/assets/{ASSET_ID}/playback-ids | Create a playback ID
 *AssetsApi* | [**createAssetStaticRendition**](docs/AssetsApi.md#createAssetStaticRendition) | **POST** /video/v1/assets/{ASSET_ID}/static-renditions | Create a static rendition for an asset
@@ -227,12 +232,16 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [AbridgedVideoView](docs/AbridgedVideoView.md)
+ - [Annotation](docs/Annotation.md)
+ - [AnnotationInput](docs/AnnotationInput.md)
+ - [AnnotationResponse](docs/AnnotationResponse.md)
  - [Asset](docs/Asset.md)
  - [AssetErrors](docs/AssetErrors.md)
  - [AssetGeneratedSubtitleSettings](docs/AssetGeneratedSubtitleSettings.md)
  - [AssetMaster](docs/AssetMaster.md)
  - [AssetMetadata](docs/AssetMetadata.md)
  - [AssetNonStandardInputReasons](docs/AssetNonStandardInputReasons.md)
+ - [AssetProgress](docs/AssetProgress.md)
  - [AssetRecordingTimes](docs/AssetRecordingTimes.md)
  - [AssetResponse](docs/AssetResponse.md)
  - [AssetStaticRenditions](docs/AssetStaticRenditions.md)
@@ -293,6 +302,7 @@ Class | Method | HTTP request | Description
  - [Insight](docs/Insight.md)
  - [LaunchWebInputResponse](docs/LaunchWebInputResponse.md)
  - [ListAllMetricValuesResponse](docs/ListAllMetricValuesResponse.md)
+ - [ListAnnotationsResponse](docs/ListAnnotationsResponse.md)
  - [ListAssetsResponse](docs/ListAssetsResponse.md)
  - [ListBreakdownValuesResponse](docs/ListBreakdownValuesResponse.md)
  - [ListBreakdownValuesResponseMeta](docs/ListBreakdownValuesResponseMeta.md)
@@ -324,6 +334,7 @@ Class | Method | HTTP request | Description
  - [LiveStream](docs/LiveStream.md)
  - [LiveStreamEmbeddedSubtitleSettings](docs/LiveStreamEmbeddedSubtitleSettings.md)
  - [LiveStreamGeneratedSubtitleSettings](docs/LiveStreamGeneratedSubtitleSettings.md)
+ - [LiveStreamMetadata](docs/LiveStreamMetadata.md)
  - [LiveStreamResponse](docs/LiveStreamResponse.md)
  - [LiveStreamStatus](docs/LiveStreamStatus.md)
  - [Metric](docs/Metric.md)

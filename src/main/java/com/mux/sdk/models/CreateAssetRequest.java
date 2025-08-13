@@ -345,6 +345,10 @@ public class CreateAssetRequest {
   @SerializedName(SERIALIZED_NAME_META)
   private AssetMetadata meta;
 
+  public static final String SERIALIZED_NAME_COPY_OVERLAYS = "copy_overlays";
+  @SerializedName(SERIALIZED_NAME_COPY_OVERLAYS)
+  private Boolean copyOverlays = true;
+
 
   public CreateAssetRequest input(java.util.List<InputSettings> input) {
     
@@ -762,6 +766,29 @@ public class CreateAssetRequest {
   }
 
 
+  public CreateAssetRequest copyOverlays(Boolean copyOverlays) {
+    
+    this.copyOverlays = copyOverlays;
+    return this;
+  }
+
+   /**
+   * If the created asset is a clip, this controls whether overlays are copied from the source asset.
+   * @return copyOverlays
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "If the created asset is a clip, this controls whether overlays are copied from the source asset.")
+
+  public Boolean getCopyOverlays() {
+    return copyOverlays;
+  }
+
+
+  public void setCopyOverlays(Boolean copyOverlays) {
+    this.copyOverlays = copyOverlays;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -786,12 +813,13 @@ public class CreateAssetRequest {
         Objects.equals(this.encodingTier, createAssetRequest.encodingTier) &&
         Objects.equals(this.videoQuality, createAssetRequest.videoQuality) &&
         Objects.equals(this.staticRenditions, createAssetRequest.staticRenditions) &&
-        Objects.equals(this.meta, createAssetRequest.meta);
+        Objects.equals(this.meta, createAssetRequest.meta) &&
+        Objects.equals(this.copyOverlays, createAssetRequest.copyOverlays);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(input, inputs, playbackPolicy, playbackPolicies, advancedPlaybackPolicies, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test, maxResolutionTier, encodingTier, videoQuality, staticRenditions, meta);
+    return Objects.hash(input, inputs, playbackPolicy, playbackPolicies, advancedPlaybackPolicies, perTitleEncode, passthrough, mp4Support, normalizeAudio, masterAccess, test, maxResolutionTier, encodingTier, videoQuality, staticRenditions, meta, copyOverlays);
   }
 
   @Override
@@ -814,6 +842,7 @@ public class CreateAssetRequest {
     sb.append("    videoQuality: ").append(toIndentedString(videoQuality)).append("\n");
     sb.append("    staticRenditions: ").append(toIndentedString(staticRenditions)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("    copyOverlays: ").append(toIndentedString(copyOverlays)).append("\n");
     sb.append("}");
     return sb.toString();
   }

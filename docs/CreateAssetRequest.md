@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **videoQuality** | [**VideoQualityEnum**](#VideoQualityEnum) | The video quality controls the cost, quality, and available platform features for the asset. The default video quality for an account can be set in the Mux Dashboard. This field replaces the deprecated &#x60;encoding_tier&#x60; value. [See the video quality guide for more details.](https://docs.mux.com/guides/use-video-quality-levels) |  [optional]
 **staticRenditions** | [**java.util.List&lt;CreateStaticRenditionRequest&gt;**](CreateStaticRenditionRequest.md) | An array of static renditions to create for this asset. You may not enable both &#x60;static_renditions&#x60; and &#x60;mp4_support (the latter being deprecated)&#x60; |  [optional]
 **meta** | [**AssetMetadata**](AssetMetadata.md) |  |  [optional]
+**copyOverlays** | **Boolean** | If the created asset is a clip, this controls whether overlays are copied from the source asset. |  [optional]
 
 
 

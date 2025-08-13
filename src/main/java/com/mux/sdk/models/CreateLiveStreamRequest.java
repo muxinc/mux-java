@@ -25,6 +25,7 @@ import com.mux.sdk.models.CreatePlaybackIDRequest;
 import com.mux.sdk.models.CreateSimulcastTargetRequest;
 import com.mux.sdk.models.LiveStreamEmbeddedSubtitleSettings;
 import com.mux.sdk.models.LiveStreamGeneratedSubtitleSettings;
+import com.mux.sdk.models.LiveStreamMetadata;
 import com.mux.sdk.models.PlaybackPolicy;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -151,6 +152,10 @@ public class CreateLiveStreamRequest {
   public static final String SERIALIZED_NAME_MAX_CONTINUOUS_DURATION = "max_continuous_duration";
   @SerializedName(SERIALIZED_NAME_MAX_CONTINUOUS_DURATION)
   private Integer maxContinuousDuration = 43200;
+
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private LiveStreamMetadata meta;
 
 
   public CreateLiveStreamRequest playbackPolicy(java.util.List<PlaybackPolicy> playbackPolicy) {
@@ -596,6 +601,29 @@ public class CreateLiveStreamRequest {
   }
 
 
+  public CreateLiveStreamRequest meta(LiveStreamMetadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public LiveStreamMetadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(LiveStreamMetadata meta) {
+    this.meta = meta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -621,12 +649,13 @@ public class CreateLiveStreamRequest {
         Objects.equals(this.latencyMode, createLiveStreamRequest.latencyMode) &&
         Objects.equals(this.test, createLiveStreamRequest.test) &&
         Objects.equals(this.simulcastTargets, createLiveStreamRequest.simulcastTargets) &&
-        Objects.equals(this.maxContinuousDuration, createLiveStreamRequest.maxContinuousDuration);
+        Objects.equals(this.maxContinuousDuration, createLiveStreamRequest.maxContinuousDuration) &&
+        Objects.equals(this.meta, createLiveStreamRequest.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(playbackPolicy, playbackPolicies, advancedPlaybackPolicies, newAssetSettings, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reducedLatency, lowLatency, latencyMode, test, simulcastTargets, maxContinuousDuration);
+    return Objects.hash(playbackPolicy, playbackPolicies, advancedPlaybackPolicies, newAssetSettings, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reducedLatency, lowLatency, latencyMode, test, simulcastTargets, maxContinuousDuration, meta);
   }
 
   @Override
@@ -650,6 +679,7 @@ public class CreateLiveStreamRequest {
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("    simulcastTargets: ").append(toIndentedString(simulcastTargets)).append("\n");
     sb.append("    maxContinuousDuration: ").append(toIndentedString(maxContinuousDuration)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }
