@@ -2,12 +2,17 @@
 README.md
 build.gradle
 docs/AbridgedVideoView.md
+docs/Annotation.md
+docs/AnnotationInput.md
+docs/AnnotationResponse.md
+docs/AnnotationsApi.md
 docs/Asset.md
 docs/AssetErrors.md
 docs/AssetGeneratedSubtitleSettings.md
 docs/AssetMaster.md
 docs/AssetMetadata.md
 docs/AssetNonStandardInputReasons.md
+docs/AssetProgress.md
 docs/AssetRecordingTimes.md
 docs/AssetResponse.md
 docs/AssetStaticRenditions.md
@@ -77,6 +82,7 @@ docs/InputTrack.md
 docs/Insight.md
 docs/LaunchWebInputResponse.md
 docs/ListAllMetricValuesResponse.md
+docs/ListAnnotationsResponse.md
 docs/ListAssetsResponse.md
 docs/ListBreakdownValuesResponse.md
 docs/ListBreakdownValuesResponseMeta.md
@@ -108,6 +114,7 @@ docs/ListWebInputsResponse.md
 docs/LiveStream.md
 docs/LiveStreamEmbeddedSubtitleSettings.md
 docs/LiveStreamGeneratedSubtitleSettings.md
+docs/LiveStreamMetadata.md
 docs/LiveStreamResponse.md
 docs/LiveStreamStatus.md
 docs/LiveStreamsApi.md
@@ -198,6 +205,7 @@ src/main/java/com/mux/auth/ApiKeyAuth.java
 src/main/java/com/mux/auth/Authentication.java
 src/main/java/com/mux/auth/HttpBasicAuth.java
 src/main/java/com/mux/auth/HttpBearerAuth.java
+src/main/java/com/mux/sdk/AnnotationsApi.java
 src/main/java/com/mux/sdk/AssetsApi.java
 src/main/java/com/mux/sdk/DeliveryUsageApi.java
 src/main/java/com/mux/sdk/DimensionsApi.java
@@ -219,12 +227,16 @@ src/main/java/com/mux/sdk/UrlSigningKeysApi.java
 src/main/java/com/mux/sdk/VideoViewsApi.java
 src/main/java/com/mux/sdk/WebInputsApi.java
 src/main/java/com/mux/sdk/models/AbridgedVideoView.java
+src/main/java/com/mux/sdk/models/Annotation.java
+src/main/java/com/mux/sdk/models/AnnotationInput.java
+src/main/java/com/mux/sdk/models/AnnotationResponse.java
 src/main/java/com/mux/sdk/models/Asset.java
 src/main/java/com/mux/sdk/models/AssetErrors.java
 src/main/java/com/mux/sdk/models/AssetGeneratedSubtitleSettings.java
 src/main/java/com/mux/sdk/models/AssetMaster.java
 src/main/java/com/mux/sdk/models/AssetMetadata.java
 src/main/java/com/mux/sdk/models/AssetNonStandardInputReasons.java
+src/main/java/com/mux/sdk/models/AssetProgress.java
 src/main/java/com/mux/sdk/models/AssetRecordingTimes.java
 src/main/java/com/mux/sdk/models/AssetResponse.java
 src/main/java/com/mux/sdk/models/AssetStaticRenditions.java
@@ -285,6 +297,7 @@ src/main/java/com/mux/sdk/models/InputTrack.java
 src/main/java/com/mux/sdk/models/Insight.java
 src/main/java/com/mux/sdk/models/LaunchWebInputResponse.java
 src/main/java/com/mux/sdk/models/ListAllMetricValuesResponse.java
+src/main/java/com/mux/sdk/models/ListAnnotationsResponse.java
 src/main/java/com/mux/sdk/models/ListAssetsResponse.java
 src/main/java/com/mux/sdk/models/ListBreakdownValuesResponse.java
 src/main/java/com/mux/sdk/models/ListBreakdownValuesResponseMeta.java
@@ -316,6 +329,7 @@ src/main/java/com/mux/sdk/models/ListWebInputsResponse.java
 src/main/java/com/mux/sdk/models/LiveStream.java
 src/main/java/com/mux/sdk/models/LiveStreamEmbeddedSubtitleSettings.java
 src/main/java/com/mux/sdk/models/LiveStreamGeneratedSubtitleSettings.java
+src/main/java/com/mux/sdk/models/LiveStreamMetadata.java
 src/main/java/com/mux/sdk/models/LiveStreamResponse.java
 src/main/java/com/mux/sdk/models/LiveStreamStatus.java
 src/main/java/com/mux/sdk/models/Metric.java

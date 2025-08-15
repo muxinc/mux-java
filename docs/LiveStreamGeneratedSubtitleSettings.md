@@ -19,6 +19,11 @@ Name | Value
 ---- | -----
 EN | &quot;en&quot;
 EN_US | &quot;en-US&quot;
+ES | &quot;es&quot;
+FR | &quot;fr&quot;
+DE | &quot;de&quot;
+PT | &quot;pt&quot;
+IT | &quot;it&quot;
 
 
 

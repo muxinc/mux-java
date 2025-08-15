@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mux.sdk.models.LiveStreamMetadata;
 import com.mux.sdk.models.UpdateLiveStreamNewAssetSettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -106,6 +107,10 @@ public class UpdateLiveStreamRequest {
   public static final String SERIALIZED_NAME_NEW_ASSET_SETTINGS = "new_asset_settings";
   @SerializedName(SERIALIZED_NAME_NEW_ASSET_SETTINGS)
   private UpdateLiveStreamNewAssetSettings newAssetSettings;
+
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private LiveStreamMetadata meta;
 
 
   public UpdateLiveStreamRequest passthrough(String passthrough) {
@@ -273,6 +278,29 @@ public class UpdateLiveStreamRequest {
   }
 
 
+  public UpdateLiveStreamRequest meta(LiveStreamMetadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public LiveStreamMetadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(LiveStreamMetadata meta) {
+    this.meta = meta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -288,12 +316,13 @@ public class UpdateLiveStreamRequest {
         Objects.equals(this.useSlateForStandardLatency, updateLiveStreamRequest.useSlateForStandardLatency) &&
         Objects.equals(this.reconnectSlateUrl, updateLiveStreamRequest.reconnectSlateUrl) &&
         Objects.equals(this.maxContinuousDuration, updateLiveStreamRequest.maxContinuousDuration) &&
-        Objects.equals(this.newAssetSettings, updateLiveStreamRequest.newAssetSettings);
+        Objects.equals(this.newAssetSettings, updateLiveStreamRequest.newAssetSettings) &&
+        Objects.equals(this.meta, updateLiveStreamRequest.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(passthrough, latencyMode, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, maxContinuousDuration, newAssetSettings);
+    return Objects.hash(passthrough, latencyMode, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, maxContinuousDuration, newAssetSettings, meta);
   }
 
   @Override
@@ -307,6 +336,7 @@ public class UpdateLiveStreamRequest {
     sb.append("    reconnectSlateUrl: ").append(toIndentedString(reconnectSlateUrl)).append("\n");
     sb.append("    maxContinuousDuration: ").append(toIndentedString(maxContinuousDuration)).append("\n");
     sb.append("    newAssetSettings: ").append(toIndentedString(newAssetSettings)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -746,6 +746,10 @@ public class VideoView {
   @SerializedName(SERIALIZED_NAME_VIDEO_CREATOR_ID)
   private String videoCreatorId;
 
+  public static final String SERIALIZED_NAME_VIDEO_CDN_TRACE = "video_cdn_trace";
+  @SerializedName(SERIALIZED_NAME_VIDEO_CDN_TRACE)
+  private java.util.List<String> videoCdnTrace = null;
+
 
   public VideoView viewTotalUpscaling(String viewTotalUpscaling) {
     
@@ -4872,6 +4876,37 @@ public class VideoView {
   }
 
 
+  public VideoView videoCdnTrace(java.util.List<String> videoCdnTrace) {
+    
+    this.videoCdnTrace = videoCdnTrace;
+    return this;
+  }
+
+  public VideoView addVideoCdnTraceItem(String videoCdnTraceItem) {
+    if (this.videoCdnTrace == null) {
+      this.videoCdnTrace = new java.util.ArrayList<>();
+    }
+    this.videoCdnTrace.add(videoCdnTraceItem);
+    return this;
+  }
+
+   /**
+   * Get videoCdnTrace
+   * @return videoCdnTrace
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public java.util.List<String> getVideoCdnTrace() {
+    return videoCdnTrace;
+  }
+
+
+  public void setVideoCdnTrace(java.util.List<String> videoCdnTrace) {
+    this.videoCdnTrace = videoCdnTrace;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -5059,12 +5094,13 @@ public class VideoView {
         Objects.equals(this.videoDynamicRangeType, videoView.videoDynamicRangeType) &&
         Objects.equals(this.viewCdnEdgePop, videoView.viewCdnEdgePop) &&
         Objects.equals(this.viewCdnOrigin, videoView.viewCdnOrigin) &&
-        Objects.equals(this.videoCreatorId, videoView.videoCreatorId);
+        Objects.equals(this.videoCreatorId, videoView.videoCreatorId) &&
+        Objects.equals(this.videoCdnTrace, videoView.videoCdnTrace);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, adAttemptCount, adBreakCount, adBreakErrorCount, adBreakErrorPercentage, adErrorCount, adErrorPercentage, adImpressionCount, adStartupErrorCount, adStartupErrorPercentage, adExitBeforeStartCount, adExitBeforeStartPercentage, longResume, longRebuffering, playbackFailureErrorTypeId, playbackBusinessExceptionErrorTypeId, videoStartupBusinessExceptionErrorTypeId, playbackFailure, adPlaybackFailureErrorTypeId, viewContentStartupTime, adPrerollStartupTime, viewDropped, clientApplicationName, clientApplicationVersion, videoAffiliate, viewerPlan, viewerPlanStatus, viewerPlanCategory, viewDrmLevel, videoBrand, usedPip, timeShiftEnabled, usedCaptions, videoCodec, audioCodec, videoDynamicRangeType, viewCdnEdgePop, viewCdnOrigin, videoCreatorId);
+    return Objects.hash(viewTotalUpscaling, prerollAdAssetHostname, playerSourceDomain, region, viewerUserAgent, prerollRequested, pageType, startupScore, viewSeekDuration, countryName, playerSourceHeight, longitude, bufferingCount, videoDuration, playerSourceType, city, viewId, platformDescription, videoStartupPrerollRequestTime, viewerDeviceName, videoSeries, viewerApplicationName, updatedAt, viewTotalContentPlaybackTime, cdn, playerInstanceId, videoLanguage, playerSourceWidth, playerErrorMessage, playerMuxPluginVersion, watched, playbackScore, pageUrl, metro, viewMaxRequestLatency, requestsForFirstPreroll, viewTotalDownscaling, latitude, playerSourceHostName, insertedAt, viewEnd, muxEmbedVersion, playerLanguage, pageLoadTime, viewerDeviceCategory, videoStartupPrerollLoadTime, playerVersion, watchTime, playerSourceStreamType, prerollAdTagHostname, viewerDeviceManufacturer, rebufferingScore, experimentName, viewerOsVersion, playerPreload, bufferingDuration, playerViewCount, playerSoftware, playerLoadTime, platformSummary, videoEncodingVariant, playerWidth, viewSeekCount, viewerExperienceScore, viewErrorId, videoVariantName, prerollPlayed, viewerApplicationEngine, viewerOsArchitecture, playerErrorCode, bufferingRate, events, playerName, viewStart, viewAverageRequestThroughput, videoProducer, errorTypeId, muxViewerId, videoId, continentCode, sessionId, exitBeforeVideoStart, videoContentType, viewerOsFamily, playerPoster, viewAverageRequestLatency, videoVariantId, playerSourceDuration, playerSourceUrl, muxApiVersion, videoTitle, id, shortTime, rebufferPercentage, timeToFirstFrame, viewerUserId, videoStreamType, playerStartupTime, viewerApplicationVersion, viewMaxDownscalePercentage, viewMaxUpscalePercentage, countryCode, usedFullscreen, isp, propertyId, playerAutoplay, playerHeight, asn, asnName, qualityScore, playerSoftwareVersion, playerMuxPluginName, subPropertyId, playerRemotePlayed, viewMaxPlayheadPosition, viewPlayingTime, viewSessionId, viewerConnectionType, viewerDeviceModel, weightedAverageBitrate, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, liveStreamLatency, assetId, environmentId, liveStreamId, muxEmbed, playbackId, playerErrorContext, viewDrmType, viewDroppedFrameCount, viewHasAd, videoStartupFailure, adAttemptCount, adBreakCount, adBreakErrorCount, adBreakErrorPercentage, adErrorCount, adErrorPercentage, adImpressionCount, adStartupErrorCount, adStartupErrorPercentage, adExitBeforeStartCount, adExitBeforeStartPercentage, longResume, longRebuffering, playbackFailureErrorTypeId, playbackBusinessExceptionErrorTypeId, videoStartupBusinessExceptionErrorTypeId, playbackFailure, adPlaybackFailureErrorTypeId, viewContentStartupTime, adPrerollStartupTime, viewDropped, clientApplicationName, clientApplicationVersion, videoAffiliate, viewerPlan, viewerPlanStatus, viewerPlanCategory, viewDrmLevel, videoBrand, usedPip, timeShiftEnabled, usedCaptions, videoCodec, audioCodec, videoDynamicRangeType, viewCdnEdgePop, viewCdnOrigin, videoCreatorId, videoCdnTrace);
   }
 
   @Override
@@ -5250,6 +5286,7 @@ public class VideoView {
     sb.append("    viewCdnEdgePop: ").append(toIndentedString(viewCdnEdgePop)).append("\n");
     sb.append("    viewCdnOrigin: ").append(toIndentedString(viewCdnOrigin)).append("\n");
     sb.append("    videoCreatorId: ").append(toIndentedString(videoCreatorId)).append("\n");
+    sb.append("    videoCdnTrace: ").append(toIndentedString(videoCdnTrace)).append("\n");
     sb.append("}");
     return sb.toString();
   }

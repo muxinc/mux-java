@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import com.mux.sdk.models.CreateAssetRequest;
 import com.mux.sdk.models.LiveStreamEmbeddedSubtitleSettings;
 import com.mux.sdk.models.LiveStreamGeneratedSubtitleSettings;
+import com.mux.sdk.models.LiveStreamMetadata;
 import com.mux.sdk.models.LiveStreamStatus;
 import com.mux.sdk.models.PlaybackID;
 import com.mux.sdk.models.SimulcastTarget;
@@ -223,6 +224,10 @@ public class LiveStream {
   @SerializedName(SERIALIZED_NAME_ACTIVE_INGEST_PROTOCOL)
   private ActiveIngestProtocolEnum activeIngestProtocol;
 
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private LiveStreamMetadata meta;
+
 
   public LiveStream id(String id) {
     
@@ -277,11 +282,11 @@ public class LiveStream {
   }
 
    /**
-   * Unique key used for streaming to a Mux RTMP endpoint. This should be considered as sensitive as credentials, anyone with this stream key can begin streaming.
+   * Unique key used for streaming to a Mux RTMP endpoint. This should be considered as sensitive as credentials, anyone with this stream key can begin streaming. Max 64 characters.
    * @return streamKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Unique key used for streaming to a Mux RTMP endpoint. This should be considered as sensitive as credentials, anyone with this stream key can begin streaming.")
+  @ApiModelProperty(value = "Unique key used for streaming to a Mux RTMP endpoint. This should be considered as sensitive as credentials, anyone with this stream key can begin streaming. Max 64 characters.")
 
   public String getStreamKey() {
     return streamKey;
@@ -758,11 +763,11 @@ public class LiveStream {
   }
 
    /**
-   * Unique key used for encrypting a stream to a Mux SRT endpoint.
+   * Unique key used for encrypting a stream to a Mux SRT endpoint. Max 64 characters.
    * @return srtPassphrase
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Unique key used for encrypting a stream to a Mux SRT endpoint.")
+  @ApiModelProperty(value = "Unique key used for encrypting a stream to a Mux SRT endpoint. Max 64 characters.")
 
   public String getSrtPassphrase() {
     return srtPassphrase;
@@ -797,6 +802,29 @@ public class LiveStream {
   }
 
 
+  public LiveStream meta(LiveStreamMetadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public LiveStreamMetadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(LiveStreamMetadata meta) {
+    this.meta = meta;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -828,12 +856,13 @@ public class LiveStream {
         Objects.equals(this.test, liveStream.test) &&
         Objects.equals(this.maxContinuousDuration, liveStream.maxContinuousDuration) &&
         Objects.equals(this.srtPassphrase, liveStream.srtPassphrase) &&
-        Objects.equals(this.activeIngestProtocol, liveStream.activeIngestProtocol);
+        Objects.equals(this.activeIngestProtocol, liveStream.activeIngestProtocol) &&
+        Objects.equals(this.meta, liveStream.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, streamKey, activeAssetId, recentAssetIds, status, playbackIds, newAssetSettings, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, reducedLatency, lowLatency, simulcastTargets, latencyMode, test, maxContinuousDuration, srtPassphrase, activeIngestProtocol);
+    return Objects.hash(id, createdAt, streamKey, activeAssetId, recentAssetIds, status, playbackIds, newAssetSettings, passthrough, audioOnly, embeddedSubtitles, generatedSubtitles, reconnectWindow, useSlateForStandardLatency, reconnectSlateUrl, reducedLatency, lowLatency, simulcastTargets, latencyMode, test, maxContinuousDuration, srtPassphrase, activeIngestProtocol, meta);
   }
 
   @Override
@@ -863,6 +892,7 @@ public class LiveStream {
     sb.append("    maxContinuousDuration: ").append(toIndentedString(maxContinuousDuration)).append("\n");
     sb.append("    srtPassphrase: ").append(toIndentedString(srtPassphrase)).append("\n");
     sb.append("    activeIngestProtocol: ").append(toIndentedString(activeIngestProtocol)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

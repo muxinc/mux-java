@@ -24,6 +24,7 @@ import com.mux.sdk.models.AssetErrors;
 import com.mux.sdk.models.AssetMaster;
 import com.mux.sdk.models.AssetMetadata;
 import com.mux.sdk.models.AssetNonStandardInputReasons;
+import com.mux.sdk.models.AssetProgress;
 import com.mux.sdk.models.AssetRecordingTimes;
 import com.mux.sdk.models.AssetStaticRenditions;
 import com.mux.sdk.models.PlaybackID;
@@ -611,6 +612,10 @@ public class Asset {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   private AssetMetadata meta;
+
+  public static final String SERIALIZED_NAME_PROGRESS = "progress";
+  @SerializedName(SERIALIZED_NAME_PROGRESS)
+  private AssetProgress progress;
 
 
   public Asset id(String id) {
@@ -1327,6 +1332,29 @@ public class Asset {
   }
 
 
+  public Asset progress(AssetProgress progress) {
+    
+    this.progress = progress;
+    return this;
+  }
+
+   /**
+   * Get progress
+   * @return progress
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AssetProgress getProgress() {
+    return progress;
+  }
+
+
+  public void setProgress(AssetProgress progress) {
+    this.progress = progress;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -1365,12 +1393,13 @@ public class Asset {
         Objects.equals(this.nonStandardInputReasons, asset.nonStandardInputReasons) &&
         Objects.equals(this.test, asset.test) &&
         Objects.equals(this.ingestType, asset.ingestType) &&
-        Objects.equals(this.meta, asset.meta);
+        Objects.equals(this.meta, asset.meta) &&
+        Objects.equals(this.progress, asset.progress);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, status, duration, maxStoredResolution, resolutionTier, maxResolutionTier, encodingTier, videoQuality, maxStoredFrameRate, aspectRatio, playbackIds, tracks, errors, perTitleEncode, uploadId, isLive, passthrough, liveStreamId, master, masterAccess, mp4Support, sourceAssetId, normalizeAudio, staticRenditions, recordingTimes, nonStandardInputReasons, test, ingestType, meta);
+    return Objects.hash(id, createdAt, status, duration, maxStoredResolution, resolutionTier, maxResolutionTier, encodingTier, videoQuality, maxStoredFrameRate, aspectRatio, playbackIds, tracks, errors, perTitleEncode, uploadId, isLive, passthrough, liveStreamId, master, masterAccess, mp4Support, sourceAssetId, normalizeAudio, staticRenditions, recordingTimes, nonStandardInputReasons, test, ingestType, meta, progress);
   }
 
   @Override
@@ -1407,6 +1436,7 @@ public class Asset {
     sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("    ingestType: ").append(toIndentedString(ingestType)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("}");
     return sb.toString();
   }

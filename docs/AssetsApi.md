@@ -518,7 +518,7 @@ null (empty response body)
 
 Delete an asset track
 
-Removes a text track from an asset. Audio and video tracks on assets cannot be removed.
+Removes a text or additional audio track from an asset. Neither video nor the primary audio track can be removed.
 
 ### Example
 ```java
@@ -866,7 +866,7 @@ Name | Type | Description  | Notes
 
 <a name="listAssets"></a>
 # **listAssets**
-> ListAssetsResponse listAssets().limit(limit).page(page).liveStreamId(liveStreamId).uploadId(uploadId).execute();
+> ListAssetsResponse listAssets().limit(limit).page(page).cursor(cursor).liveStreamId(liveStreamId).uploadId(uploadId).execute();
 
 List assets
 
@@ -895,12 +895,14 @@ public class Example {
     AssetsApi apiInstance = new AssetsApi(defaultClient);
     Integer limit = 25; // Integer | Number of items to include in the response
     Integer page = 1; // Integer | Offset by this many pages, of the size of `limit`
+    String cursor = "cursor_example"; // String | This parameter is used to request pages beyond the first. You can find the cursor value in the `next_cursor` field of paginated responses.
     String liveStreamId = "liveStreamId_example"; // String | Filter response to return all the assets for this live stream only
     String uploadId = "uploadId_example"; // String | Filter response to return an asset created from this direct upload only
     try {
       ListAssetsResponse result = apiInstance.listAssets()
             .limit(limit)
             .page(page)
+            .cursor(cursor)
             .liveStreamId(liveStreamId)
             .uploadId(uploadId)
             .execute();
@@ -922,6 +924,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **Integer**| Number of items to include in the response | [optional] [default to 25]
  **page** | **Integer**| Offset by this many pages, of the size of &#x60;limit&#x60; | [optional] [default to 1]
+ **cursor** | **String**| This parameter is used to request pages beyond the first. You can find the cursor value in the &#x60;next_cursor&#x60; field of paginated responses. | [optional]
  **liveStreamId** | **String**| Filter response to return all the assets for this live stream only | [optional]
  **uploadId** | **String**| Filter response to return an asset created from this direct upload only | [optional]
 
