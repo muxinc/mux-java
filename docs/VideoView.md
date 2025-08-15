@@ -185,6 +185,7 @@ Name | Type | Description | Notes
 **viewCdnEdgePop** | **String** |  |  [optional]
 **viewCdnOrigin** | **String** |  |  [optional]
 **videoCreatorId** | **String** |  |  [optional]
+**videoCdnTrace** | **java.util.List&lt;String&gt;** |  |  [optional]
 
 
 

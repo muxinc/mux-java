@@ -146,6 +146,7 @@ Class | Method | HTTP request | Description
 *AssetsApi* | [**updateAssetMasterAccess**](docs/AssetsApi.md#updateAssetMasterAccess) | **PUT** /video/v1/assets/{ASSET_ID}/master-access | Update master access
 *AssetsApi* | [**updateAssetMp4Support**](docs/AssetsApi.md#updateAssetMp4Support) | **PUT** /video/v1/assets/{ASSET_ID}/mp4-support | Update MP4 support
 *DeliveryUsageApi* | [**listDeliveryUsage**](docs/DeliveryUsageApi.md#listDeliveryUsage) | **GET** /video/v1/delivery-usage | List Usage
+*DimensionsApi* | [**listDimensionElements**](docs/DimensionsApi.md#listDimensionElements) | **GET** /data/v1/dimensions/{DIMENSION_ID}/elements | Lists elements for a trace dimension
 *DimensionsApi* | [**listDimensionValues**](docs/DimensionsApi.md#listDimensionValues) | **GET** /data/v1/dimensions/{DIMENSION_ID} | Lists the values for a specific dimension
 *DimensionsApi* | [**listDimensions**](docs/DimensionsApi.md#listDimensions) | **GET** /data/v1/dimensions | List Dimensions
 *DirectUploadsApi* | [**cancelDirectUpload**](docs/DirectUploadsApi.md#cancelDirectUpload) | **PUT** /video/v1/uploads/{UPLOAD_ID}/cancel | Cancel a direct upload

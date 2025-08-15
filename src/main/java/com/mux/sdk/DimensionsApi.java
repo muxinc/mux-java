@@ -53,6 +53,242 @@ public class DimensionsApi {
         this.localVarApiClient = apiClient;
     }
 
+    private okhttp3.Call listDimensionElementsCall(String DIMENSION_ID, Integer limit, java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/data/v1/dimensions/{DIMENSION_ID}/elements"
+            .replaceAll("\\{" + "DIMENSION_ID" + "\\}", localVarApiClient.escapeString(DIMENSION_ID.toString()));
+
+        java.util.List<Pair> localVarQueryParams = new java.util.ArrayList<Pair>();
+        java.util.List<Pair> localVarCollectionQueryParams = new java.util.ArrayList<Pair>();
+        java.util.Map<String, String> localVarHeaderParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, String> localVarCookieParams = new java.util.HashMap<String, String>();
+        java.util.Map<String, Object> localVarFormParams = new java.util.HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filters[]", filters));
+        }
+
+        if (metricFilters != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metric_filters[]", metricFilters));
+        }
+
+        if (timeframe != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "timeframe[]", timeframe));
+        }
+
+        if (orderBy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order_by", orderBy));
+        }
+
+        if (orderDirection != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order_direction", orderDirection));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "accessToken" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listDimensionElementsValidateBeforeCall(String DIMENSION_ID, Integer limit, java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, String orderBy, String orderDirection, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'DIMENSION_ID' is set
+        if (DIMENSION_ID == null) {
+            throw new ApiException("Missing the required parameter 'DIMENSION_ID' when calling listDimensionElements(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listDimensionElementsCall(DIMENSION_ID, limit, filters, metricFilters, timeframe, orderBy, orderDirection, _callback);
+        return localVarCall;
+
+    }
+
+
+    private ApiResponse<ListDimensionValuesResponse> listDimensionElementsWithHttpInfo(String DIMENSION_ID, Integer limit, java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, String orderBy, String orderDirection) throws ApiException {
+        okhttp3.Call localVarCall = listDimensionElementsValidateBeforeCall(DIMENSION_ID, limit, filters, metricFilters, timeframe, orderBy, orderDirection, null);
+        Type localVarReturnType = new TypeToken<ListDimensionValuesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listDimensionElementsAsync(String DIMENSION_ID, Integer limit, java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, String orderBy, String orderDirection, final ApiCallback<ListDimensionValuesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listDimensionElementsValidateBeforeCall(DIMENSION_ID, limit, filters, metricFilters, timeframe, orderBy, orderDirection, _callback);
+        Type localVarReturnType = new TypeToken<ListDimensionValuesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistDimensionElementsRequest {
+        private final String DIMENSION_ID;
+        private Integer limit;
+        private java.util.List<String> filters;
+        private java.util.List<String> metricFilters;
+        private java.util.List<String> timeframe;
+        private String orderBy;
+        private String orderDirection;
+
+        private APIlistDimensionElementsRequest(String DIMENSION_ID) {
+            this.DIMENSION_ID = DIMENSION_ID;
+        }
+
+        /**
+         * Set limit
+         * @param limit Number of items to include in the response (optional, default to 25)
+         * @return APIlistDimensionElementsRequest
+         */
+        public APIlistDimensionElementsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filters
+         * @param filters Filter results using key:value pairs. Must be provided as an array query string parameter.  **Basic filtering:** * &#x60;filters[]&#x3D;dimension:value&#x60; - Include rows where dimension equals value * &#x60;filters[]&#x3D;!dimension:value&#x60; - Exclude rows where dimension equals value  **For trace dimensions (like video_cdn_trace):** * &#x60;filters[]&#x3D;+dimension:value&#x60; - Include rows where trace contains value * &#x60;filters[]&#x3D;-dimension:value&#x60; - Exclude rows where trace contains value * &#x60;filters[]&#x3D;dimension:[value1,value2]&#x60; - Exact trace match  **Examples:** * &#x60;filters[]&#x3D;country:US&#x60; - US views only * &#x60;filters[]&#x3D;+video_cdn_trace:fastly&#x60; - Views using Fastly CDN  (optional)
+         * @return APIlistDimensionElementsRequest
+         */
+        public APIlistDimensionElementsRequest filters(java.util.List<String> filters) {
+            this.filters = filters;
+            return this;
+        }
+
+        /**
+         * Set metricFilters
+         * @param metricFilters Limit the results to rows that match inequality conditions from provided metric comparison clauses. Must be provided as an array query string parameter.  Possible filterable metrics are the same as the set of metric ids, with the exceptions of &#x60;exits_before_video_start&#x60;, &#x60;unique_viewers&#x60;, &#x60;video_startup_failure_percentage&#x60;, &#x60;view_dropped_percentage&#x60;, and &#x60;views&#x60;.  Example:    * &#x60;metric_filters[]&#x3D;aggregate_startup_time&gt;&#x3D;1000&#x60;  (optional)
+         * @return APIlistDimensionElementsRequest
+         */
+        public APIlistDimensionElementsRequest metricFilters(java.util.List<String> metricFilters) {
+            this.metricFilters = metricFilters;
+            return this;
+        }
+
+        /**
+         * Set timeframe
+         * @param timeframe Timeframe window to limit results by. Must be provided as an array query string parameter (e.g. timeframe[]&#x3D;).  Accepted formats are...    * array of epoch timestamps e.g. &#x60;timeframe[]&#x3D;1498867200&amp;timeframe[]&#x3D;1498953600&#x60;   * duration string e.g. &#x60;timeframe[]&#x3D;24:hours or timeframe[]&#x3D;7:days&#x60;  (optional)
+         * @return APIlistDimensionElementsRequest
+         */
+        public APIlistDimensionElementsRequest timeframe(java.util.List<String> timeframe) {
+            this.timeframe = timeframe;
+            return this;
+        }
+
+        /**
+         * Set orderBy
+         * @param orderBy Value to order the results by (optional)
+         * @return APIlistDimensionElementsRequest
+         */
+        public APIlistDimensionElementsRequest orderBy(String orderBy) {
+            this.orderBy = orderBy;
+            return this;
+        }
+
+        /**
+         * Set orderDirection
+         * @param orderDirection Sort order. (optional)
+         * @return APIlistDimensionElementsRequest
+         */
+        public APIlistDimensionElementsRequest orderDirection(String orderDirection) {
+            this.orderDirection = orderDirection;
+            return this;
+        }
+
+        /**
+         * Build call for listDimensionElements
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listDimensionElementsCall(DIMENSION_ID, limit, filters, metricFilters, timeframe, orderBy, orderDirection, _callback);
+        }
+
+        /**
+         * Execute listDimensionElements request
+         * @return ListDimensionValuesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListDimensionValuesResponse execute() throws ApiException {
+            ApiResponse<ListDimensionValuesResponse> localVarResp = listDimensionElementsWithHttpInfo(DIMENSION_ID, limit, filters, metricFilters, timeframe, orderBy, orderDirection);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listDimensionElements request with HTTP info returned
+         * @return ApiResponse&lt;ListDimensionValuesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListDimensionValuesResponse> executeWithHttpInfo() throws ApiException {
+            return listDimensionElementsWithHttpInfo(DIMENSION_ID, limit, filters, metricFilters, timeframe, orderBy, orderDirection);
+        }
+
+        /**
+         * Execute listDimensionElements request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+            <caption>Response Summary</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListDimensionValuesResponse> _callback) throws ApiException {
+            return listDimensionElementsAsync(DIMENSION_ID, limit, filters, metricFilters, timeframe, orderBy, orderDirection, _callback);
+        }
+    }
+
+    /**
+     * Lists elements for a trace dimension
+     * Lists the elements (values) for a trace dimension along with their total counts. This endpoint is specifically designed for trace dimensions like video_cdn_trace that contain arrays of values. 
+     * @param DIMENSION_ID ID of the Dimension (required)
+     * @return APIlistDimensionElementsRequest
+     * @http.response.details
+     <table border="1">
+        <caption>Response Summary</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistDimensionElementsRequest listDimensionElements(String DIMENSION_ID) {
+        return new APIlistDimensionElementsRequest(DIMENSION_ID);
+    }
     private okhttp3.Call listDimensionValuesCall(String DIMENSION_ID, Integer limit, Integer page, java.util.List<String> filters, java.util.List<String> metricFilters, java.util.List<String> timeframe, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
@@ -167,7 +403,7 @@ public class DimensionsApi {
 
         /**
          * Set filters
-         * @param filters Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.  To exclude rows that match a certain condition, prepend a &#x60;!&#x60; character to the dimension.  Possible filter names are the same as returned by the List Filters endpoint.  Example:    * &#x60;filters[]&#x3D;operating_system:windows&amp;filters[]&#x3D;!country:US&#x60;  (optional)
+         * @param filters Filter results using key:value pairs. Must be provided as an array query string parameter.  **Basic filtering:** * &#x60;filters[]&#x3D;dimension:value&#x60; - Include rows where dimension equals value * &#x60;filters[]&#x3D;!dimension:value&#x60; - Exclude rows where dimension equals value  **For trace dimensions (like video_cdn_trace):** * &#x60;filters[]&#x3D;+dimension:value&#x60; - Include rows where trace contains value * &#x60;filters[]&#x3D;-dimension:value&#x60; - Exclude rows where trace contains value * &#x60;filters[]&#x3D;dimension:[value1,value2]&#x60; - Exact trace match  **Examples:** * &#x60;filters[]&#x3D;country:US&#x60; - US views only * &#x60;filters[]&#x3D;+video_cdn_trace:fastly&#x60; - Views using Fastly CDN  (optional)
          * @return APIlistDimensionValuesRequest
          */
         public APIlistDimensionValuesRequest filters(java.util.List<String> filters) {
